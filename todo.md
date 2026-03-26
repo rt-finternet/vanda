@@ -56,3 +56,17 @@
 - [x] Add git commit hash version footprint visible on the portal
 - [x] Continue investigating add-email "string did not match expected pattern" error (wrapped in form noValidate, added type=button/submit, autoComplete=off)
 - [x] Root cause found: vanda.neurail.io DNS points to Vercel (405 on POST), not Manus deployment; improved error messages for server/network errors
+
+## Dual Deployment (Manus + Vercel)
+- [ ] Design dual-deployment architecture (Manus tRPC + Vercel serverless)
+- [ ] Create Vercel serverless API routes under /api directory (auth + admin)
+- [ ] Create frontend API abstraction layer (switches between tRPC and fetch based on VITE_DEPLOY_TARGET)
+- [ ] Add vercel.json configuration with rewrites
+- [ ] Test both deployment paths work
+- [ ] Document the dual-deployment setup in README
+
+## Tests (Pre-Refactor Safety Net)
+- [x] Write tests for access router (requestPin, verifyPin, checkSession, logout) - 23 tests
+- [x] Write tests for admin router (addEmail, listEmails, toggleEmail, deleteEmail, stats) - 23 tests
+- [x] Write tests for rate limiter utility - 8 tests
+- [x] Write tests for PIN email utility - 12 tests
