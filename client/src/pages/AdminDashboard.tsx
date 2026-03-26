@@ -219,7 +219,14 @@ function AdminPanel() {
       setNewEmail(""); setNewName(""); setNewOrg(""); setNewPin("");
       setShowAddForm(false);
     } catch (err: any) {
-      setAddError(err.message || "Failed to add email");
+      const msg = err.message || "";
+      if (msg.includes("Unexpected end of") || msg.includes("JSON") || msg.includes("405") || msg.includes("Failed to fetch")) {
+        setAddError("Server error: the API is unreachable. Please verify the domain is correctly configured and try again.");
+      } else if (msg.includes("CONFLICT") || msg.includes("already exists")) {
+        setAddError("This email already exists in the allowed list.");
+      } else {
+        setAddError(msg || "Failed to add email. Please try again.");
+      }
     }
   };
 

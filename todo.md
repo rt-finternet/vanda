@@ -55,3 +55,4 @@
 - [x] Fix "The string did not match the expected pattern" error when adding a user in admin panel
 - [x] Add git commit hash version footprint visible on the portal
 - [x] Continue investigating add-email "string did not match expected pattern" error (wrapped in form noValidate, added type=button/submit, autoComplete=off)
+- [x] Root cause found: vanda.neurail.io DNS points to Vercel (405 on POST), not Manus deployment; improved error messages for server/network errors
