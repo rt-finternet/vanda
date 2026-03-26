@@ -24,6 +24,8 @@ import SGDeepDiveVCC from "./pages/sg/deep-dive/SGDeepDiveVCC";
 import SGDeepDivePreciousMetals from "./pages/sg/deep-dive/SGDeepDivePreciousMetals";
 import SGDeepDiveTokenPrograms from "./pages/sg/deep-dive/SGDeepDiveTokenPrograms";
 import SGDeepDivePTokets from "./pages/sg/deep-dive/SGDeepDivePTokets";
+import SGDeepDiveCrossLedger from "./pages/sg/deep-dive/SGDeepDiveCrossLedger";
+import SGDeepDiveUnsponsoredTokets from "./pages/sg/deep-dive/SGDeepDiveUnsponsoredTokets";
 
 // SG Workflow pages
 import SGWorkflows from "./pages/sg/workflows/SGWorkflows";
@@ -62,6 +64,8 @@ function Router() {
       <Route path="/sg/deep-dive/precious-metals" component={SGDeepDivePreciousMetals} />
       <Route path="/sg/deep-dive/token-programs" component={SGDeepDiveTokenPrograms} />
       <Route path="/sg/deep-dive/p-tokets" component={SGDeepDivePTokets} />
+      <Route path="/sg/deep-dive/cross-ledger" component={SGDeepDiveCrossLedger} />
+      <Route path="/sg/deep-dive/unsponsored-tokets" component={SGDeepDiveUnsponsoredTokets} />
 
       {/* SG Workflows */}
       <Route path="/sg/workflows" component={SGWorkflows} />

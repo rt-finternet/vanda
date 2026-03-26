@@ -56,6 +56,8 @@ const sgDeepDiveItems: SGNavItem[] = [
   { href: "/sg/deep-dive/precious-metals", label: "Precious Metals", icon: <Gem className="w-4 h-4" />, color: SG.finternetAmber },
   { href: "/sg/deep-dive/token-programs", label: "Token Programs", icon: <Zap className="w-4 h-4" />, color: SG.finternetCyan },
   { href: "/sg/deep-dive/p-tokets", label: "P-Tokets (Portfolios)", icon: <Network className="w-4 h-4" />, color: SG.nusOrange },
+  { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity", icon: <Globe className="w-4 h-4" />, color: SG.finternetCyan },
+  { href: "/sg/deep-dive/unsponsored-tokets", label: "Unsponsored Tokets", icon: <Globe className="w-4 h-4" />, color: SG.finternetAmber },
 ];
 
 /* SG Interactive Workflows */

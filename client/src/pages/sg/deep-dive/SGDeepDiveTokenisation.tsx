@@ -332,7 +332,7 @@ export default function SGDeepDiveTokenisation() {
                 },
                 {
                   title: "24/7 Settlement",
-                  desc: "Securities can be traded and settled at any time, not just during SGX trading hours or MAS business hours. This is critical for Singapore's role as a bridge between Asian and European time zones.",
+                  desc: "Securities can be traded and settled at any time, not just during SGX trading hours or MAS business hours. This is critical for Singapore's role as a 24/7 global trading gateway.",
                   icon: Globe,
                   color: SG.finternetAmber,
                 },
@@ -399,10 +399,12 @@ export default function SGDeepDiveTokenisation() {
           <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>UNITS Knowledge Base</p>
           <div className="flex flex-wrap gap-3">
             {[
-              { href: "/sg/deep-dive/tokenisation", label: "Tokenisation (Protocol)" },
               { href: "/sg/deep-dive/units", label: "UNITS Protocol" },
               { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
-              { href: "/sg/deep-dive/corporate-actions", label: "Corporate Actions" },
+              { href: "/sg/deep-dive/p-tokets", label: "P-Tokets (Portfolios)" },
+              { href: "/sg/deep-dive/unsponsored-tokets", label: "Unsponsored Tokets" },
+              { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity" },
+              { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway" },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
