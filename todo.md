@@ -31,7 +31,7 @@
 
 ## Enhancements — Future
 - [x] Favicon + Open Graph meta tags
-- [ ] Interactive Architecture Diagram (SVG clickable layers)
+- [x] Interactive Architecture Diagram (SVG clickable layers)
 - [ ] PDF Export button
 - [ ] Walkthrough video script
 - [ ] Companion slide deck (10-15 slides)
@@ -43,3 +43,4 @@
 - [x] Master PIN (314159) gate for admin panel access
 - [x] Back-to-portal navigation from admin page
 - [x] Open Graph meta tags and custom favicon
+- [x] Interactive Architecture Diagram (SVG clickable layers linking to deep-dives)

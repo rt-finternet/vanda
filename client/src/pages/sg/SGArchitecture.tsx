@@ -7,6 +7,7 @@ import {
   Server, Database, GitBranch, Lock, CheckCircle2, Users,
   Building2, Landmark, ArrowRightLeft, Zap
 } from "lucide-react";
+import InteractiveArchDiagram from "@/components/InteractiveArchDiagram";
 
 function RevealSection({ id, children, delay = 0 }: { id: string; children: React.ReactNode; delay?: number }) {
   const [visible, setVisible] = useState(false);
@@ -48,6 +49,21 @@ export default function SGArchitecture() {
           </p>
         </div>
       </section>
+
+      {/* Interactive Architecture Diagram */}
+      <div className="max-w-5xl mx-auto px-6 pt-8 pb-12">
+        <RevealSection id="interactive-diagram">
+          <section>
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-light mb-2">Interactive <span className="font-semibold">Architecture Map</span></h2>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>Hover to explore connections. Click any component to open its deep-dive.</p>
+            </div>
+            <div className="rounded-2xl p-4 md:p-6" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+              <InteractiveArchDiagram />
+            </div>
+          </section>
+        </RevealSection>
+      </div>
 
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-20">
 
