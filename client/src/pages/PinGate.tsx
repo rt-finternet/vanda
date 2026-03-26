@@ -117,7 +117,7 @@ function ParticleField() {
 /* ── PIN Input Component ── */
 function PinInput({ value, onChange, disabled }: { value: string; onChange: (v: string) => void; disabled?: boolean }) {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const digits = value.padEnd(6, "").split("").slice(0, 6);
+  const digits = Array.from({ length: 6 }, (_, i) => value[i] || "");
 
   const handleChange = useCallback((index: number, char: string) => {
     if (!/^\d?$/.test(char)) return;

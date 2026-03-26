@@ -1,5 +1,5 @@
 /**
- * GlowingOrb — Cinematic Infrastructure Design
+ * GlowingOrb: Cinematic Infrastructure Design
  * Triple-layer radial glow with expanding sonar rings behind the orchid logo.
  * Breathing pulse at 6s cycle. Used in the hero section.
  */

@@ -1,0 +1,14 @@
+{
+  "query": "SELECT email, defaultPin FROM allowed_emails WHERE email = 'demo@units.sg';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user MBmxGN6xwxy66yE.83017b4d2307 --database K7gf8xoKwZVmt9538B5Xu7 --execute SELECT email, defaultPin FROM allowed_emails WHERE email = 'demo@units.sg';",
+  "rows": [
+    {
+      "email": "demo@units.sg",
+      "defaultPin": "123456"
+    }
+  ],
+  "messages": [],
+  "stdout": "email\tdefaultPin\ndemo@units.sg\t123456\n",
+  "stderr": "",
+  "execution_time_ms": 1568
+}

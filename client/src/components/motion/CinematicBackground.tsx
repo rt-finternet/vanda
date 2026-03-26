@@ -1,5 +1,5 @@
 /**
- * CinematicBackground — Cinematic Infrastructure Design
+ * CinematicBackground: Cinematic Infrastructure Design
  * Slowly morphing mesh gradient blobs that drift between palette colors.
  * Used as a background layer on deep-dive and workflow pages.
  */

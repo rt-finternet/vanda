@@ -92,7 +92,7 @@ export default function SGArchitecture() {
                 <div className="px-5 py-4" style={{ background: `${SG.finternetCyan}04` }}>
                   <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
                     Each participant builds their own client-facing applications on top of the UNITS Network APIs.
-                    This is where differentiation happens — user experience, product packaging, advisory services.
+                    This is where differentiation happens: user experience, product packaging, advisory services.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Issuance Portals", "Distribution Interfaces", "Custody Dashboards", "BYOW Wallets", "Advisory Tools", "Compliance UIs"].map(t => (
@@ -121,7 +121,7 @@ export default function SGArchitecture() {
                 <div className="px-5 py-4" style={{ background: `${SG.nusOrange}06` }}>
                   <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
                     The protocol layer that provides common standards, distribution rules, and compliance enforcement.
-                    This is where the UNITS architecture lives — tokenClasses, tokenPools, UILP gates, and the wallet registry.
+                    This is where the UNITS architecture lives: tokenClasses, tokenPools, UILP gates, and the wallet registry.
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {[
@@ -234,7 +234,7 @@ export default function SGArchitecture() {
                   <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
                     <strong className="text-white/80">Why this matters:</strong> GL1 membership by HSBC, J.P. Morgan, MUFG, and Standard Chartered
                     means these institutions are committed to the same interoperability standards. A tokenised SGS bond on the
-                    GL1-compliant UNITS Network can be recognised across any GL1-compliant infrastructure globally — creating
+                    GL1-compliant UNITS Network can be recognised across any GL1-compliant infrastructure globally, creating
                     seamless cross-border collateral mobility and settlement interoperability.
                   </p>
                 </div>
@@ -251,7 +251,7 @@ export default function SGArchitecture() {
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
               Unlike platforms that force participants onto a single wallet infrastructure, the UNITS Network
               allows each bank and financial institution to bring their own wallet technology. This is critical
-              for adoption — no bank will abandon its existing custody infrastructure.
+              for adoption, since no bank will abandon its existing custody infrastructure.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -320,7 +320,7 @@ export default function SGArchitecture() {
 
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
               MAS operates a regulatory observer node with live visibility into compliance state across the entire network.
-              This is not a reporting system — it is real-time supervisory infrastructure.
+              This is not a reporting system; it is real-time supervisory infrastructure.
             </p>
 
             <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
@@ -332,7 +332,7 @@ export default function SGArchitecture() {
               </div>
               <div className="p-6 space-y-3">
                 {[
-                  { label: "Compliance state", desc: "Every wallet's VC (Verifiable Credential) status — investor suitability, accreditation, AML/KYC verification", icon: <Shield className="w-4 h-4" /> },
+                  { label: "Compliance state", desc: "Every wallet's VC (Verifiable Credential) status (investor suitability, accreditation, AML/KYC verification)", icon: <Shield className="w-4 h-4" /> },
                   { label: "Concentration risk", desc: "Portfolio-level exposure across all participants. Sector, issuer, and asset class concentration visible in real time", icon: <ArrowRightLeft className="w-4 h-4" /> },
                   { label: "Settlement finality", desc: "Every DVP transaction from initiation to atomic settlement. No more T+2 uncertainty about whether trades will fail", icon: <CheckCircle2 className="w-4 h-4" /> },
                   { label: "Collateral positions", desc: "All pledged collateral, margin levels, and repo positions across the network. Early warning on systemic stress", icon: <Lock className="w-4 h-4" /> },

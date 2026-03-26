@@ -1,5 +1,5 @@
 /**
- * AnimatedCounter — Cinematic Infrastructure Design
+ * AnimatedCounter: Cinematic Infrastructure Design
  * Counts up from 0 to target value when scrolled into view.
  * Supports decimal values, prefixes (US$), and suffixes (T, +).
  */

@@ -488,7 +488,7 @@ export default function SGDeepDiveUNITS() {
                 {
                   icon: Eye,
                   title: "MAS Observer Node",
-                  desc: "MAS gets real-time supervisory access to all network activity — across both depositories and all six tokenisation platforms — without operational control. One observer node replaces quarterly reporting from multiple sources.",
+                  desc: "MAS gets real-time supervisory access to all network activity, across both depositories and all six tokenisation platforms, without operational control. One observer node replaces quarterly reporting from multiple sources.",
                   color: SG.finternetAmber,
                 },
                 {

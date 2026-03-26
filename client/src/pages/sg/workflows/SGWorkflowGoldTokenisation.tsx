@@ -45,7 +45,7 @@ const STEPS: WorkflowStep[] = [
     details: [
       "SBMA Good Delivery List check: PASSED",
       "LBMA Good Delivery List check: PASSED",
-      "Refiner status: Metalor — Active on both GDLs",
+      "Refiner status: Metalor (Active on both GDLs)",
       "Minimum fineness (999.9 SBMA / 995.0 LBMA): PASSED",
       "Weight tolerance: PASSED (within 0.01%)",
       "LBMA Responsible Gold Guidance (RGG): COMPLIANT",
@@ -92,9 +92,9 @@ const STEPS: WorkflowStep[] = [
     id: 5, title: "Distribution", subtitle: "Primary Allocation to Singapore Participants",
     description: "Gold tokets are distributed to participant wallets via the Issuance Book. DBS Private Banking, OCBC Premier, and UOB Privilege Banking subscribe to allocations for their wealth management clients. Settlement is atomic DvP: gold tokets move to the buyer's wallet, SGD/XSGD moves to the seller's wallet, simultaneously. No settlement risk.",
     details: [
-      "Distributor 1: DBS Private Banking — 400 gram-tokets",
-      "Distributor 2: OCBC Premier Banking — 300 gram-tokets",
-      "Distributor 3: UOB Privilege Banking — 300 gram-tokets",
+      "Distributor 1: DBS Private Banking, 400 gram-tokets",
+      "Distributor 2: OCBC Premier Banking, 300 gram-tokets",
+      "Distributor 3: UOB Privilege Banking, 300 gram-tokets",
       "Settlement: Atomic DvP (T+0)",
       "Cash leg: SGD via MEPS+ / XSGD (StraitsX)",
       "DBS allocation value: SGD 50,160",

@@ -1,5 +1,5 @@
 /**
- * LiquidGlassCard — Cinematic Infrastructure Design
+ * LiquidGlassCard: Cinematic Infrastructure Design
  * Glassmorphism card with gradient border sweep on hover.
  * Provides tactile feedback through lift, glow, and shimmer.
  */

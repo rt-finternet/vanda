@@ -1,5 +1,5 @@
 /**
- * RevealSection — Cinematic Infrastructure Design
+ * RevealSection: Cinematic Infrastructure Design
  * Smooth fade-in + slide-up when scrolled into view.
  * Supports staggered delays for sibling elements.
  */

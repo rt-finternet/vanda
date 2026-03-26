@@ -1,0 +1,8 @@
+{
+  "query": "SELECT email, default_pin FROM allowed_email WHERE email = 'demo@units.sg';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user MBmxGN6xwxy66yE.83017b4d2307 --database K7gf8xoKwZVmt9538B5Xu7 --execute SELECT email, default_pin FROM allowed_email WHERE email = 'demo@units.sg';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table 'k7gf8xokwzvmt9538b5xu7.allowed_email' doesn't exist"
+  ]
+}

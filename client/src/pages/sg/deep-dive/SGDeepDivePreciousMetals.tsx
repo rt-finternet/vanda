@@ -67,7 +67,7 @@ const painPoints = [
   },
   {
     title: "Limited Collateral Utility",
-    description: "Physical gold and gold ETFs cannot be easily mobilised as collateral for margin calls, repo transactions, or structured product backing. SGX-DC margin calls require cash or approved securities — gold is excluded despite its value.",
+    description: "Physical gold and gold ETFs cannot be easily mobilised as collateral for margin calls, repo transactions, or structured product backing. SGX-DC margin calls require cash or approved securities, and gold is excluded despite its value.",
     icon: <Lock className="w-5 h-5" />,
     impact: "Gold locked in vaults, not working as collateral",
   },
@@ -88,7 +88,7 @@ const unitsComponents = [
     details: [
       "Each LBMA/SBMA Good Delivery bar represented as a unique token on the UNITS ledger",
       "Bar serial number, refiner, assay certificate, weight, and vault location recorded immutably",
-      "Fractional gram-tokets reference specific physical bars — full provenance chain",
+      "Fractional gram-tokets reference specific physical bars with full provenance chain",
       "Singapore vault operators (Brink's, Malca-Amit, Le Freeport) each maintain a tokenPool",
       "Real-time reconciliation between physical vault inventory and digital register",
     ],
@@ -179,7 +179,7 @@ const serviceTiers = [
   },
   {
     name: "Gold Collateral Highway",
-    description: "Gold tokets become first-class collateral on the UNITS Collateral Highway. They can be pledged for SGX-DC margin calls, repo transactions, or structured product backing — alongside bonds and equities.",
+    description: "Gold tokets become first-class collateral on the UNITS Collateral Highway. They can be pledged for SGX-DC margin calls, repo transactions, or structured product backing, alongside bonds and equities.",
     features: ["SGX-DC margin call eligible", "Programmable haircuts (8-12%)", "Real-time substitution", "Cross-asset collateral baskets", "Automated margin top-up"],
     targetClients: "SGX-DC clearing members, prime brokers, hedge funds",
     icon: <ArrowRightLeft className="w-6 h-6" />,
@@ -228,7 +228,7 @@ export default function SGDeepDivePreciousMetals() {
               <span style={{ color: SG.finternetAmber }}>Tokenisation</span>
             </h1>
             <p className="text-lg max-w-3xl" style={{ color: "rgba(255,255,255,0.5)" }}>
-              How UNITS|SG transforms Singapore's precious metals infrastructure — from LBMA Good Delivery bars and SBMA kilobars to programmable gram-tokets with bar-level provenance, instant settlement, and collateral utility.
+              How UNITS|SG transforms Singapore's precious metals infrastructure, from LBMA Good Delivery bars and SBMA kilobars to programmable gram-tokets with bar-level provenance, instant settlement, and collateral utility.
             </p>
             <p className="text-sm mt-4 max-w-3xl" style={{ color: "rgba(255,255,255,0.35)" }}>
               Singapore is Asia's fastest-growing gold hub. In March 2026, MAS tapped JPMorgan and UBS to boost institutional gold trading liquidity. UNITS|SG provides the digital infrastructure to make Singapore's gold fully programmable.
@@ -329,7 +329,7 @@ export default function SGDeepDivePreciousMetals() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: SG.masTeal }}>London Vaults (LBMA Network — Cross-Border)</h3>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: SG.masTeal }}>London Vaults (LBMA Network, Cross-Border)</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
@@ -431,9 +431,9 @@ export default function SGDeepDivePreciousMetals() {
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { title: "Regulators & Infrastructure", color: SG.red, items: ["MAS — Regulatory oversight", "SGX — Exchange infrastructure", "SBMA — Industry standards body", "IRAS — IPM GST exemption authority"] },
-                { title: "Banks & Distributors", color: SG.finternetAmber, items: ["DBS — Largest SG bank, gold trading desk", "OCBC — Gold savings accounts, bullion", "UOB — Gold trading and custody", "JPMorgan SG — Global bullion operations", "UBS SG — Private banking, gold custody", "HSBC SG — Precious metals vault operations"] },
-                { title: "Vault Operators & Specialists", color: SG.masTeal, items: ["Brink's Singapore — SBMA-approved vault", "Malca-Amit — Changi Airport facility", "Le Freeport — Tax-advantaged bonded storage", "Silver Bullion — Retail + institutional", "Indigo Precious Metals — LBMA/SBMA member", "StraitsX — XSGD stablecoin for settlement"] },
+                { title: "Regulators & Infrastructure", color: SG.red, items: ["MAS: Regulatory oversight", "SGX: Exchange infrastructure", "SBMA: Industry standards body", "IRAS: IPM GST exemption authority"] },
+                { title: "Banks & Distributors", color: SG.finternetAmber, items: ["DBS: Largest SG bank, gold trading desk", "OCBC: Gold savings accounts, bullion", "UOB: Gold trading and custody", "JPMorgan SG: Global bullion operations", "UBS SG: Private banking, gold custody", "HSBC SG: Precious metals vault operations"] },
+                { title: "Vault Operators & Specialists", color: SG.masTeal, items: ["Brink's Singapore: SBMA-approved vault", "Malca-Amit: Changi Airport facility", "Le Freeport: Tax-advantaged bonded storage", "Silver Bullion: Retail + institutional", "Indigo Precious Metals: LBMA/SBMA member", "StraitsX: XSGD stablecoin for settlement"] },
               ].map((group) => (
                 <div key={group.title} className="rounded-xl p-5" style={{ background: `${SG.card}`, border: `1px solid ${SG.border}` }}>
                   <h3 className="font-semibold mb-3" style={{ color: group.color }}>{group.title}</h3>

@@ -44,3 +44,11 @@
 - [x] Back-to-portal navigation from admin page
 - [x] Open Graph meta tags and custom favicon
 - [x] Interactive Architecture Diagram (SVG clickable layers linking to deep-dives)
+
+## Bug Fixes
+- [x] Fix admin panel login not working
+- [x] Fix portal PIN gate login not working
+- [x] Guided Tour mode for architecture diagram (auto-scroll with narration)
+- [x] Remove all em dashes from GuidedTour narration text
+- [x] Remove all em dashes from entire portal (deep-dives, workflows, landing, etc.)
+- [x] Fix PIN input boxes not rendering (padEnd bug in PinInput component)

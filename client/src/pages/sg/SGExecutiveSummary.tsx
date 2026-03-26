@@ -132,7 +132,7 @@ export default function SGExecutiveSummary() {
             <p className="text-lg leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
               Singapore has <strong className="text-white/90">two separate depositories</strong> that do not talk to each other.
               SGX CDP holds equities and corporate bonds. MAS MEPS+ holds government securities and processes interbank payments.
-              Every tokenisation initiative — DBS DDEx, InvestaX, DigiFT, Sygnum — operates on its own isolated platform.
+              Every tokenisation initiative (DBS DDEx, InvestaX, DigiFT, Sygnum) operates on its own isolated platform.
             </p>
             <p className="text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.6)" }}>
               The result: <strong className="text-white/90">fragmented liquidity</strong>, no unified portfolio view,
@@ -283,7 +283,7 @@ export default function SGExecutiveSummary() {
                 {
                   icon: <RefreshCw className="w-5 h-5" />,
                   title: "Repo & Financing Against Tokenised Assets",
-                  desc: "Participants pledge tokenised financial assets and commodities (gold tokets) as collateral for repo transactions. Smart contracts manage real-time mark-to-market, auto margin calls, automatic release on maturity, and tri-party repo — replacing bilateral agreements with neutral infrastructure.",
+                  desc: "Participants pledge tokenised financial assets and commodities (gold tokets) as collateral for repo transactions. Smart contracts manage real-time mark-to-market, auto margin calls, automatic release on maturity, and tri-party repo, replacing bilateral agreements with neutral infrastructure.",
                   accent: SG.nusOrange,
                   stats: [
                     { value: "Real-time", label: "Mark-to-Market" },
@@ -478,7 +478,7 @@ export default function SGExecutiveSummary() {
 
             <div className="space-y-4">
               {[
-                { title: "No third depository needed", desc: "The network layer unifies existing CDP and MEPS+ infrastructure. No new depository — just a protocol that connects them.", accent: SG.red },
+                { title: "No third depository needed", desc: "The network layer unifies existing CDP and MEPS+ infrastructure. No new depository, just a protocol that connects them.", accent: SG.red },
                 { title: "Portfolio integrity for the first time", desc: "A participant's full portfolio across CDP, MEPS+, gold, stablecoins, and private credit is visible and verifiable in one place.", accent: SG.nusOrange },
                 { title: "Collateral mobility", desc: "Assets in CDP can be used as collateral for MEPS+ operations through the network. Gold tokets can back repo transactions. End of fragmentation.", accent: SG.masTeal },
                 { title: "Global access via unsponsored tokets", desc: "Any global security becomes accessible in Singapore 24/7. Singapore becomes the gateway for round-the-clock access to world markets.", accent: SG.finternetCyan },

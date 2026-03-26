@@ -9,7 +9,7 @@ describe("Resend API Key Validation", () => {
 
     const resend = new Resend(apiKey);
 
-    // Call domains.list() — a sending-restricted key will return a 401
+    // Call domains.list(): a sending-restricted key will return a 401
     // with name "restricted_api_key", which proves the key is valid but
     // correctly scoped to sending only. An invalid key returns "missing_api_key"
     // or "invalid_api_key".

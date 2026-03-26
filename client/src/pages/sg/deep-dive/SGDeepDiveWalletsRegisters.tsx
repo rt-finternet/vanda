@@ -31,7 +31,7 @@ export default function SGDeepDiveWalletsRegisters() {
           <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
             UNITS|SG uniquely supports <strong className="text-white/90">both</strong> the traditional register-based model
             that underpins Singapore's securities market and the wallet-based model that powers digital assets.
-            This dual architecture is not a compromise — it is the bridge between today's infrastructure and tomorrow's.
+            This dual architecture is not a compromise; it is the bridge between today's infrastructure and tomorrow's.
           </p>
 
           {/* Key stats */}
@@ -62,7 +62,7 @@ export default function SGDeepDiveWalletsRegisters() {
             <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
               Singapore's financial market is built on register-based infrastructure. CDP maintains the definitive
               register of securities holders under the Companies Act and Securities and Futures Act. Every SGX-listed
-              equity, every government bond, every structured note — their legal ownership is determined by register entries,
+              equity, every government bond, every structured note: their legal ownership is determined by register entries,
               not by who holds a private key. At the same time, the future of financial infrastructure is wallet-based:
               self-custody, programmable access, cross-chain composability. UNITS|SG does not force a choice.
               It supports both, simultaneously, for the same assets.
@@ -290,7 +290,7 @@ export default function SGDeepDiveWalletsRegisters() {
 
             <div className="grid md:grid-cols-4 gap-4">
               {[
-                { icon: <Layers className="w-4 h-4" />, label: "Token Allocation", desc: "Quantity held — the balance", color: SG.finternetAmber },
+                { icon: <Layers className="w-4 h-4" />, label: "Token Allocation", desc: "Quantity held (the balance)", color: SG.finternetAmber },
                 { icon: <GitBranch className="w-4 h-4" />, label: "Dependency Pointers", desc: "References to credentials that condition transferability", color: SG.masTeal },
                 { icon: <Shield className="w-4 h-4" />, label: "Policy Rules", desc: "Transfer conditions specific to this holding", color: SG.red },
                 { icon: <Database className="w-4 h-4" />, label: "Metadata", desc: "Issuance timestamp, token class reference, custom fields", color: "#8B5CF6" },
@@ -432,14 +432,14 @@ export default function SGDeepDiveWalletsRegisters() {
             </h2>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
               The UNITS Registry maps Finternet account addresses to registered identifiers (phone, email, DID,
-              institutional ID). It also maintains the compliance state of every connected wallet — a real-time
+              institutional ID). It also maintains the compliance state of every connected wallet, a real-time
               view of who can do what, visible to the MAS observer node.
             </p>
 
             <div className="grid md:grid-cols-3 gap-4">
               {[
                 { icon: <Users className="w-4 h-4" />, label: "Identity Resolution", desc: "A sender can address a transfer to an email or phone number. The registry resolves this to the recipient's Finternet account address.", color: SG.finternetAmber },
-                { icon: <Shield className="w-4 h-4" />, label: "Compliance State", desc: "Every wallet's Verifiable Credential status — investor suitability, accreditation, AML/KYC verification — tracked in real time.", color: SG.masTeal },
+                { icon: <Shield className="w-4 h-4" />, label: "Compliance State", desc: "Every wallet's Verifiable Credential status (investor suitability, accreditation, AML/KYC verification, tracked in real time.", color: SG.masTeal },
                 { icon: <Eye className="w-4 h-4" />, label: "MAS Observer View", desc: "The regulator sees the unified state across all wallets and registers without needing to query each participant separately.", color: SG.red },
               ].map((item, i) => (
                 <LiquidGlassCard key={i}>
@@ -477,7 +477,7 @@ export default function SGDeepDiveWalletsRegisters() {
 
             <div className="grid md:grid-cols-2 gap-4">
               {[
-                { title: "Recurring Payments", desc: "Subscriptions, salary disbursements — automated within policy bounds", icon: <ArrowRightLeft className="w-4 h-4" /> },
+                { title: "Recurring Payments", desc: "Subscriptions, salary disbursements, automated within policy bounds", icon: <ArrowRightLeft className="w-4 h-4" /> },
                 { title: "Portfolio Rebalancing", desc: "P-Toket composition adjustments by authorised wealth managers", icon: <Layers className="w-4 h-4" /> },
                 { title: "Collateral Management", desc: "Margin calls and collateral substitution by clearing houses", icon: <Building2 className="w-4 h-4" /> },
                 { title: "Agentic Execution", desc: "AI agents operating within strict policy-bound delegation credentials", icon: <Zap className="w-4 h-4" /> },
@@ -537,7 +537,7 @@ export default function SGDeepDiveWalletsRegisters() {
                 },
                 {
                   title: "Cross-Bank P-Toket Rebalancing",
-                  desc: "A DBS wealth client holds a P-Toket composed of equities (CDP proxy), bonds (native), and gold (SBMA vault). Rebalancing requires atomic operations across three registers and two wallet infrastructures — only possible with the unified state model.",
+                  desc: "A DBS wealth client holds a P-Toket composed of equities (CDP proxy), bonds (native), and gold (SBMA vault). Rebalancing requires atomic operations across three registers and two wallet infrastructures, only possible with the unified state model.",
                   icon: <Layers className="w-5 h-5" />,
                   color: SG.red,
                   link: "/sg/deep-dive/p-tokets",
@@ -605,7 +605,7 @@ export default function SGDeepDiveWalletsRegisters() {
           <img src={FINTERNET_LOGO} alt="Finternet" className="h-4 opacity-40" />
         </div>
         <p className="text-[10px] tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>
-          UNITS|SG — Next-Generation Securities Infrastructure for Singapore
+          UNITS|SG: Next-Generation Securities Infrastructure for Singapore
         </p>
       </footer>
     </div>

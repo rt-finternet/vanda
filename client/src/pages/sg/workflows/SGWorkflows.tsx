@@ -77,7 +77,7 @@ const WORKFLOWS = [
     id: "cross-border",
     title: "Cross-Border Settlement",
     subtitle: "SG Private Wealth → German Bund",
-    description: "A Singapore private wealth client buys a German Bund using XSGD stablecoin — atomic cross-currency DvP, automatic treaty-rate WHT via Verifiable Credentials, continuous coupon accrual, and structured note physical delivery. Demonstrates elimination of Herstatt risk and correspondent banking.",
+    description: "A Singapore private wealth client buys a German Bund using XSGD stablecoin with atomic cross-currency DvP, automatic treaty-rate WHT via Verifiable Credentials, continuous coupon accrual, and structured note physical delivery. Demonstrates elimination of Herstatt risk and correspondent banking.",
     steps: 6,
     icon: Globe,
     accent: "#3b82f6",

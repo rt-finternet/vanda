@@ -550,7 +550,7 @@ function AdminPanel() {
 }
 
 /* ════════════════════════════════════════════════════════
-   MAIN EXPORT — Gate + Dashboard
+   MAIN EXPORT: Gate + Dashboard
    ════════════════════════════════════════════════════════ */
 export default function AdminDashboard() {
   const [authenticated, setAuthenticated] = useState(false);

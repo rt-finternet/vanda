@@ -46,7 +46,7 @@ const STEPS: WorkflowStep[] = [
   },
   {
     id: 2, title: "Atomic Encumbrance", subtitle: "All Assets Pledged Simultaneously",
-    description: "The entire multi-asset basket is encumbered atomically in a single transaction. Gold tokets, silver tokets, SGS bonds, and equities are all locked simultaneously in DBS's UNITS Wallet. There is no moment where some assets are pledged and others are not. SGX-DC receives a single confirmation that the full basket is secured. The encumbrance is enforced by Token Programs — DBS cannot transfer or redeem pledged tokets until released.",
+    description: "The entire multi-asset basket is encumbered atomically in a single transaction. Gold tokets, silver tokets, SGS bonds, and equities are all locked simultaneously in DBS's UNITS Wallet. There is no moment where some assets are pledged and others are not. SGX-DC receives a single confirmation that the full basket is secured. The encumbrance is enforced by Token Programs; DBS cannot transfer or redeem pledged tokets until released.",
     details: [
       "Transaction: Atomic multi-asset pledge (single commitment)",
       "Gold encumbered: 5,000 gram-tokets → LOCKED",
@@ -98,7 +98,7 @@ const STEPS: WorkflowStep[] = [
   },
   {
     id: 5, title: "Substitution", subtitle: "Swap Gold for SGS Bonds Atomically",
-    description: "DBS decides to optimise their collateral basket by substituting 3,000 gold gram-tokets with additional SGS bonds (lower haircut at 2% vs gold's 8%, freeing gold for client distribution). The substitution is atomic: gold tokets are released and SGS bond tokets are encumbered in a single transaction. SGX-DC's exposure remains fully covered throughout — there is no moment of undercollateralisation during the swap.",
+    description: "DBS decides to optimise their collateral basket by substituting 3,000 gold gram-tokets with additional SGS bonds (lower haircut at 2% vs gold's 8%, freeing gold for client distribution). The substitution is atomic: gold tokets are released and SGS bond tokets are encumbered in a single transaction. SGX-DC's exposure remains fully covered throughout, and there is no moment of undercollateralisation during the swap.",
     details: [
       "Released: 3,000 gold gram-tokets (SGD 364,170 post-haircut at 8%)",
       "Pledged: SGD 350K SGS 2.75% 2029 (SGD 357,000 post-haircut at 2%)",

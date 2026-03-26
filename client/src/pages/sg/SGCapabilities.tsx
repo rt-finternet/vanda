@@ -63,7 +63,7 @@ export default function SGCapabilities() {
 
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
               The UNITS Network eliminates batch processing windows entirely. Participants settle DVP transactions
-              around the clock — across weekends, public holidays, and outside market hours. Combined with
+              around the clock, across weekends, public holidays, and outside market hours. Combined with
               SCS-regulated stablecoins as settlement currency, the network enables atomic delivery-versus-payment
               at any time.
             </p>
@@ -106,7 +106,7 @@ export default function SGCapabilities() {
                       { label: "All asset classes", value: "T+0 atomic DVP, 24/7/365" },
                       { label: "Settlement currency", value: "SCS-regulated SGD stablecoin" },
                       { label: "Cross-system", value: "Instant, protocol-level" },
-                      { label: "Finality", value: "Atomic — both legs succeed or neither does" },
+                      { label: "Finality", value: "Atomic: both legs succeed or neither does" },
                     ].map((item, i) => (
                       <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.finternetCyan}05`, border: `1px solid ${SG.finternetCyan}10` }}>
                         <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.finternetCyan}70` }}>{item.label}</div>
@@ -139,7 +139,7 @@ export default function SGCapabilities() {
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
                 A wealth manager in Singapore receives an instruction from a European client at 2am SGT on a Saturday.
                 The client wants to buy SGD 5M in tokenised gold and pledge it as collateral for a structured note position.
-                On the UNITS Network, this entire sequence — gold toket purchase, DVP settlement, and collateral pledge —
+                On the UNITS Network, this entire sequence (gold toket purchase, DVP settlement, and collateral pledge)
                 completes in under 30 seconds. Today, this would require waiting until Monday morning, coordinating across
                 multiple systems, and would take 2-3 business days.
               </p>
@@ -171,7 +171,7 @@ export default function SGCapabilities() {
               <div className="p-6 space-y-3">
                 {[
                   { step: "1", label: "Collateral Pledge", desc: "Participant pledges tokenised assets (bonds, equities, gold tokets, structured notes) as collateral. Smart contract locks the tokets and records the pledge.", accent: SG.nusOrange },
-                  { step: "2", label: "Real-time Valuation", desc: "Collateral valued 24/7 against live price feeds. Not end-of-day snapshots — continuous mark-to-market with configurable frequency.", accent: SG.finternetAmber },
+                  { step: "2", label: "Real-time Valuation", desc: "Collateral valued 24/7 against live price feeds. Not end-of-day snapshots, but continuous mark-to-market with configurable frequency.", accent: SG.finternetAmber },
                   { step: "3", label: "Auto Margin Calls", desc: "When LTV thresholds are breached, the protocol triggers margin calls automatically. The borrower has a configurable window to post additional collateral.", accent: SG.red },
                   { step: "4", label: "Substitution", desc: "Borrower can substitute collateral (e.g., replace gold tokets with SGS bonds) without unwinding the repo. Smart contract verifies the new collateral meets eligibility requirements.", accent: SG.masTeal },
                   { step: "5", label: "Automatic Release", desc: "On maturity or repayment, collateral is released programmatically. No manual processing, no settlement delays, no reconciliation.", accent: SG.finternetCyan },
@@ -214,7 +214,7 @@ export default function SGCapabilities() {
               <h4 className="text-sm font-semibold mb-2" style={{ color: SG.nusOrange }}>Tri-party repo</h4>
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
                 The UNITS Network acts as neutral infrastructure for tri-party repo, replacing bilateral agreements.
-                The protocol manages collateral selection, substitution, and margin calls — functions that currently
+                The protocol manages collateral selection, substitution, and margin calls, functions that currently
                 require a dedicated tri-party agent. This opens repo markets to a broader set of participants,
                 including smaller banks and asset managers who cannot afford dedicated tri-party arrangements.
               </p>
@@ -233,10 +233,10 @@ export default function SGCapabilities() {
             </div>
 
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
-              A Singapore participant can <strong className="text-white/80">lock traditional securities</strong> — US Treasuries,
-              European equities, Asian bonds — in their custody account at the foreign depository and
+              A Singapore participant can <strong className="text-white/80">lock traditional securities</strong> (US Treasuries,
+              European equities, Asian bonds) in their custody account at the foreign depository and
               <strong className="text-white/80"> issue unsponsored tokets</strong> on the UNITS Network representing those locked assets.
-              This is a <span style={{ color: SG.red }}>programmable depositary receipt</span> — like ADRs/GDRs but tokenised,
+              This is a <span style={{ color: SG.red }}>programmable depositary receipt</span>, like ADRs/GDRs but tokenised,
               instant, and without legacy infrastructure overhead.
             </p>
 
@@ -323,7 +323,7 @@ export default function SGCapabilities() {
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
                 Any global security becomes accessible in Singapore 24/7 without the original issuer's involvement.
                 A DBS client can hold a toket representing US Treasury bonds, trade it at 3am SGT, use it as repo
-                collateral, and include it in a P-toket portfolio — all on the UNITS Network. Singapore becomes the
+                collateral, and include it in a P-toket portfolio, all on the UNITS Network. Singapore becomes the
                 gateway for round-the-clock access to world markets.
               </p>
             </div>

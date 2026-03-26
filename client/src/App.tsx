@@ -47,7 +47,7 @@ const SGWorkflowCrossBorder = lazy(() => import("./pages/sg/workflows/SGWorkflow
 // Admin page (lazy loaded)
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
-/* ── Loading Fallback ── */
+/* -- Loading Fallback -- */
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ background: "#0A1628" }}>
@@ -59,7 +59,7 @@ function PageLoader() {
   );
 }
 
-/* ── Portal Routes (shown only after PIN auth) ── */
+/* -- Portal Routes (shown only after PIN auth) -- */
 function PortalRoutes() {
   return (
     <Switch>
@@ -98,9 +98,6 @@ function PortalRoutes() {
       <Route path="/sg/workflows/commodities-collateral">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCommoditiesCollateral /></Suspense>}</Route>
       <Route path="/sg/workflows/cross-border">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCrossBorder /></Suspense>}</Route>
 
-      {/* Admin Dashboard */}
-      <Route path="/admin">{() => <Suspense fallback={<PageLoader />}><AdminDashboard /></Suspense>}</Route>
-
       {/* 404 */}
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
@@ -108,7 +105,7 @@ function PortalRoutes() {
   );
 }
 
-/* ── Access Gate — wraps /sg/* and /admin routes ── */
+/* -- Access Gate -- wraps /sg/* routes only -- */
 function AccessGate() {
   const { isAuthenticated, loading } = useAccess();
 
@@ -123,16 +120,25 @@ function AccessGate() {
   return <PortalRoutes />;
 }
 
-/* ── Main Router ── */
+/* -- Main Router -- */
 function Router() {
   const [location] = useLocation();
 
-  // Landing page is public — no PIN gate
+  // Landing page is public -- no PIN gate
   if (location === "/") {
     return <VandaLanding />;
   }
 
-  // Everything else goes through the access gate
+  // Admin page has its own master PIN gate -- no portal PIN gate needed
+  if (location === "/admin") {
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <AdminDashboard />
+      </Suspense>
+    );
+  }
+
+  // Everything under /sg/* goes through the portal access gate
   return (
     <AccessProvider>
       <AccessGate />

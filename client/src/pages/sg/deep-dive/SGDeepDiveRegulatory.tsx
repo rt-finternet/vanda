@@ -303,10 +303,10 @@ export default function SGDeepDiveRegulatory() {
                     ].map((row, i) => (
                       <tr key={i} style={{ borderTop: `1px solid ${SG.border}` }}>
                         <td className="p-3 font-medium text-white/70">{row.cap}</td>
-                        <td className="p-3 text-center" style={{ color: row.sfa ? SG.masTeal : "rgba(255,255,255,0.15)" }}>{row.sfa || "—"}</td>
-                        <td className="p-3 text-center" style={{ color: row.psa ? SG.nusOrange : "rgba(255,255,255,0.15)" }}>{row.psa || "—"}</td>
-                        <td className="p-3 text-center" style={{ color: row.scs ? SG.finternetCyan : "rgba(255,255,255,0.15)" }}>{row.scs || "—"}</td>
-                        <td className="p-3 text-center" style={{ color: row.trm ? SG.nusBlue : "rgba(255,255,255,0.15)" }}>{row.trm || "—"}</td>
+                        <td className="p-3 text-center" style={{ color: row.sfa ? SG.masTeal : "rgba(255,255,255,0.15)" }}>{row.sfa || "-"}</td>
+                        <td className="p-3 text-center" style={{ color: row.psa ? SG.nusOrange : "rgba(255,255,255,0.15)" }}>{row.psa || "-"}</td>
+                        <td className="p-3 text-center" style={{ color: row.scs ? SG.finternetCyan : "rgba(255,255,255,0.15)" }}>{row.scs || "-"}</td>
+                        <td className="p-3 text-center" style={{ color: row.trm ? SG.nusBlue : "rgba(255,255,255,0.15)" }}>{row.trm || "-"}</td>
                       </tr>
                     ))}
                   </tbody>

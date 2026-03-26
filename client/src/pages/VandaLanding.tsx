@@ -380,7 +380,7 @@ export default function VandaLanding() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 2: THE VISION — WHY NOT A DEPOSITORY?
+          SECTION 2: THE VISION
           ══════════════════════════════════════════════════════════ */}
       <section id="vision" className="relative py-32 overflow-hidden">
         <MorphingBlobs />
@@ -466,7 +466,7 @@ export default function VandaLanding() {
                 </div>
                 <ul className="space-y-4">
                   {[
-                    "Distributed tokenPools — assets live where they are governed",
+                    "Distributed tokenPools: assets live where they are governed",
                     "Atomic T+0 DvP with no reconciliation needed",
                     "One universal protocol for all asset classes",
                     "Token Programs execute corporate actions in real-time",
@@ -511,7 +511,7 @@ export default function VandaLanding() {
             </h2>
             <p className="text-base md:text-lg max-w-3xl mb-16 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
               VANDA is a blueprint for a next-generation financial market infrastructure built on the
-              UNITS protocol — a universal, intelligent, programmable ledger that creates and represents
+              UNITS protocol, a universal, intelligent, programmable ledger that creates and represents
               all types of value and identity in programmable formats. Named after Singapore's national
               flower, it grows from local roots to connect globally.
             </p>
@@ -523,13 +523,13 @@ export default function VandaLanding() {
               {
                 icon: <Database className="w-6 h-6" />,
                 title: "Universal Ledger",
-                desc: "A single protocol layer that supports equities, fixed income, gold, structured notes, fund units, and any future asset class — all on one unified infrastructure.",
+                desc: "A single protocol layer that supports equities, fixed income, gold, structured notes, fund units, and any future asset class, all on one unified infrastructure.",
                 color: COLORS.teal,
               },
               {
                 icon: <Code2 className="w-6 h-6" />,
                 title: "Programmable Value",
-                desc: "Token Programs embed business logic directly into assets. Dividends, coupons, margin calls, and corporate actions execute automatically — no batch processing, no delays.",
+                desc: "Token Programs embed business logic directly into assets. Dividends, coupons, margin calls, and corporate actions execute automatically, with no batch processing and no delays.",
                 color: COLORS.amber,
               },
               {
@@ -650,7 +650,7 @@ export default function VandaLanding() {
                 layer: "Layer 2",
                 title: "Token Programs",
                 subtitle: "The Intelligence",
-                desc: "Pre-hook validation, state mutation, post-hook notification. Every lifecycle event — from dividend distribution to margin calls — is encoded as a Token Program that executes deterministically. No batch files. No manual intervention.",
+                desc: "Pre-hook validation, state mutation, post-hook notification. Every lifecycle event, from dividend distribution to margin calls, is encoded as a Token Program that executes deterministically. No batch files. No manual intervention.",
                 color: COLORS.amber,
                 icon: <Code2 className="w-5 h-5" />,
                 features: ["Pre/State/Post execution", "CDP corporate actions", "MEPS+ coupon flows", "Composable P-Tokets"],
@@ -770,7 +770,7 @@ export default function VandaLanding() {
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 6: CTA — ENTER THE PORTAL
+          SECTION 6: CTA
           ══════════════════════════════════════════════════════════ */}
       <section className="relative py-32 overflow-hidden">
         <ParticleField />
@@ -819,7 +819,7 @@ export default function VandaLanding() {
               </div>
             </div>
             <p className="text-[10px] tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>
-              Confidential — Authorised Stakeholders Only
+              Confidential. Authorised Stakeholders Only
             </p>
           </div>
         </div>

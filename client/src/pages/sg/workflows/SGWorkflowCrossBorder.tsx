@@ -85,7 +85,7 @@ const STEPS: WorkflowStep[] = [
   {
     id: 3, title: "Atomic Cross-Currency DvP Settlement", subtitle: "Bund delivery vs XSGD payment in 2.3 seconds",
     actor: "UNITS|SG Settlement Engine",
-    description: "The settlement executes as a three-legged atomic transaction: (1) the Bund toket is locked from the seller, (2) XSGD 500,000 is locked from Wei Lin's wallet, and (3) FX conversion is executed at mid-market rate. All three legs succeed or none do — there is no Herstatt risk, no correspondent banking chain, no nostro/vostro accounts. Settlement finality is achieved in 2.3 seconds.",
+    description: "The settlement executes as a three-legged atomic transaction: (1) the Bund toket is locked from the seller, (2) XSGD 500,000 is locked from Wei Lin's wallet, and (3) FX conversion is executed at mid-market rate. All three legs succeed or none do. There is no Herstatt risk, no correspondent banking chain, no nostro/vostro accounts. Settlement finality is achieved in 2.3 seconds.",
     systemState: {
       "Settlement Type": "Atomic 3-leg DvP with embedded FX",
       "Leg 1": "Bund toket (EUR 345,000) locked from seller",
@@ -110,7 +110,7 @@ const STEPS: WorkflowStep[] = [
   {
     id: 4, title: "Continuous Coupon Accrual & WHT", subtitle: "Real-time yield accrual with automatic treaty-rate WHT",
     actor: "Token Program (Entitlement Engine)",
-    description: "From the moment of settlement, the Bund toket begins accruing coupon entitlement continuously. The Token Program reads Wei Lin's VC-07 (Singapore tax resident) and applies the Germany-Singapore DTA rate of 0% on government bond interest — no withholding tax is deducted. No manual tax reclaim forms, no 6-18 month wait for refunds, no intermediary fees. The accrued entitlement is visible in real-time in the DBS UNITS Wallet interface.",
+    description: "From the moment of settlement, the Bund toket begins accruing coupon entitlement continuously. The Token Program reads Wei Lin's VC-07 (Singapore tax resident) and applies the Germany-Singapore DTA rate of 0% on government bond interest, so no withholding tax is deducted. No manual tax reclaim forms, no 6-18 month wait for refunds, no intermediary fees. The accrued entitlement is visible in real-time in the DBS UNITS Wallet interface.",
     systemState: {
       "Coupon Rate": "2.5% per annum (continuous accrual)",
       "Daily Accrual": "EUR 23.63 (EUR 345,000 × 2.5% / 365)",
@@ -233,7 +233,7 @@ export default function SGWorkflowCrossBorder() {
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Cross-Border Settlement</h1>
             <p className="text-sm max-w-2xl" style={{ color: "rgba(255,255,255,0.5)" }}>
-              A Singapore private wealth client buys a German Bund using XSGD stablecoin — atomic cross-currency DvP,
+              A Singapore private wealth client buys a German Bund using XSGD stablecoin with atomic cross-currency DvP,
               automatic treaty-rate WHT, continuous coupon accrual, and structured note physical delivery.
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
