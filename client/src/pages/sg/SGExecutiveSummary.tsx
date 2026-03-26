@@ -343,29 +343,50 @@ export default function SGExecutiveSummary() {
               {[
                 { icon: <ArrowRightLeft className="w-4 h-4" />, name: "Equities & REITs", accent: SG.red },
                 { icon: <Landmark className="w-4 h-4" />, name: "Government Securities", accent: SG.masTeal },
-                { icon: <Gem className="w-4 h-4" />, name: "Gold & Precious Metals", accent: SG.finternetAmber },
+                { icon: <Gem className="w-4 h-4" />, name: "Gold & Precious Metals", accent: SG.finternetAmber, href: "/sg/deep-dive/precious-metals" },
                 { icon: <Scale className="w-4 h-4" />, name: "SCS Stablecoins", accent: SG.nusOrange },
                 { icon: <Layers className="w-4 h-4" />, name: "Structured Notes & CDs", accent: SG.finternetCyan },
                 { icon: <Shield className="w-4 h-4" />, name: "Private Credit & Loans", accent: SG.red },
-                { icon: <Globe className="w-4 h-4" />, name: "VCC Fund Interests", accent: SG.masTeal },
+                { icon: <Globe className="w-4 h-4" />, name: "VCC Fund Interests", accent: SG.masTeal, href: "/sg/deep-dive/vcc" },
                 { icon: <Network className="w-4 h-4" />, name: "P-Tokets (Portfolios)", accent: SG.nusOrange },
                 { icon: <Link2 className="w-4 h-4" />, name: "Unsponsored Tokets", accent: SG.finternetAmber },
-              ].map((a, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-lg" style={{ background: `${a.accent}08`, border: `1px solid ${a.accent}12` }}>
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${a.accent}15` }}>
-                    <span style={{ color: a.accent }}>{a.icon}</span>
+              ].map((a: any, i: number) => {
+                const inner = (
+                  <div key={i} className={`flex items-center gap-3 p-3 rounded-lg transition-all ${a.href ? 'cursor-pointer hover:scale-[1.02]' : ''}`} style={{ background: `${a.accent}08`, border: `1px solid ${a.accent}12` }}>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${a.accent}15` }}>
+                      <span style={{ color: a.accent }}>{a.icon}</span>
+                    </div>
+                    <span className="text-sm font-medium text-white/80">{a.name}</span>
+                    {a.href && <ArrowRight className="w-3 h-3 ml-auto" style={{ color: `${a.accent}60` }} />}
                   </div>
-                  <span className="text-sm font-medium text-white/80">{a.name}</span>
-                </div>
-              ))}
+                );
+                return a.href ? <Link key={i} href={a.href}>{inner}</Link> : inner;
+              })}
             </div>
 
-            <div className="p-5 rounded-xl" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
-              <h4 className="text-sm font-semibold mb-2" style={{ color: SG.masTeal }}>VCC Tokenisation Highlight</h4>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                Singapore has 1,300+ Variable Capital Companies. Tokenising VCC ownership enables smart contract-driven
-                NAV calculation, automated subscription/redemption, and inclusion in P-tokets alongside direct securities and gold.
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Link href="/sg/deep-dive/precious-metals">
+                <div className="p-5 rounded-xl cursor-pointer transition-all hover:scale-[1.01]" style={{ background: `${SG.finternetAmber}08`, border: `1px solid ${SG.finternetAmber}15` }}>
+                  <h4 className="text-sm font-semibold mb-2 flex items-center gap-2" style={{ color: SG.finternetAmber }}>
+                    <Gem className="w-4 h-4" /> Precious Metals Highlight
+                  </h4>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+                    Singapore is Asia's premier gold hub with SBMA Good Delivery standards, FTZ vaults, and IPM GST exemption.
+                    UNITS tokenises LBMA/SBMA kilobars into gram-denominated tokets for fractional ownership and collateral use.
+                  </p>
+                </div>
+              </Link>
+              <Link href="/sg/deep-dive/vcc">
+                <div className="p-5 rounded-xl cursor-pointer transition-all hover:scale-[1.01]" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
+                  <h4 className="text-sm font-semibold mb-2 flex items-center gap-2" style={{ color: SG.masTeal }}>
+                    <Globe className="w-4 h-4" /> VCC Tokenisation Highlight
+                  </h4>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+                    Singapore has 1,300+ Variable Capital Companies. Tokenising VCC ownership enables smart contract-driven
+                    NAV calculation, automated subscription/redemption, and inclusion in P-tokets alongside direct securities and gold.
+                  </p>
+                </div>
+              </Link>
             </div>
 
             <Link href="/sg/assets" className="inline-flex items-center gap-2 mt-6 text-sm transition-colors" style={{ color: `${SG.finternetAmber}90` }}>
@@ -545,9 +566,11 @@ export default function SGExecutiveSummary() {
                   { href: "/sg/deep-dive/tokenisation", label: "Tokenisation" },
                   { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement" },
                   { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway" },
+                  { href: "/sg/deep-dive/precious-metals", label: "Precious Metals" },
                   { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
                   { href: "/sg/deep-dive/regulatory", label: "Regulatory" },
-                  { href: "/sg", label: "UNITS|SG Home" },
+                  { href: "/sg/workflows/cross-border", label: "Cross-Border Settlement" },
+                  { href: "/sg/workflows/gold-tokenisation", label: "Gold Tokenisation" },
                 ].map((link) => (
                   <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.25)", border: `1px solid ${SG.border}` }}>
                     {link.label}

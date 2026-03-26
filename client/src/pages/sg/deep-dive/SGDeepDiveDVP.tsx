@@ -454,10 +454,11 @@ export default function SGDeepDiveDVP() {
           <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>UNITS Knowledge Base</p>
           <div className="flex flex-wrap gap-3">
             {[
-              { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement (Protocol)" },
+              { href: "/sg/workflows/atomic-dvp", label: "Atomic DvP Workflow" },
+              { href: "/sg/workflows/cross-border", label: "Cross-Border Settlement" },
               { href: "/sg/deep-dive/units", label: "UNITS Protocol" },
               { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway" },
-              { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
+              { href: "/sg/deep-dive/precious-metals", label: "Precious Metals" },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}

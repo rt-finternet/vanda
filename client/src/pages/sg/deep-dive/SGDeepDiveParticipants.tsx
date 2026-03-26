@@ -310,9 +310,9 @@ export default function SGDeepDiveParticipants() {
           <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>UNITS Knowledge Base</p>
           <div className="flex flex-wrap gap-3">
             {[
-              { href: "/sg/deep-dive/wallet-register", label: "Wallet & Register" },
-              { href: "/sg/deep-dive/governance", label: "Governance Model" },
-              { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity" },
+              { href: "/sg/workflows/cross-border", label: "Cross-Border Settlement" },
+              { href: "/sg/deep-dive/precious-metals", label: "Precious Metals" },
+              { href: "/sg/workflows/gold-tokenisation", label: "Gold Tokenisation" },
               { href: "/sg/deep-dive/units", label: "UNITS Protocol" },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>

@@ -32,9 +32,10 @@ interface AssetClassProps {
   description: string;
   details: string[];
   stats?: { label: string; value: string }[];
+  deepDiveHref?: string;
 }
 
-function AssetClassCard({ icon, name, accent, description, details, stats }: AssetClassProps) {
+function AssetClassCard({ icon, name, accent, description, details, stats, deepDiveHref }: AssetClassProps) {
   return (
     <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
       <div className="px-6 py-4 flex items-center gap-3" style={{ background: `${accent}08`, borderBottom: `1px solid ${SG.border}` }}>
@@ -62,6 +63,11 @@ function AssetClassCard({ icon, name, accent, description, details, stats }: Ass
               </div>
             ))}
           </div>
+        )}
+        {deepDiveHref && (
+          <Link href={deepDiveHref} className="inline-flex items-center gap-2 mt-4 text-sm font-medium transition-colors hover:opacity-80" style={{ color: accent }}>
+            Deep Dive <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         )}
       </div>
     </div>
@@ -142,13 +148,14 @@ export default function SGAssets() {
             icon={<Gem className="w-4 h-4" />}
             name="3. Gold & Precious Metals"
             accent={SG.finternetAmber}
-            description="LBMA-registered gold, silver, and platinum tokenised with per-vault tokenPools. Singapore is already a major gold trading hub. Tokenisation enables fractional ownership from 1 gram, 24/7 trading, and use as repo collateral."
+            description="LBMA and SBMA Good Delivery gold, silver, and platinum tokenised with per-vault tokenPools. Singapore is Asia's premier gold hub with FTZ vaults, IPM GST exemption, and SBMA kilobar standards. Tokenisation enables fractional ownership from 1 gram, 24/7 trading, and use as repo collateral."
+            deepDiveHref="/sg/deep-dive/precious-metals"
             details={[
-              "Per-vault tokenPools backed by physical bars in HSBC, JP Morgan, Brink's vaults",
-              "Fractional ownership from 1 gram (vs. 400oz LBMA bar minimum)",
-              "24/7 atomic settlement against SCS stablecoins",
-              "Gold tokets as repo collateral with real-time mark-to-market",
-              "Cross-border settlement with Euroclear's precious metals infrastructure",
+              "Per-vault tokenPools backed by physical bars in Brink's Singapore, Malca-Amit Changi, Le Freeport vaults",
+              "Dual standard: LBMA 400oz bars + SBMA 1kg kilobars (99.99% fineness)",
+              "Fractional ownership from 1 gram with IPM GST exemption",
+              "24/7 atomic settlement against XSGD stablecoins",
+              "Gold tokets as SGX-DC margin collateral with real-time LBMA/SBMA price feeds",
             ]}
             stats={[
               { label: "Min. Fraction", value: "1 gram" },
@@ -355,11 +362,11 @@ export default function SGAssets() {
           <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>UNITS Knowledge Base</p>
           <div className="flex flex-wrap gap-3">
             {[
-              { href: "/sg/deep-dive/structured-notes", label: "Structured Notes" },
-              { href: "/sg/deep-dive/precious-metals", label: "Precious Metals" },
-              { href: "/sg/deep-dive/p-toket-vs-funds", label: "P-toket vs ETF/UCITS" },
-              { href: "/sg/deep-dive/equities-settlement", label: "Equities Settlement" },
-              { href: "/sg/deep-dive/commercial-paper", label: "Commercial Paper" },
+              { href: "/sg/deep-dive/precious-metals", label: "Precious Metals Deep Dive" },
+              { href: "/sg/workflows/gold-tokenisation", label: "Gold Tokenisation Workflow" },
+              { href: "/sg/workflows/commodities-collateral", label: "Commodities Collateral" },
+              { href: "/sg/workflows/cross-border", label: "Cross-Border Settlement" },
+              { href: "/sg/deep-dive/tokenisation", label: "Tokenisation" },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
