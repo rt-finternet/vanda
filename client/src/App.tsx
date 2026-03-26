@@ -4,8 +4,9 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { lazy, Suspense } from "react";
 
-// SG Blueprint pages
+// SG Blueprint pages (eagerly loaded, core navigation)
 import SGExecutiveSummary from "./pages/sg/SGExecutiveSummary";
 import SGProblem from "./pages/sg/SGProblem";
 import SGArchitecture from "./pages/sg/SGArchitecture";
@@ -13,29 +14,42 @@ import SGCapabilities from "./pages/sg/SGCapabilities";
 import SGAssets from "./pages/sg/SGAssets";
 import SGFunding from "./pages/sg/SGFunding";
 
-// SG Deep Dive pages
-import SGDeepDiveUNITS from "./pages/sg/deep-dive/SGDeepDiveUNITS";
-import SGDeepDiveDVP from "./pages/sg/deep-dive/SGDeepDiveDVP";
-import SGDeepDiveTokenisation from "./pages/sg/deep-dive/SGDeepDiveTokenisation";
-import SGDeepDiveRegulatory from "./pages/sg/deep-dive/SGDeepDiveRegulatory";
-import SGDeepDiveCollateralHighway from "./pages/sg/deep-dive/SGDeepDiveCollateralHighway";
-import SGDeepDiveParticipants from "./pages/sg/deep-dive/SGDeepDiveParticipants";
-import SGDeepDiveVCC from "./pages/sg/deep-dive/SGDeepDiveVCC";
-import SGDeepDivePreciousMetals from "./pages/sg/deep-dive/SGDeepDivePreciousMetals";
-import SGDeepDiveTokenPrograms from "./pages/sg/deep-dive/SGDeepDiveTokenPrograms";
-import SGDeepDivePTokets from "./pages/sg/deep-dive/SGDeepDivePTokets";
-import SGDeepDiveCrossLedger from "./pages/sg/deep-dive/SGDeepDiveCrossLedger";
-import SGDeepDiveUnsponsoredTokets from "./pages/sg/deep-dive/SGDeepDiveUnsponsoredTokets";
+// SG Deep Dive pages (lazy loaded)
+const SGDeepDiveUNITS = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveUNITS"));
+const SGDeepDiveDVP = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveDVP"));
+const SGDeepDiveTokenisation = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveTokenisation"));
+const SGDeepDiveRegulatory = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveRegulatory"));
+const SGDeepDiveCollateralHighway = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveCollateralHighway"));
+const SGDeepDiveParticipants = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveParticipants"));
+const SGDeepDiveVCC = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveVCC"));
+const SGDeepDivePreciousMetals = lazy(() => import("./pages/sg/deep-dive/SGDeepDivePreciousMetals"));
+const SGDeepDiveTokenPrograms = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveTokenPrograms"));
+const SGDeepDivePTokets = lazy(() => import("./pages/sg/deep-dive/SGDeepDivePTokets"));
+const SGDeepDiveCrossLedger = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveCrossLedger"));
+const SGDeepDiveUnsponsoredTokets = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveUnsponsoredTokets"));
+const SGDeepDiveStructuredNotes = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveStructuredNotes"));
 
-// SG Workflow pages
-import SGWorkflows from "./pages/sg/workflows/SGWorkflows";
-import SGWorkflowCDPBridge from "./pages/sg/workflows/SGWorkflowCDPBridge";
-import SGWorkflowAtomicDvP from "./pages/sg/workflows/SGWorkflowAtomicDvP";
-import SGWorkflowCollateralMobilisation from "./pages/sg/workflows/SGWorkflowCollateralMobilisation";
-import SGWorkflowVCCTokenisation from "./pages/sg/workflows/SGWorkflowVCCTokenisation";
-import SGWorkflowGoldTokenisation from "./pages/sg/workflows/SGWorkflowGoldTokenisation";
-import SGWorkflowCommoditiesCollateral from "./pages/sg/workflows/SGWorkflowCommoditiesCollateral";
-import SGWorkflowCrossBorder from "./pages/sg/workflows/SGWorkflowCrossBorder";
+// SG Workflow pages (lazy loaded)
+const SGWorkflows = lazy(() => import("./pages/sg/workflows/SGWorkflows"));
+const SGWorkflowCDPBridge = lazy(() => import("./pages/sg/workflows/SGWorkflowCDPBridge"));
+const SGWorkflowAtomicDvP = lazy(() => import("./pages/sg/workflows/SGWorkflowAtomicDvP"));
+const SGWorkflowCollateralMobilisation = lazy(() => import("./pages/sg/workflows/SGWorkflowCollateralMobilisation"));
+const SGWorkflowVCCTokenisation = lazy(() => import("./pages/sg/workflows/SGWorkflowVCCTokenisation"));
+const SGWorkflowGoldTokenisation = lazy(() => import("./pages/sg/workflows/SGWorkflowGoldTokenisation"));
+const SGWorkflowCommoditiesCollateral = lazy(() => import("./pages/sg/workflows/SGWorkflowCommoditiesCollateral"));
+const SGWorkflowCrossBorder = lazy(() => import("./pages/sg/workflows/SGWorkflowCrossBorder"));
+
+/* ── Loading Fallback ── */
+function PageLoader() {
+  return (
+    <div className="min-h-screen flex items-center justify-center" style={{ background: "#0A1628" }}>
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: "#F59E0B", borderTopColor: "transparent" }} />
+        <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.3)" }}>Loading</span>
+      </div>
+    </div>
+  );
+}
 
 function Router() {
   return (
@@ -45,7 +59,7 @@ function Router() {
         <Redirect to="/sg" />
       </Route>
 
-      {/* SG Blueprint */}
+      {/* SG Blueprint (eagerly loaded) */}
       <Route path="/sg" component={SGExecutiveSummary} />
       <Route path="/sg/problem" component={SGProblem} />
       <Route path="/sg/architecture" component={SGArchitecture} />
@@ -53,29 +67,30 @@ function Router() {
       <Route path="/sg/assets" component={SGAssets} />
       <Route path="/sg/funding" component={SGFunding} />
 
-      {/* SG Deep Dives */}
-      <Route path="/sg/deep-dive/units" component={SGDeepDiveUNITS} />
-      <Route path="/sg/deep-dive/dvp-settlement" component={SGDeepDiveDVP} />
-      <Route path="/sg/deep-dive/tokenisation" component={SGDeepDiveTokenisation} />
-      <Route path="/sg/deep-dive/regulatory" component={SGDeepDiveRegulatory} />
-      <Route path="/sg/deep-dive/collateral-highway" component={SGDeepDiveCollateralHighway} />
-      <Route path="/sg/deep-dive/participants" component={SGDeepDiveParticipants} />
-      <Route path="/sg/deep-dive/vcc" component={SGDeepDiveVCC} />
-      <Route path="/sg/deep-dive/precious-metals" component={SGDeepDivePreciousMetals} />
-      <Route path="/sg/deep-dive/token-programs" component={SGDeepDiveTokenPrograms} />
-      <Route path="/sg/deep-dive/p-tokets" component={SGDeepDivePTokets} />
-      <Route path="/sg/deep-dive/cross-ledger" component={SGDeepDiveCrossLedger} />
-      <Route path="/sg/deep-dive/unsponsored-tokets" component={SGDeepDiveUnsponsoredTokets} />
+      {/* SG Deep Dives (lazy loaded) */}
+      <Route path="/sg/deep-dive/units">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUNITS /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/dvp-settlement">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveDVP /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/tokenisation">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveTokenisation /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/regulatory">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveRegulatory /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/collateral-highway">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCollateralHighway /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/participants">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveParticipants /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/vcc">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveVCC /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/precious-metals">{() => <Suspense fallback={<PageLoader />}><SGDeepDivePreciousMetals /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/token-programs">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveTokenPrograms /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/p-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDivePTokets /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/cross-ledger">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCrossLedger /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/unsponsored-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUnsponsoredTokets /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/structured-notes">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveStructuredNotes /></Suspense>}</Route>
 
-      {/* SG Workflows */}
-      <Route path="/sg/workflows" component={SGWorkflows} />
-      <Route path="/sg/workflows/cdp-bridge" component={SGWorkflowCDPBridge} />
-      <Route path="/sg/workflows/atomic-dvp" component={SGWorkflowAtomicDvP} />
-      <Route path="/sg/workflows/collateral-mobilisation" component={SGWorkflowCollateralMobilisation} />
-      <Route path="/sg/workflows/vcc-tokenisation" component={SGWorkflowVCCTokenisation} />
-      <Route path="/sg/workflows/gold-tokenisation" component={SGWorkflowGoldTokenisation} />
-      <Route path="/sg/workflows/commodities-collateral" component={SGWorkflowCommoditiesCollateral} />
-      <Route path="/sg/workflows/cross-border" component={SGWorkflowCrossBorder} />
+      {/* SG Workflows (lazy loaded) */}
+      <Route path="/sg/workflows">{() => <Suspense fallback={<PageLoader />}><SGWorkflows /></Suspense>}</Route>
+      <Route path="/sg/workflows/cdp-bridge">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCDPBridge /></Suspense>}</Route>
+      <Route path="/sg/workflows/atomic-dvp">{() => <Suspense fallback={<PageLoader />}><SGWorkflowAtomicDvP /></Suspense>}</Route>
+      <Route path="/sg/workflows/collateral-mobilisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCollateralMobilisation /></Suspense>}</Route>
+      <Route path="/sg/workflows/vcc-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowVCCTokenisation /></Suspense>}</Route>
+      <Route path="/sg/workflows/gold-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowGoldTokenisation /></Suspense>}</Route>
+      <Route path="/sg/workflows/commodities-collateral">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCommoditiesCollateral /></Suspense>}</Route>
+      <Route path="/sg/workflows/cross-border">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCrossBorder /></Suspense>}</Route>
 
       {/* 404 */}
       <Route path="/404" component={NotFound} />

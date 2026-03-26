@@ -197,6 +197,9 @@ const corridors = [
   { corridor: "Singapore → Europe", stablecoin: "XSGD (StraitsX)", regulator: "MAS", framework: "Payment Services Act 2019", whtAdvantage: "0% on govt bonds via DTA", color: SG.masTeal },
   { corridor: "Singapore → Hong Kong", stablecoin: "XSGD → XHKD", regulator: "MAS / HKMA", framework: "PSA 2019 / SVFO", whtAdvantage: "0% on most securities via DTA", color: SG.finternetAmber },
   { corridor: "Singapore → Japan", stablecoin: "XSGD → XJPY", regulator: "MAS / JFSA", framework: "PSA 2019 / FIEA", whtAdvantage: "0-10% via SG-JP DTA", color: "#8b5cf6" },
+  { corridor: "Singapore → United States", stablecoin: "XSGD → USDC", regulator: "MAS / SEC", framework: "PSA 2019 / Securities Act", whtAdvantage: "0% on govt bonds, 15% on equities via DTA", color: SG.nusOrange },
+  { corridor: "Singapore → Australia", stablecoin: "XSGD → XAUD", regulator: "MAS / ASIC", framework: "PSA 2019 / Corporations Act", whtAdvantage: "0-15% via SG-AU DTA", color: SG.red },
+  { corridor: "Singapore → Korea", stablecoin: "XSGD → XKRW", regulator: "MAS / FSC", framework: "PSA 2019 / FSCMA", whtAdvantage: "0-15% via SG-KR DTA", color: "#6366f1" },
 ];
 
 /* ─── Main Component ─── */
@@ -435,10 +438,11 @@ export default function SGWorkflowCrossBorder() {
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement" },
+                { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity" },
+                { href: "/sg/deep-dive/unsponsored-tokets", label: "Unsponsored Tokets" },
                 { href: "/sg/deep-dive/tokenisation", label: "Tokenisation" },
-                { href: "/sg/deep-dive/regulatory", label: "Regulatory Framework" },
+                { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
                 { href: "/sg/workflows/atomic-dvp", label: "Atomic DvP Workflow" },
-                { href: "/sg/deep-dive/participants", label: "Participants Ecosystem" },
               ].map((link) => (
                 <Link key={link.href} href={link.href}
                   className="px-4 py-2 rounded-full text-sm transition-colors" style={{ color: "rgba(255,255,255,0.4)", border: `1px solid ${SG.border}` }}>
