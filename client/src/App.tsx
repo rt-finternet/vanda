@@ -4,7 +4,9 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { AccessProvider, useAccess } from "./contexts/AccessContext";
 import { lazy, Suspense } from "react";
+import PinGate from "./pages/PinGate";
 
 // SG Blueprint pages (eagerly loaded, core navigation)
 import SGExecutiveSummary from "./pages/sg/SGExecutiveSummary";
@@ -28,6 +30,8 @@ const SGDeepDivePTokets = lazy(() => import("./pages/sg/deep-dive/SGDeepDivePTok
 const SGDeepDiveCrossLedger = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveCrossLedger"));
 const SGDeepDiveUnsponsoredTokets = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveUnsponsoredTokets"));
 const SGDeepDiveStructuredNotes = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveStructuredNotes"));
+const SGDeepDiveEquities = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveEquities"));
+const SGDeepDiveWalletsRegisters = lazy(() => import("./pages/sg/deep-dive/SGDeepDiveWalletsRegisters"));
 
 // SG Workflow pages (lazy loaded)
 const SGWorkflows = lazy(() => import("./pages/sg/workflows/SGWorkflows"));
@@ -51,7 +55,8 @@ function PageLoader() {
   );
 }
 
-function Router() {
+/* ── Protected Routes (shown only after PIN auth) ── */
+function ProtectedRoutes() {
   return (
     <Switch>
       {/* Redirect root to /sg */}
@@ -81,6 +86,8 @@ function Router() {
       <Route path="/sg/deep-dive/cross-ledger">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCrossLedger /></Suspense>}</Route>
       <Route path="/sg/deep-dive/unsponsored-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUnsponsoredTokets /></Suspense>}</Route>
       <Route path="/sg/deep-dive/structured-notes">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveStructuredNotes /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/equities">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveEquities /></Suspense>}</Route>
+      <Route path="/sg/deep-dive/wallets-registers">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveWalletsRegisters /></Suspense>}</Route>
 
       {/* SG Workflows (lazy loaded) */}
       <Route path="/sg/workflows">{() => <Suspense fallback={<PageLoader />}><SGWorkflows /></Suspense>}</Route>
@@ -99,15 +106,30 @@ function Router() {
   );
 }
 
+/* ── Access Gate ── */
+function AccessGate() {
+  const { isAuthenticated, loading } = useAccess();
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (!isAuthenticated) {
+    return <PinGate />;
+  }
+
+  return <ProtectedRoutes />;
+}
+
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-      >
+      <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <AccessProvider>
+            <AccessGate />
+          </AccessProvider>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
