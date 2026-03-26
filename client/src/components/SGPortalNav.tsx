@@ -53,6 +53,7 @@ const sgDeepDiveItems: SGNavItem[] = [
   { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway", icon: <ArrowRightLeft className="w-4 h-4" />, color: SG.finternetAmber },
   { href: "/sg/deep-dive/participants", label: "Participants Ecosystem", icon: <Users className="w-4 h-4" />, color: SG.nusBlue },
   { href: "/sg/deep-dive/vcc", label: "VCC Fund Tokenisation", icon: <Briefcase className="w-4 h-4" />, color: SG.masTeal },
+  { href: "/sg/deep-dive/precious-metals", label: "Precious Metals", icon: <Gem className="w-4 h-4" />, color: SG.finternetAmber },
 ];
 
 /* SG Interactive Workflows */
@@ -62,6 +63,9 @@ const sgWorkflowItems: SGNavItem[] = [
   { href: "/sg/workflows/atomic-dvp", label: "Atomic DvP", icon: <Zap className="w-4 h-4" />, color: SG.nusOrange },
   { href: "/sg/workflows/collateral-mobilisation", label: "Collateral Mobilisation", icon: <Shield className="w-4 h-4" />, color: "#a78bfa" },
   { href: "/sg/workflows/vcc-tokenisation", label: "VCC Fund Tokenisation", icon: <Briefcase className="w-4 h-4" />, color: SG.masTeal },
+  { href: "/sg/workflows/gold-tokenisation", label: "Gold Tokenisation", icon: <Gem className="w-4 h-4" />, color: SG.finternetAmber },
+  { href: "/sg/workflows/commodities-collateral", label: "Commodities Collateral", icon: <Coins className="w-4 h-4" />, color: SG.nusOrange },
+  { href: "/sg/workflows/cross-border", label: "Cross-Border Settlement", icon: <Globe className="w-4 h-4" />, color: "#3b82f6" },
 ];
 
 function scrollToTop() {

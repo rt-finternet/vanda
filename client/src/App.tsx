@@ -21,6 +21,7 @@ import SGDeepDiveRegulatory from "./pages/sg/deep-dive/SGDeepDiveRegulatory";
 import SGDeepDiveCollateralHighway from "./pages/sg/deep-dive/SGDeepDiveCollateralHighway";
 import SGDeepDiveParticipants from "./pages/sg/deep-dive/SGDeepDiveParticipants";
 import SGDeepDiveVCC from "./pages/sg/deep-dive/SGDeepDiveVCC";
+import SGDeepDivePreciousMetals from "./pages/sg/deep-dive/SGDeepDivePreciousMetals";
 
 // SG Workflow pages
 import SGWorkflows from "./pages/sg/workflows/SGWorkflows";
@@ -28,6 +29,9 @@ import SGWorkflowCDPBridge from "./pages/sg/workflows/SGWorkflowCDPBridge";
 import SGWorkflowAtomicDvP from "./pages/sg/workflows/SGWorkflowAtomicDvP";
 import SGWorkflowCollateralMobilisation from "./pages/sg/workflows/SGWorkflowCollateralMobilisation";
 import SGWorkflowVCCTokenisation from "./pages/sg/workflows/SGWorkflowVCCTokenisation";
+import SGWorkflowGoldTokenisation from "./pages/sg/workflows/SGWorkflowGoldTokenisation";
+import SGWorkflowCommoditiesCollateral from "./pages/sg/workflows/SGWorkflowCommoditiesCollateral";
+import SGWorkflowCrossBorder from "./pages/sg/workflows/SGWorkflowCrossBorder";
 
 function Router() {
   return (
@@ -53,6 +57,7 @@ function Router() {
       <Route path="/sg/deep-dive/collateral-highway" component={SGDeepDiveCollateralHighway} />
       <Route path="/sg/deep-dive/participants" component={SGDeepDiveParticipants} />
       <Route path="/sg/deep-dive/vcc" component={SGDeepDiveVCC} />
+      <Route path="/sg/deep-dive/precious-metals" component={SGDeepDivePreciousMetals} />
 
       {/* SG Workflows */}
       <Route path="/sg/workflows" component={SGWorkflows} />
@@ -60,6 +65,9 @@ function Router() {
       <Route path="/sg/workflows/atomic-dvp" component={SGWorkflowAtomicDvP} />
       <Route path="/sg/workflows/collateral-mobilisation" component={SGWorkflowCollateralMobilisation} />
       <Route path="/sg/workflows/vcc-tokenisation" component={SGWorkflowVCCTokenisation} />
+      <Route path="/sg/workflows/gold-tokenisation" component={SGWorkflowGoldTokenisation} />
+      <Route path="/sg/workflows/commodities-collateral" component={SGWorkflowCommoditiesCollateral} />
+      <Route path="/sg/workflows/cross-border" component={SGWorkflowCrossBorder} />
 
       {/* 404 */}
       <Route path="/404" component={NotFound} />

@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CinematicBackground } from "@/components/motion";
-import { ArrowRight, ArrowRightLeft, Zap, Shield, Layers, Building2, Banknote, Briefcase } from "lucide-react";
+import { ArrowRight, ArrowRightLeft, Zap, Shield, Layers, Building2, Banknote, Briefcase, Gem, Coins, Globe } from "lucide-react";
 
 const SG_LOGO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663328851912/82pWKmUqBRkgn8Ladat8sj/units-sg-orchid-logo-light-KqELedrzeYmCnakJE4pQSh.png";
 const FINTERNET_LOGO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663328851912/82pWKmUqBRkgn8Ladat8sj/yP0fvxrB3mwq_e7583308.png";
@@ -50,6 +50,39 @@ const WORKFLOWS = [
     accent: SG.masTeal,
     participants: ["Fullerton", "GIC", "Temasek", "DBS", "OCBC", "UOB", "BNP Paribas"],
     tags: ["VCC", "Fund Interests", "Collateral", "NAV", "Compliance Gates"],
+  },
+  {
+    id: "gold-tokenisation",
+    title: "Gold Tokenisation",
+    subtitle: "SBMA Kilobar to Gram-Tokets",
+    description: "End-to-end tokenisation of SBMA Good Delivery kilobars stored in Singapore FTZ vaults. Shows vault receipt verification, SBMA assay validation, minting of gram-denominated gold tokets, and fractional distribution through DBS, OCBC, and UOB.",
+    steps: 7,
+    icon: Gem,
+    accent: SG.finternetAmber,
+    participants: ["Brink's Singapore", "SBMA", "DBS", "OCBC", "UOB", "MAS"],
+    tags: ["Gold", "SBMA", "Kilobar", "Fractional", "FTZ Vault"],
+  },
+  {
+    id: "commodities-collateral",
+    title: "Commodities Collateral",
+    subtitle: "Gold & Silver as Margin",
+    description: "How tokenised precious metals (gold and silver gram-tokets) are used as collateral alongside bonds and equities for SGX-DC margin requirements. Demonstrates continuous valuation, automated margin calls, and atomic cross-asset substitution.",
+    steps: 6,
+    icon: Coins,
+    accent: SG.nusOrange,
+    participants: ["DBS", "SGX-DC", "Brink's Singapore", "LBMA", "UNITS Network"],
+    tags: ["Collateral", "Gold", "Silver", "Margin", "Cross-Asset"],
+  },
+  {
+    id: "cross-border",
+    title: "Cross-Border Settlement",
+    subtitle: "SG Private Wealth → German Bund",
+    description: "A Singapore private wealth client buys a German Bund using XSGD stablecoin — atomic cross-currency DvP, automatic treaty-rate WHT via Verifiable Credentials, continuous coupon accrual, and structured note physical delivery. Demonstrates elimination of Herstatt risk and correspondent banking.",
+    steps: 6,
+    icon: Globe,
+    accent: "#3b82f6",
+    participants: ["DBS Private Banking", "Wei Lin Chen", "StraitsX", "MAS", "BaFin"],
+    tags: ["Cross-Border", "XSGD", "DTA", "WHT", "Atomic FX"],
   },
 ];
 
@@ -168,6 +201,7 @@ export default function SGWorkflows() {
               { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway" },
               { href: "/sg/deep-dive/tokenisation", label: "Tokenisation" },
               { href: "/sg/deep-dive/participants", label: "Participants" },
+              { href: "/sg/deep-dive/precious-metals", label: "Precious Metals" },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
