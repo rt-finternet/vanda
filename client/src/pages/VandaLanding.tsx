@@ -818,9 +818,14 @@ export default function VandaLanding() {
                 <img src={FINTERNET_LOGO} alt="Finternet" className="h-3 opacity-20" />
               </div>
             </div>
-            <p className="text-[10px] tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>
-              Confidential. Authorised Stakeholders Only
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-[10px] tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>
+                Confidential. Authorised Stakeholders Only
+              </p>
+              <span className="text-[10px] font-mono" style={{ color: "rgba(255,255,255,0.1)" }}>
+                {__GIT_HASH__}
+              </span>
+            </div>
           </div>
         </div>
       </footer>

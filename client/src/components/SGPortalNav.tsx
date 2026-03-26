@@ -206,6 +206,13 @@ function SGSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
             <span>Powered by</span>
             <img src={FINTERNET_LOGO_WHITE} alt="Finternet" className="h-3.5 opacity-50" />
           </div>
+
+          {/* Version Footprint */}
+          <div className="px-3 pb-4">
+            <span className="text-[9px] font-mono" style={{ color: "rgba(255,255,255,0.1)" }}>
+              v{__GIT_HASH__}
+            </span>
+          </div>
         </div>
       </aside>
     </>

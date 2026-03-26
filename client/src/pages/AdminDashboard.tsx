@@ -347,53 +347,52 @@ function AdminPanel() {
 
         {/* ── Add Email Form ── */}
         {showAddForm && activeTab === "emails" && (
-          <div className="rounded-xl p-6 mb-6" style={{ background: C.card, border: `1px solid ${C.teal}20` }}>
+          <form noValidate onSubmit={e => { e.preventDefault(); handleAddEmail(); }} className="rounded-xl p-6 mb-6" style={{ background: C.card, border: `1px solid ${C.teal}20` }}>
             <h3 className="text-sm font-semibold mb-4" style={{ color: C.teal }}>Add Stakeholder Email</h3>
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Email *</label>
                 <input type="text" value={newEmail} onChange={e => setNewEmail(e.target.value)}
-                  placeholder="stakeholder@example.com"
+                  placeholder="stakeholder@example.com" autoComplete="off"
                   className="w-full px-3 py-2 rounded-lg text-sm outline-none"
                   style={{ background: C.surface, border: `1px solid ${C.border}`, color: "white" }} />
               </div>
               <div>
                 <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Name</label>
                 <input type="text" value={newName} onChange={e => setNewName(e.target.value)}
-                  placeholder="John Smith"
+                  placeholder="John Smith" autoComplete="off"
                   className="w-full px-3 py-2 rounded-lg text-sm outline-none"
                   style={{ background: C.surface, border: `1px solid ${C.border}`, color: "white" }} />
               </div>
               <div>
                 <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Organization</label>
                 <input type="text" value={newOrg} onChange={e => setNewOrg(e.target.value)}
-                  placeholder="MAS / DBS / SGX"
+                  placeholder="MAS / DBS / SGX" autoComplete="off"
                   className="w-full px-3 py-2 rounded-lg text-sm outline-none"
                   style={{ background: C.surface, border: `1px solid ${C.border}`, color: "white" }} />
               </div>
               <div>
                 <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Static PIN (optional)</label>
                 <input type="text" value={newPin} onChange={e => setNewPin(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                  placeholder="6-digit PIN"
-                  maxLength={6}
+                  placeholder="6-digit PIN" autoComplete="off"
                   className="w-full px-3 py-2 rounded-lg text-sm outline-none font-mono"
                   style={{ background: C.surface, border: `1px solid ${C.border}`, color: "white" }} />
               </div>
             </div>
             {addError && <p className="text-xs mb-3" style={{ color: C.red }}>{addError}</p>}
             <div className="flex items-center gap-3">
-              <button onClick={handleAddEmail} disabled={addEmailMutation.isPending}
+              <button type="submit" disabled={addEmailMutation.isPending}
                 className="px-4 py-2 rounded-lg text-xs font-semibold"
                 style={{ background: C.teal, color: C.dark }}>
                 {addEmailMutation.isPending ? "Adding..." : "Add Email"}
               </button>
-              <button onClick={() => setShowAddForm(false)}
+              <button type="button" onClick={() => setShowAddForm(false)}
                 className="px-4 py-2 rounded-lg text-xs"
                 style={{ color: "rgba(255,255,255,0.4)" }}>
                 Cancel
               </button>
             </div>
-          </div>
+          </form>
         )}
 
         {/* ── EMAILS TAB ── */}
@@ -545,6 +544,16 @@ function AdminPanel() {
             )}
           </div>
         )}
+      </div>
+
+      {/* ── Version Footprint ── */}
+      <div className="max-w-6xl mx-auto px-6 pb-6 pt-2 flex items-center justify-between">
+        <span className="text-[10px] font-mono" style={{ color: "rgba(255,255,255,0.15)" }}>
+          Build {__GIT_HASH__}
+        </span>
+        <span className="text-[10px] font-mono" style={{ color: "rgba(255,255,255,0.15)" }}>
+          {__BUILD_TIME__}
+        </span>
       </div>
     </div>
   );
