@@ -55,9 +55,9 @@ const WORKFLOWS = [
 
 export default function SGWorkflows() {
   return (
-    <div className="flex min-h-screen" style={{ background: SG.dark }}>
+    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
-      <div className="flex-1 md:ml-72 p-6 md:p-12 max-w-5xl mx-auto" style={{ color: "rgba(255,255,255,0.85)" }}>
+      <div className="max-w-5xl mx-auto p-6 md:p-12" style={{ color: "rgba(255,255,255,0.85)" }}>
         {/* Hero */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">

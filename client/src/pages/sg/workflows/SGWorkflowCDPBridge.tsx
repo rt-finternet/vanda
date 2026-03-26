@@ -123,9 +123,9 @@ export default function SGWorkflowCDPBridge() {
   const goBack = () => { if (currentStep > 0) setCurrentStep(currentStep - 1); };
 
   return (
-    <div className="flex min-h-screen" style={{ background: SG.dark }}>
+    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
-      <div className="flex-1 md:ml-72 p-6 md:p-12 max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto p-6 md:p-12">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
           <Link href="/sg/workflows" className="text-sm flex items-center gap-1 transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}>

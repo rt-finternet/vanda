@@ -30,9 +30,9 @@ function RevealSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export default function SGDeepDiveVCC() {
   return (
-    <div className="flex min-h-screen" style={{ background: SG.dark }}>
+    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
-      <div className="flex-1 md:ml-72 p-6 md:p-12 max-w-4xl mx-auto" style={{ color: "rgba(255,255,255,0.85)" }}>
+      <div className="max-w-4xl mx-auto p-6 md:p-12" style={{ color: "rgba(255,255,255,0.85)" }}>
 
         {/* Hero */}
         <RevealSection>
