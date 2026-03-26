@@ -35,7 +35,7 @@
 - [ ] PDF Export button
 - [ ] Walkthrough video script
 - [ ] Companion slide deck (10-15 slides)
-- [ ] Nav menu search/filter (13+ deep dives)
+- [x] Nav menu search/filter (29 items across 3 sections, Cmd/Ctrl+K shortcut)
 
 ## Landing Page & Admin
 - [x] Cinematic VANDA landing page with heavy motionsites.ai motion design
@@ -63,10 +63,12 @@
 - [x] Create frontend API abstraction layer (switches between tRPC and fetch based on VITE_DEPLOY_TARGET)
 - [x] Add vercel.json configuration with rewrites
 - [x] Test both deployment paths work (85 tests pass, Manus e2e verified in browser)
-- [ ] Document the dual-deployment setup in README (pending)
+- [x] Document the dual-deployment setup in README (comprehensive docs with architecture, content structure, deployment guides)
 
 ## Tests (Pre-Refactor Safety Net)
 - [x] Write tests for access router (requestPin, verifyPin, checkSession, logout) - 23 tests
 - [x] Write tests for admin router (addEmail, listEmails, toggleEmail, deleteEmail, stats) - 23 tests
 - [x] Write tests for rate limiter utility - 8 tests
 - [x] Write tests for PIN email utility - 12 tests
+- [x] Write comprehensive README documenting dual-deployment setup (Manus + Vercel)
+- [x] Build sidebar search/filter for 29 navigation entries (real-time filter, Cmd/Ctrl+K, result counter, section preservation)

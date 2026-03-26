@@ -4,9 +4,10 @@ import {
   BookOpen, Layers, Network, Landmark, Gem,
   Wallet, Shield, Users, Globe, Zap, ArrowLeft,
   MessageCircle, ExternalLink, ArrowRightLeft,
-  FileText, Coins, Scale, Building2, Briefcase
+  FileText, Coins, Scale, Building2, Briefcase,
+  Search
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 
 /* ── SG Colour Palette ── */
 export const SG = {
@@ -79,9 +80,94 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+/* ── Filter helper ── */
+function filterItems(items: SGNavItem[], query: string): SGNavItem[] {
+  if (!query) return items;
+  const q = query.toLowerCase();
+  return items.filter((item) => item.label.toLowerCase().includes(q));
+}
+
+/* ── Nav Section Renderer ── */
+function NavSection({
+  title,
+  titleColor,
+  items,
+  location,
+  onNavigate,
+}: {
+  title: string;
+  titleColor: string;
+  items: SGNavItem[];
+  location: string;
+  onNavigate: () => void;
+}) {
+  if (items.length === 0) return null;
+  return (
+    <>
+      <div className="px-3 mb-2">
+        <span className="text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: titleColor }}>
+          {title}
+        </span>
+      </div>
+      {items.map((item) => {
+        const isActive = location === item.href;
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={() => { scrollToTop(); onNavigate(); }}
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all mb-0.5 ${
+              isActive
+                ? "bg-white/8 border"
+                : "text-white/50 hover:text-white hover:bg-white/5 border border-transparent"
+            }`}
+            style={isActive ? { color: item.color, borderColor: `${item.color}30` } : {}}
+          >
+            <span style={{ color: isActive ? item.color : undefined }}>{item.icon}</span>
+            {item.label}
+          </Link>
+        );
+      })}
+    </>
+  );
+}
+
 /* ── Sidebar ── */
 function SGSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [location] = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  /* Filter all sections */
+  const filteredBlueprint = useMemo(() => filterItems(sgNavItems, searchQuery), [searchQuery]);
+  const filteredDeepDives = useMemo(() => filterItems(sgDeepDiveItems, searchQuery), [searchQuery]);
+  const filteredWorkflows = useMemo(() => filterItems(sgWorkflowItems, searchQuery), [searchQuery]);
+
+  const totalResults = filteredBlueprint.length + filteredDeepDives.length + filteredWorkflows.length;
+  const isSearching = searchQuery.length > 0;
+
+  /* Clear search when sidebar closes */
+  useEffect(() => {
+    if (!open) {
+      setSearchQuery("");
+    }
+  }, [open]);
+
+  /* Focus search on Cmd/Ctrl+K */
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      }
+    }
+    if (open) {
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [open]);
 
   return (
     <>
@@ -114,105 +200,116 @@ function SGSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
           </button>
         </div>
 
+        {/* Search bar */}
+        <div className="px-3 pt-3 pb-1">
+          <div
+            className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: `1px solid ${searchQuery ? SG.finternetCyan + "50" : SG.border}`,
+            }}
+          >
+            <Search className="w-3.5 h-3.5 shrink-0" style={{ color: searchQuery ? SG.finternetCyan : "rgba(255,255,255,0.25)" }} />
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search pages..."
+              className="bg-transparent text-sm text-white placeholder-white/25 outline-none w-full"
+            />
+            {searchQuery ? (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="p-0.5 rounded text-white/30 hover:text-white/60 transition-colors"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            ) : (
+              <kbd className="hidden sm:inline text-[9px] text-white/15 border border-white/10 rounded px-1 py-0.5 font-mono">
+                /K
+              </kbd>
+            )}
+          </div>
+          {isSearching && (
+            <div className="px-1 pt-1.5 pb-0.5">
+              <span className="text-[10px] text-white/25">
+                {totalResults} result{totalResults !== 1 ? "s" : ""}
+              </span>
+            </div>
+          )}
+        </div>
+
         {/* Scrollable nav */}
-        <div className="overflow-y-auto h-[calc(100%-4rem)] py-3 px-3">
+        <div className="overflow-y-auto h-[calc(100%-8.5rem)] py-2 px-3">
+
+          {/* No results */}
+          {isSearching && totalResults === 0 && (
+            <div className="px-3 py-8 text-center">
+              <Search className="w-8 h-8 mx-auto mb-3" style={{ color: "rgba(255,255,255,0.1)" }} />
+              <p className="text-sm text-white/30">No pages found</p>
+              <p className="text-xs text-white/15 mt-1">Try a different search term</p>
+            </div>
+          )}
 
           {/* ── SG Blueprint Section ── */}
-          <div className="px-3 mb-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: SG.nusOrange }}>Singapore Blueprint</span>
-          </div>
-
-          {sgNavItems.map((item) => {
-            const isActive = location === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => { scrollToTop(); onClose(); }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all mb-0.5 ${
-                  isActive
-                    ? "bg-white/8 border"
-                    : "text-white/50 hover:text-white hover:bg-white/5 border border-transparent"
-                }`}
-                style={isActive ? { color: item.color, borderColor: `${item.color}30` } : {}}
-              >
-                <span style={{ color: isActive ? item.color : undefined }}>{item.icon}</span>
-                {item.label}
-              </Link>
-            );
-          })}
+          <NavSection
+            title="Singapore Blueprint"
+            titleColor={SG.nusOrange}
+            items={filteredBlueprint}
+            location={location}
+            onNavigate={onClose}
+          />
 
           {/* ── Divider ── */}
-          <div className="mx-2 my-3" style={{ borderTop: `1px solid ${SG.border}` }} />
+          {filteredBlueprint.length > 0 && (filteredDeepDives.length > 0 || filteredWorkflows.length > 0) && (
+            <div className="mx-2 my-3" style={{ borderTop: `1px solid ${SG.border}` }} />
+          )}
 
           {/* ── SG Deep Dives ── */}
-          <div className="px-3 mb-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: SG.finternetCyan }}>SG Deep Dives</span>
-          </div>
-
-          {sgDeepDiveItems.map((item) => {
-            const isActive = location === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => { scrollToTop(); onClose(); }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all mb-0.5 ${
-                  isActive
-                    ? "bg-white/8 border"
-                    : "text-white/50 hover:text-white hover:bg-white/5 border border-transparent"
-                }`}
-                style={isActive ? { color: item.color, borderColor: `${item.color}30` } : {}}
-              >
-                <span style={{ color: isActive ? item.color : undefined }}>{item.icon}</span>
-                {item.label}
-              </Link>
-            );
-          })}
+          <NavSection
+            title="SG Deep Dives"
+            titleColor={SG.finternetCyan}
+            items={filteredDeepDives}
+            location={location}
+            onNavigate={onClose}
+          />
 
           {/* ── Divider ── */}
-          <div className="mx-2 my-3" style={{ borderTop: `1px solid ${SG.border}` }} />
+          {filteredDeepDives.length > 0 && filteredWorkflows.length > 0 && (
+            <div className="mx-2 my-3" style={{ borderTop: `1px solid ${SG.border}` }} />
+          )}
 
           {/* ── SG Workflows ── */}
-          <div className="px-3 mb-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#a78bfa" }}>Interactive Workflows</span>
-          </div>
-
-          {sgWorkflowItems.map((item) => {
-            const isActive = location === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => { scrollToTop(); onClose(); }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all mb-0.5 ${
-                  isActive
-                    ? "bg-white/8 border"
-                    : "text-white/50 hover:text-white hover:bg-white/5 border border-transparent"
-                }`}
-                style={isActive ? { color: item.color, borderColor: `${item.color}30` } : {}}
-              >
-                <span style={{ color: isActive ? item.color : undefined }}>{item.icon}</span>
-                {item.label}
-              </Link>
-            );
-          })}
+          <NavSection
+            title="Interactive Workflows"
+            titleColor="#a78bfa"
+            items={filteredWorkflows}
+            location={location}
+            onNavigate={onClose}
+          />
 
           {/* ── Divider ── */}
-          <div className="mx-2 my-3" style={{ borderTop: `1px solid ${SG.border}` }} />
+          {!isSearching && (
+            <div className="mx-2 my-3" style={{ borderTop: `1px solid ${SG.border}` }} />
+          )}
 
           {/* Powered by Finternet */}
-          <div className="px-3 py-4 flex items-center gap-2 text-[10px] text-white/20 tracking-wide uppercase">
-            <span>Powered by</span>
-            <img src={FINTERNET_LOGO_WHITE} alt="Finternet" className="h-3.5 opacity-50" />
-          </div>
+          {!isSearching && (
+            <div className="px-3 py-4 flex items-center gap-2 text-[10px] text-white/20 tracking-wide uppercase">
+              <span>Powered by</span>
+              <img src={FINTERNET_LOGO_WHITE} alt="Finternet" className="h-3.5 opacity-50" />
+            </div>
+          )}
 
           {/* Version Footprint */}
-          <div className="px-3 pb-4">
-            <span className="text-[9px] font-mono" style={{ color: "rgba(255,255,255,0.1)" }}>
-              v{__GIT_HASH__}
-            </span>
-          </div>
+          {!isSearching && (
+            <div className="px-3 pb-4">
+              <span className="text-[9px] font-mono" style={{ color: "rgba(255,255,255,0.1)" }}>
+                v{__GIT_HASH__}
+              </span>
+            </div>
+          )}
         </div>
       </aside>
     </>
