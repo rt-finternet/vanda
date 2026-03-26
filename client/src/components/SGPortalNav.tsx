@@ -54,6 +54,7 @@ const sgDeepDiveItems: SGNavItem[] = [
   { href: "/sg/deep-dive/participants", label: "Participants Ecosystem", icon: <Users className="w-4 h-4" />, color: SG.nusBlue },
   { href: "/sg/deep-dive/vcc", label: "VCC Fund Tokenisation", icon: <Briefcase className="w-4 h-4" />, color: SG.masTeal },
   { href: "/sg/deep-dive/precious-metals", label: "Precious Metals", icon: <Gem className="w-4 h-4" />, color: SG.finternetAmber },
+  { href: "/sg/deep-dive/token-programs", label: "Token Programs", icon: <Zap className="w-4 h-4" />, color: SG.finternetCyan },
 ];
 
 /* SG Interactive Workflows */
