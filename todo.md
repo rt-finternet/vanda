@@ -52,3 +52,4 @@
 - [x] Remove all em dashes from GuidedTour narration text
 - [x] Remove all em dashes from entire portal (deep-dives, workflows, landing, etc.)
 - [x] Fix PIN input boxes not rendering (padEnd bug in PinInput component)
+- [x] Fix "The string did not match the expected pattern" error when adding a user in admin panel

@@ -208,6 +208,7 @@ function AdminPanel() {
   const handleAddEmail = async () => {
     setAddError("");
     if (!newEmail.trim()) { setAddError("Email is required"); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail.trim())) { setAddError("Please enter a valid email address"); return; }
     try {
       await addEmailMutation.mutateAsync({
         email: newEmail.trim().toLowerCase(),
@@ -351,7 +352,7 @@ function AdminPanel() {
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Email *</label>
-                <input type="email" value={newEmail} onChange={e => setNewEmail(e.target.value)}
+                <input type="text" value={newEmail} onChange={e => setNewEmail(e.target.value)}
                   placeholder="stakeholder@example.com"
                   className="w-full px-3 py-2 rounded-lg text-sm outline-none"
                   style={{ background: C.surface, border: `1px solid ${C.border}`, color: "white" }} />
