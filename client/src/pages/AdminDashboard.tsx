@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { trpc } from "@/lib/trpc";
+import { useAdminData } from "@/hooks/useAdminData";
 import {
   Users, Shield, Activity, Plus, Trash2, ToggleLeft, ToggleRight,
   ArrowLeft, RefreshCw, Search, LogOut, Lock, Key,
@@ -177,25 +177,11 @@ function AdminPanel() {
   const [activeTab, setActiveTab] = useState<Tab>("emails");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Fetch data
-  const emailsQuery = trpc.admin.listEmails.useQuery();
-  const logsQuery = trpc.admin.listLogs.useQuery({ limit: 100 });
-  const sessionsQuery = trpc.admin.listSessions.useQuery();
-  const statsQuery = trpc.admin.stats.useQuery();
-
-  // Mutations
-  const addEmailMutation = trpc.admin.addEmail.useMutation({
-    onSuccess: () => { emailsQuery.refetch(); statsQuery.refetch(); },
-  });
-  const toggleEmailMutation = trpc.admin.toggleEmail.useMutation({
-    onSuccess: () => { emailsQuery.refetch(); statsQuery.refetch(); },
-  });
-  const deleteEmailMutation = trpc.admin.deleteEmail.useMutation({
-    onSuccess: () => { emailsQuery.refetch(); statsQuery.refetch(); },
-  });
-  const revokeSessionMutation = trpc.admin.revokeSession.useMutation({
-    onSuccess: () => { sessionsQuery.refetch(); statsQuery.refetch(); },
-  });
+  // Deployment-aware data layer (tRPC on Manus, fetch on Vercel)
+  const {
+    emailsQuery, logsQuery, sessionsQuery, statsQuery,
+    addEmailMutation, toggleEmailMutation, deleteEmailMutation, revokeSessionMutation,
+  } = useAdminData();
 
   // Add email form
   const [showAddForm, setShowAddForm] = useState(false);

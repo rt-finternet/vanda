@@ -1,6 +1,12 @@
+/**
+ * PinGate for Vercel Deployment
+ *
+ * Identical UI to the Manus PinGate, but uses the fetch-based API client
+ * instead of tRPC mutations. This file re-exports the same visual components
+ * and only replaces the API call layer.
+ */
+
 import { useState, useRef, useEffect, useCallback } from "react";
-import { IS_VERCEL } from "@/lib/useApi";
-import { trpc } from "@/lib/trpc";
 import { accessApi } from "@/lib/api";
 import { useAccess } from "@/contexts/AccessContext";
 
@@ -139,37 +145,8 @@ function PinInput({ value, onChange, disabled }: { value: string; onChange: (v: 
   );
 }
 
-/* ════════════════════════════════════════════════════════
-   API Adapter: switches between tRPC and fetch
-   ════════════════════════════════════════════════════════ */
-
-function useRequestPin() {
-  if (IS_VERCEL) {
-    return {
-      mutateAsync: accessApi.requestPin,
-    };
-  }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const mutation = trpc.access.requestPin.useMutation();
-  return { mutateAsync: mutation.mutateAsync };
-}
-
-function useVerifyPin() {
-  if (IS_VERCEL) {
-    return {
-      mutateAsync: accessApi.verifyPin,
-    };
-  }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const mutation = trpc.access.verifyPin.useMutation();
-  return { mutateAsync: mutation.mutateAsync };
-}
-
-/* ════════════════════════════════════════════════════════
-   MAIN PIN GATE COMPONENT
-   ════════════════════════════════════════════════════════ */
-
-export default function PinGate() {
+/* ── Main PinGate (Vercel) ── */
+export default function PinGateVercel() {
   const { login } = useAccess();
   const [step, setStep] = useState<"email" | "pin">("email");
   const [email, setEmail] = useState("");
@@ -179,9 +156,6 @@ export default function PinGate() {
   const [success, setSuccess] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const requestPin = useRequestPin();
-  const verifyPin = useVerifyPin();
-
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -189,7 +163,7 @@ export default function PinGate() {
     setIsSubmitting(true);
 
     try {
-      const result = await requestPin.mutateAsync({ email: email.trim().toLowerCase() });
+      const result = await accessApi.requestPin({ email: email.trim().toLowerCase() });
       setPinToken(result.pinToken ?? null);
       setSuccess(result.message);
       setStep("pin");
@@ -207,7 +181,7 @@ export default function PinGate() {
     setIsSubmitting(true);
 
     try {
-      const result = await verifyPin.mutateAsync({
+      const result = await accessApi.verifyPin({
         email: email.trim().toLowerCase(),
         pin,
         pinToken,
@@ -223,7 +197,6 @@ export default function PinGate() {
     }
   };
 
-  // Auto-submit when 6 digits entered
   useEffect(() => {
     if (pin.length === 6 && step === "pin" && !isSubmitting) {
       handlePinSubmit(new Event("submit") as any);
@@ -235,9 +208,7 @@ export default function PinGate() {
       <CinematicBg />
       <ParticleField />
 
-      {/* Main Card */}
       <div className="relative z-10 w-full max-w-md mx-4">
-        {/* Glass card */}
         <div
           className="rounded-2xl overflow-hidden"
           style={{
@@ -248,7 +219,6 @@ export default function PinGate() {
             boxShadow: `0 32px 80px rgba(0,0,0,0.5), 0 0 60px ${SG.gold}08, inset 0 1px 0 rgba(255,255,255,0.05)`,
           }}
         >
-          {/* Logo + Branding */}
           <div className="text-center pt-10 pb-6 px-8">
             <div className="flex items-center justify-center gap-3 mb-6">
               <img src={UNITS_LOGO} alt="UNITS|SG" className="h-12" style={{ filter: "drop-shadow(0 0 20px rgba(245,158,11,0.2))" }} />
@@ -263,10 +233,8 @@ export default function PinGate() {
             </p>
           </div>
 
-          {/* Divider */}
           <div className="mx-8 h-px" style={{ background: `linear-gradient(90deg, transparent, rgba(245,158,11,0.15), transparent)` }} />
 
-          {/* Form Area */}
           <div className="px-8 py-8">
             {step === "email" ? (
               <form onSubmit={handleEmailSubmit}>
@@ -368,7 +336,6 @@ export default function PinGate() {
             )}
           </div>
 
-          {/* Footer */}
           <div className="px-8 pb-6">
             <div className="h-px mb-4" style={{ background: `linear-gradient(90deg, transparent, rgba(245,158,11,0.1), transparent)` }} />
             <p className="text-center text-[10px] tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>
@@ -380,14 +347,12 @@ export default function PinGate() {
           </div>
         </div>
 
-        {/* Glow effect under card */}
         <div
           className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-xl"
           style={{ background: `linear-gradient(90deg, ${SG.gold}10, ${SG.teal}15, ${SG.gold}10)` }}
         />
       </div>
 
-      {/* Animations */}
       <style>{`
         @keyframes drift1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(50px, 30px) scale(1.1); } }
         @keyframes drift2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-40px, -20px) scale(1.05); } }

@@ -58,12 +58,12 @@
 - [x] Root cause found: vanda.neurail.io DNS points to Vercel (405 on POST), not Manus deployment; improved error messages for server/network errors
 
 ## Dual Deployment (Manus + Vercel)
-- [ ] Design dual-deployment architecture (Manus tRPC + Vercel serverless)
-- [ ] Create Vercel serverless API routes under /api directory (auth + admin)
-- [ ] Create frontend API abstraction layer (switches between tRPC and fetch based on VITE_DEPLOY_TARGET)
-- [ ] Add vercel.json configuration with rewrites
-- [ ] Test both deployment paths work
-- [ ] Document the dual-deployment setup in README
+- [x] Design dual-deployment architecture (Manus tRPC + Vercel serverless)
+- [x] Create Vercel serverless API routes under /api directory (auth + admin) - 10 serverless functions
+- [x] Create frontend API abstraction layer (switches between tRPC and fetch based on VITE_DEPLOY_TARGET)
+- [x] Add vercel.json configuration with rewrites
+- [x] Test both deployment paths work (85 tests pass, Manus e2e verified in browser)
+- [ ] Document the dual-deployment setup in README (pending)
 
 ## Tests (Pre-Refactor Safety Net)
 - [x] Write tests for access router (requestPin, verifyPin, checkSession, logout) - 23 tests
