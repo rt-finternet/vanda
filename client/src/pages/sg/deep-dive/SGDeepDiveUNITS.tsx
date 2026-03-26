@@ -230,10 +230,10 @@ export default function SGDeepDiveUNITS() {
           <section>
             <h2 className="text-2xl font-light mb-6">Core <span className="font-semibold">infrastructure</span></h2>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Unlike the Euroclear Group where 7 national CSDs connect through an ICSD hub, Singapore's
-              network is anchored by two complementary depositories (CDP and MEPS+) unified through a
-              single regulator (MAS). This dual-depository bridge is the structural innovation at the
-              heart of UNITS|SG.
+              Singapore's financial infrastructure is anchored by two complementary depositories: SGX CDP
+              for equities and corporate bonds, and MEPS+ for government securities and SGD settlement.
+              Both are unified under a single regulator (MAS). The dual-depository bridge that connects
+              them through the UNITS protocol is the structural innovation at the heart of UNITS|SG.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -242,7 +242,7 @@ export default function SGDeepDiveUNITS() {
                   icon: Landmark,
                   title: "MAS (Observer & Regulator)",
                   color: SG.red,
-                  desc: "The hub of the network. MAS serves as both central bank and unified financial supervisor — a structural advantage over Europe's fragmented regulatory landscape. On UNITS, MAS operates the observer node with real-time supervisory access across all asset classes and participants. As GL1 standards sponsor, MAS ensures the network meets international interoperability benchmarks.",
+                  desc: "The hub of the network. MAS serves as both central bank and unified financial supervisor, giving Singapore a single regulatory perimeter across all asset classes. On UNITS, MAS operates the observer node with real-time supervisory access across all participants and platforms. As GL1 standards sponsor, MAS ensures the network meets international interoperability benchmarks.",
                 },
                 {
                   icon: BarChart3,
@@ -414,49 +414,32 @@ export default function SGDeepDiveUNITS() {
           </section>
         </RevealSection>
 
-        {/* UNITS|EU vs Singapore Comparison */}
-        <RevealSection id="comparison" delay={100}>
+        {/* UNITS Protocol Design Principles */}
+        <RevealSection id="design-principles" delay={100}>
           <section>
-            <h2 className="text-2xl font-light mb-6">UNITS|EU vs <span className="font-semibold">UNITS|SG</span></h2>
+            <h2 className="text-2xl font-light mb-6">Protocol design <span className="font-semibold">principles</span></h2>
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Both networks run on the same UNITS protocol stack and are GL1-compliant, but the
-              topology differs because the market structures differ. Europe has a hub-and-spoke model
-              centred on Euroclear Bank. Singapore has a dual-depository bridge model with a rich
-              ecosystem of tokenisation platforms.
+              The UNITS protocol is designed to be deployed in any market. Singapore's implementation
+              follows seven design principles that ensure the network can evolve without disrupting
+              existing infrastructure or regulatory frameworks.
             </p>
 
-            <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr style={{ borderBottom: `1px solid ${SG.border}` }}>
-                      <th className="text-left p-4 text-white/50 font-medium">Dimension</th>
-                      <th className="text-left p-4 font-medium" style={{ color: "#6B9FD4" }}>UNITS|EU (Europe)</th>
-                      <th className="text-left p-4 font-medium" style={{ color: SG.masTeal }}>UNITS|SG (Singapore)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { dim: "Topology", eu: "Hub-and-spoke (Euroclear Bank + 7 CSDs)", sg: "Dual-depository bridge (CDP + MEPS+) + 6 RMOs" },
-                      { dim: "Regulator", eu: "Multiple (ESMA, ECB, 27 NCAs)", sg: "Single (MAS as both central bank and supervisor)" },
-                      { dim: "Cash leg", eu: "Digital Euro (Pontes/Appia)", sg: "XSGD (SCS-regulated stablecoin via StraitsX)" },
-                      { dim: "GL1 status", eu: "GL1-compliant", sg: "GL1-compliant" },
-                      { dim: "Node count", eu: "8 (1 ICSD + 7 national CSDs)", sg: "14 (2 depositories + 4 banks + 6 platforms + MAS)" },
-                      { dim: "Tokenisation venues", eu: "Centralised (Euroclear Bank)", sg: "Distributed (DDEx, BondBloX, ADDX, InvestaX, Marketnode)" },
-                      { dim: "Cross-border", eu: "Built-in (7 jurisdictions)", sg: "Via UNITS|EU bridge + Marketnode (Euroclear-backed)" },
-                      { dim: "Lead assets", eu: "Structured notes, Eurobonds", sg: "VCC funds, digital bonds, gold, government securities" },
-                      { dim: "Settlement", eu: "Replacing T2S batch with atomic", sg: "Bridging CDP T+2 and MEPS+ RTGS" },
-                      { dim: "Funding", eu: "EU DLT Pilot Regime", sg: "FSTI 3.0 + Institute of Programmable Finance" },
-                    ].map((row, i) => (
-                      <tr key={i} style={{ borderBottom: `1px solid ${SG.border}` }}>
-                        <td className="p-4 text-white/60 font-medium">{row.dim}</td>
-                        <td className="p-4 text-white/50">{row.eu}</td>
-                        <td className="p-4 text-white/50">{row.sg}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {[
+                { principle: "Overlay, not replace", desc: "UNITS sits above CDP and MEPS+. Both depositories remain the legal record-keepers. The protocol adds programmability without changing ownership structures.", color: SG.masTeal },
+                { principle: "Single regulatory perimeter", desc: "MAS supervises the entire network through one observer node. No cross-jurisdictional coordination required. One regulator, one view, one set of rules.", color: SG.red },
+                { principle: "GL1 interoperability", desc: "Built to the GL1 standard from day one. Any GL1-compliant network globally can connect to UNITS|SG for cross-border settlement and collateral mobilisation.", color: SG.finternetCyan },
+                { principle: "Distributed tokenisation", desc: "Six MAS-licensed platforms (DDEx, BondBloX, ADDX, InvestaX, Marketnode, StraitsX) each specialise in different asset classes while sharing one protocol.", color: SG.finternetAmber },
+                { principle: "Composability by default", desc: "Every toket shares the same tokenClass standard. Equities, bonds, gold, VCC interests, and stablecoins can be combined into P-Tokets or used as cross-asset collateral.", color: SG.nusOrange },
+                { principle: "Compliance is structural", desc: "UILP gates enforce transfer restrictions, investor eligibility, and regulatory reporting on-ledger. Compliance is not a bolt-on; it is embedded in every transaction.", color: SG.red },
+                { principle: "Programmable lifecycle", desc: "Token Programs automate corporate actions, coupon payments, rebalancing, and redemptions. The same execution model applies across all asset classes and platforms.", color: SG.finternetCyan },
+                { principle: "Incremental adoption", desc: "Participants can join incrementally. Phase 1 connects depositories. Phase 2 adds banks. Phase 3 integrates tokenisation platforms. No big-bang migration required.", color: SG.masTeal },
+              ].map((item, i) => (
+                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                  <div className="text-sm font-semibold text-white/90 mb-1">{item.principle}</div>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</p>
+                </div>
+              ))}
             </div>
           </section>
         </RevealSection>
@@ -534,8 +517,8 @@ export default function SGDeepDiveUNITS() {
           <section>
             <h2 className="text-2xl font-light mb-6">Protocol <span className="font-semibold">stack</span></h2>
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
-              The UNITS|SG network operates on the same three-layer protocol stack as UNITS|EU.
-              The protocol is universal. The infrastructure adapts to each market.
+              The UNITS protocol is a universal three-layer stack. The protocol is the same
+              everywhere. The infrastructure adapts to each market's depositories, regulators, and participants.
             </p>
 
             <div className="space-y-3">
@@ -550,13 +533,13 @@ export default function SGDeepDiveUNITS() {
                   layer: "Layer 2: UNITS Protocol",
                   items: ["tokenClasses", "tokenPools", "UILP gates", "wallet registry", "Token Programs", "cross-ledger gateway"],
                   color: SG.nusOrange,
-                  desc: "The universal protocol layer. Identical to UNITS|EU. Defines how assets are represented, how compliance is enforced, and how settlement occurs. The same protocol connects DDEx security tokens and BondBloX digital bonds seamlessly.",
+                  desc: "The universal protocol layer. Defines how assets are represented (tokenClasses), how compliance is enforced (UILP gates), and how settlement occurs (atomic DvP). The same protocol connects DDEx security tokens, BondBloX digital bonds, and ADDX private market tokens seamlessly.",
                 },
                 {
                   layer: "Layer 1: GL1-Compliant Infrastructure",
                   items: ["DLT consensus", "Identity management", "Key management", "Network governance", "Regulatory interface", "Standards compliance"],
                   color: SG.masTeal,
-                  desc: "GL1-compliant shared ledger infrastructure. Multi-network compatible. The same standards benchmark that governs UNITS|EU ensures UNITS|SG can interoperate with any GL1-compliant network globally.",
+                  desc: "GL1-compliant shared ledger infrastructure. Multi-network compatible. Built to the GL1 standard initiated by MAS, BIS, and seven central banks. Ensures UNITS|SG can interoperate with any GL1-compliant network globally.",
                 },
               ].map((layer, i) => (
                 <div key={i} className="rounded-xl overflow-hidden" style={{ border: `1px solid ${layer.color}15` }}>
@@ -588,12 +571,14 @@ export default function SGDeepDiveUNITS() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                { label: "UNITS Protocol Deep Dive", href: "/sg/deep-dive/units", desc: "Three-plane architecture, tokenClasses, tokenPools" },
+                { label: "Token Programs", href: "/sg/deep-dive/token-programs", desc: "Lifecycle automation and programmable rules" },
+                { label: "P-Tokets (Portfolios)", href: "/sg/deep-dive/p-tokets", desc: "Composable portfolio tokets" },
                 { label: "DvP Settlement", href: "/sg/deep-dive/dvp-settlement", desc: "Atomic settlement mechanics and models" },
                 { label: "Tokenisation Framework", href: "/sg/deep-dive/tokenisation", desc: "How assets become tokets" },
                 { label: "Collateral Highway", href: "/sg/deep-dive/collateral-highway", desc: "Cross-CSD collateral mobilisation" },
-                { label: "Token Programs", href: "/sg/deep-dive/token-programs", desc: "Lifecycle automation rules" },
-                { label: "Cross-Ledger Connectivity", href: "/sg/deep-dive/cross-ledger", desc: "Gateway model and state publication" },
+                { label: "Precious Metals", href: "/sg/deep-dive/precious-metals", desc: "Gold and precious metals tokenisation" },
+                { label: "VCC Fund Interests", href: "/sg/deep-dive/vcc", desc: "Variable Capital Company tokenisation" },
+                { label: "Asset Classes", href: "/sg/assets", desc: "Nine asset classes on UNITS|SG" },
               ].map((link, i) => (
                 <Link key={i} href={link.href} className="flex items-start gap-3 p-3 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
                   <BookOpen className="w-4 h-4 shrink-0 mt-0.5" style={{ color: `${SG.masTeal}60` }} />
