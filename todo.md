@@ -36,3 +36,7 @@
 - [ ] Walkthrough video script
 - [ ] Companion slide deck (10-15 slides)
 - [ ] Nav menu search/filter (13+ deep dives)
+
+## Landing Page & Admin
+- [x] Cinematic VANDA landing page with heavy motionsites.ai motion design
+- [x] Admin dashboard for managing stakeholder emails and access logs

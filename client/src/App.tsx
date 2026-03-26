@@ -1,12 +1,13 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AccessProvider, useAccess } from "./contexts/AccessContext";
 import { lazy, Suspense } from "react";
 import PinGate from "./pages/PinGate";
+import VandaLanding from "./pages/VandaLanding";
 
 // SG Blueprint pages (eagerly loaded, core navigation)
 import SGExecutiveSummary from "./pages/sg/SGExecutiveSummary";
@@ -43,6 +44,9 @@ const SGWorkflowGoldTokenisation = lazy(() => import("./pages/sg/workflows/SGWor
 const SGWorkflowCommoditiesCollateral = lazy(() => import("./pages/sg/workflows/SGWorkflowCommoditiesCollateral"));
 const SGWorkflowCrossBorder = lazy(() => import("./pages/sg/workflows/SGWorkflowCrossBorder"));
 
+// Admin page (lazy loaded)
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+
 /* ── Loading Fallback ── */
 function PageLoader() {
   return (
@@ -55,15 +59,10 @@ function PageLoader() {
   );
 }
 
-/* ── Protected Routes (shown only after PIN auth) ── */
-function ProtectedRoutes() {
+/* ── Portal Routes (shown only after PIN auth) ── */
+function PortalRoutes() {
   return (
     <Switch>
-      {/* Redirect root to /sg */}
-      <Route path="/">
-        <Redirect to="/sg" />
-      </Route>
-
       {/* SG Blueprint (eagerly loaded) */}
       <Route path="/sg" component={SGExecutiveSummary} />
       <Route path="/sg/problem" component={SGProblem} />
@@ -99,6 +98,9 @@ function ProtectedRoutes() {
       <Route path="/sg/workflows/commodities-collateral">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCommoditiesCollateral /></Suspense>}</Route>
       <Route path="/sg/workflows/cross-border">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCrossBorder /></Suspense>}</Route>
 
+      {/* Admin Dashboard */}
+      <Route path="/admin">{() => <Suspense fallback={<PageLoader />}><AdminDashboard /></Suspense>}</Route>
+
       {/* 404 */}
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
@@ -106,7 +108,7 @@ function ProtectedRoutes() {
   );
 }
 
-/* ── Access Gate ── */
+/* ── Access Gate — wraps /sg/* and /admin routes ── */
 function AccessGate() {
   const { isAuthenticated, loading } = useAccess();
 
@@ -118,7 +120,24 @@ function AccessGate() {
     return <PinGate />;
   }
 
-  return <ProtectedRoutes />;
+  return <PortalRoutes />;
+}
+
+/* ── Main Router ── */
+function Router() {
+  const [location] = useLocation();
+
+  // Landing page is public — no PIN gate
+  if (location === "/") {
+    return <VandaLanding />;
+  }
+
+  // Everything else goes through the access gate
+  return (
+    <AccessProvider>
+      <AccessGate />
+    </AccessProvider>
+  );
 }
 
 function App() {
@@ -127,9 +146,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <AccessProvider>
-            <AccessGate />
-          </AccessProvider>
+          <Router />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
