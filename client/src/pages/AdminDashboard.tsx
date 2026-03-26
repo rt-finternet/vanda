@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { useAccess } from "@/contexts/AccessContext";
 import { trpc } from "@/lib/trpc";
 import {
   Users, Shield, Activity, Plus, Trash2, ToggleLeft, ToggleRight,
-  ArrowLeft, RefreshCw, Search, Download, Eye, EyeOff, Clock,
-  Mail, Building2, Key, ChevronDown, ChevronUp, LogOut
+  ArrowLeft, RefreshCw, Search, LogOut, Lock, Key,
+  Mail, Building2, ChevronDown, ChevronUp
 } from "lucide-react";
 
 /* ── Brand Constants ── */
 const C = {
   dark: "#0A1628",
+  deeper: "#060F1E",
   card: "#0F1D35",
   surface: "#162544",
   border: "#1E3A5F",
@@ -23,11 +23,157 @@ const C = {
 
 const SG_LOGO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663328851912/82pWKmUqBRkgn8Ladat8sj/units-sg-orchid-logo-light-KqELedrzeYmCnakJE4pQSh.png";
 
-/* ── Tab type ── */
+const MASTER_PIN = "314159";
+const ADMIN_SESSION_KEY = "vanda_admin_session";
+
+/* ════════════════════════════════════════════════════════
+   ADMIN PIN GATE
+   ════════════════════════════════════════════════════════ */
+function AdminPinGate({ onAuthenticated }: { onAuthenticated: () => void }) {
+  const [pin, setPin] = useState(["", "", "", "", "", ""]);
+  const [error, setError] = useState("");
+  const [shake, setShake] = useState(false);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  useEffect(() => {
+    inputRefs.current[0]?.focus();
+  }, []);
+
+  const handleChange = (index: number, value: string) => {
+    if (!/^\d*$/.test(value)) return;
+    const newPin = [...pin];
+    newPin[index] = value.slice(-1);
+    setPin(newPin);
+    setError("");
+
+    if (value && index < 5) {
+      inputRefs.current[index + 1]?.focus();
+    }
+
+    // Auto-submit when all 6 digits entered
+    if (index === 5 && value) {
+      const fullPin = newPin.join("");
+      if (fullPin.length === 6) {
+        if (fullPin === MASTER_PIN) {
+          sessionStorage.setItem(ADMIN_SESSION_KEY, Date.now().toString());
+          onAuthenticated();
+        } else {
+          setError("Invalid master PIN");
+          setShake(true);
+          setTimeout(() => { setShake(false); setPin(["", "", "", "", "", ""]); inputRefs.current[0]?.focus(); }, 600);
+        }
+      }
+    }
+  };
+
+  const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
+    if (e.key === "Backspace" && !pin[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault();
+    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+    if (pasted.length === 6) {
+      const newPin = pasted.split("");
+      setPin(newPin);
+      if (pasted === MASTER_PIN) {
+        sessionStorage.setItem(ADMIN_SESSION_KEY, Date.now().toString());
+        onAuthenticated();
+      } else {
+        setError("Invalid master PIN");
+        setShake(true);
+        setTimeout(() => { setShake(false); setPin(["", "", "", "", "", ""]); inputRefs.current[0]?.focus(); }, 600);
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden" style={{ background: C.deeper }}>
+      {/* Background orbs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute w-[500px] h-[500px] -top-40 -right-40 blur-3xl"
+          style={{ background: `radial-gradient(circle, rgba(245,158,11,0.08), transparent 70%)`, animation: "drift1 25s ease-in-out infinite" }} />
+        <div className="absolute w-[400px] h-[400px] bottom-0 -left-20 blur-3xl"
+          style={{ background: `radial-gradient(circle, rgba(167,139,250,0.06), transparent 70%)`, animation: "drift2 30s ease-in-out infinite" }} />
+      </div>
+
+      <div className="relative z-10 w-full max-w-md px-6">
+        {/* Back to portal link */}
+        <Link href="/sg" className="flex items-center gap-2 text-xs tracking-widest uppercase mb-8 opacity-40 hover:opacity-70 transition-opacity" style={{ color: "white" }}>
+          <ArrowLeft className="w-4 h-4" />
+          Back to Portal
+        </Link>
+
+        <div className="rounded-2xl p-8" style={{
+          background: `${C.card}CC`,
+          backdropFilter: "blur(40px)",
+          border: `1px solid ${C.border}40`,
+          boxShadow: `0 0 80px ${C.amber}08`,
+        }}>
+          {/* Logo + Title */}
+          <div className="text-center mb-8">
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+              style={{ background: `${C.amber}10`, border: `1px solid ${C.amber}20` }}>
+              <Lock className="w-7 h-7" style={{ color: C.amber }} />
+            </div>
+            <h1 className="text-xl font-bold tracking-wide mb-1" style={{ color: "white" }}>Admin Access</h1>
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Enter the master PIN to access the admin panel</p>
+          </div>
+
+          {/* PIN Input */}
+          <div className={`flex justify-center gap-3 mb-6 ${shake ? "animate-shake" : ""}`} onPaste={handlePaste}>
+            {pin.map((digit, i) => (
+              <input
+                key={i}
+                ref={el => { inputRefs.current[i] = el; }}
+                type="password"
+                inputMode="numeric"
+                maxLength={1}
+                value={digit}
+                onChange={e => handleChange(i, e.target.value)}
+                onKeyDown={e => handleKeyDown(i, e)}
+                className="w-12 h-14 text-center text-xl font-mono rounded-xl outline-none transition-all"
+                style={{
+                  background: C.surface,
+                  border: `2px solid ${digit ? C.amber : C.border}40`,
+                  color: "white",
+                  boxShadow: digit ? `0 0 12px ${C.amber}15` : "none",
+                }}
+              />
+            ))}
+          </div>
+
+          {error && (
+            <p className="text-center text-xs mb-4" style={{ color: C.red }}>{error}</p>
+          )}
+
+          <p className="text-center text-[10px]" style={{ color: "rgba(255,255,255,0.2)" }}>
+            This panel is restricted to authorized administrators
+          </p>
+        </div>
+      </div>
+
+      {/* Shake animation */}
+      <style>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+          20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+        .animate-shake { animation: shake 0.5s ease-in-out; }
+      `}</style>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════
+   ADMIN DASHBOARD (after PIN gate)
+   ════════════════════════════════════════════════════════ */
 type Tab = "emails" | "logs" | "sessions";
 
-export default function AdminDashboard() {
-  const { email: currentEmail, logout } = useAccess();
+function AdminPanel() {
   const [activeTab, setActiveTab] = useState<Tab>("emails");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -76,19 +222,24 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    window.location.reload();
+  };
+
   const tabs: { id: Tab; label: string; icon: React.ReactNode; count?: number }[] = [
     { id: "emails", label: "Allowed Emails", icon: <Users className="w-4 h-4" />, count: statsQuery.data?.totalEmails },
     { id: "logs", label: "Access Log", icon: <Activity className="w-4 h-4" />, count: statsQuery.data?.totalLogs },
     { id: "sessions", label: "Active Sessions", icon: <Shield className="w-4 h-4" />, count: statsQuery.data?.activeSessions },
   ];
 
-  const filteredEmails = emailsQuery.data?.filter(e =>
+  const filteredEmails = emailsQuery.data?.filter((e: any) =>
     e.email.includes(searchQuery.toLowerCase()) ||
     (e.name && e.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
     (e.organization && e.organization.toLowerCase().includes(searchQuery.toLowerCase()))
   ) || [];
 
-  const filteredLogs = logsQuery.data?.filter(l =>
+  const filteredLogs = logsQuery.data?.filter((l: any) =>
     l.email.includes(searchQuery.toLowerCase()) ||
     l.action.includes(searchQuery.toLowerCase())
   ) || [];
@@ -110,10 +261,15 @@ export default function AdminDashboard() {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{currentEmail}</span>
-          <button onClick={logout} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs hover:opacity-80 transition-opacity"
+          <Link href="/" className="text-xs tracking-widest uppercase opacity-40 hover:opacity-70 transition-opacity">
+            Landing
+          </Link>
+          <Link href="/sg" className="text-xs tracking-widest uppercase opacity-40 hover:opacity-70 transition-opacity">
+            Portal
+          </Link>
+          <button onClick={handleLogout} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs hover:opacity-80 transition-opacity"
             style={{ background: `${C.red}15`, color: C.red, border: `1px solid ${C.red}20` }}>
-            <LogOut className="w-3 h-3" /> Sign Out
+            <LogOut className="w-3 h-3" /> Lock Admin
           </button>
         </div>
       </header>
@@ -122,10 +278,10 @@ export default function AdminDashboard() {
         {/* ── Stats Cards ── */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: "Allowed Emails", value: statsQuery.data?.totalEmails ?? "—", color: C.teal, icon: <Users className="w-5 h-5" /> },
-            { label: "Active Emails", value: statsQuery.data?.activeEmails ?? "—", color: C.cyan, icon: <Mail className="w-5 h-5" /> },
-            { label: "Active Sessions", value: statsQuery.data?.activeSessions ?? "—", color: C.amber, icon: <Shield className="w-5 h-5" /> },
-            { label: "Total Access Events", value: statsQuery.data?.totalLogs ?? "—", color: C.purple, icon: <Activity className="w-5 h-5" /> },
+            { label: "Allowed Emails", value: statsQuery.data?.totalEmails ?? "...", color: C.teal, icon: <Users className="w-5 h-5" /> },
+            { label: "Active Emails", value: statsQuery.data?.activeEmails ?? "...", color: C.cyan, icon: <Mail className="w-5 h-5" /> },
+            { label: "Active Sessions", value: statsQuery.data?.activeSessions ?? "...", color: C.amber, icon: <Shield className="w-5 h-5" /> },
+            { label: "Total Access Events", value: statsQuery.data?.totalLogs ?? "...", color: C.purple, icon: <Activity className="w-5 h-5" /> },
           ].map((stat, i) => (
             <div key={i} className="rounded-xl p-5" style={{ background: C.card, border: `1px solid ${stat.color}15` }}>
               <div className="flex items-center justify-between mb-3">
@@ -215,7 +371,7 @@ export default function AdminDashboard() {
                   style={{ background: C.surface, border: `1px solid ${C.border}`, color: "white" }} />
               </div>
               <div>
-                <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Static PIN (optional — leave blank for email OTP)</label>
+                <label className="text-xs mb-1 block" style={{ color: "rgba(255,255,255,0.4)" }}>Static PIN (optional)</label>
                 <input type="text" value={newPin} onChange={e => setNewPin(e.target.value.replace(/\D/g, "").slice(0, 6))}
                   placeholder="6-digit PIN"
                   maxLength={6}
@@ -242,7 +398,6 @@ export default function AdminDashboard() {
         {/* ── EMAILS TAB ── */}
         {activeTab === "emails" && (
           <div className="rounded-xl overflow-hidden" style={{ background: C.card, border: `1px solid ${C.border}40` }}>
-            {/* Table header */}
             <div className="grid grid-cols-12 gap-2 px-5 py-3 text-xs tracking-wider uppercase"
               style={{ background: C.surface, color: "rgba(255,255,255,0.35)", borderBottom: `1px solid ${C.border}40` }}>
               <div className="col-span-3">Email</div>
@@ -259,12 +414,12 @@ export default function AdminDashboard() {
             ) : filteredEmails.length === 0 ? (
               <div className="p-8 text-center text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>No emails found</div>
             ) : (
-              filteredEmails.map((entry, i) => (
+              filteredEmails.map((entry: any, i: number) => (
                 <div key={entry.id} className="grid grid-cols-12 gap-2 px-5 py-3 items-center text-sm hover:bg-white/[0.02] transition-colors"
                   style={{ borderBottom: i < filteredEmails.length - 1 ? `1px solid ${C.border}20` : "none" }}>
                   <div className="col-span-3 truncate font-mono text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>{entry.email}</div>
-                  <div className="col-span-2 truncate text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{entry.name || "—"}</div>
-                  <div className="col-span-2 truncate text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{entry.organization || "—"}</div>
+                  <div className="col-span-2 truncate text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{entry.name || "..."}</div>
+                  <div className="col-span-2 truncate text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{entry.organization || "..."}</div>
                   <div className="col-span-1 text-center">
                     <span className="px-2 py-0.5 rounded text-[10px] font-medium"
                       style={{
@@ -325,11 +480,11 @@ export default function AdminDashboard() {
             ) : filteredLogs.length === 0 ? (
               <div className="p-8 text-center text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>No logs found</div>
             ) : (
-              filteredLogs.map((log, i) => (
+              filteredLogs.map((log: any, i: number) => (
                 <div key={log.id} className="grid grid-cols-12 gap-2 px-5 py-3 items-center text-xs hover:bg-white/[0.02] transition-colors"
                   style={{ borderBottom: i < filteredLogs.length - 1 ? `1px solid ${C.border}20` : "none" }}>
                   <div className="col-span-3 font-mono" style={{ color: "rgba(255,255,255,0.4)" }}>
-                    {log.createdAt ? new Date(log.createdAt).toLocaleString() : "—"}
+                    {log.createdAt ? new Date(log.createdAt).toLocaleString() : "..."}
                   </div>
                   <div className="col-span-3 truncate font-mono" style={{ color: "rgba(255,255,255,0.6)" }}>{log.email}</div>
                   <div className="col-span-2">
@@ -341,9 +496,9 @@ export default function AdminDashboard() {
                       {log.action.replace(/_/g, " ")}
                     </span>
                   </div>
-                  <div className="col-span-2 font-mono truncate" style={{ color: "rgba(255,255,255,0.35)" }}>{log.ipAddress || "—"}</div>
+                  <div className="col-span-2 font-mono truncate" style={{ color: "rgba(255,255,255,0.35)" }}>{log.ipAddress || "..."}</div>
                   <div className="col-span-2 truncate" style={{ color: "rgba(255,255,255,0.25)" }}>
-                    {log.userAgent ? log.userAgent.slice(0, 40) + "..." : "—"}
+                    {log.userAgent ? log.userAgent.slice(0, 40) + "..." : "..."}
                   </div>
                 </div>
               ))
@@ -367,15 +522,15 @@ export default function AdminDashboard() {
             ) : (sessionsQuery.data?.length ?? 0) === 0 ? (
               <div className="p-8 text-center text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>No active sessions</div>
             ) : (
-              sessionsQuery.data?.map((session, i) => (
+              sessionsQuery.data?.map((session: any, i: number) => (
                 <div key={session.id} className="grid grid-cols-12 gap-2 px-5 py-3 items-center text-xs hover:bg-white/[0.02] transition-colors"
                   style={{ borderBottom: i < (sessionsQuery.data?.length ?? 0) - 1 ? `1px solid ${C.border}20` : "none" }}>
                   <div className="col-span-4 font-mono" style={{ color: "rgba(255,255,255,0.6)" }}>{session.email}</div>
                   <div className="col-span-3 font-mono" style={{ color: "rgba(255,255,255,0.4)" }}>
-                    {session.createdAt ? new Date(session.createdAt).toLocaleString() : "—"}
+                    {session.createdAt ? new Date(session.createdAt).toLocaleString() : "..."}
                   </div>
                   <div className="col-span-3 font-mono" style={{ color: "rgba(255,255,255,0.4)" }}>
-                    {session.expiresAt ? new Date(session.expiresAt).toLocaleString() : "—"}
+                    {session.expiresAt ? new Date(session.expiresAt).toLocaleString() : "..."}
                   </div>
                   <div className="col-span-2 flex justify-end">
                     <button onClick={() => revokeSessionMutation.mutate({ id: session.id })}
@@ -392,4 +547,31 @@ export default function AdminDashboard() {
       </div>
     </div>
   );
+}
+
+/* ════════════════════════════════════════════════════════
+   MAIN EXPORT — Gate + Dashboard
+   ════════════════════════════════════════════════════════ */
+export default function AdminDashboard() {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check if already authenticated in this session
+    const session = sessionStorage.getItem(ADMIN_SESSION_KEY);
+    if (session) {
+      const elapsed = Date.now() - parseInt(session, 10);
+      // Session valid for 4 hours
+      if (elapsed < 4 * 60 * 60 * 1000) {
+        setAuthenticated(true);
+      } else {
+        sessionStorage.removeItem(ADMIN_SESSION_KEY);
+      }
+    }
+  }, []);
+
+  if (!authenticated) {
+    return <AdminPinGate onAuthenticated={() => setAuthenticated(true)} />;
+  }
+
+  return <AdminPanel />;
 }

@@ -30,7 +30,7 @@
 - [x] motionsites-design skill created
 
 ## Enhancements — Future
-- [ ] Favicon + Open Graph meta tags
+- [x] Favicon + Open Graph meta tags
 - [ ] Interactive Architecture Diagram (SVG clickable layers)
 - [ ] PDF Export button
 - [ ] Walkthrough video script
@@ -40,3 +40,6 @@
 ## Landing Page & Admin
 - [x] Cinematic VANDA landing page with heavy motionsites.ai motion design
 - [x] Admin dashboard for managing stakeholder emails and access logs
+- [x] Master PIN (314159) gate for admin panel access
+- [x] Back-to-portal navigation from admin page
+- [x] Open Graph meta tags and custom favicon
