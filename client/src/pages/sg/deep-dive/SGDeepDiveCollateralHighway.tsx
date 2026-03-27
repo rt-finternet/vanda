@@ -342,7 +342,7 @@ export default function SGDeepDiveCollateralHighway() {
           <div className="flex flex-wrap gap-3">
             {[
               { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway (Protocol)" },
-              { href: "/sg/deep-dive/repo", label: "Repo & Securities Lending" },
+              { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement" },
               { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
               { href: "/sg/deep-dive/units", label: "UNITS Protocol" },
             ].map((link) => (

@@ -73,6 +73,9 @@ export default function SGDeepDiveParticipants() {
       participants: [
         { name: "StraitsX (XSGD)", role: "SCS-regulated SGD stablecoin issuer, cash leg for atomic DvP", icon: Coins },
         { name: "Marketnode", role: "SGX-Temasek JV, digital asset issuance platform, structured notes", icon: Layers },
+        { name: "DDEx", role: "DBS Digital Exchange, institutional-grade digital asset exchange and custody", icon: Building2 },
+        { name: "BondBloX", role: "Digital bond platform, fractional bond issuance and secondary trading", icon: Layers },
+        { name: "InvestaX", role: "MAS-licensed RWA tokenisation platform, STO issuance and distribution", icon: Network },
         { name: "Climate Impact X (CIX)", role: "SGX-Temasek-DBS-StanChart JV, carbon credit exchange, VCC marketplace", icon: Leaf },
         { name: "ADDX", role: "MAS-licensed private market exchange, accredited investor platform", icon: Network },
         { name: "Paxos", role: "Regulated gold tokenisation (PAXG), stablecoin infrastructure", icon: Gem },

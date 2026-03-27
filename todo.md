@@ -82,7 +82,16 @@
 - [x] Ensure viewer@finternetlab.io has static PIN on Vercel app (PIN 150424, verified working)
 
 ## GL1 Banks Enhancement
-- [x] Add HSBC, J.P. Morgan, MUFG to ecosystem diagram (5-tier layout, 17 nodes, GL1 Global Banks tier)
+- [x] Add HSBC, J.P. Morgan, MUFG to ecosystem diagram (5-tier layout, 16 nodes, GL1 Global Banks tier)
 - [x] Add HSBC, J.P. Morgan, MUFG to participant lists across deep dives (8 files updated)
 - [x] Update GL1 references to highlight these banks as founding members (cards with tags, descriptions)
 - [x] Update Funding & Participants section with GL1 bank prominence (cross-ledger, workflows, precious metals)
+
+## Stakeholder Feedback (Round 1)
+- [x] Fix ecosystem diagram: GL1 banks now use nusOrange (#EF7C00), Anchor banks use finternetCyan (#06B6D4)
+- [x] Fix node count: corrected from 17 to 16 (MAS + CDP + MEPS+ + 3 anchor + 4 GL1 + 6 RMOs = 16)
+- [x] Fix Token Programs post-hook text: changed to downstream effects wording (notify, audit, distribute, confirm)
+- [x] Fix "Repo & Securities Lending" KB links going to 404 (2 files: Collateral Highway, Capabilities)
+- [x] Add missing RMOs to Participants page (DDEx, BondBloX, InvestaX added to Market Specialists tier)
+- [x] Add SCS glossary box below Token Programs comparison table (SCS = Single-Currency Stablecoin)
+- [ ] Backlog: "Ask AI" feature (LLM-powered Q&A about the blueprint)

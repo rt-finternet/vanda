@@ -376,7 +376,7 @@ export default function SGCapabilities() {
             {[
               { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement" },
               { href: "/sg/deep-dive/collateral-highway", label: "Collateral Highway" },
-              { href: "/sg/deep-dive/repo-securities-lending", label: "Repo & Securities Lending" },
+              { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity" },
               { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>

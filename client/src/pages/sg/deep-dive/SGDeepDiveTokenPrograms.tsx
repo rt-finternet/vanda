@@ -96,7 +96,7 @@ export default function SGDeepDiveTokenPrograms() {
                       phase: "Post-Hook",
                       icon: Bell,
                       color: SG.nusOrange,
-                      desc: "Invoked after the state change is committed. The post-hook handles downstream effects: notifying external systems, triggering settlement legs, updating audit logs, distributing entitlements. Post-hooks cannot reverse the state change.",
+                      desc: "Invoked after the state change is committed. The post-hook handles downstream effects: notifying external systems, updating audit logs, distributing entitlements, and confirming settlement completion. Post-hooks cannot reverse the state change.",
                       examples: ["CDP notification of ownership change", "Dividend entitlement update", "Audit log emission", "Settlement confirmation"],
                     },
                   ].map((item, i) => (
@@ -549,6 +549,14 @@ export default function SGDeepDiveTokenPrograms() {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            {/* SCS Glossary */}
+            <div className="mt-4 p-4 rounded-xl flex items-start gap-3" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+              <Coins className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: SG.finternetAmber }} />
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <span className="font-semibold text-white/70">SCS</span> = Single-Currency Stablecoin, regulated by MAS when pegged to SGD or G10 currencies. Used as the settlement asset for all Token Program cash flows (dividends, coupons, subscriptions, redemptions). StraitsX XSGD is the reference SCS implementation for UNITS|SG.
+              </p>
             </div>
           </section>
         </RevealSection>

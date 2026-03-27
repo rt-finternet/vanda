@@ -48,10 +48,10 @@ const nodes = [
   { id: "ocbc", label: "OCBC", subtitle: "Anchor Bank", x: 50, y: 44, color: SG.finternetCyan, tier: 3 },
   { id: "uob", label: "UOB", subtitle: "Anchor Bank", x: 83, y: 44, color: SG.finternetCyan, tier: 3 },
   /* Tier 3b: GL1 Global Banks */
-  { id: "hsbc", label: "HSBC", subtitle: "GL1 Member\nLargest Foreign Bank", x: 12, y: 58, color: SG.masTeal, tier: 3 },
-  { id: "jpm", label: "J.P. Morgan", subtitle: "GL1 Member\nOnyx / Partior", x: 37, y: 58, color: SG.masTeal, tier: 3 },
-  { id: "sc", label: "StanChart", subtitle: "GL1 Member\nGlobal Hub", x: 63, y: 58, color: SG.masTeal, tier: 3 },
-  { id: "mufg", label: "MUFG", subtitle: "GL1 Member\nJapan Corridor", x: 88, y: 58, color: SG.masTeal, tier: 3 },
+  { id: "hsbc", label: "HSBC", subtitle: "GL1 Member\nLargest Foreign Bank", x: 12, y: 58, color: SG.nusOrange, tier: 3 },
+  { id: "jpm", label: "J.P. Morgan", subtitle: "GL1 Member\nOnyx / Partior", x: 37, y: 58, color: SG.nusOrange, tier: 3 },
+  { id: "sc", label: "StanChart", subtitle: "GL1 Member\nGlobal Hub", x: 63, y: 58, color: SG.nusOrange, tier: 3 },
+  { id: "mufg", label: "MUFG", subtitle: "GL1 Member\nJapan Corridor", x: 88, y: 58, color: SG.nusOrange, tier: 3 },
   /* Tier 4: Tokenisation RMOs & Platforms */
   { id: "ddex", label: "DDEx", subtitle: "DBS Digital\nExchange", x: 8, y: 74, color: SG.finternetAmber, tier: 4 },
   { id: "bondblox", label: "BondBloX", subtitle: "Digital Bond\nPlatform", x: 25, y: 74, color: SG.finternetAmber, tier: 4 },
@@ -125,7 +125,7 @@ function NetworkDiagram() {
         { label: "Regulator", y: "8%", color: SG.red },
         { label: "Core Infrastructure", y: "28%", color: SG.masTeal },
         { label: "Anchor Banks", y: "44%", color: SG.finternetCyan },
-        { label: "GL1 Global Banks", y: "58%", color: SG.masTeal },
+        { label: "GL1 Global Banks", y: "58%", color: SG.nusOrange },
         { label: "Tokenisation Platforms & RMOs", y: "74%", color: SG.finternetAmber },
       ].map((tier, i) => (
         <div
@@ -208,7 +208,7 @@ export default function SGDeepDiveUNITS() {
             <h2 className="text-2xl font-light mb-3 text-center">The Singapore Ecosystem on <span className="font-semibold">UNITS</span></h2>
             <p className="text-sm leading-relaxed mb-8 text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
               UNITS|SG unifies MAS, SGX CDP, MEPS+, Singapore's anchor banks, GL1 global banks, and the full ecosystem
-              of MAS-licensed tokenisation platforms into a single GL1-compliant network. Seventeen nodes.
+              of MAS-licensed tokenisation platforms into a single GL1-compliant network. Sixteen nodes.
               One protocol. One identity layer.
             </p>
 
@@ -235,7 +235,7 @@ export default function SGDeepDiveUNITS() {
                 <span>Anchor Banks</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded" style={{ background: `${SG.masTeal}20`, border: `1px solid ${SG.masTeal}40` }} />
+                <div className="w-3 h-3 rounded" style={{ background: `${SG.nusOrange}20`, border: `1px solid ${SG.nusOrange}40` }} />
                 <span>GL1 Global Banks</span>
               </div>
               <div className="flex items-center gap-2">
