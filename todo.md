@@ -72,3 +72,7 @@
 - [x] Write tests for PIN email utility - 12 tests
 - [x] Write comprehensive README documenting dual-deployment setup (Manus + Vercel)
 - [x] Build sidebar search/filter for 29 navigation entries (real-time filter, Cmd/Ctrl+K, result counter, section preservation)
+
+## Deployment
+- [ ] Push latest code to GitHub
+- [ ] Prepare Vercel deployment (Manus as backup)
