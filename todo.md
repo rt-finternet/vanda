@@ -75,8 +75,8 @@
 
 ## Deployment
 - [x] Push latest code to GitHub (rt-finternet/vanda, all commits synced)
-- [ ] Prepare Vercel deployment (Manus as backup)
+- [x] Prepare Vercel deployment (Manus as backup) — env vars configured, functions deployed, vanda.neurail.io live
 - [x] Add viewer@finternetlab.io with static PIN 150424
-- [ ] Fix Vercel API routes returning 405 on POST requests
-- [ ] Add Amit Shukla (amit.shukla@finternetlab.io) with dynamic PIN on Vercel app
-- [ ] Ensure viewer@finternetlab.io has static PIN on Vercel app
+- [x] Fix Vercel API routes returning 405 on POST requests (removed invalid runtime, fixed SPA rewrite, added .js extensions)
+- [x] Add Amit Shukla (amit.shukla@finternetlab.io) with dynamic PIN (already in DB, no static PIN)
+- [x] Ensure viewer@finternetlab.io has static PIN on Vercel app (PIN 150424, verified working)
