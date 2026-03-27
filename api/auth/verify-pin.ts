@@ -9,9 +9,9 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { eq, and } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import { nanoid } from "nanoid";
-import { getDb } from "../_lib/db";
-import { requireMethod, jsonOk, jsonError, setAccessCookie, getClientIp } from "../_lib/helpers";
-import { allowedEmails, accessSessions, accessLog } from "../../drizzle/schema";
+import { getDb } from "../_lib/db.js";
+import { requireMethod, jsonOk, jsonError, setAccessCookie, getClientIp } from "../_lib/helpers.js";
+import { allowedEmails, accessSessions, accessLog } from "../../drizzle/schema.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!requireMethod(req, res, "POST")) return;

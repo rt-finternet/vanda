@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO allowed_emails (email, name, organization, defaultPin, isActive) VALUES ('viewer@finternetlab.io', 'Viewer', 'Finternet Labs', '150424', true);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user MBmxGN6xwxy66yE.83017b4d2307 --database K7gf8xoKwZVmt9538B5Xu7 --execute INSERT INTO allowed_emails (email, name, organization, defaultPin, isActive) VALUES ('viewer@finternetlab.io', 'Viewer', 'Finternet Labs', '150424', true);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1689
+}

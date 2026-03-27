@@ -6,9 +6,9 @@
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { eq } from "drizzle-orm";
-import { getDb } from "../_lib/db";
-import { requireMethod, jsonOk, jsonError, getAccessTokenFromCookies, clearAccessCookie } from "../_lib/helpers";
-import { accessSessions } from "../../drizzle/schema";
+import { getDb } from "../_lib/db.js";
+import { requireMethod, jsonOk, jsonError, getAccessTokenFromCookies, clearAccessCookie } from "../_lib/helpers.js";
+import { accessSessions } from "../../drizzle/schema.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!requireMethod(req, res, "POST")) return;

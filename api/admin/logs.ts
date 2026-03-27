@@ -6,9 +6,9 @@
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { desc } from "drizzle-orm";
-import { getDb } from "../_lib/db";
-import { requireMethod, jsonOk, jsonError } from "../_lib/helpers";
-import { accessLog } from "../../drizzle/schema";
+import { getDb } from "../_lib/db.js";
+import { requireMethod, jsonOk, jsonError } from "../_lib/helpers.js";
+import { accessLog } from "../../drizzle/schema.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!requireMethod(req, res, "GET")) return;

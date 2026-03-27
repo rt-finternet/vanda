@@ -9,9 +9,9 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { eq, and } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import crypto from "node:crypto";
-import { getDb } from "../_lib/db";
-import { requireMethod, jsonOk, jsonError, getClientIp } from "../_lib/helpers";
-import { allowedEmails, accessLog } from "../../drizzle/schema";
+import { getDb } from "../_lib/db.js";
+import { requireMethod, jsonOk, jsonError, getClientIp } from "../_lib/helpers.js";
+import { allowedEmails, accessLog } from "../../drizzle/schema.js";
 
 const DEFAULT_PIN_EXPIRY_MINUTES = 10;
 

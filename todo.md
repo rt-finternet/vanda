@@ -74,5 +74,9 @@
 - [x] Build sidebar search/filter for 29 navigation entries (real-time filter, Cmd/Ctrl+K, result counter, section preservation)
 
 ## Deployment
-- [ ] Push latest code to GitHub
+- [x] Push latest code to GitHub (rt-finternet/vanda, all commits synced)
 - [ ] Prepare Vercel deployment (Manus as backup)
+- [x] Add viewer@finternetlab.io with static PIN 150424
+- [ ] Fix Vercel API routes returning 405 on POST requests
+- [ ] Add Amit Shukla (amit.shukla@finternetlab.io) with dynamic PIN on Vercel app
+- [ ] Ensure viewer@finternetlab.io has static PIN on Vercel app
