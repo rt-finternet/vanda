@@ -10,9 +10,8 @@
     }
   },
   "rewrites": [
-    { "source": "/api/auth/:path*", "destination": "/api/auth/:path*" },
-    { "source": "/api/admin/:path*", "destination": "/api/admin/:path*" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/((?!api).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
