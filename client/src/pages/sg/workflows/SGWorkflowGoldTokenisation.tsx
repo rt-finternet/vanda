@@ -90,19 +90,21 @@ const STEPS: WorkflowStep[] = [
   },
   {
     id: 5, title: "Distribution", subtitle: "Primary Allocation to Singapore Participants",
-    description: "Gold tokets are distributed to participant wallets via the Issuance Book. DBS Private Banking, OCBC Premier, and UOB Privilege Banking subscribe to allocations for their wealth management clients. Settlement is atomic DvP: gold tokets move to the buyer's wallet, SGD/XSGD moves to the seller's wallet, simultaneously. No settlement risk.",
+    description: "Gold tokets are distributed to participant wallets via the Issuance Book. DBS Private Banking, OCBC Premier, UOB Privilege Banking, and HSBC International Wealth subscribe to allocations for their wealth management clients. Settlement is atomic DvP: gold tokets move to the buyer's wallet, SGD/XSGD moves to the seller's wallet, simultaneously. No settlement risk.",
     details: [
       "Distributor 1: DBS Private Banking, 400 gram-tokets",
       "Distributor 2: OCBC Premier Banking, 300 gram-tokets",
-      "Distributor 3: UOB Privilege Banking, 300 gram-tokets",
+      "Distributor 3: UOB Privilege Banking, 200 gram-tokets",
+      "Distributor 4: HSBC International Wealth, 100 gram-tokets",
       "Settlement: Atomic DvP (T+0)",
       "Cash leg: SGD via MEPS+ / XSGD (StraitsX)",
       "DBS allocation value: SGD 50,160",
       "OCBC allocation value: SGD 37,620",
-      "UOB allocation value: SGD 37,620",
+      "UOB allocation value: SGD 25,080",
+      "HSBC allocation value: SGD 12,540",
       "Total distributed: 1,000 gram-tokets (full bar)",
     ],
-    systemState: { "DBS Allocation": "400 grams", "OCBC Allocation": "300 grams", "UOB Allocation": "300 grams", "Settlement": "T+0 Atomic DvP" },
+    systemState: { "DBS Allocation": "400 grams", "OCBC Allocation": "300 grams", "UOB Allocation": "200 grams", "HSBC Allocation": "100 grams", "Settlement": "T+0 Atomic DvP" },
     icon: Users, color: SG.masTeal,
   },
   {
@@ -171,10 +173,10 @@ export default function SGWorkflowGoldTokenisation() {
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Gold Kilobar Tokenisation</h1>
             <p className="text-sm max-w-2xl" style={{ color: "rgba(255,255,255,0.5)" }}>
-              7-step workflow: SBMA kilobar deposited at Brink's Singapore → dual-standard verification → tokenPool creation → gram-toket minting → distribution via DBS/OCBC/UOB → end-investor wallets → lifecycle & physical redemption.
+              7-step workflow: SBMA kilobar deposited at Brink's Singapore → dual-standard verification → tokenPool creation → gram-toket minting → distribution via DBS/OCBC/UOB/HSBC → end-investor wallets → lifecycle & physical redemption.
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {["Brink's Singapore", "DBS Private Banking", "OCBC Premier", "UOB Privilege", "SBMA", "LBMA", "MAS", "StraitsX XSGD"].map((tag) => (
+              {["Brink's Singapore", "DBS Private Banking", "OCBC Premier", "UOB Privilege", "HSBC International Wealth", "SBMA", "LBMA", "MAS", "StraitsX XSGD"].map((tag) => (
                 <span key={tag} className="px-2.5 py-1 rounded-full text-[10px] font-medium" style={{ background: `${SG.finternetAmber}15`, color: `${SG.finternetAmber}`, border: `1px solid ${SG.finternetAmber}30` }}>
                   {tag}
                 </span>

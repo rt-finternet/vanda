@@ -30,10 +30,11 @@ function RevealSection({ id, children, delay = 0 }: { id: string; children: Reac
 }
 
 /* ── Network Diagram Data ── */
-/* Three tiers:
+/* Five tiers:
    Tier 1 (top): MAS - Central Bank & Unified Regulator
    Tier 2 (upper-mid): SGX CDP, MEPS+ - Core Infrastructure
-   Tier 3 (mid): Anchor Banks - DBS, OCBC, UOB, StanChart
+   Tier 3 (mid): Anchor Banks - DBS, OCBC, UOB (local)
+   Tier 3b (mid-lower): GL1 Global Banks - HSBC, J.P. Morgan, StanChart, MUFG
    Tier 4 (lower): Tokenisation RMOs & Platforms - DDEx, BondBloX, ADDX, InvestaX, Marketnode, StraitsX
 */
 const nodes = [
@@ -42,11 +43,15 @@ const nodes = [
   /* Tier 2: Core Infrastructure */
   { id: "cdp", label: "SGX CDP", subtitle: "Equities &\nCorporate Bonds", x: 30, y: 28, color: SG.nusOrange, tier: 2 },
   { id: "meps", label: "MEPS+", subtitle: "Government\nSecurities & SGD", x: 70, y: 28, color: SG.masTeal, tier: 2 },
-  /* Tier 3: Anchor Banks */
-  { id: "dbs", label: "DBS", subtitle: "Anchor Bank", x: 12, y: 50, color: SG.finternetCyan, tier: 3 },
-  { id: "ocbc", label: "OCBC", subtitle: "Anchor Bank", x: 37, y: 50, color: SG.finternetCyan, tier: 3 },
-  { id: "uob", label: "UOB", subtitle: "Anchor Bank", x: 63, y: 50, color: SG.finternetCyan, tier: 3 },
-  { id: "sc", label: "StanChart", subtitle: "GL1 Member\nGlobal Hub", x: 88, y: 50, color: SG.finternetCyan, tier: 3 },
+  /* Tier 3: Anchor Banks (local) */
+  { id: "dbs", label: "DBS", subtitle: "Anchor Bank", x: 17, y: 44, color: SG.finternetCyan, tier: 3 },
+  { id: "ocbc", label: "OCBC", subtitle: "Anchor Bank", x: 50, y: 44, color: SG.finternetCyan, tier: 3 },
+  { id: "uob", label: "UOB", subtitle: "Anchor Bank", x: 83, y: 44, color: SG.finternetCyan, tier: 3 },
+  /* Tier 3b: GL1 Global Banks */
+  { id: "hsbc", label: "HSBC", subtitle: "GL1 Member\nLargest Foreign Bank", x: 12, y: 58, color: SG.masTeal, tier: 3 },
+  { id: "jpm", label: "J.P. Morgan", subtitle: "GL1 Member\nOnyx / Partior", x: 37, y: 58, color: SG.masTeal, tier: 3 },
+  { id: "sc", label: "StanChart", subtitle: "GL1 Member\nGlobal Hub", x: 63, y: 58, color: SG.masTeal, tier: 3 },
+  { id: "mufg", label: "MUFG", subtitle: "GL1 Member\nJapan Corridor", x: 88, y: 58, color: SG.masTeal, tier: 3 },
   /* Tier 4: Tokenisation RMOs & Platforms */
   { id: "ddex", label: "DDEx", subtitle: "DBS Digital\nExchange", x: 8, y: 74, color: SG.finternetAmber, tier: 4 },
   { id: "bondblox", label: "BondBloX", subtitle: "Digital Bond\nPlatform", x: 25, y: 74, color: SG.finternetAmber, tier: 4 },
@@ -61,20 +66,27 @@ const connections: [string, string, string?][] = [
   ["mas", "cdp"], ["mas", "meps"],
   /* CDP-MEPS+ bridge */
   ["cdp", "meps", "bridge"],
-  /* Core infra to banks */
-  ["cdp", "dbs"], ["cdp", "ocbc"], ["cdp", "uob"], ["cdp", "sc"],
-  ["meps", "dbs"], ["meps", "ocbc"], ["meps", "uob"], ["meps", "sc"],
+  /* Core infra to anchor banks */
+  ["cdp", "dbs"], ["cdp", "ocbc"], ["cdp", "uob"],
+  ["meps", "dbs"], ["meps", "ocbc"], ["meps", "uob"],
+  /* Core infra to GL1 global banks */
+  ["cdp", "hsbc"], ["cdp", "jpm"], ["cdp", "sc"],
+  ["meps", "hsbc"], ["meps", "jpm"], ["meps", "sc"], ["meps", "mufg"],
+  /* Anchor banks to GL1 banks (cross-tier connections) */
+  ["dbs", "hsbc"], ["dbs", "jpm"], ["ocbc", "sc"], ["uob", "mufg"],
   /* Banks to tokenisation platforms */
   ["dbs", "ddex"], ["dbs", "bondblox"], ["dbs", "addx"],
   ["ocbc", "addx"], ["ocbc", "investax"],
   ["uob", "investax"], ["uob", "marketnode"],
+  ["hsbc", "marketnode"], ["jpm", "bondblox"],
   ["sc", "marketnode"], ["sc", "straitsx"],
+  ["mufg", "addx"],
   /* Cross-connections among platforms */
   ["ddex", "bondblox"], ["addx", "investax"], ["marketnode", "straitsx"],
   /* Banks to StraitsX for cash leg */
-  ["dbs", "straitsx"], ["ocbc", "straitsx"],
-  /* MAS oversight of banks */
-  ["mas", "dbs"], ["mas", "sc"],
+  ["dbs", "straitsx"], ["ocbc", "straitsx"], ["hsbc", "straitsx"], ["jpm", "straitsx"],
+  /* MAS oversight */
+  ["mas", "dbs"], ["mas", "hsbc"], ["mas", "sc"],
 ];
 
 function NetworkDiagram() {
@@ -82,9 +94,9 @@ function NetworkDiagram() {
   const nodeMap = Object.fromEntries(nodes.map(n => [n.id, n]));
 
   return (
-    <div className="relative w-full" style={{ paddingBottom: "60%" }}>
+    <div className="relative w-full" style={{ paddingBottom: "70%" }}>
       <svg
-        viewBox="0 0 100 85"
+        viewBox="0 0 100 90"
         className="absolute inset-0 w-full h-full"
         style={{ overflow: "visible" }}
       >
@@ -112,7 +124,8 @@ function NetworkDiagram() {
       {[
         { label: "Regulator", y: "8%", color: SG.red },
         { label: "Core Infrastructure", y: "28%", color: SG.masTeal },
-        { label: "Anchor Banks", y: "50%", color: SG.finternetCyan },
+        { label: "Anchor Banks", y: "44%", color: SG.finternetCyan },
+        { label: "GL1 Global Banks", y: "58%", color: SG.masTeal },
         { label: "Tokenisation Platforms & RMOs", y: "74%", color: SG.finternetAmber },
       ].map((tier, i) => (
         <div
@@ -194,8 +207,8 @@ export default function SGDeepDiveUNITS() {
           <section>
             <h2 className="text-2xl font-light mb-3 text-center">The Singapore Ecosystem on <span className="font-semibold">UNITS</span></h2>
             <p className="text-sm leading-relaxed mb-8 text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
-              UNITS|SG unifies MAS, SGX CDP, MEPS+, Singapore's anchor banks, and the full ecosystem
-              of MAS-licensed tokenisation platforms into a single GL1-compliant network. Fourteen nodes.
+              UNITS|SG unifies MAS, SGX CDP, MEPS+, Singapore's anchor banks, GL1 global banks, and the full ecosystem
+              of MAS-licensed tokenisation platforms into a single GL1-compliant network. Seventeen nodes.
               One protocol. One identity layer.
             </p>
 
@@ -216,6 +229,14 @@ export default function SGDeepDiveUNITS() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded" style={{ background: `${SG.red}20`, border: `1px solid ${SG.red}40` }} />
                 <span>Regulator</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded" style={{ background: `${SG.finternetCyan}20`, border: `1px solid ${SG.finternetCyan}40` }} />
+                <span>Anchor Banks</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded" style={{ background: `${SG.masTeal}20`, border: `1px solid ${SG.masTeal}40` }} />
+                <span>GL1 Global Banks</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded" style={{ background: `${SG.finternetAmber}20`, border: `1px solid ${SG.finternetAmber}40` }} />
@@ -278,7 +299,7 @@ export default function SGDeepDiveUNITS() {
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
               Singapore's systemically important banks form the liquidity backbone. Each bank operates
               its own BYOW (Bring Your Own Wallet) infrastructure while connecting to the shared UNITS
-              protocol. Together they provide the distribution, custody, and market-making capabilities
+              protocol. Together with GL1 global banks, they provide the distribution, custody, and market-making capabilities
               that make the network viable.
             </p>
 
@@ -305,12 +326,60 @@ export default function SGDeepDiveUNITS() {
                   tags: ["ASEAN connectivity", "Trade finance", "SME banking"],
                   desc: "UOB's strength is ASEAN connectivity across Thailand, Indonesia, Malaysia, and Vietnam. On UNITS, UOB extends the network's reach into Southeast Asian markets, enabling cross-border collateral mobilisation and trade finance tokenisation across the region.",
                 },
+              ].map((bank, i) => (
+                <div key={i} className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${bank.color}15` }}>
+                  <div className="px-4 py-3 flex items-center gap-2" style={{ background: `${bank.color}08`, borderBottom: `1px solid ${bank.color}10` }}>
+                    <bank.icon className="w-4 h-4" style={{ color: bank.color }} />
+                    <div className="text-sm font-semibold text-white/90">{bank.title}</div>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {bank.tags.map((tag, j) => (
+                        <span key={j} className="text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${bank.color}10`, color: `${bank.color}80` }}>{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{bank.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-xl font-light mt-10 mb-4">GL1 <span className="font-semibold">global banks</span></h3>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
+              GL1 founding members operating in Singapore connect to UNITS as global bank nodes, bringing international
+              reach, cross-border corridors, and institutional distribution. Each operates its own wallet infrastructure
+              while accessing the shared protocol.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                {
+                  title: "HSBC",
+                  icon: Building2,
+                  color: SG.nusOrange,
+                  tags: ["GL1 founding member", "Largest foreign bank in SG", "International Wealth"],
+                  desc: "Singapore's largest foreign bank by assets. HSBC brings its International Wealth platform, securities services, and global custody network to UNITS. As a GL1 founding member, HSBC connects Singapore's tokenised assets to its 60+ market network, enabling cross-border distribution of gold tokets, VCC interests, and structured products.",
+                },
+                {
+                  title: "J.P. Morgan",
+                  icon: Building2,
+                  color: SG.nusOrange,
+                  tags: ["GL1 founding member", "Onyx / Kinexys", "Partior"],
+                  desc: "J.P. Morgan's Onyx digital assets platform and its role as co-founder of Partior (the MAS-backed multi-currency clearing network) make it a natural UNITS participant. On UNITS, J.P. Morgan provides institutional-grade collateral mobilisation, cross-currency DvP via Partior rails, and global prime brokerage connectivity.",
+                },
                 {
                   title: "Standard Chartered",
                   icon: Building2,
-                  color: SG.finternetCyan,
-                  tags: ["GL1 member", "Zodia Custody", "Global reach"],
+                  color: SG.nusOrange,
+                  tags: ["GL1 founding member", "Zodia Custody", "Global reach"],
                   desc: "Standard Chartered brings global reach, Zodia institutional custody, and GL1 membership credentials. On UNITS, StanChart serves as the bridge to international markets, connecting Singapore's tokenised assets to global institutional investors and providing custody infrastructure for digital securities.",
+                },
+                {
+                  title: "MUFG",
+                  icon: Building2,
+                  color: SG.nusOrange,
+                  tags: ["GL1 founding member", "Japan corridor", "Progmat platform"],
+                  desc: "Japan's largest bank and a GL1 founding member. MUFG's Progmat security token platform and its dominant position in Japan-Singapore trade corridors make it a key UNITS participant. On UNITS, MUFG enables cross-border settlement between SGX and JPX, yen-denominated collateral mobilisation, and distribution of Singapore-originated tokets to Japanese institutional investors.",
                 },
               ].map((bank, i) => (
                 <div key={i} className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${bank.color}15` }}>
@@ -525,9 +594,9 @@ export default function SGDeepDiveUNITS() {
               {[
                 {
                   layer: "Layer 3: Participant Applications",
-                  items: ["DDEx trading", "BondBloX bonds", "ADDX private markets", "InvestaX RWA", "Marketnode issuance", "StraitsX payments", "DBS portal", "OCBC wealth", "UOB trade finance", "StanChart custody"],
+                  items: ["DDEx trading", "BondBloX bonds", "ADDX private markets", "InvestaX RWA", "Marketnode issuance", "StraitsX payments", "DBS portal", "OCBC wealth", "UOB trade finance", "HSBC securities services", "J.P. Morgan Onyx", "StanChart custody", "MUFG Japan corridor"],
                   color: SG.finternetCyan,
-                  desc: "Platform-specific applications built on the UNITS protocol. Each participant brings their own interface and specialisation while sharing the common infrastructure. Ten applications, one protocol.",
+                  desc: "Platform-specific applications built on the UNITS protocol. Each participant brings their own interface and specialisation while sharing the common infrastructure. Thirteen applications, one protocol.",
                 },
                 {
                   layer: "Layer 2: UNITS Protocol",

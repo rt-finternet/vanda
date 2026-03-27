@@ -329,7 +329,7 @@ export default function SGDeepDiveVCC() {
                     title: "Lombard Lending",
                     icon: Wallet,
                     color: "#a78bfa",
-                    desc: "Banks can accept tokenised VCC interests as collateral for lombard loans. DBS, OCBC, or UOB can lend against a client's PE or real estate fund holdings with automated LTV monitoring.",
+                    desc: "Banks can accept tokenised VCC interests as collateral for lombard loans. DBS, OCBC, UOB, or HSBC can lend against a client's PE or real estate fund holdings with automated LTV monitoring.",
                   },
                   {
                     title: "Cross-Collateralisation",

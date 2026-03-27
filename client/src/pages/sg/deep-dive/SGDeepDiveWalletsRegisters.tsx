@@ -154,7 +154,7 @@ export default function SGDeepDiveWalletsRegisters() {
                 <tbody>
                   {[
                     { dim: "Source of truth", reg: "Central register (CDP)", wallet: "On-chain ledger state", units: "tokenPool (native) or external ledger (proxy)" },
-                    { dim: "Access mechanism", reg: "Account at participant (DBS, OCBC)", wallet: "Private key in wallet", units: "Finternet Account + BYOW wallet" },
+                    { dim: "Access mechanism", reg: "Account at participant (DBS, OCBC, HSBC)", wallet: "Private key in wallet", units: "Finternet Account + BYOW wallet" },
                     { dim: "Identity model", reg: "KYC at participant level", wallet: "Pseudonymous address", units: "Verifiable Credentials + UNITS Registry" },
                     { dim: "Corporate actions", reg: "Register-driven distribution", wallet: "Smart contract events", units: "Token Programs with pre/post hooks" },
                     { dim: "Settlement speed", reg: "T+2 via clearing house", wallet: "Instant on-chain", units: "Atomic DvP with policy enforcement" },

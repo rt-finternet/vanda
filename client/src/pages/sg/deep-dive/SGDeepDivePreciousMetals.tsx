@@ -163,17 +163,17 @@ const lifecycleComparison = [
 const serviceTiers = [
   {
     name: "Gold Custody as a Service",
-    description: "UNITS|SG maintains the tokenPool register for Singapore and LBMA vault operators. Each vault operator's physical gold is represented as a tokenPool with bar-level tracking. Participants (DBS, OCBC, UOB, wealth managers) hold gold tokets in wallets.",
+    description: "UNITS|SG maintains the tokenPool register for Singapore and LBMA vault operators. Each vault operator's physical gold is represented as a tokenPool with bar-level tracking. Participants (DBS, OCBC, UOB, HSBC, wealth managers) hold gold tokets in wallets.",
     features: ["Bar-level provenance tracking", "Real-time vault reconciliation", "SBMA + LBMA dual-standard support", "MAS-regulated custody framework", "IPM GST exemption compliance"],
-    targetClients: "Vault operators, custodian banks (DBS, OCBC, UOB), MAS",
+    targetClients: "Vault operators, custodian banks (DBS, OCBC, UOB, HSBC), MAS",
     icon: <Warehouse className="w-6 h-6" />,
     hex: SG.masTeal,
   },
   {
     name: "Gold Distribution Platform",
-    description: "Banks and wealth managers (DBS Private Banking, UOB Privilege Banking, OCBC Premier) distribute fractional gold tokets to their clients. The Distributor Portal handles KYC/AML via VCs, order routing, and settlement.",
-    features: ["Fractional from 1 gram", "DBS/OCBC/UOB white-label integration", "Automated KYC via VCs", "Real-time pricing (LBMA + SBMA benchmarks)", "Physical redemption workflow"],
-    targetClients: "DBS Private Banking, UOB Privilege, OCBC Premier, family offices",
+    description: "Banks and wealth managers (DBS Private Banking, UOB Privilege Banking, OCBC Premier, HSBC International Wealth) distribute fractional gold tokets to their clients. The Distributor Portal handles KYC/AML via VCs, order routing, and settlement.",
+    features: ["Fractional from 1 gram", "DBS/OCBC/UOB/HSBC white-label integration", "Automated KYC via VCs", "Real-time pricing (LBMA + SBMA benchmarks)", "Physical redemption workflow"],
+    targetClients: "DBS Private Banking, UOB Privilege, OCBC Premier, HSBC International Wealth, family offices",
     icon: <Users className="w-6 h-6" />,
     hex: SG.finternetAmber,
   },

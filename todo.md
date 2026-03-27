@@ -80,3 +80,9 @@
 - [x] Fix Vercel API routes returning 405 on POST requests (removed invalid runtime, fixed SPA rewrite, added .js extensions)
 - [x] Add Amit Shukla (amit.shukla@finternetlab.io) with dynamic PIN (already in DB, no static PIN)
 - [x] Ensure viewer@finternetlab.io has static PIN on Vercel app (PIN 150424, verified working)
+
+## GL1 Banks Enhancement
+- [x] Add HSBC, J.P. Morgan, MUFG to ecosystem diagram (5-tier layout, 17 nodes, GL1 Global Banks tier)
+- [x] Add HSBC, J.P. Morgan, MUFG to participant lists across deep dives (8 files updated)
+- [x] Update GL1 references to highlight these banks as founding members (cards with tags, descriptions)
+- [x] Update Funding & Participants section with GL1 bank prominence (cross-ledger, workflows, precious metals)

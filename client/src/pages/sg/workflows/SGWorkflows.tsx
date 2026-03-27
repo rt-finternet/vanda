@@ -26,7 +26,7 @@ const WORKFLOWS = [
     steps: 7,
     icon: Zap,
     accent: SG.nusOrange,
-    participants: ["DBS", "OCBC", "MAS", "StraitsX", "UNITS Network"],
+    participants: ["DBS", "OCBC", "MAS", "StraitsX", "HSBC", "UNITS Network"],
     tags: ["Atomic", "XSGD", "SGS"],
   },
   {
@@ -37,7 +37,7 @@ const WORKFLOWS = [
     steps: 6,
     icon: Shield,
     accent: "#a78bfa",
-    participants: ["DBS", "GIC", "MAS", "CDP", "MEPS+", "UNITS Network"],
+    participants: ["DBS", "GIC", "MAS", "CDP", "MEPS+", "J.P. Morgan", "UNITS Network"],
     tags: ["Collateral", "Cross-Asset", "Encumbrance"],
   },
   {
@@ -48,18 +48,18 @@ const WORKFLOWS = [
     steps: 7,
     icon: Briefcase,
     accent: SG.masTeal,
-    participants: ["Fullerton", "GIC", "Temasek", "DBS", "OCBC", "UOB", "BNP Paribas"],
+    participants: ["Fullerton", "GIC", "Temasek", "DBS", "OCBC", "UOB", "HSBC", "MUFG", "BNP Paribas"],
     tags: ["VCC", "Fund Interests", "Collateral", "NAV", "Compliance Gates"],
   },
   {
     id: "gold-tokenisation",
     title: "Gold Tokenisation",
     subtitle: "SBMA Kilobar to Gram-Tokets",
-    description: "End-to-end tokenisation of SBMA Good Delivery kilobars stored in Singapore FTZ vaults. Shows vault receipt verification, SBMA assay validation, minting of gram-denominated gold tokets, and fractional distribution through DBS, OCBC, and UOB.",
+    description: "End-to-end tokenisation of SBMA Good Delivery kilobars stored in Singapore FTZ vaults. Shows vault receipt verification, SBMA assay validation, minting of gram-denominated gold tokets, and fractional distribution through DBS, OCBC, UOB, and HSBC.",
     steps: 7,
     icon: Gem,
     accent: SG.finternetAmber,
-    participants: ["Brink's Singapore", "SBMA", "DBS", "OCBC", "UOB", "MAS"],
+    participants: ["Brink's Singapore", "SBMA", "DBS", "OCBC", "UOB", "HSBC", "MAS"],
     tags: ["Gold", "SBMA", "Kilobar", "Fractional", "FTZ Vault"],
   },
   {
@@ -81,7 +81,7 @@ const WORKFLOWS = [
     steps: 6,
     icon: Globe,
     accent: "#3b82f6",
-    participants: ["DBS Private Banking", "Wei Lin Chen", "StraitsX", "MAS", "BaFin"],
+    participants: ["DBS Private Banking", "Wei Lin Chen", "StraitsX", "MAS", "BaFin", "MUFG"],
     tags: ["Cross-Border", "XSGD", "DTA", "WHT", "Atomic FX"],
   },
 ];

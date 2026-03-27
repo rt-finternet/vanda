@@ -248,7 +248,7 @@ export default function SGDeepDiveStructuredNotes() {
             <h2 className="text-2xl font-light mb-4">Issuance on <span className="font-semibold">UNITS</span></h2>
             <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
               Structured note issuance on UNITS follows a five-step process. The issuer
-              (typically a bank like DBS, UOB, or OCBC) creates the composite toket with
+              (typically a bank like DBS, UOB, OCBC, or HSBC) creates the composite toket with
               all parameters encoded in the Token Program.
             </p>
 

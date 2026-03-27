@@ -54,12 +54,15 @@ export default function SGDeepDiveParticipants() {
       tier: "Tier 2",
       label: "Anchor Participants",
       color: SG.nusOrange,
-      desc: "The first movers. Singapore's systemically important banks that would anchor the network with liquidity, market-making, and institutional credibility.",
+      desc: "The first movers. Singapore's systemically important banks and GL1 founding members that would anchor the network with liquidity, market-making, and institutional credibility.",
       participants: [
         { name: "DBS Bank", role: "Largest SG bank, digital asset pioneer (DBS Digital Exchange), custody", icon: Building2 },
         { name: "OCBC Bank", role: "Second largest SG bank, wealth management, cross-border capabilities", icon: Building2 },
         { name: "UOB", role: "Third largest SG bank, ASEAN network, trade finance", icon: Building2 },
-        { name: "Standard Chartered", role: "Global bank with SG hub, digital asset custody (Zodia), trade finance", icon: Globe },
+        { name: "HSBC", role: "Largest foreign bank in SG, GL1 founding member, global custody, securities services across 60+ markets", icon: Globe },
+        { name: "J.P. Morgan", role: "GL1 founding member, Onyx blockchain platform, Partior (MAS-backed), cross-border payments", icon: Building2 },
+        { name: "Standard Chartered", role: "GL1 founding member, digital asset custody (Zodia), trade finance, SG hub", icon: Globe },
+        { name: "MUFG", role: "GL1 founding member, Japan's largest bank, Asia-Pacific corridor, securities services", icon: Globe },
       ]
     },
     {
@@ -83,7 +86,7 @@ export default function SGDeepDiveParticipants() {
       participants: [
         { name: "BNY Mellon", role: "Global custodian, digital asset custody, fund administration", icon: Globe },
         { name: "State Street", role: "Global custodian, ETF services, digital asset capabilities", icon: Globe },
-        { name: "J.P. Morgan", role: "Onyx blockchain platform, Partior (MAS-backed), cross-border payments", icon: Building2 },
+
         { name: "Citi", role: "Global custodian, Citi Token Services, trade finance", icon: Globe },
         { name: "GIC", role: "Singapore sovereign wealth fund, long-term investor, infrastructure capital", icon: Landmark },
         { name: "Temasek", role: "Singapore sovereign wealth, Marketnode co-founder, innovation capital", icon: Landmark },
