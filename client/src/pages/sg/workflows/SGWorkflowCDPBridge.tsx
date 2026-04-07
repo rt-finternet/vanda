@@ -104,8 +104,11 @@ const STEPS: WorkflowStep[] = [
       "Trading hours: 24/7/365 (vs SGX 9:00-17:00)",
       "Reversibility: Can burn tokets and release CDP hold at any time",
       "Interoperability: Cross-asset with MEPS+ government securities tokets",
+      "Price alignment: Designated Market Makers (DMMs) with dual-venue access arbitrage any divergence between toket price and SGX reference, using the CDP Bridge as the creation/redemption rail, identical to ETF AP arbitrage",
+      "Reference pricing: SGX VWAP used as canonical price during SGX hours (9:00-17:00 SGT); after-hours toket price marked as indicative, capturing legitimate price discovery from global events",
+      "Circuit breaker: If toket price diverges from SGX reference by more than 5%, VANDA matching engine triggers a cooling-off period, analogous to SGX dynamic circuit breakers",
     ],
-    systemState: { "UNITS Wallet": "500,000 DBS (D05) tokets", "Status": "Live, tradeable", "Available For": "DvP, Collateral, Repo", "Trading Hours": "24/7/365", "CDP Hold": "Active (underlying locked)", "Reversible": "Yes, burn-to-release" },
+    systemState: { "UNITS Wallet": "500,000 DBS (D05) tokets", "Status": "Live, tradeable", "Available For": "DvP, Collateral, Repo", "Trading Hours": "24/7/365", "CDP Hold": "Active (underlying locked)", "Reversible": "Yes, burn-to-release", "Price Alignment": "DMM arbitrage + SGX reference", "Circuit Breaker": "5% divergence threshold" },
     icon: Network, color: SG.masTeal,
   },
 ];

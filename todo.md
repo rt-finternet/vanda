@@ -34,7 +34,7 @@
 - [x] Interactive Architecture Diagram (SVG clickable layers)
 - [ ] PDF Export button
 - [ ] Walkthrough video script
-- [ ] Companion slide deck (10-15 slides)
+- [ ] Companion executive slide deck (15-20 slides) for NUS/IPF board presentations
 - [x] Nav menu search/filter (29 items across 3 sections, Cmd/Ctrl+K shortcut)
 
 ## Landing Page & Admin
@@ -95,3 +95,15 @@
 - [x] Add missing RMOs to Participants page (DDEx, BondBloX, InvestaX added to Market Specialists tier)
 - [x] Add SCS glossary box below Token Programs comparison table (SCS = Single-Currency Stablecoin)
 - [ ] Backlog: "Ask AI" feature (LLM-powered Q&A about the blueprint)
+
+## Stakeholder Feedback (Round 2)
+- [x] CDP Bridge: Add price divergence mechanism (AP arbitrage, DMMs, reference pricing, circuit breakers)
+- [x] Gold Workflow: Add LBMA price alignment mechanism and two-tier physical redemption model
+- [x] Gold Workflow: Add in-kind management fee explanation via Token Program
+- [x] Cross-Border: Add German Bund Unsponsored Toket workflow details
+- [x] Cross-Border: Add three-layer FX conversion model (stablecoin swap, CLS, bank treasury)
+- [x] Cross-Border: Add full institutional FX + foreign securities deep-dive workflow (integrated into existing workflow steps 3 and comparison table)
+- [x] XSGD: Add integration section (bridge, native issuance, wholesale CBDC models) — added to Cross-Ledger Stablecoin Adapter
+- [x] VCC: Add legend/tooltip distinguishing 5 programs from 3 sub-funds
+- [x] VCC: Add timestamps to execution log and system state NAV premium
+- [ ] Draft stakeholder response email (Gmail-ready HTML, under 400 words)

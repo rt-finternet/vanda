@@ -122,7 +122,7 @@ export default function SGDeepDiveCrossLedger() {
                   color: SG.finternetAmber,
                   targets: ["StraitsX XSGD (SCS-regulated stablecoin)"],
                   trust: "Smart contract event monitoring + authenticated API. XSGD mint/burn events are verified on-chain before UNITS updates proxy state.",
-                  desc: "Connects the cash leg of settlement. XSGD is the SCS-regulated stablecoin that enables atomic DvP: the securities leg and cash leg settle simultaneously through the adapter.",
+                  desc: "Connects the cash leg of settlement. XSGD is the SCS-regulated stablecoin that enables atomic DvP: the securities leg and cash leg settle simultaneously through the adapter. Three integration models are supported: (1) Native issuance — StraitsX issues XSGD directly on UNITS as a tokenPool with 1:1 SGD reserve backing (primary path, recommended); (2) Bridge/wrapped — XSGD minted on public chains (Ethereum, Stellar) is bridged to UNITS via a lock-and-mint adapter, creating proxy XSGD tokets redeemable 1:1; (3) Wholesale CBDC — MAS-issued digital SGD settles directly on UNITS (long-term aspiration, aligned with Project Orchid). VANDA is currency-agnostic at the protocol level: any SCS-compliant stablecoin can serve as a cash leg.",
                 },
                 {
                   type: "Global CSD Adapters",
