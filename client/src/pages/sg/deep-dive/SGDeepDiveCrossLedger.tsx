@@ -72,7 +72,7 @@ export default function SGDeepDiveCrossLedger() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                { problem: "Siloed settlement", desc: "A DDEx security token and a BondBloX digital bond cannot settle against each other. Each platform has its own settlement cycle and finality model.", color: SG.red },
+                { problem: "Siloed settlement", desc: "A DDEx security toket and a BondBloX digital bond cannot settle against each other. Each platform has its own settlement cycle and finality model.", color: SG.red },
                 { problem: "Trapped collateral", desc: "SGS bonds on MEPS+ cannot be used as margin for CDP equity positions. Collateral is locked within the system where it was issued.", color: SG.nusOrange },
                 { problem: "No unified portfolio view", desc: "A wealth manager with positions across CDP, ADDX, and InvestaX must reconcile three separate systems. No single source of truth exists.", color: SG.finternetAmber },
                 { problem: "Manual cross-border", desc: "Accessing a US Treasury or German Bund requires foreign brokerage accounts, correspondent custody chains, and T+2 settlement in the foreign market.", color: SG.finternetCyan },
@@ -112,9 +112,9 @@ export default function SGDeepDiveCrossLedger() {
                   type: "Platform Adapters",
                   icon: Network,
                   color: SG.nusOrange,
-                  targets: ["DDEx (digital securities)", "BondBloX (digital bonds)", "ADDX (private markets)", "InvestaX (RWA tokens)", "Marketnode (bond issuance)"],
+                  targets: ["DDEx (digital securities)", "BondBloX (digital bonds)", "ADDX (private markets)", "InvestaX (RWA tokets)", "Marketnode (bond issuance)"],
                   trust: "API key + HMAC request signing with JWT rotation. Each platform provides an authenticated endpoint conforming to the Finternet OpenAPI spec.",
-                  desc: "Connect to Singapore's six MAS-licensed tokenisation platforms. Each platform specialises in different asset classes but shares the same adapter interface, enabling cross-platform settlement and collateral mobility.",
+                  desc: "Connect to Singapore's five MAS-licensed tokenisation platforms. Each platform specialises in different asset classes but shares the same adapter interface, enabling cross-platform settlement and collateral mobility.",
                 },
                 {
                   type: "Stablecoin Adapter",

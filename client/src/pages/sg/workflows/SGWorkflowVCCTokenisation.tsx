@@ -134,7 +134,7 @@ const STEPS: WorkflowStep[] = [
       "Seller": "GIC (15,000 units remaining)",
       "Buyer": "Temasek (10,000 units acquired)",
       "Trade Price": "SGD 1,015.00/unit",
-      "Premium to NAV": "1.5% (current, as of 14:30:00 SGT — compressed from 2.5% at trade time 10:14:23 SGT due to subsequent NAV revaluation)",
+      "Premium to NAV": "1.5% (current, as of 14:30:00 SGT, compressed from 2.5% at trade time 10:14:23 SGT due to subsequent NAV revaluation)",
       "Settlement": "Atomic DvP (T+0)",
       "Compliance Gates": "4/4 Passed",
     },

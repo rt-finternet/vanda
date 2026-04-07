@@ -106,4 +106,21 @@
 - [x] XSGD: Add integration section (bridge, native issuance, wholesale CBDC models) — added to Cross-Ledger Stablecoin Adapter
 - [x] VCC: Add legend/tooltip distinguishing 5 programs from 3 sub-funds
 - [x] VCC: Add timestamps to execution log and system state NAV premium
-- [ ] Draft stakeholder response email (Gmail-ready HTML, under 400 words)
+- [x] Draft stakeholder response email (Gmail-ready HTML, 398 words)
+
+## New Pages (Round 3)
+- [x] Build dedicated Institutional FX & Foreign Securities workflow page
+- [x] Build FAQ/Technical Appendix page consolidating all stakeholder Q&A
+- [x] Register routes and navigation for both new pages
+- [ ] Draft comprehensive stakeholder email with links to all portal updates
+
+## Full Portal Audit (Round 3)
+- [x] Audit all pages for consistency (naming, data, participants, terminology)
+- [x] Fix: Propine removed from SGFunding.tsx
+- [x] Fix: 'Sixteen nodes' to 'Fifteen nodes' in SGDeepDiveUNITS.tsx
+- [x] Fix: 'six' to 'five' platforms in SGDeepDiveCrossLedger.tsx
+- [x] Fix: '40+' to '30+' institutions in SGDeepDiveParticipants.tsx
+- [x] Fix: em-dash in VCC workflow
+- [x] Fix: 'Cross-depository' to 'Cross-network' in Regulatory
+- [x] Fix: 'token' to 'toket' in PreciousMetals, UNITS, CrossLedger deep-dives
+- [x] Fix: self-referencing link in CollateralHighway

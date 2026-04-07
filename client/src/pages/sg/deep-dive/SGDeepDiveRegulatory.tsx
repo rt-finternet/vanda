@@ -331,7 +331,7 @@ export default function SGDeepDiveRegulatory() {
                 { icon: Eye, label: "Real-Time Settlement Monitoring", desc: "Every atomic DvP transaction is visible to MAS as it executes, not hours or days later in a batch report" },
                 { icon: Users, label: "Participant Activity", desc: "Aggregate and per-participant trading volumes, position concentrations, and credential status" },
                 { icon: Shield, label: "Compliance Verification", desc: "Real-time verification that transfer restrictions, investor eligibility, and position limits are being enforced" },
-                { icon: Network, label: "Systemic Risk Dashboard", desc: "Cross-depository flows, collateral concentration, and settlement failure rates visible in real-time" },
+                { icon: Network, label: "Systemic Risk Dashboard", desc: "Cross-network flows, collateral concentration, and settlement failure rates visible in real-time" },
               ].map((item, i) => (
                 <div key={i} className="p-4 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
                   <item.icon className="w-5 h-5 mb-2" style={{ color: SG.masTeal }} />

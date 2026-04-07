@@ -43,6 +43,10 @@ const SGWorkflowVCCTokenisation = lazy(() => import("./pages/sg/workflows/SGWork
 const SGWorkflowGoldTokenisation = lazy(() => import("./pages/sg/workflows/SGWorkflowGoldTokenisation"));
 const SGWorkflowCommoditiesCollateral = lazy(() => import("./pages/sg/workflows/SGWorkflowCommoditiesCollateral"));
 const SGWorkflowCrossBorder = lazy(() => import("./pages/sg/workflows/SGWorkflowCrossBorder"));
+const SGWorkflowInstitutionalFX = lazy(() => import("./pages/sg/workflows/SGWorkflowInstitutionalFX"));
+
+// SG FAQ / Technical Appendix
+const SGFaq = lazy(() => import("./pages/sg/SGFaq"));
 
 // Admin page (lazy loaded)
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -97,6 +101,10 @@ function PortalRoutes() {
       <Route path="/sg/workflows/gold-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowGoldTokenisation /></Suspense>}</Route>
       <Route path="/sg/workflows/commodities-collateral">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCommoditiesCollateral /></Suspense>}</Route>
       <Route path="/sg/workflows/cross-border">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCrossBorder /></Suspense>}</Route>
+      <Route path="/sg/workflows/institutional-fx">{() => <Suspense fallback={<PageLoader />}><SGWorkflowInstitutionalFX /></Suspense>}</Route>
+
+      {/* FAQ / Technical Appendix */}
+      <Route path="/sg/faq">{() => <Suspense fallback={<PageLoader />}><SGFaq /></Suspense>}</Route>
 
       {/* 404 */}
       <Route path="/404" component={NotFound} />

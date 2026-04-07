@@ -138,7 +138,7 @@ export default function SGDeepDiveParticipants() {
             <span className="font-semibold">Participants</span> Ecosystem
           </h1>
           <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-            The UNITS|SG network requires a carefully orchestrated ecosystem of 40+ institutions across
+            The UNITS|SG network requires a carefully orchestrated ecosystem of 30+ institutions across
             six tiers: infrastructure operators, anchor banks, market specialists, global custodians,
             technology providers, and academic partners. Each tier plays a distinct role in making
             the network viable.

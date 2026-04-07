@@ -269,7 +269,6 @@ export default function SGFunding() {
                       { name: "Sygnum", role: "Digital asset bank" },
                       { name: "Matrixdock", role: "Tokenised T-bills" },
                       { name: "Marketnode", role: "SGX-Temasek JV, digital bonds" },
-                      { name: "Propine", role: "Digital asset custody" },
                       { name: "Fazz", role: "Stablecoin infrastructure" },
                       { name: "StraitsX", role: "SCS stablecoin issuer" },
                     ].map((p, i) => (

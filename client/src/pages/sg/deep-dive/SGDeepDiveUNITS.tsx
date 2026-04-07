@@ -208,7 +208,7 @@ export default function SGDeepDiveUNITS() {
             <h2 className="text-2xl font-light mb-3 text-center">The Singapore Ecosystem on <span className="font-semibold">UNITS</span></h2>
             <p className="text-sm leading-relaxed mb-8 text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
               UNITS|SG unifies MAS, SGX CDP, MEPS+, Singapore's anchor banks, GL1 global banks, and the full ecosystem
-              of MAS-licensed tokenisation platforms into a single GL1-compliant network. Sixteen nodes.
+              of MAS-licensed tokenisation platforms into a single GL1-compliant network. Fifteen nodes.
               One protocol. One identity layer.
             </p>
 
@@ -419,7 +419,7 @@ export default function SGDeepDiveUNITS() {
                   icon: TrendingUp,
                   color: SG.finternetAmber,
                   license: "MAS-licensed RMO",
-                  speciality: "Security tokens, crypto, structured notes",
+                  speciality: "Security tokets, crypto, structured notes",
                   desc: "The world's first bank-backed digital exchange, operated by DBS. DDEx offers institutional-grade trading of security tokens, cryptocurrencies, and tokenised structured notes. Recently pioneered tokenised fund collateral for repo transactions. On UNITS, DDEx becomes the primary venue for institutional digital asset trading with atomic DvP settlement.",
                 },
                 {
@@ -563,7 +563,7 @@ export default function SGDeepDiveUNITS() {
                 {
                   icon: Lock,
                   title: "Token Programs",
-                  desc: "Automated lifecycle management: coupon payments, corporate actions, redemptions, and transfer restrictions execute as programmable rules on-ledger. Consistent across DDEx security tokens, BondBloX digital bonds, ADDX private market tokens, and InvestaX RWA tokens.",
+                  desc: "Automated lifecycle management: coupon payments, corporate actions, redemptions, and transfer restrictions execute as programmable rules on-ledger. Consistent across DDEx security tokets, BondBloX digital bonds, ADDX private market tokets, and InvestaX RWA tokets.",
                   color: SG.finternetCyan,
                 },
               ].map((cap, i) => (
@@ -602,7 +602,7 @@ export default function SGDeepDiveUNITS() {
                   layer: "Layer 2: UNITS Protocol",
                   items: ["tokenClasses", "tokenPools", "UILP gates", "wallet registry", "Token Programs", "cross-ledger gateway"],
                   color: SG.nusOrange,
-                  desc: "The universal protocol layer. Defines how assets are represented (tokenClasses), how compliance is enforced (UILP gates), and how settlement occurs (atomic DvP). The same protocol connects DDEx security tokens, BondBloX digital bonds, and ADDX private market tokens seamlessly.",
+                  desc: "The universal protocol layer. Defines how assets are represented (tokenClasses), how compliance is enforced (UILP gates), and how settlement occurs (atomic DvP). The same protocol connects DDEx security tokets, BondBloX digital bonds, and ADDX private market tokets seamlessly.",
                 },
                 {
                   layer: "Layer 1: GL1-Compliant Infrastructure",

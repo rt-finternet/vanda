@@ -84,6 +84,17 @@ const WORKFLOWS = [
     participants: ["DBS Private Banking", "Wei Lin Chen", "StraitsX", "MAS", "BaFin", "MUFG"],
     tags: ["Cross-Border", "XSGD", "DTA", "WHT", "Atomic FX"],
   },
+  {
+    id: "institutional-fx",
+    title: "Institutional FX & Foreign Securities",
+    subtitle: "Full Cross-Border Institutional Trade",
+    description: "End-to-end institutional cross-border workflow: a Singapore institutional investor purchases EUR 50M of German Bunds via DBS. Covers three-layer FX model (stablecoin swap, CLS PvP, bank treasury), Unsponsored Toket minting via Euroclear, automated coupon distribution, and same-day collateral mobilisation of foreign securities.",
+    steps: 7,
+    icon: Building2,
+    accent: "#6366f1",
+    participants: ["GIC", "DBS", "Euroclear", "CLS", "StraitsX", "MAS", "BaFin"],
+    tags: ["Institutional", "FX", "CLS PvP", "German Bund", "Euroclear", "Collateral"],
+  },
 ];
 
 export default function SGWorkflows() {

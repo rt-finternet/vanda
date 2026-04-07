@@ -86,7 +86,7 @@ const unitsComponents = [
     icon: <Layers className="w-5 h-5" />,
     hex: SG.masTeal,
     details: [
-      "Each LBMA/SBMA Good Delivery bar represented as a unique token on the UNITS ledger",
+      "Each LBMA/SBMA Good Delivery bar represented as a unique toket on the UNITS ledger",
       "Bar serial number, refiner, assay certificate, weight, and vault location recorded immutably",
       "Fractional gram-tokets reference specific physical bars with full provenance chain",
       "Singapore vault operators (Brink's, Malca-Amit, Le Freeport) each maintain a tokenPool",

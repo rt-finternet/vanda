@@ -43,6 +43,7 @@ const sgNavItems: SGNavItem[] = [
   { href: "/sg/capabilities", label: "Capabilities", icon: <Zap className="w-4 h-4" />, color: SG.finternetCyan },
   { href: "/sg/assets", label: "Asset Classes", icon: <Gem className="w-4 h-4" />, color: SG.finternetAmber },
   { href: "/sg/funding", label: "Funding & Participants", icon: <Users className="w-4 h-4" />, color: SG.nusOrange },
+  { href: "/sg/faq", label: "FAQ & Technical Appendix", icon: <FileText className="w-4 h-4" />, color: SG.finternetCyan },
 ];
 
 /* SG Deep Dive pages */
@@ -74,6 +75,7 @@ const sgWorkflowItems: SGNavItem[] = [
   { href: "/sg/workflows/gold-tokenisation", label: "Gold Tokenisation", icon: <Gem className="w-4 h-4" />, color: SG.finternetAmber },
   { href: "/sg/workflows/commodities-collateral", label: "Commodities Collateral", icon: <Coins className="w-4 h-4" />, color: SG.nusOrange },
   { href: "/sg/workflows/cross-border", label: "Cross-Border Settlement", icon: <Globe className="w-4 h-4" />, color: "#3b82f6" },
+  { href: "/sg/workflows/institutional-fx", label: "Institutional FX & Securities", icon: <Building2 className="w-4 h-4" />, color: "#6366f1" },
 ];
 
 function scrollToTop() {
