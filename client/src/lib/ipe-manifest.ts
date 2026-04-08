@@ -164,7 +164,7 @@ const PERSONAS: Persona[] = [
     shortName: "MAS Policy",
     group: "regulators",
     icon: "Globe",
-    color: "#00A3A1",
+    color: "#0D9488",
     description: "Market growth, new products, cross-border corridors, competitive positioning",
     narrativeArc: "problem-solution",
     estimatedReadTime: "10 min",
@@ -184,7 +184,7 @@ const PERSONAS: Persona[] = [
     shortName: "MAS FinTech",
     group: "regulators",
     icon: "Zap",
-    color: "#00A3A1",
+    color: "#14B8A6",
     description: "Technical architecture, protocol design, innovation sandbox, Project Guardian",
     narrativeArc: "technical-cascade",
     estimatedReadTime: "15 min",
@@ -204,7 +204,7 @@ const PERSONAS: Persona[] = [
     shortName: "MAS Supervisory",
     group: "regulators",
     icon: "Shield",
-    color: "#00A3A1",
+    color: "#2DD4BF",
     description: "Licence mapping, embedded compliance, systemic risk, supervisory tools",
     narrativeArc: "regulatory-scaffold",
     estimatedReadTime: "12 min",
@@ -246,7 +246,7 @@ const PERSONAS: Persona[] = [
     shortName: "IBF/Skills",
     group: "industry-bodies",
     icon: "Users",
-    color: "#EF7C00",
+    color: "#F59E0B",
     description: "Skills transformation, new roles, training pathways, workforce readiness",
     narrativeArc: "journey-map",
     estimatedReadTime: "8 min",
@@ -266,7 +266,7 @@ const PERSONAS: Persona[] = [
     shortName: "IMAS",
     group: "industry-bodies",
     icon: "Briefcase",
-    color: "#EF7C00",
+    color: "#FB923C",
     description: "Fund management transformation, VCC tokenisation, cross-border distribution",
     narrativeArc: "problem-solution",
     estimatedReadTime: "10 min",
@@ -286,7 +286,7 @@ const PERSONAS: Persona[] = [
     shortName: "SFA/Builders",
     group: "industry-bodies",
     icon: "Wrench",
-    color: "#EF7C00",
+    color: "#D97706",
     description: "Build on VANDA: APIs, Token Programs, wallet apps, compliance engines",
     narrativeArc: "technical-cascade",
     estimatedReadTime: "15 min",
@@ -328,7 +328,7 @@ const PERSONAS: Persona[] = [
     shortName: "Asset Managers",
     group: "market-participants",
     icon: "PieChart",
-    color: "#06B6D4",
+    color: "#22D3EE",
     description: "Fund operations, NAV automation, secondary liquidity, cross-border distribution",
     narrativeArc: "problem-solution",
     estimatedReadTime: "10 min",
@@ -348,7 +348,7 @@ const PERSONAS: Persona[] = [
     shortName: "Bank C-Suite",
     group: "market-participants",
     icon: "Crown",
-    color: "#06B6D4",
+    color: "#0891B2",
     description: "P&L case, revenue streams, cost elimination, competitive moat",
     narrativeArc: "inverted-pyramid",
     estimatedReadTime: "5 min",
@@ -421,7 +421,7 @@ const CROSS_PERSONA_SUGGESTIONS: CrossPersonaSuggestion[] = [
     text: "For the capital markets perspective on shared infrastructure, see how bond desks and structured product teams evaluate settlement efficiency.",
   },
   {
-    fromPersona: "ibf-skills",
+    fromPersona: "ibf-workforce",
     section: "/sg",
     toPersona: "sfa-builders",
     text: "To understand the technical skills your workforce needs, see what SFA/Builders are building on the VANDA platform.",
@@ -545,6 +545,66 @@ const CROSS_PERSONA_SUGGESTIONS: CrossPersonaSuggestion[] = [
     section: "/sg/problem",
     toPersona: "imas-asset-mgmt",
     text: "For the fund management perspective on this fragmentation, see how IMAS members experience the operational pain daily.",
+  },
+  {
+    fromPersona: "mas-fintech",
+    section: "/sg/problem",
+    toPersona: "capital-markets",
+    text: "For the capital markets perspective on settlement friction, see how bond desks experience T+2 delays and reconciliation overhead.",
+  },
+  {
+    fromPersona: "mas-supervisory",
+    section: "/sg/problem",
+    toPersona: "abs-ceos",
+    text: "For the industry coordination perspective on duplicated infrastructure, see how ABS/Bank CEOs view the shared cost burden.",
+  },
+  {
+    fromPersona: "abs-ceos",
+    section: "/sg/problem",
+    toPersona: "bank-csuite",
+    text: "For the individual bank P&L impact of this fragmentation, see how Bank C-Suites quantify the cost of duplicated infrastructure.",
+  },
+  {
+    fromPersona: "investors",
+    section: "/sg/problem",
+    toPersona: "mas-board",
+    text: "For the strategic national perspective on why this matters, see how MAS Board views Singapore's competitive positioning.",
+  },
+  {
+    fromPersona: "ibf-workforce",
+    section: "/sg/problem",
+    toPersona: "sfa-builders",
+    text: "For the builder perspective on what new skills are needed, see how SFA/Builders plan to create applications on VANDA.",
+  },
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/problem",
+    toPersona: "mas-supervisory",
+    text: "For the regulatory view on settlement risk, see how MAS Supervisory evaluates the systemic implications of T+2.",
+  },
+  {
+    fromPersona: "asset-managers",
+    section: "/sg/problem",
+    toPersona: "imas-asset-mgmt",
+    text: "For the industry-wide perspective on fund management pain, see how IMAS views the transformation opportunity for 200+ members.",
+  },
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/problem",
+    toPersona: "capital-markets",
+    text: "For the operational detail behind these costs, see how your Capital Markets teams experience settlement friction daily.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/problem",
+    toPersona: "mas-fintech",
+    text: "For the technical architecture that solves this fragmentation, see how MAS FinTech evaluates the UNITS three-plane model.",
+  },
+  {
+    fromPersona: "imas-asset-mgmt",
+    section: "/sg/problem",
+    toPersona: "asset-managers",
+    text: "For the individual fund operator perspective on this pain, see how Asset Managers experience manual NAV and T+5 redemptions.",
   },
   {
     fromPersona: "mas-policy",
@@ -805,6 +865,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   // ── MAS Policy & Market Development ──
   {
     persona: "mas-policy",
+    afterSection: "/sg",
+    nextSection: "/sg/problem",
+    nextLabel: "Fragmented Infrastructure",
+    reason: "You've seen the overview. Now see the structural fragmentation that costs Singapore billions -- the policy case for action.",
+  },
+  {
+    persona: "mas-policy",
     afterSection: "/sg/problem",
     nextSection: "/sg/workflows/cdp-bridge",
     nextLabel: "CDP Bridge Workflow",
@@ -842,6 +909,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   // ── MAS FinTech & Digital Infrastructure ──
   {
     persona: "mas-fintech",
+    afterSection: "/sg",
+    nextSection: "/sg/deep-dive/units",
+    nextLabel: "Singapore on UNITS",
+    reason: "You've seen the vision. Now dive into the three-plane architecture -- the technical foundation your team needs to evaluate.",
+  },
+  {
+    persona: "mas-fintech",
     afterSection: "/sg/deep-dive/units",
     nextSection: "/sg/deep-dive/token-programs",
     nextLabel: "Token Programs",
@@ -877,6 +951,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   },
 
   // ── MAS Supervisory & Compliance ──
+  {
+    persona: "mas-supervisory",
+    afterSection: "/sg",
+    nextSection: "/sg/deep-dive/regulatory",
+    nextLabel: "Regulatory Framework",
+    reason: "You've seen the overview. Now see how VANDA maps to existing MAS licences -- no new legislation, just licence-type-to-node-type mapping.",
+  },
   {
     persona: "mas-supervisory",
     afterSection: "/sg/deep-dive/regulatory",
@@ -953,6 +1034,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   // ── IBF / Workforce & Skills ──
   {
     persona: "ibf-workforce",
+    afterSection: "/sg",
+    nextSection: "/sg/problem",
+    nextLabel: "Fragmented Infrastructure",
+    reason: "You've seen the vision. Now see the structural shift that creates new roles -- the workforce transformation context.",
+  },
+  {
+    persona: "ibf-workforce",
     afterSection: "/sg/problem",
     nextSection: "/sg/deep-dive/token-programs",
     nextLabel: "Token Programs",
@@ -988,6 +1076,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   },
 
   // ── IMAS / Asset Management ──
+  {
+    persona: "imas-asset-mgmt",
+    afterSection: "/sg",
+    nextSection: "/sg/problem",
+    nextLabel: "Fragmented Infrastructure",
+    reason: "You've seen the overview. Now see the operational pain your 200+ members face daily -- the fund management fragmentation VANDA solves.",
+  },
   {
     persona: "imas-asset-mgmt",
     afterSection: "/sg/problem",
@@ -1064,6 +1159,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   // ── Capital Markets & Structuring ──
   {
     persona: "capital-markets",
+    afterSection: "/sg",
+    nextSection: "/sg/problem",
+    nextLabel: "Fragmented Infrastructure",
+    reason: "You've seen the vision. Now see the issuance friction you live with daily -- T+2, manual reconciliation, siloed asset classes.",
+  },
+  {
+    persona: "capital-markets",
     afterSection: "/sg/problem",
     nextSection: "/sg/deep-dive/dvp-settlement",
     nextLabel: "DvP Settlement",
@@ -1099,6 +1201,13 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   },
 
   // ── Asset Managers & Fund Operators ──
+  {
+    persona: "asset-managers",
+    afterSection: "/sg",
+    nextSection: "/sg/problem",
+    nextLabel: "Fragmented Infrastructure",
+    reason: "You've seen the overview. Now see the operational pain -- manual NAV, T+5 redemptions, fragmented fund admin. This is what VANDA fixes.",
+  },
   {
     persona: "asset-managers",
     afterSection: "/sg/problem",

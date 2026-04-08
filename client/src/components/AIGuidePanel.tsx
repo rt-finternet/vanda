@@ -1,8 +1,8 @@
 /**
- * VANDA AI Guide Panel — The Voice
+ * VANDA AI Guide Panel -- The Voice
  *
- * A slide-out chat panel that lets stakeholders ask questions about
- * the blueprint. Context-aware: knows the active persona and current page.
+ * A prominent slide-out chat panel from the LEFT side, vertically centered.
+ * Context-aware: knows the active persona and current page.
  * Uses server-side LLM via tRPC.
  *
  * NO AMBITION DECAY.
@@ -14,17 +14,17 @@ import { trpc } from "@/lib/trpc";
 import { IS_VERCEL } from "@/lib/useApi";
 import {
   X, Send, Sparkles, User, Loader2, MessageCircle,
-  ChevronDown,
+  ChevronDown, Bot,
 } from "lucide-react";
 import { Streamdown } from "streamdown";
 
-/* ── Types ── */
+/* -- Types -- */
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
 }
 
-/* ── Suggested questions per persona ── */
+/* -- Suggested questions per persona -- */
 const SUGGESTED_QUESTIONS: Record<string, string[]> = {
   "mas-board": [
     "What is the competitive advantage for Singapore?",
@@ -94,7 +94,7 @@ const DEFAULT_SUGGESTIONS = [
   "How does Singapore benefit from this?",
 ];
 
-/* ── Main Component ── */
+/* -- Main Component -- */
 export default function AIGuidePanel() {
   const {
     aiGuideOpen,
@@ -178,61 +178,70 @@ export default function AIGuidePanel() {
 
   if (!aiGuideOpen) return null;
 
+  const aiColor = SG.finternetCyan;
+
   return (
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 z-[60] bg-black/30 backdrop-blur-sm"
+        className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
         onClick={() => setAiGuideOpen(false)}
       />
 
-      {/* Panel */}
+      {/* Panel -- LEFT SIDE, vertically centered */}
       <div
-        className="fixed bottom-0 right-0 z-[61] w-[420px] max-w-[95vw] h-[600px] max-h-[85vh] rounded-tl-2xl overflow-hidden flex flex-col"
+        className="fixed z-[61] w-[440px] max-w-[92vw] overflow-hidden flex flex-col rounded-2xl"
         style={{
-          background: SG.dark,
-          border: `1px solid ${SG.border}`,
-          borderBottom: "none",
-          borderRight: "none",
-          boxShadow: "-8px -8px 32px rgba(0,0,0,0.5)",
+          left: "16px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          height: "min(680px, 85vh)",
+          background: `linear-gradient(180deg, ${SG.dark} 0%, #0D1F3A 100%)`,
+          border: `1px solid ${aiColor}30`,
+          borderLeft: `3px solid ${aiColor}`,
+          boxShadow: `8px 0 40px ${aiColor}10, 0 8px 32px rgba(0,0,0,0.6)`,
         }}
       >
         {/* Header */}
         <div
-          className="px-5 py-3.5 flex items-center justify-between shrink-0"
+          className="px-5 py-4 flex items-center justify-between shrink-0"
           style={{
-            background: SG.headerBg,
-            borderBottom: `1px solid ${SG.border}`,
+            background: `linear-gradient(135deg, ${SG.headerBg}, ${SG.dark})`,
+            borderBottom: `1px solid ${aiColor}20`,
           }}
         >
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ background: `${SG.finternetCyan}20`, color: SG.finternetCyan }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{
+                background: `${aiColor}20`,
+                color: aiColor,
+                boxShadow: `0 0 16px ${aiColor}15`,
+              }}
             >
-              <Sparkles className="w-4 h-4" />
+              <Bot className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">AI Guide</h3>
-              <p className="text-[10px] text-slate-400">
+              <h3 className="text-base font-bold text-white">AI Guide</h3>
+              <p className="text-xs text-slate-400">
                 {activePersona
-                  ? `Context: ${activePersona.shortName}`
+                  ? <>Context: <span style={{ color: activePersona.color, fontWeight: 600 }}>{activePersona.shortName}</span></>
                   : "Ask anything about the blueprint"}
               </p>
             </div>
           </div>
           <button
             onClick={() => setAiGuideOpen(false)}
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Messages area */}
         <div
           ref={scrollRef}
-          className="flex-1 overflow-y-auto px-4 py-4 space-y-4"
+          className="flex-1 overflow-y-auto px-5 py-4 space-y-4"
           style={{ scrollBehavior: "smooth" }}
         >
           {/* Welcome message */}
@@ -242,13 +251,13 @@ export default function AIGuidePanel() {
               <div
                 className="rounded-xl p-4"
                 style={{
-                  background: `${SG.finternetCyan}08`,
-                  border: `1px solid ${SG.finternetCyan}15`,
+                  background: `${aiColor}08`,
+                  border: `1px solid ${aiColor}15`,
                 }}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-4 h-4" style={{ color: SG.finternetCyan }} />
-                  <span className="text-xs font-semibold" style={{ color: SG.finternetCyan }}>
+                  <Sparkles className="w-4 h-4" style={{ color: aiColor }} />
+                  <span className="text-sm font-semibold" style={{ color: aiColor }}>
                     VANDA AI Guide
                   </span>
                 </div>
@@ -332,7 +341,7 @@ export default function AIGuidePanel() {
                 style={{ background: SG.card, border: `1px solid ${SG.border}` }}
               >
                 <div className="flex items-center gap-2">
-                  <Loader2 className="w-4 h-4 animate-spin" style={{ color: SG.finternetCyan }} />
+                  <Loader2 className="w-4 h-4 animate-spin" style={{ color: aiColor }} />
                   <span className="text-xs text-slate-400">Thinking...</span>
                 </div>
               </div>
@@ -344,8 +353,8 @@ export default function AIGuidePanel() {
         <div
           className="shrink-0 px-4 py-3"
           style={{
-            background: SG.headerBg,
-            borderTop: `1px solid ${SG.border}`,
+            background: `linear-gradient(135deg, ${SG.headerBg}, ${SG.dark})`,
+            borderTop: `1px solid ${aiColor}15`,
           }}
         >
           <div
@@ -370,8 +379,8 @@ export default function AIGuidePanel() {
               disabled={!input.trim() || isLoading}
               className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all duration-200 disabled:opacity-30"
               style={{
-                background: input.trim() ? SG.finternetCyan : "transparent",
-                color: input.trim() ? "#fff" : SG.finternetCyan,
+                background: input.trim() ? aiColor : "transparent",
+                color: input.trim() ? "#fff" : aiColor,
               }}
             >
               <Send className="w-4 h-4" />

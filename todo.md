@@ -132,3 +132,17 @@
 - [x] Build AI Guide component with LLM integration (tRPC aiGuide router + AIGuidePanel with persona-aware system prompt, 36 suggested questions)
 - [x] Apply IPE zones to 6 anchor pages (Executive Summary, Problem, Architecture, Capabilities, Assets, Funding) with CrossPersonaCallout integration
 - [x] Test all personas and context switching (92 tests pass, visual confirmation of PersonaSelector, CrossPersonaCallout, AIGuidePanel)
+
+## Visual & Readability Audit
+- [x] Audit landing page (text sizing, contrast, readability)
+- [x] Audit Executive Summary and top-level portal pages
+- [x] Audit deep dive pages (12+ pages)
+- [x] Audit workflow pages (8 pages)
+- [x] Audit IPE overlays (PersonaSelector, AIGuide, CrossPersonaCallout, FloatingBar, ContextBanner)
+- [x] Document all findings and fix issues
+- [x] Reposition IPE floating controls (persona badge + AI Guide) to left side, vertically centered, auto-collapse on idle, expand on hover
+
+## Comprehensive Persona Testing
+- [x] Run all vitest unit tests and fix any failures (197 tests pass, 9 test files)
+- [x] Visual test all 12 personas (persona selection, cross-persona callout, next-section bar, AI Guide context)
+- [x] Fix all issues found during comprehensive testing (ibf-skills→ibf-workforce, unique persona colors, added 7 missing next-section recs, added cross-persona suggestions for /sg/problem)

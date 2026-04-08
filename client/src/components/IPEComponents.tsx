@@ -1,25 +1,29 @@
 /**
- * VANDA IPE Components — The Muscles
+ * VANDA IPE Components -- The Muscles
  *
- * PersonaBadge: Floating trigger button to open persona selector
+ * IPEFloatingRail: Prominent left-side vertical control rail (persona + AI Guide)
+ *   - Auto-collapses to icon-only mode; expands on hover
+ *   - Prevents content overlap on workflow pages
  * CrossPersonaCallout: Inline suggestion to view through another lens
  * NextSectionBar: Sticky bottom bar recommending the next section
- * IPEFloatingBar: Compact floating bar showing active persona + controls
+ * PersonaContextBanner: Top banner showing active persona context
+ * KeywordHighlight: Inline text highlighter for relevant terms
  *
  * NO AMBITION DECAY.
  */
 import { useIPE } from "@/contexts/IPEContext";
 import { SG } from "@/components/SGPortalNav";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import {
   Eye, ChevronRight, ArrowRight, Sparkles,
   Landmark, Globe, Zap, Shield, Building2, Users,
   Briefcase, Wrench, TrendingUp, PieChart, Crown, Wallet,
-  Layers, MessageCircle, X,
+  MessageCircle, X, Bot, UserCircle,
 } from "lucide-react";
 import type { Persona } from "@/lib/ipe-manifest";
+import React from "react";
 
-/* ── Icon resolver (shared with PersonaSelector) ── */
+/* -- Icon resolver (shared with PersonaSelector) -- */
 const ICON_MAP: Record<string, React.ReactNode> = {
   Landmark: <Landmark className="w-4 h-4" />,
   Globe: <Globe className="w-4 h-4" />,
@@ -33,6 +37,21 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   PieChart: <PieChart className="w-4 h-4" />,
   Crown: <Crown className="w-4 h-4" />,
   Wallet: <Wallet className="w-4 h-4" />,
+};
+
+const ICON_MAP_LG: Record<string, React.ReactNode> = {
+  Landmark: <Landmark className="w-5 h-5" />,
+  Globe: <Globe className="w-5 h-5" />,
+  Zap: <Zap className="w-5 h-5" />,
+  Shield: <Shield className="w-5 h-5" />,
+  Building2: <Building2 className="w-5 h-5" />,
+  Users: <Users className="w-5 h-5" />,
+  Briefcase: <Briefcase className="w-5 h-5" />,
+  Wrench: <Wrench className="w-5 h-5" />,
+  TrendingUp: <TrendingUp className="w-5 h-5" />,
+  PieChart: <PieChart className="w-5 h-5" />,
+  Crown: <Crown className="w-5 h-5" />,
+  Wallet: <Wallet className="w-5 h-5" />,
 };
 
 const ICON_MAP_SM: Record<string, React.ReactNode> = {
@@ -53,11 +72,14 @@ const ICON_MAP_SM: Record<string, React.ReactNode> = {
 function getIcon(name: string) {
   return ICON_MAP[name] || <Eye className="w-4 h-4" />;
 }
+function getIconLg(name: string) {
+  return ICON_MAP_LG[name] || <Eye className="w-5 h-5" />;
+}
 function getIconSm(name: string) {
   return ICON_MAP_SM[name] || <Eye className="w-3.5 h-3.5" />;
 }
 
-// ─── Cross-Persona Callout ───────────────────────────────────────────────────
+// -- Cross-Persona Callout --
 
 /**
  * Inline callout suggesting the reader view content through another persona's lens.
@@ -116,7 +138,7 @@ export function CrossPersonaCallout() {
   );
 }
 
-// ─── Next-Section Bar ────────────────────────────────────────────────────────
+// -- Next-Section Bar --
 
 /**
  * Sticky bottom bar recommending the next section for the active persona.
@@ -197,13 +219,16 @@ export function NextSectionBar() {
   );
 }
 
-// ─── IPE Floating Bar ────────────────────────────────────────────────────────
+// -- IPE Floating Rail (LEFT SIDE, VERTICALLY CENTERED, AUTO-COLLAPSE) --
 
 /**
- * Compact floating bar in the bottom-right showing:
- * - Active persona badge (or "Linear" if none)
- * - Persona selector trigger
- * - AI Guide trigger
+ * Prominent floating control rail on the LEFT side, vertically centered.
+ * 
+ * DEFAULT STATE: Collapsed to icon-only (narrow strip, ~56px wide)
+ * HOVER STATE: Expands to show full labels (~200px wide)
+ * 
+ * This prevents content overlap on workflow pages while keeping
+ * the controls always visible and accessible.
  */
 export function IPEFloatingBar() {
   const {
@@ -211,63 +236,172 @@ export function IPEFloatingBar() {
     toggleSelector,
     toggleAiGuide,
     aiGuideOpen,
+    selectorOpen,
   } = useIPE();
+  const [hovered, setHovered] = React.useState(false);
+
+  const personaColor = activePersona?.color || SG.nusOrange;
+  const aiColor = SG.finternetCyan;
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-[55] flex items-center gap-2"
+      className="fixed left-0 z-[55] flex flex-col items-start gap-2"
+      style={{
+        top: "50%",
+        transform: "translateY(-50%)",
+        paddingRight: hovered ? "8px" : "24px",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      {/* AI Guide button */}
-      <button
-        onClick={toggleAiGuide}
-        className="w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-105"
-        style={{
-          background: aiGuideOpen ? SG.finternetCyan : SG.card,
-          border: `1px solid ${aiGuideOpen ? SG.finternetCyan : SG.border}`,
-          color: aiGuideOpen ? "#fff" : SG.finternetCyan,
-        }}
-        title="AI Guide"
-      >
-        <MessageCircle className="w-5 h-5" />
-      </button>
-
-      {/* Persona badge / selector trigger */}
+      {/* Persona Selector Button */}
       <button
         onClick={toggleSelector}
-        className="h-11 rounded-full flex items-center gap-2 px-4 shadow-lg transition-all duration-200 hover:scale-105"
+        className="group relative flex items-center gap-2.5 rounded-r-2xl shadow-2xl transition-all duration-300 overflow-hidden"
         style={{
-          background: activePersona ? `${activePersona.color}20` : SG.card,
-          border: `1px solid ${activePersona ? `${activePersona.color}40` : SG.border}`,
+          padding: hovered ? "12px 18px 12px 14px" : "12px 14px",
+          width: hovered ? "auto" : "56px",
+          background: selectorOpen
+            ? `linear-gradient(135deg, ${personaColor}30, ${personaColor}15)`
+            : `linear-gradient(135deg, ${SG.card}f5, ${SG.surface}f5)`,
+          border: `1px solid ${personaColor}40`,
+          borderLeft: `3px solid ${personaColor}`,
+          backdropFilter: "blur(16px)",
+          boxShadow: `4px 0 24px ${personaColor}15, 0 4px 16px rgba(0,0,0,0.4)`,
         }}
-        title="Choose your perspective"
+        title={activePersona ? `Viewing as ${activePersona.shortName}` : "Choose your perspective"}
       >
-        {activePersona ? (
-          <>
-            <span style={{ color: activePersona.color }}>
-              {getIconSm(activePersona.icon)}
-            </span>
-            <span
-              className="text-sm font-semibold"
-              style={{ color: activePersona.color }}
-            >
-              {activePersona.shortName}
-            </span>
-          </>
-        ) : (
-          <>
-            <Layers className="w-3.5 h-3.5" style={{ color: SG.nusOrange }} />
-            <span className="text-sm font-semibold" style={{ color: SG.nusOrange }}>
-              I am...
-            </span>
-          </>
+        {/* Glow pulse */}
+        <div
+          className="absolute inset-0 rounded-r-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background: `radial-gradient(ellipse at left center, ${personaColor}12, transparent 70%)`,
+          }}
+        />
+
+        {/* Icon */}
+        <div
+          className="relative w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+          style={{
+            background: `${personaColor}20`,
+            color: personaColor,
+            boxShadow: `0 0 12px ${personaColor}20`,
+          }}
+        >
+          {activePersona ? (
+            getIconLg(activePersona.icon)
+          ) : (
+            <UserCircle className="w-5 h-5" />
+          )}
+        </div>
+
+        {/* Label (only visible on hover) */}
+        <div
+          className="relative flex flex-col items-start min-w-0 transition-all duration-300"
+          style={{
+            opacity: hovered ? 1 : 0,
+            width: hovered ? "auto" : 0,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+          }}
+        >
+          <span
+            className="text-[10px] font-bold uppercase tracking-widest"
+            style={{ color: `${personaColor}90` }}
+          >
+            {activePersona ? "Viewing as" : "Perspective"}
+          </span>
+          <span
+            className="text-sm font-bold leading-tight"
+            style={{ color: personaColor }}
+          >
+            {activePersona ? activePersona.shortName : "I am..."}
+          </span>
+        </div>
+
+        {/* Chevron (only on hover) */}
+        {hovered && (
+          <ChevronRight
+            className="relative w-4 h-4 ml-0.5 transition-transform duration-200 group-hover:translate-x-0.5"
+            style={{ color: `${personaColor}60` }}
+          />
         )}
-        <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+      </button>
+
+      {/* AI Guide Button */}
+      <button
+        onClick={toggleAiGuide}
+        className="group relative flex items-center gap-2.5 rounded-r-2xl shadow-2xl transition-all duration-300 overflow-hidden"
+        style={{
+          padding: hovered ? "12px 18px 12px 14px" : "12px 14px",
+          width: hovered ? "auto" : "56px",
+          background: aiGuideOpen
+            ? `linear-gradient(135deg, ${aiColor}30, ${aiColor}15)`
+            : `linear-gradient(135deg, ${SG.card}f5, ${SG.surface}f5)`,
+          border: `1px solid ${aiColor}40`,
+          borderLeft: `3px solid ${aiColor}`,
+          backdropFilter: "blur(16px)",
+          boxShadow: `4px 0 24px ${aiColor}15, 0 4px 16px rgba(0,0,0,0.4)`,
+        }}
+        title="Ask AI Guide"
+      >
+        {/* Glow pulse */}
+        <div
+          className="absolute inset-0 rounded-r-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background: `radial-gradient(ellipse at left center, ${aiColor}12, transparent 70%)`,
+          }}
+        />
+
+        {/* Icon */}
+        <div
+          className="relative w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+          style={{
+            background: `${aiColor}20`,
+            color: aiColor,
+            boxShadow: `0 0 12px ${aiColor}20`,
+          }}
+        >
+          <Bot className="w-5 h-5" />
+        </div>
+
+        {/* Label (only visible on hover) */}
+        <div
+          className="relative flex flex-col items-start min-w-0 transition-all duration-300"
+          style={{
+            opacity: hovered ? 1 : 0,
+            width: hovered ? "auto" : 0,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+          }}
+        >
+          <span
+            className="text-[10px] font-bold uppercase tracking-widest"
+            style={{ color: `${aiColor}90` }}
+          >
+            Blueprint
+          </span>
+          <span
+            className="text-sm font-bold leading-tight"
+            style={{ color: aiColor }}
+          >
+            Ask AI
+          </span>
+        </div>
+
+        {/* Sparkle indicator (only on hover) */}
+        {hovered && (
+          <Sparkles
+            className="relative w-3.5 h-3.5 ml-0.5"
+            style={{ color: `${aiColor}60` }}
+          />
+        )}
       </button>
     </div>
   );
 }
 
-// ─── Keyword Highlighter ─────────────────────────────────────────────────────
+// -- Keyword Highlighter --
 
 /**
  * Highlights IPE keywords within text content.
@@ -319,7 +453,7 @@ export function KeywordHighlight({
   );
 }
 
-// ─── Persona Context Banner ──────────────────────────────────────────────────
+// -- Persona Context Banner --
 
 /**
  * A subtle banner at the top of each page showing the active persona context.
@@ -387,6 +521,3 @@ export function PersonaContextBanner() {
     </div>
   );
 }
-
-// Need React import for useState/useEffect in NextSectionBar
-import React from "react";
