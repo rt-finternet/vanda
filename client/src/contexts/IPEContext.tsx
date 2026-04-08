@@ -31,16 +31,12 @@ import {
   type PersonaGroup,
 } from "@/lib/ipe-manifest";
 import { isTRPCAvailable, useNoOpMutation, type SafeMutation } from "@/lib/trpc-safe";
+import { trpc } from "@/lib/trpc";
 
-// Conditionally import trpc only when available
-let useTRPCMutation: () => SafeMutation;
-if (isTRPCAvailable) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { trpc } = require("@/lib/trpc") as typeof import("@/lib/trpc");
-  useTRPCMutation = () => trpc.ipeAnalytics.trackEvent.useMutation();
-} else {
-  useTRPCMutation = useNoOpMutation;
-}
+// Use real tRPC mutation on Manus, no-op on Vercel
+const useTRPCMutation: () => SafeMutation = isTRPCAvailable
+  ? () => trpc.ipeAnalytics.trackEvent.useMutation()
+  : useNoOpMutation;
 
 // ---- Types ----
 

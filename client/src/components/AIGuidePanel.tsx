@@ -11,16 +11,13 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { useIPE } from "@/contexts/IPEContext";
 import { SG } from "@/components/SGPortalNav";
 import { isTRPCAvailable, useNoOpMutation, type SafeMutation } from "@/lib/trpc-safe";
+import { trpc } from "@/lib/trpc";
 import { useIPEAnalytics } from "@/hooks/useIPEAnalytics";
 
-// Conditionally import trpc for AI Guide mutation
-let useAskMutation: () => SafeMutation;
-if (isTRPCAvailable) {
-  const { trpc } = require("@/lib/trpc") as typeof import("@/lib/trpc");
-  useAskMutation = () => trpc.aiGuide.ask.useMutation() as unknown as SafeMutation;
-} else {
-  useAskMutation = useNoOpMutation;
-}
+// Use real tRPC mutation on Manus, no-op on Vercel
+const useAskMutation: () => SafeMutation = isTRPCAvailable
+  ? () => trpc.aiGuide.ask.useMutation() as unknown as SafeMutation
+  : useNoOpMutation;
 import {
   X, Send, Sparkles, User, Loader2, MessageCircle,
   ChevronDown, Bot,

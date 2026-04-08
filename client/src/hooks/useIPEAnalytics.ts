@@ -8,17 +8,14 @@
  */
 import { useCallback, useRef } from "react";
 import { isTRPCAvailable, useNoOpMutation, type SafeMutation } from "@/lib/trpc-safe";
+import { trpc } from "@/lib/trpc";
 
 const SESSION_KEY = "units_sg_session";
 
-// Conditionally import trpc
-let useTRPCMutation: () => SafeMutation;
-if (isTRPCAvailable) {
-  const { trpc } = require("@/lib/trpc") as typeof import("@/lib/trpc");
-  useTRPCMutation = () => trpc.ipeAnalytics.trackEvent.useMutation();
-} else {
-  useTRPCMutation = useNoOpMutation;
-}
+// Use real tRPC mutation on Manus, no-op on Vercel
+const useTRPCMutation: () => SafeMutation = isTRPCAvailable
+  ? () => trpc.ipeAnalytics.trackEvent.useMutation()
+  : useNoOpMutation;
 
 export function useIPEAnalytics() {
   const trackMutation = useTRPCMutation();

@@ -170,8 +170,8 @@
 - [x] Write vitest tests for progress tracker logic (data model + percentage + reset tests)
 - [ ] Visual test ZoneRenderer reordering on all 5 deep dive pages (pending browser test)
 - [ ] Visual test progress tracker across persona switches (pending browser test)
-- [ ] Full audit and checkpoint
-- [ ] Push to GitHub
+- [x] Full audit and checkpoint (01ac010d, 247 tests passing)
+- [x] Push to GitHub (01ac010 pushed to rt-finternet/vanda)
 
 ## Bug Fix
 - [x] Fix crash on /sg route (reported on vanda.neurail.io/sg)
@@ -182,3 +182,9 @@
 - [x] Fix tRPC crash: AIGuidePanel.tsx calls trpc.aiGuide.ask.useMutation() outside tRPC Provider in Vercel mode
 - [x] Test Vercel deployment after fix (vanda.neurail.io/sg loads PIN gate correctly)
 - [x] Verify Manus deployment still works after fix (222 tests pass, HMR confirmed)
+
+## Domain Configuration
+- [ ] Point vanda.neurail.io to Manus deployment (unitssg-k7gf8xok.manus.space)
+- [ ] Add custom domain in Manus Settings > Domains
+- [ ] Update DNS CNAME record at neurail.io registrar
+- [ ] Verify domain is working
