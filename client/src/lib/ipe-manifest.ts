@@ -820,6 +820,235 @@ const CROSS_PERSONA_SUGGESTIONS: CrossPersonaSuggestion[] = [
     toPersona: "ibf-workforce",
     text: "The workforce transition is a key consideration. See how IBF is planning skills development for your teams.",
   },
+  // ── Workflow: Atomic DvP ──
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/workflows/atomic-dvp",
+    toPersona: "mas-supervisory",
+    text: "For the regulatory safeguards behind atomic settlement, including real-time supervisory monitoring and circuit breakers, see the MAS Supervisory perspective.",
+  },
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/workflows/atomic-dvp",
+    toPersona: "sfa-builders",
+    text: "To understand the smart contract mechanics powering atomic DvP, including pre-hooks, post-hooks, and escrow logic, see the SFA/Builders technical view.",
+  },
+  // ── Workflow: Collateral Mobilisation ──
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/workflows/collateral-mobilisation",
+    toPersona: "asset-managers",
+    text: "For the portfolio-level impact of cross-asset collateral mobility, see how Asset Managers view the transformation of margin management.",
+  },
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/workflows/collateral-mobilisation",
+    toPersona: "mas-policy",
+    text: "For the policy framework enabling cross-depository collateral, including CDP-MEPS+ bridge rules and haircut standards, see the MAS Policy perspective.",
+  },
+  // ── Workflow: Commodities Collateral ──
+  {
+    fromPersona: "investors",
+    section: "/sg/workflows/commodities-collateral",
+    toPersona: "capital-markets",
+    text: "For the institutional structuring behind commodities-backed financing, including repo mechanics and margin frameworks, see the Capital Markets view.",
+  },
+  {
+    fromPersona: "asset-managers",
+    section: "/sg/workflows/commodities-collateral",
+    toPersona: "bank-csuite",
+    text: "To understand the bank custody and vault infrastructure supporting commodities collateral, see the Bank C-Suite perspective on DBS and OCBC roles.",
+  },
+  // ── Workflow: Institutional FX & Securities ──
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/workflows/institutional-fx",
+    toPersona: "mas-policy",
+    text: "For the regulatory corridor framework enabling cross-border FX settlement, including CLS integration and CBDC interoperability, see the MAS Policy perspective.",
+  },
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/workflows/institutional-fx",
+    toPersona: "asset-managers",
+    text: "For the fund distribution impact of institutional FX automation, see how Asset Managers view cross-border NAV settlement and multi-currency operations.",
+  },
+  // ── Expanded workflow coverage: ensure every major persona sees a callout ──
+  // CDP Bridge
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/cdp-bridge",
+    toPersona: "bank-csuite",
+    text: "To understand the commercial incentive for banks to adopt the CDP Bridge, see how Bank C-Suites evaluate the cost savings and new revenue streams.",
+  },
+  {
+    fromPersona: "mas-fintech",
+    section: "/sg/workflows/cdp-bridge",
+    toPersona: "sfa-builders",
+    text: "For the developer experience of building on the CDP Bridge API, see how SFA/Builders evaluate the integration toolkit and pre-hooks.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/cdp-bridge",
+    toPersona: "mas-supervisory",
+    text: "To understand the compliance layer embedded in the CDP Bridge, see how MAS Supervisory evaluates the embedded audit trail and licence checks.",
+  },
+  {
+    fromPersona: "investors",
+    section: "/sg/workflows/cdp-bridge",
+    toPersona: "capital-markets",
+    text: "For the institutional settlement mechanics behind CDP Bridge, see how Capital Markets teams evaluate T+0 atomic DvP and netting.",
+  },
+  // Atomic DvP
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/atomic-dvp",
+    toPersona: "mas-supervisory",
+    text: "For the systemic risk reduction from atomic settlement, see how MAS Supervisory evaluates the elimination of settlement fails and counterparty exposure.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/atomic-dvp",
+    toPersona: "capital-markets",
+    text: "To understand the institutional demand for atomic DvP, see how Capital Markets teams evaluate the impact on bond settlement and repo operations.",
+  },
+  {
+    fromPersona: "investors",
+    section: "/sg/workflows/atomic-dvp",
+    toPersona: "bank-csuite",
+    text: "For the bank-level economics of atomic settlement, see how Bank C-Suites evaluate the capital efficiency gains and reduced operational risk.",
+  },
+  // Collateral Mobilisation
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/collateral-mobilisation",
+    toPersona: "capital-markets",
+    text: "For the market impact of cross-asset collateral mobility, see how Capital Markets teams evaluate repo against tokenised gold and fund units.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/collateral-mobilisation",
+    toPersona: "asset-managers",
+    text: "To understand the fund management use case for collateral mobility, see how Asset Managers evaluate NAV-based lending and fund unit pledging.",
+  },
+  {
+    fromPersona: "investors",
+    section: "/sg/workflows/collateral-mobilisation",
+    toPersona: "bank-csuite",
+    text: "For the bank revenue opportunity from collateral services, see how Bank C-Suites evaluate the new lending products enabled by tokenised collateral.",
+  },
+  // VCC Tokenisation
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/vcc-tokenisation",
+    toPersona: "imas-asset-mgmt",
+    text: "For the fund industry transformation from VCC tokenisation, see how IMAS members evaluate the impact on Singapore's $5.4T AUM.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/vcc-tokenisation",
+    toPersona: "asset-managers",
+    text: "To understand the operational demand for VCC tokenisation, see how Asset Managers evaluate NAV automation and cross-border distribution.",
+  },
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/workflows/vcc-tokenisation",
+    toPersona: "investors",
+    text: "For the end-investor experience of tokenised VCC units, see how Investors evaluate fractional access and 24/7 secondary trading.",
+  },
+  // Gold Tokenisation
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/gold-tokenisation",
+    toPersona: "capital-markets",
+    text: "For the institutional gold market impact, see how Capital Markets teams evaluate gold-backed repo, collateral pledging, and LBMA integration.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/gold-tokenisation",
+    toPersona: "investors",
+    text: "To understand the end-user experience of gold tokets, see how Investors evaluate gram-level ownership, 24/7 trading, and physical redemption.",
+  },
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/workflows/gold-tokenisation",
+    toPersona: "mas-supervisory",
+    text: "For the regulatory framework governing gold tokenisation, see how MAS Supervisory evaluates IPM GST exemption, SBMA standards, and custody requirements.",
+  },
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/workflows/gold-tokenisation",
+    toPersona: "asset-managers",
+    text: "For the portfolio allocation impact of tokenised gold, see how Asset Managers evaluate gold as a new collateral class and portfolio diversifier.",
+  },
+  // Commodities Collateral
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/commodities-collateral",
+    toPersona: "bank-csuite",
+    text: "For the bank revenue case from commodity-backed lending, see how Bank C-Suites evaluate the new collateral acceptance and margin efficiency.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/commodities-collateral",
+    toPersona: "capital-markets",
+    text: "To understand the structured product opportunity, see how Capital Markets teams evaluate commodity-backed notes and collateral transformation.",
+  },
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/workflows/commodities-collateral",
+    toPersona: "mas-supervisory",
+    text: "For the regulatory treatment of commodity collateral, see how MAS Supervisory evaluates haircut models, valuation frequency, and eligible commodity standards.",
+  },
+  // Cross-Border Settlement
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/cross-border",
+    toPersona: "mas-policy",
+    text: "For the bilateral corridor framework enabling cross-border settlement, see how MAS Policy evaluates the ASEAN+3 expansion and CBDC interoperability.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/cross-border",
+    toPersona: "bank-csuite",
+    text: "To understand the bank business case for cross-border settlement, see how Bank C-Suites evaluate the FX revenue and correspondent banking disruption.",
+  },
+  {
+    fromPersona: "capital-markets",
+    section: "/sg/workflows/cross-border",
+    toPersona: "investors",
+    text: "For the end-investor impact of cross-border access, see how Investors evaluate 24/7 multi-currency trading and reduced settlement costs.",
+  },
+  {
+    fromPersona: "bank-csuite",
+    section: "/sg/workflows/cross-border",
+    toPersona: "mas-fintech",
+    text: "For the technical architecture of cross-border interoperability, see how MAS FinTech evaluates the UILP bridge protocol and multi-chain settlement.",
+  },
+  // Institutional FX
+  {
+    fromPersona: "mas-board",
+    section: "/sg/workflows/institutional-fx",
+    toPersona: "bank-csuite",
+    text: "For the bank P&L impact of institutional FX automation, see how Bank C-Suites evaluate the FX desk transformation and new revenue streams.",
+  },
+  {
+    fromPersona: "sfa-builders",
+    section: "/sg/workflows/institutional-fx",
+    toPersona: "mas-fintech",
+    text: "To understand the protocol-level FX mechanics, see how MAS FinTech evaluates the XSGD integration, UILP routing, and atomic multi-leg settlement.",
+  },
+  {
+    fromPersona: "investors",
+    section: "/sg/workflows/institutional-fx",
+    toPersona: "capital-markets",
+    text: "For the institutional FX market structure, see how Capital Markets teams evaluate the impact on FX forwards, swaps, and cross-currency repo.",
+  },
+  {
+    fromPersona: "asset-managers",
+    section: "/sg/workflows/institutional-fx",
+    toPersona: "bank-csuite",
+    text: "For the bank custody and execution perspective on FX automation, see how Bank C-Suites evaluate the operational cost reduction and client experience.",
+  },
 ];
 
 // ─── Next-Section Recommendations (60+ chains) ──────────────────────────────

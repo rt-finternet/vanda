@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CrossPersonaCallout } from "@/components/IPEComponents";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CinematicBackground } from "@/components/motion";
@@ -255,6 +256,8 @@ export default function SGWorkflowCDPBridge() {
           </div>
         </div>
 
+        {/* IPE Cross-Persona Callout */}
+        <CrossPersonaCallout />
         {/* Footer */}
         <div className="mt-12 pt-6 text-center" style={{ borderTop: `1px solid ${SG.border}` }}>
           <img src={SG_LOGO} alt="UNITS|SG" className="h-10 w-auto mx-auto mb-2 opacity-25" />

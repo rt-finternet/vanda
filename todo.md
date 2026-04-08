@@ -146,3 +146,11 @@
 - [x] Run all vitest unit tests and fix any failures (197 tests pass, 9 test files)
 - [x] Visual test all 12 personas (persona selection, cross-persona callout, next-section bar, AI Guide context)
 - [x] Fix all issues found during comprehensive testing (ibf-skills→ibf-workforce, unique persona colors, added 7 missing next-section recs, added cross-persona suggestions for /sg/problem)
+
+## IPE Enhancements (Round 2)
+- [x] Extend CrossPersonaCallouts to all 8 workflow pages (CDP Bridge, Atomic DvP, Collateral Mobilisation, VCC Fund Tokenisation, Gold Tokenisation, Commodities Collateral, Cross-Border Settlement, Institutional FX) — 105 total cross-persona suggestions, 44 workflow-specific
+- [x] Add cross-persona suggestions to manifest for all workflow page routes — 44 workflow-specific suggestions covering all 8 routes
+- [x] Add IPE analytics tracking (persona selections, cross-persona clicks, AI Guide queries) — ipe_analytics DB table, tRPC router, useIPEAnalytics hook, 5 integration points
+- [x] Build analytics tRPC router and database table — trackEvent mutation, getSummary/getRecent queries
+- [x] Build persona-driven content reordering (zone weight system) — CSS order-based reordering on Executive Summary
+- [x] Implement ZoneRenderer component that reorders content sections based on persona weights — animated transitions, reorder indicator banner

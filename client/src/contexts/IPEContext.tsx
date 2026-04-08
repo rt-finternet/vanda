@@ -1,8 +1,9 @@
 /**
- * VANDA IPE Context — The Brain
+ * VANDA IPE Context -- The Brain
  *
  * Tracks active persona, current page, and provides all IPE data
  * to the component tree. Persists persona selection in localStorage.
+ * Fires analytics events on persona selection.
  *
  * NO AMBITION DECAY.
  */
@@ -13,6 +14,7 @@ import {
   useCallback,
   useMemo,
   useEffect,
+  useRef,
   type ReactNode,
 } from "react";
 import {
@@ -28,8 +30,9 @@ import {
   type NarrativeArc,
   type PersonaGroup,
 } from "@/lib/ipe-manifest";
+import { trpc } from "@/lib/trpc";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ---- Types ----
 
 interface IPEState {
   /** Currently active persona (null = Linear/default mode) */
@@ -73,13 +76,14 @@ interface IPEActions {
 
 type IPEContextValue = IPEState & IPEActions;
 
-// ─── Context ─────────────────────────────────────────────────────────────────
+// ---- Context ----
 
 const IPEContext = createContext<IPEContextValue | null>(null);
 
 const STORAGE_KEY = "vanda_ipe_persona";
+const SESSION_KEY = "units_sg_session";
 
-// ─── Provider ────────────────────────────────────────────────────────────────
+// ---- Provider ----
 
 export function IPEProvider({ children }: { children: ReactNode }) {
   // Restore persona from localStorage
@@ -90,6 +94,13 @@ export function IPEProvider({ children }: { children: ReactNode }) {
   const [currentPage, setCurrentPage] = useState("/sg");
   const [selectorOpen, setSelectorOpen] = useState(false);
   const [aiGuideOpen, setAiGuideOpen] = useState(false);
+
+  // Analytics: fire-and-forget persona_select events
+  const trackMutation = trpc.ipeAnalytics.trackEvent.useMutation();
+  const currentPageRef = useRef(currentPage);
+  useEffect(() => {
+    currentPageRef.current = currentPage;
+  }, [currentPage]);
 
   // Derived state
   const activePersona = useMemo(
@@ -125,10 +136,22 @@ export function IPEProvider({ children }: { children: ReactNode }) {
     setPersonaId(id);
     if (id) {
       localStorage.setItem(STORAGE_KEY, id);
+      // Fire analytics event
+      try {
+        const sessionToken = localStorage.getItem(SESSION_KEY) ?? undefined;
+        trackMutation.mutate({
+          eventType: "persona_select",
+          personaId: id,
+          sectionPath: currentPageRef.current,
+          sessionToken,
+        });
+      } catch {
+        // Fire-and-forget: silently ignore analytics errors
+      }
     } else {
       localStorage.removeItem(STORAGE_KEY);
     }
-  }, []);
+  }, [trackMutation]);
 
   const toggleSelector = useCallback(
     () => setSelectorOpen((prev) => !prev),
@@ -194,7 +217,7 @@ export function IPEProvider({ children }: { children: ReactNode }) {
   return <IPEContext.Provider value={value}>{children}</IPEContext.Provider>;
 }
 
-// ─── Hook ────────────────────────────────────────────────────────────────────
+// ---- Hook ----
 
 export function useIPE(): IPEContextValue {
   const ctx = useContext(IPEContext);
@@ -204,7 +227,7 @@ export function useIPE(): IPEContextValue {
   return ctx;
 }
 
-// ─── Page Tracker Hook ───────────────────────────────────────────────────────
+// ---- Page Tracker Hook ----
 /**
  * Call this at the top of every portal page to keep IPE in sync with routing.
  * Usage: useIPEPageTracker("/sg/architecture");

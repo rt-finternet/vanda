@@ -56,3 +56,25 @@ export const accessLog = mysqlTable("access_log", {
   userAgent: text("userAgent"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
+
+/* ── IPE Analytics: Event Tracking ── */
+export const ipeAnalytics = mysqlTable("ipe_analytics", {
+  id: int("id").autoincrement().primaryKey(),
+  eventType: mysqlEnum("eventType", [
+    "persona_select",
+    "cross_persona_click",
+    "ai_guide_query",
+    "next_section_click",
+    "page_view",
+  ]).notNull(),
+  personaId: varchar("personaId", { length: 64 }).notNull(),
+  sectionPath: varchar("sectionPath", { length: 256 }).notNull(),
+  targetPersonaId: varchar("targetPersonaId", { length: 64 }),
+  targetSection: varchar("targetSection", { length: 256 }),
+  queryText: text("queryText"),
+  sessionToken: varchar("sessionToken", { length: 128 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type IpeAnalyticsEvent = typeof ipeAnalytics.$inferSelect;
+export type InsertIpeAnalyticsEvent = typeof ipeAnalytics.$inferInsert;

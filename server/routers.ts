@@ -5,6 +5,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { accessRouter } from "./routers/access";
 import { adminRouter } from "./routers/admin";
 import { aiGuideRouter } from "./routers/aiGuide";
+import { ipeAnalyticsRouter } from "./routers/ipeAnalytics";
 
 export const appRouter = router({
   system: systemRouter,
@@ -21,6 +22,7 @@ export const appRouter = router({
   access: accessRouter,
   admin: adminRouter,
   aiGuide: aiGuideRouter,
+  ipeAnalytics: ipeAnalyticsRouter,
 });
 
 export type AppRouter = typeof appRouter;

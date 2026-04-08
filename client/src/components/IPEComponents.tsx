@@ -14,6 +14,7 @@
 import { useIPE } from "@/contexts/IPEContext";
 import { SG } from "@/components/SGPortalNav";
 import { useLocation } from "wouter";
+import { useIPEAnalytics } from "@/hooks/useIPEAnalytics";
 import {
   Eye, ChevronRight, ArrowRight, Sparkles,
   Landmark, Globe, Zap, Shield, Building2, Users,
@@ -86,7 +87,8 @@ function getIconSm(name: string) {
  * Rendered within page content when a cross-persona suggestion exists.
  */
 export function CrossPersonaCallout() {
-  const { crossSuggestion, activePersona, manifest } = useIPE();
+  const { crossSuggestion, activePersona, manifest, currentPage } = useIPE();
+  const { trackCrossPersonaClick } = useIPEAnalytics();
 
   if (!crossSuggestion || !activePersona) return null;
 
@@ -124,13 +126,22 @@ export function CrossPersonaCallout() {
             {crossSuggestion.text}
           </p>
           <div className="mt-2">
-            <span className="text-xs text-slate-500">
+            <button
+              onClick={() => {
+                trackCrossPersonaClick(
+                  activePersona!.id,
+                  crossSuggestion!.toPersona,
+                  currentPage
+                );
+              }}
+              className="text-xs text-slate-500 hover:text-slate-300 transition-colors cursor-pointer"
+            >
               Switch to{" "}
               <span className="font-medium" style={{ color: targetPersona.color }}>
                 {targetPersona.shortName}
               </span>{" "}
               view in the persona selector
-            </span>
+            </button>
           </div>
         </div>
       </div>
@@ -145,7 +156,8 @@ export function CrossPersonaCallout() {
  * Shows the reason why this section is relevant.
  */
 export function NextSectionBar() {
-  const { nextRecommendation, activePersona } = useIPE();
+  const { nextRecommendation, activePersona, currentPage } = useIPE();
+  const { trackNextSectionClick } = useIPEAnalytics();
   const [, navigate] = useLocation();
   const [dismissed, setDismissed] = React.useState(false);
 
@@ -204,6 +216,11 @@ export function NextSectionBar() {
             </button>
             <button
               onClick={() => {
+                trackNextSectionClick(
+                  activePersona!.id,
+                  currentPage,
+                  nextRecommendation.nextSection
+                );
                 navigate(nextRecommendation.nextSection);
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}

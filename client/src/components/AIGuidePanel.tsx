@@ -12,6 +12,7 @@ import { useIPE } from "@/contexts/IPEContext";
 import { SG } from "@/components/SGPortalNav";
 import { trpc } from "@/lib/trpc";
 import { IS_VERCEL } from "@/lib/useApi";
+import { useIPEAnalytics } from "@/hooks/useIPEAnalytics";
 import {
   X, Send, Sparkles, User, Loader2, MessageCircle,
   ChevronDown, Bot,
@@ -111,6 +112,7 @@ export default function AIGuidePanel() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const askMutation = trpc.aiGuide.ask.useMutation();
+  const { trackAiGuideQuery } = useIPEAnalytics();
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -134,6 +136,13 @@ export default function AIGuidePanel() {
       setMessages((prev) => [...prev, userMessage]);
       setInput("");
       setIsLoading(true);
+
+      // Track AI Guide query
+      trackAiGuideQuery(
+        activePersona?.id ?? "linear",
+        currentPage,
+        text.trim()
+      );
 
       try {
         const result = await askMutation.mutateAsync({

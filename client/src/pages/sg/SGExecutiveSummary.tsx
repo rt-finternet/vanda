@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CrossPersonaCallout } from "@/components/IPEComponents";
+import ZoneRenderer from "@/components/ZoneRenderer";
 import { GlowingOrb, AnimatedCounter } from "@/components/motion";
 import {
   ChevronDown, ArrowRight, Zap, Layers, Shield, Network,
@@ -121,9 +122,12 @@ export default function SGExecutiveSummary() {
       </section>
 
       {/* ── Content ── */}
-      <div ref={contentRef} className="max-w-3xl mx-auto px-6 pb-24 space-y-24">
+      <div ref={contentRef} className="max-w-3xl mx-auto px-6 pb-24">
+
+        <ZoneRenderer className="space-y-24">
 
         {/* Section 1: The Problem */}
+        <ZoneRenderer.Zone zoneId="problem" naturalIndex={0}>
         <RevealSection id="problem">
           <section>
             <SectionNumber num={1} accent={SG.red} />
@@ -188,8 +192,10 @@ export default function SGExecutiveSummary() {
             </Link>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
         {/* Section 2: The Solution */}
+        <ZoneRenderer.Zone zoneId="solution" naturalIndex={1}>
         <RevealSection id="solution" delay={100}>
           <section>
             <SectionNumber num={2} accent={SG.masTeal} />
@@ -256,8 +262,10 @@ export default function SGExecutiveSummary() {
             </Link>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Section 3: What Changes? */}
+        {/* Section 3: What Changes */}
+        <ZoneRenderer.Zone zoneId="what-changes" naturalIndex={2}>
         <RevealSection id="what-changes" delay={100}>
           <section>
             <SectionNumber num={3} accent={SG.finternetCyan} />
@@ -327,8 +335,10 @@ export default function SGExecutiveSummary() {
             </Link>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
         {/* Section 4: Asset Classes */}
+        <ZoneRenderer.Zone zoneId="assets" naturalIndex={3}>
         <RevealSection id="assets" delay={100}>
           <section>
             <SectionNumber num={4} accent={SG.finternetAmber} />
@@ -395,8 +405,10 @@ export default function SGExecutiveSummary() {
             </Link>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Section 5: Funding & Participants */}
+        {/* Section 5: Funding */}
+        <ZoneRenderer.Zone zoneId="funding" naturalIndex={4}>
         <RevealSection id="funding" delay={100}>
           <section>
             <SectionNumber num={5} accent={SG.nusOrange} />
@@ -464,8 +476,10 @@ export default function SGExecutiveSummary() {
             </Link>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
         {/* Section 6: Why This Works */}
+        <ZoneRenderer.Zone zoneId="why-works" naturalIndex={5}>
         <RevealSection id="why-works" delay={100}>
           <section>
             <SectionNumber num={6} accent={SG.red} />
@@ -494,6 +508,9 @@ export default function SGExecutiveSummary() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
+
+        </ZoneRenderer>
 
         {/* ── IPE Cross-Persona Callout ── */}
         <CrossPersonaCallout />
