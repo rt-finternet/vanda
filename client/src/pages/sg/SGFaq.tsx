@@ -245,7 +245,7 @@ export default function SGFaq() {
   return (
     <>
       <SGPortalNav />
-      <div className="min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
+      <div className="vanda-portal min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
         <CinematicBackground />
         <div className="max-w-4xl mx-auto px-6 py-16">
           {/* Header */}
@@ -253,7 +253,7 @@ export default function SGFaq() {
             <Link href="/sg" className="inline-flex items-center gap-2 text-sm mb-6 transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}>
               <ArrowLeft className="w-4 h-4" /> Back to Executive Summary
             </Link>
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-4 mb-3">
               <FileText className="w-7 h-7" style={{ color: SG.finternetAmber }} />
               <span className="text-xs font-mono tracking-wider" style={{ color: `${SG.finternetAmber}99` }}>TECHNICAL APPENDIX</span>
             </div>

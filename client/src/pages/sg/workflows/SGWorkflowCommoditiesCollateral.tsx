@@ -160,7 +160,7 @@ export default function SGWorkflowCommoditiesCollateral() {
   return (
     <>
       <SGPortalNav />
-      <div className="min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
+      <div className="vanda-portal min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
         <CinematicBackground />
         <div className="max-w-6xl mx-auto px-6 py-16">
           {/* Header */}
@@ -168,7 +168,7 @@ export default function SGWorkflowCommoditiesCollateral() {
             <Link href="/sg/workflows" className="inline-flex items-center gap-2 text-sm mb-6 transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}>
               <ArrowLeft className="w-4 h-4" /> Back to Workflows
             </Link>
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-4 mb-3">
               <Gem className="w-7 h-7" style={{ color: SG.finternetAmber }} />
               <span className="text-xs font-mono tracking-wider" style={{ color: `${SG.finternetAmber}90` }}>UNITS|SG WORKFLOW</span>
             </div>
@@ -179,7 +179,7 @@ export default function SGWorkflowCommoditiesCollateral() {
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               {["DBS Bank", "SGX-DC", "Brink's Singapore", "Le Freeport", "MAS", "SBMA", "SGS Bonds", "LBMA"].map((tag) => (
-                <span key={tag} className="px-2.5 py-1 rounded-full text-[10px] font-medium" style={{ background: `${SG.finternetAmber}15`, color: `${SG.finternetAmber}`, border: `1px solid ${SG.finternetAmber}30` }}>
+                <span key={tag} className="px-3 py-1.5 rounded-full text-[10px] font-medium" style={{ background: `${SG.finternetAmber}15`, color: `${SG.finternetAmber}`, border: `1px solid ${SG.finternetAmber}30` }}>
                   {tag}
                 </span>
               ))}
@@ -219,7 +219,7 @@ export default function SGWorkflowCommoditiesCollateral() {
                     <StepIcon className="w-7 h-7" style={{ color: step.color }} />
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
+                    <div className="flex items-center gap-4 mb-1">
                       <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: `${step.color}cc` }}>
                         Step {step.id} of {STEPS.length}
                       </span>
@@ -289,7 +289,7 @@ export default function SGWorkflowCommoditiesCollateral() {
                       { label: "DBS Equities", value: "SGD 200K", color: "#8b5cf6" },
                     ].map((a) => (
                       <div key={a.label} className="flex justify-between items-center text-sm">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-3">
                           <div className="w-2 h-2 rounded-full" style={{ background: a.color }} />
                           <span style={{ color: "rgba(255,255,255,0.45)" }}>{a.label}</span>
                         </div>

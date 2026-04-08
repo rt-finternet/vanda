@@ -34,7 +34,7 @@ function RevealSection({ children, id, delay = 0 }: { children: React.ReactNode;
 
 export default function SGDeepDiveUnsponsoredTokets() {
   return (
-    <div className="min-h-screen text-white relative" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white relative" style={{ background: SG.dark }}>
       <CinematicBackground />
       <SGPortalNav />
 
@@ -70,13 +70,13 @@ export default function SGDeepDiveUnsponsoredTokets() {
               on UNITS|SG.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
               {[
                 { label: "Traditional ADR", desc: "Requires issuer cooperation. Bank-intermediated. Limited to equities. Trading hours restricted to local exchange. Settlement T+2.", color: SG.red, status: "Legacy" },
                 { label: "Sponsored toket", desc: "Issuer actively participates. Token Programs managed by issuer. Full lifecycle control. Best for new issuances on the UNITS network.", color: SG.masTeal, status: "Native" },
                 { label: "Unsponsored toket", desc: "No issuer involvement. Lock underlying at foreign CSD. Mint programmable toket on UNITS|SG. 24/7 trading. Atomic DvP. P-Toket composable.", color: SG.finternetAmber, status: "Innovation" },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}12` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}12` }}>
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm font-semibold text-white/90">{item.label}</div>
                     <span className="text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${item.color}15`, color: item.color }}>{item.status}</span>
@@ -86,11 +86,11 @@ export default function SGDeepDiveUnsponsoredTokets() {
               ))}
             </div>
 
-            <div className="p-4 rounded-xl" style={{ background: `${SG.finternetAmber}06`, border: `1px solid ${SG.finternetAmber}12` }}>
+            <div className="p-5 rounded-xl" style={{ background: `${SG.finternetAmber}06`, border: `1px solid ${SG.finternetAmber}12` }}>
               <div className="flex items-start gap-3">
-                <Globe className="w-5 h-5 shrink-0 mt-0.5" style={{ color: SG.finternetAmber }} />
+                <Globe className="w-5 h-5 shrink-0 mt-1" style={{ color: SG.finternetAmber }} />
                 <div>
-                  <div className="text-sm font-medium text-white/80 mb-1">The global access thesis</div>
+                  <div className="text-sm font-medium text-white/80 mb-2">The global access thesis</div>
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
                     Any security held at any major global depository (Euroclear, DTCC, JASDEC, ASX, HKEX)
                     can be represented as an unsponsored toket on UNITS|SG. Singapore becomes a 24/7
@@ -121,7 +121,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
                 { step: "3", label: "Mint", desc: "An unsponsored toket is minted on the UNITS|SG network. The toket represents a 1:1 claim on the locked underlying. It inherits the same tokenClass standard as all other tokets, making it composable, collateralisable, and programmable.", color: SG.finternetCyan, icon: Coins },
                 { step: "4", label: "Distribute", desc: "The toket is available for 24/7 trading, atomic DvP settlement against XSGD, inclusion in P-Tokets, use as repo collateral, and cross-platform transfer across all six tokenisation platforms.", color: SG.finternetAmber, icon: ArrowRight },
               ].map((s, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${s.color}12` }}>
                     <s.icon className="w-5 h-5" style={{ color: s.color }} />
                   </div>
@@ -154,7 +154,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
                 { step: "3", label: "Release instruction", desc: "The cross-ledger gateway sends a release instruction to the foreign CSD via the Global CSD Adapter. The instruction is authenticated and signed.", color: SG.finternetCyan, icon: Unlock },
                 { step: "4", label: "Delivery", desc: "The foreign CSD releases the underlying security from the segregated custody account. The traditional security is delivered to the holder's foreign custody account or nominee.", color: SG.masTeal, icon: Package },
               ].map((s, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${s.color}12` }}>
                     <s.icon className="w-5 h-5" style={{ color: s.color }} />
                   </div>
@@ -263,7 +263,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
                   color: SG.masTeal,
                 },
               ].map((tp, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${tp.color}04`, border: `1px solid ${tp.color}10` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${tp.color}04`, border: `1px solid ${tp.color}10` }}>
                   <div className="flex items-center gap-2 mb-2">
                     <tp.icon className="w-4 h-4" style={{ color: tp.color }} />
                     <div className="text-sm font-semibold text-white/90">{tp.program}</div>
@@ -280,7 +280,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
           <section>
             <h2 className="text-2xl font-light mb-4">Singapore <span className="font-semibold">use cases</span></h2>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   title: "Global wealth portfolio",
@@ -323,11 +323,11 @@ export default function SGDeepDiveUnsponsoredTokets() {
                   <div className="p-5 space-y-3" style={{ background: `${uc.color}03` }}>
                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{uc.scenario}</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      <div className="p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+                      <div className="p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
                         <div className="text-[10px] uppercase tracking-wider mb-1 text-white/30">Today</div>
                         <p className="text-[11px] leading-relaxed text-white/40">{uc.today}</p>
                       </div>
-                      <div className="p-3 rounded-lg" style={{ background: `${uc.color}06`, border: `1px solid ${uc.color}10` }}>
+                      <div className="p-4 rounded-lg" style={{ background: `${uc.color}06`, border: `1px solid ${uc.color}10` }}>
                         <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: uc.color }}>With UNITS</div>
                         <p className="text-[11px] leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{uc.units}</p>
                       </div>
@@ -400,7 +400,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
                   { metric: "T+0", label: "Settlement finality" },
                   { metric: "1:1", label: "Backed by underlying" },
                 ].map((m, i) => (
-                  <div key={i} className="text-center p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div key={i} className="text-center p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
                     <div className="text-xl font-bold" style={{ color: SG.finternetAmber }}>{m.metric}</div>
                     <div className="text-[10px] text-white/40 mt-1">{m.label}</div>
                   </div>
@@ -413,7 +413,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
         {/* Knowledge Base */}
         <RevealSection id="knowledge-base" delay={100}>
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <img src={SG_LOGO} alt="UNITS|SG" className="h-6" />
               <h2 className="text-xl font-light">UNITS <span className="font-semibold">Knowledge Base</span></h2>
             </div>
@@ -428,11 +428,11 @@ export default function SGDeepDiveUnsponsoredTokets() {
                 { label: "Cross-Border Settlement", href: "/sg/workflow/cross-border-settlement", desc: "Multi-corridor settlement workflow" },
                 { label: "Asset Classes", href: "/sg/assets", desc: "Nine asset classes on UNITS|SG" },
               ].map((link, i) => (
-                <Link key={i} href={link.href} className="flex items-start gap-3 p-3 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
-                  <BookOpen className="w-4 h-4 shrink-0 mt-0.5" style={{ color: `${SG.finternetAmber}60` }} />
+                <Link key={i} href={link.href} className="flex items-start gap-3 p-4 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
+                  <BookOpen className="w-4 h-4 shrink-0 mt-1" style={{ color: `${SG.finternetAmber}60` }} />
                   <div>
                     <div className="text-sm text-white/70 hover:text-white/90 transition-colors">{link.label}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
+                    <div className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
                   </div>
                 </Link>
               ))}
@@ -447,7 +447,7 @@ export default function SGDeepDiveUnsponsoredTokets() {
               <img src={SG_LOGO} alt="UNITS|SG" className="h-8 opacity-40" />
               <div>
                 <div className="text-xs text-white/30">UNITS|SG</div>
-                <div className="flex items-center gap-1.5 mt-0.5">
+                <div className="flex items-center gap-1.5 mt-1">
                   <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.15)" }}>Powered by</span>
                   <img src={FINTERNET_LOGO} alt="Finternet Labs" className="h-3 opacity-20" />
                 </div>

@@ -123,18 +123,18 @@ export default function SGWorkflowCollateralMobilisation() {
   const goBack = () => { if (currentStep > 0) setCurrentStep(currentStep - 1); };
 
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
       <div className="max-w-5xl mx-auto p-6 md:p-12">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-8">
+        <div className="flex items-center gap-4 mb-8">
           <Link href="/sg/workflows" className="text-sm flex items-center gap-1 transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}>
             <ArrowLeft className="w-4 h-4" /> Workflows
           </Link>
         </div>
 
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-4 mb-2">
             <Shield className="w-6 h-6" style={{ color: "#a78bfa" }} />
             <h1 className="text-2xl font-bold text-white">Collateral Mobilisation Workflow</h1>
           </div>
@@ -176,7 +176,7 @@ export default function SGWorkflowCollateralMobilisation() {
           className="p-8 rounded-2xl border mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500"
           style={{ background: SG.card, borderColor: `${step.color}30` }}
         >
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-5 mb-8">
             <div className="w-14 h-14 rounded-xl flex items-center justify-center" style={{ background: `${step.color}15` }}>
               <step.icon className="w-7 h-7" style={{ color: step.color }} />
             </div>
@@ -223,7 +223,7 @@ export default function SGWorkflowCollateralMobilisation() {
           <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>System State</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {Object.entries(step.systemState).map(([key, value]) => (
-              <div key={key} className="p-3 rounded-lg" style={{ background: SG.card }}>
+              <div key={key} className="p-4 rounded-lg" style={{ background: SG.card }}>
                 <p className="text-[10px] uppercase tracking-wider mb-1" style={{ color: "rgba(255,255,255,0.25)" }}>{key}</p>
                 <p className="text-xs font-medium" style={{ color: step.color }}>{value}</p>
               </div>
@@ -236,7 +236,7 @@ export default function SGWorkflowCollateralMobilisation() {
           <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>Execution Log</p>
           <div className="space-y-2 font-mono text-xs">
             {STEPS.slice(0, currentStep + 1).map((s, i) => (
-              <div key={i} className="flex items-center gap-2">
+              <div key={i} className="flex items-center gap-3">
                 {completedSteps.has(i) ? (
                   <CheckCircle2 className="w-3.5 h-3.5" style={{ color: SG.masTeal }} />
                 ) : i === currentStep ? (

@@ -30,7 +30,7 @@ function RevealSection({ id, children, delay = 0 }: { id: string; children: Reac
 
 export default function SGDeepDiveTokenisation() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -68,7 +68,7 @@ export default function SGDeepDiveTokenisation() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {/* Native */}
               <div className="rounded-xl p-5" style={{ background: `${SG.finternetCyan}06`, border: `1px solid ${SG.finternetCyan}15` }}>
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-3 mb-4">
                   <Box className="w-5 h-5" style={{ color: SG.finternetCyan }} />
                   <div className="text-sm font-semibold text-white/90">Native Tokenisation</div>
                 </div>
@@ -76,7 +76,7 @@ export default function SGDeepDiveTokenisation() {
                   The asset is born on-ledger. The toket IS the security. There is no underlying asset
                   in a traditional depository. The UNITS ledger is the single source of truth.
                 </p>
-                <div className="p-3 rounded-lg" style={{ background: `${SG.finternetCyan}08` }}>
+                <div className="p-4 rounded-lg" style={{ background: `${SG.finternetCyan}08` }}>
                   <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.finternetCyan}80` }}>SG Use Cases</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
                     New VCC carbon credit issuances, natively tokenised structured notes,
@@ -87,7 +87,7 @@ export default function SGDeepDiveTokenisation() {
 
               {/* Proxy */}
               <div className="rounded-xl p-5" style={{ background: `${SG.nusOrange}06`, border: `1px solid ${SG.nusOrange}15` }}>
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-3 mb-4">
                   <RefreshCw className="w-5 h-5" style={{ color: SG.nusOrange }} />
                   <div className="text-sm font-semibold text-white/90">Proxy Tokenisation</div>
                 </div>
@@ -95,7 +95,7 @@ export default function SGDeepDiveTokenisation() {
                   The asset exists in a traditional depository (CDP or MEPS+). A proxy toket is created
                   on UNITS that mirrors the position. The depository remains the legal record.
                 </p>
-                <div className="p-3 rounded-lg" style={{ background: `${SG.nusOrange}08` }}>
+                <div className="p-4 rounded-lg" style={{ background: `${SG.nusOrange}08` }}>
                   <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.nusOrange}80` }}>SG Use Cases</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Existing SGX equities, Singapore Government Securities, MAS Bills,
@@ -130,7 +130,7 @@ export default function SGDeepDiveTokenisation() {
                 <div className="text-xs uppercase tracking-wider mb-4" style={{ color: SG.nusOrange }}>
                   Example: DBS Bank Ordinary Shares (SGX: D05)
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {[
                     { field: "tokenClass", value: "SG1L01001701 (DBS Group Holdings)", desc: "The ISIN-linked asset definition with lifecycle rules", icon: Database },
                     { field: "tokenPool", value: "DBS-CDP-PROXY-001", desc: "Proxy pool linked to CDP depository position", icon: Layers },
@@ -141,7 +141,7 @@ export default function SGDeepDiveTokenisation() {
                     { field: "entitlements", value: "Dividend: SGD 0.54/share (next: 15 May)", desc: "Continuous economic entitlement data", icon: Coins },
                     { field: "programs", value: "CorporateAction, TransferRestriction", desc: "Active Token Programs governing lifecycle", icon: Zap },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
                       <item.icon className="w-4 h-4 mt-0.5 shrink-0" style={{ color: SG.nusOrange }} />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-baseline gap-2 mb-0.5">
@@ -170,7 +170,7 @@ export default function SGDeepDiveTokenisation() {
 
             <div className="rounded-2xl p-5" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
               <div className="text-xs uppercase tracking-wider mb-4" style={{ color: SG.red }}>CDP Proxy Creation Flow</div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {[
                   { step: "1", title: "Lock Position in CDP", desc: "The participant instructs CDP to lock a specified quantity of shares. The shares remain in CDP but are marked as 'tokenised' and cannot be transferred within CDP while locked.", color: SG.red },
                   { step: "2", title: "Verification", desc: "The UNITS settlement engine verifies the lock confirmation from CDP, validates the participant's credentials, and confirms the tokenClass definition matches the underlying security.", color: SG.nusOrange },
@@ -186,7 +186,7 @@ export default function SGDeepDiveTokenisation() {
                       {item.step !== "5" && <div className="w-px flex-1 mt-1" style={{ background: `${item.color}20` }} />}
                     </div>
                     <div className="pb-4 flex-1">
-                      <div className="text-sm font-medium text-white/90 mb-1">{item.title}</div>
+                      <div className="text-sm font-medium text-white/90 mb-2">{item.title}</div>
                       <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export default function SGDeepDiveTokenisation() {
               for MAS oversight and the unique characteristics of sovereign debt instruments.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
               {[
                 { label: "SGS Bonds", desc: "10-year, 20-year, 30-year Singapore Government Securities. Proxy tokets enable fractional ownership and collateral mobilisation.", icon: Landmark, color: SG.masTeal },
                 { label: "T-Bills", desc: "3-month, 6-month, 1-year Treasury Bills. Proxy tokets enable secondary market liquidity and automated rollover.", icon: FileCheck, color: SG.nusOrange },
@@ -214,7 +214,7 @@ export default function SGDeepDiveTokenisation() {
               ].map((item, i) => (
                 <div key={i} className="rounded-xl p-4" style={{ background: `${item.color}06`, border: `1px solid ${item.color}12` }}>
                   <item.icon className="w-5 h-5 mb-2" style={{ color: item.color }} />
-                  <div className="text-sm font-medium text-white/90 mb-1">{item.label}</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">{item.label}</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
                 </div>
               ))}
@@ -247,19 +247,19 @@ export default function SGDeepDiveTokenisation() {
             <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
               <div className="p-5 space-y-4">
                 {/* tokenClass */}
-                <div className="p-4 rounded-xl" style={{ background: `${SG.nusOrange}08`, border: `1px solid ${SG.nusOrange}12` }}>
+                <div className="p-5 rounded-xl" style={{ background: `${SG.nusOrange}08`, border: `1px solid ${SG.nusOrange}12` }}>
                   <div className="text-xs uppercase tracking-wider mb-2" style={{ color: SG.nusOrange }}>tokenClass</div>
-                  <div className="text-sm font-medium text-white/90 mb-1">Asset Definition</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">Asset Definition</div>
                   <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Defines the asset type, lifecycle rules, compliance requirements, and Token Programs.
                     One tokenClass per unique security.
                   </p>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="p-2 rounded-lg text-[10px]" style={{ background: `${SG.nusOrange}06` }}>
+                    <div className="p-3 rounded-lg text-[10px]" style={{ background: `${SG.nusOrange}06` }}>
                       <span style={{ color: `${SG.nusOrange}80` }}>Example:</span>
                       <span className="text-white/50 ml-1">SG1L01001701 (DBS Shares)</span>
                     </div>
-                    <div className="p-2 rounded-lg text-[10px]" style={{ background: `${SG.nusOrange}06` }}>
+                    <div className="p-3 rounded-lg text-[10px]" style={{ background: `${SG.nusOrange}06` }}>
                       <span style={{ color: `${SG.nusOrange}80` }}>Example:</span>
                       <span className="text-white/50 ml-1">SGXZ12345678 (SGS 10Y Bond)</span>
                     </div>
@@ -267,19 +267,19 @@ export default function SGDeepDiveTokenisation() {
                 </div>
 
                 {/* tokenPool */}
-                <div className="p-4 rounded-xl" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}12` }}>
+                <div className="p-5 rounded-xl" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}12` }}>
                   <div className="text-xs uppercase tracking-wider mb-2" style={{ color: SG.masTeal }}>tokenPool</div>
-                  <div className="text-sm font-medium text-white/90 mb-1">Supply Management</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">Supply Management</div>
                   <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Controls issuance, burning, and total supply for a specific tranche or proxy source.
                     Multiple pools can exist per tokenClass (e.g., CDP proxy pool and native issuance pool).
                   </p>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="p-2 rounded-lg text-[10px]" style={{ background: `${SG.masTeal}06` }}>
+                    <div className="p-3 rounded-lg text-[10px]" style={{ background: `${SG.masTeal}06` }}>
                       <span style={{ color: `${SG.masTeal}80` }}>Proxy pool:</span>
                       <span className="text-white/50 ml-1">DBS-CDP-PROXY (locked in CDP)</span>
                     </div>
-                    <div className="p-2 rounded-lg text-[10px]" style={{ background: `${SG.masTeal}06` }}>
+                    <div className="p-3 rounded-lg text-[10px]" style={{ background: `${SG.masTeal}06` }}>
                       <span style={{ color: `${SG.masTeal}80` }}>Proxy pool:</span>
                       <span className="text-white/50 ml-1">SGS10Y-MEPS-PROXY (locked in MEPS+)</span>
                     </div>
@@ -287,9 +287,9 @@ export default function SGDeepDiveTokenisation() {
                 </div>
 
                 {/* toket */}
-                <div className="p-4 rounded-xl" style={{ background: `${SG.finternetCyan}08`, border: `1px solid ${SG.finternetCyan}12` }}>
+                <div className="p-5 rounded-xl" style={{ background: `${SG.finternetCyan}08`, border: `1px solid ${SG.finternetCyan}12` }}>
                   <div className="text-xs uppercase tracking-wider mb-2" style={{ color: SG.finternetCyan }}>toket</div>
-                  <div className="text-sm font-medium text-white/90 mb-1">Individual Units</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">Individual Units</div>
                   <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
                     The actual units held in participant wallets. Each toket carries the full data structure
                     (owner, credentials, encumbrance, entitlements) and can be transferred, encumbered,
@@ -310,7 +310,7 @@ export default function SGDeepDiveTokenisation() {
               in Singapore by making them programmable, composable, and continuously settled.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   title: "Cross-Depository Composability",
@@ -343,10 +343,10 @@ export default function SGDeepDiveTokenisation() {
                   color: SG.red,
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
-                  <item.icon className="w-5 h-5 shrink-0 mt-0.5" style={{ color: item.color }} />
+                <div key={i} className="flex gap-4 p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                  <item.icon className="w-5 h-5 shrink-0 mt-1" style={{ color: item.color }} />
                   <div>
-                    <div className="text-sm font-medium text-white/90 mb-1">{item.title}</div>
+                    <div className="text-sm font-medium text-white/90 mb-2">{item.title}</div>
                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                   </div>
                 </div>

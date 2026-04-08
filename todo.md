@@ -184,7 +184,19 @@
 - [x] Verify Manus deployment still works after fix (222 tests pass, HMR confirmed)
 
 ## Domain Configuration
-- [ ] Point vanda.neurail.io to Manus deployment (unitssg-k7gf8xok.manus.space)
-- [ ] Add custom domain in Manus Settings > Domains
-- [ ] Update DNS CNAME record at neurail.io registrar
-- [ ] Verify domain is working
+- [x] Point vanda.neurail.io to Manus deployment (vanda-singapore.manus.space)
+- [x] Add custom domain in Manus Settings > Domains (vanda-singapore.manus.space)
+- [x] Update DNS CNAME record at neurail.io registrar (Porkbun/Cloudflare)
+- [x] Verify domain is working (server: cloudflare, portal loads correctly)
+- [x] Fix require() crash on Manus production (replaced CommonJS require with ESM imports)
+
+## Spacing / Breathing Room Fix
+- [x] Audit all SG portal pages for text-to-border cramping
+- [x] Fix SGExecutiveSummary spacing (6 sections: stat cards p-6, asset grid p-5 gap-6, capability stats p-4, architecture features mb-1.5, participant tags py-2, why-works leading-relaxed)
+- [x] Fix SGProblem spacing (CDP/MEPS+ stat cells p-5, card headers py-5, fragmentation items p-5, comparison cells p-5)
+- [x] Fix SGArchitecture spacing (layer headers py-4, body panels py-5, protocol subcards p-4, GL1 cards p-5, BYOW steps p-5, observer rows p-5)
+- [x] Fix SGCapabilities spacing (settlement cards p-5, repo steps p-5, collateral items p-4, unsponsored flow p-5, table cells p-5)
+- [x] Fix SGAssets spacing (AssetClassCard headers py-5, stat cells p-4, VCC cards p-5, composability items p-4)
+- [x] Fix SGFunding spacing (card headers py-5, participant tiles p-4, rollout headers py-4, revenue cards leading-relaxed, table cells p-5)
+- [x] Fix deep-dive + workflow + FAQ pages via global CSS (.vanda-portal class + CSS overrides in index.css for p-3→p-4, p-4→p-5, py-1.5→py-2, text-xs line-height 1.6)
+- [x] Verify visually (DVP deep-dive, Gold Tokenisation workflow) and run tests (247 passing)

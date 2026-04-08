@@ -34,7 +34,7 @@ function RevealSection({ children, id, delay = 0 }: { children: React.ReactNode;
 
 export default function SGDeepDiveCrossLedger() {
   return (
-    <div className="min-h-screen text-white relative" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white relative" style={{ background: SG.dark }}>
       <CinematicBackground />
       <SGPortalNav />
 
@@ -77,8 +77,8 @@ export default function SGDeepDiveCrossLedger() {
                 { problem: "No unified portfolio view", desc: "A wealth manager with positions across CDP, ADDX, and InvestaX must reconcile three separate systems. No single source of truth exists.", color: SG.finternetAmber },
                 { problem: "Manual cross-border", desc: "Accessing a US Treasury or German Bund requires foreign brokerage accounts, correspondent custody chains, and T+2 settlement in the foreign market.", color: SG.finternetCyan },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
-                  <div className="text-sm font-semibold text-white/90 mb-1">{item.problem}</div>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                  <div className="text-sm font-semibold text-white/90 mb-2">{item.problem}</div>
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</p>
                 </div>
               ))}
@@ -98,7 +98,7 @@ export default function SGDeepDiveCrossLedger() {
               transactability (executing operations on external ledgers through a unified API).
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   type: "Depository Adapters",
@@ -144,7 +144,7 @@ export default function SGDeepDiveCrossLedger() {
                       <div className="text-[10px] uppercase tracking-wider mb-2" style={{ color: `${adapter.color}70` }}>Connected systems</div>
                       <div className="flex flex-wrap gap-2">
                         {adapter.targets.map((t, j) => (
-                          <span key={j} className="text-[10px] px-2.5 py-1 rounded-full" style={{ background: `${adapter.color}10`, color: `${adapter.color}90` }}>{t}</span>
+                          <span key={j} className="text-[10px] px-3 py-1.5 rounded-full" style={{ background: `${adapter.color}10`, color: `${adapter.color}90` }}>{t}</span>
                         ))}
                       </div>
                     </div>
@@ -198,11 +198,11 @@ export default function SGDeepDiveCrossLedger() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}12` }}>
+            <div className="p-5 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}12` }}>
               <div className="flex items-start gap-3">
-                <Eye className="w-5 h-5 shrink-0 mt-0.5" style={{ color: SG.masTeal }} />
+                <Eye className="w-5 h-5 shrink-0 mt-1" style={{ color: SG.masTeal }} />
                 <div>
-                  <div className="text-sm font-medium text-white/80 mb-1">MAS observer verification</div>
+                  <div className="text-sm font-medium text-white/80 mb-2">MAS observer verification</div>
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
                     The MAS observer node can independently verify any toket's state commitment
                     without operational control. This provides real-time supervisory assurance that
@@ -233,7 +233,7 @@ export default function SGDeepDiveCrossLedger() {
                 { step: "5", label: "Atomic commit", desc: "Both state updates are committed atomically. If either leg fails, both roll back. The cross-ledger gateway ensures all-or-nothing execution.", color: SG.masTeal, icon: Zap },
                 { step: "6", label: "State publication", desc: "New state commitments for both tokets are signed and published. MAS observer node receives real-time notification of the cross-depository collateral movement.", color: SG.red, icon: Eye },
               ].map((s, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${s.color}12` }}>
                     <s.icon className="w-5 h-5" style={{ color: s.color }} />
                   </div>
@@ -348,7 +348,7 @@ export default function SGDeepDiveCrossLedger() {
                   mechanism: "Native GL1 interoperability. No adapter required for GL1-to-GL1 transfers. Shared standards enable direct cross-network settlement.",
                 },
               ].map((c, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${c.color}04`, border: `1px solid ${c.color}10` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${c.color}04`, border: `1px solid ${c.color}10` }}>
                   <div className="flex items-center gap-2 mb-2">
                     <c.icon className="w-4 h-4" style={{ color: c.color }} />
                     <div className="text-sm font-semibold text-white/90">{c.corridor}</div>
@@ -380,7 +380,7 @@ export default function SGDeepDiveCrossLedger() {
               trust assumptions.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   title: "Private ledger adapters (CDP, MEPS+)",
@@ -421,7 +421,7 @@ export default function SGDeepDiveCrossLedger() {
                     <div className="space-y-2">
                       {section.items.map((item, j) => (
                         <div key={j} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: `${section.color}60` }} />
+                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-1" style={{ color: `${section.color}60` }} />
                           <span className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item}</span>
                         </div>
                       ))}
@@ -473,7 +473,7 @@ export default function SGDeepDiveCrossLedger() {
         {/* Knowledge Base */}
         <RevealSection id="knowledge-base" delay={100}>
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <img src={SG_LOGO} alt="UNITS|SG" className="h-6" />
               <h2 className="text-xl font-light">UNITS <span className="font-semibold">Knowledge Base</span></h2>
             </div>
@@ -488,11 +488,11 @@ export default function SGDeepDiveCrossLedger() {
                 { label: "Precious Metals", href: "/sg/deep-dive/precious-metals", desc: "Gold and precious metals tokenisation" },
                 { label: "Cross-Border Settlement", href: "/sg/workflow/cross-border-settlement", desc: "Multi-corridor settlement workflow" },
               ].map((link, i) => (
-                <Link key={i} href={link.href} className="flex items-start gap-3 p-3 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
-                  <BookOpen className="w-4 h-4 shrink-0 mt-0.5" style={{ color: `${SG.finternetCyan}60` }} />
+                <Link key={i} href={link.href} className="flex items-start gap-3 p-4 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
+                  <BookOpen className="w-4 h-4 shrink-0 mt-1" style={{ color: `${SG.finternetCyan}60` }} />
                   <div>
                     <div className="text-sm text-white/70 hover:text-white/90 transition-colors">{link.label}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
+                    <div className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
                   </div>
                 </Link>
               ))}
@@ -507,7 +507,7 @@ export default function SGDeepDiveCrossLedger() {
               <img src={SG_LOGO} alt="UNITS|SG" className="h-8 opacity-40" />
               <div>
                 <div className="text-xs text-white/30">UNITS|SG</div>
-                <div className="flex items-center gap-1.5 mt-0.5">
+                <div className="flex items-center gap-1.5 mt-1">
                   <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.15)" }}>Powered by</span>
                   <img src={FINTERNET_LOGO} alt="Finternet Labs" className="h-3 opacity-20" />
                 </div>

@@ -167,7 +167,7 @@ export default function SGWorkflowGoldTokenisation() {
   return (
     <>
       <SGPortalNav />
-      <div className="min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
+      <div className="vanda-portal min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
         <CinematicBackground />
         <div className="max-w-6xl mx-auto px-6 py-16">
           {/* Header */}
@@ -175,7 +175,7 @@ export default function SGWorkflowGoldTokenisation() {
             <Link href="/sg/workflows" className="inline-flex items-center gap-2 text-sm mb-6 transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}>
               <ArrowLeft className="w-4 h-4" /> Back to Workflows
             </Link>
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-4 mb-3">
               <Gem className="w-7 h-7" style={{ color: SG.finternetAmber }} />
               <span className="text-xs font-mono tracking-wider" style={{ color: `${SG.finternetAmber}90` }}>UNITS|SG WORKFLOW</span>
             </div>
@@ -185,7 +185,7 @@ export default function SGWorkflowGoldTokenisation() {
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               {["Brink's Singapore", "DBS Private Banking", "OCBC Premier", "UOB Privilege", "HSBC International Wealth", "SBMA", "LBMA", "MAS", "StraitsX XSGD"].map((tag) => (
-                <span key={tag} className="px-2.5 py-1 rounded-full text-[10px] font-medium" style={{ background: `${SG.finternetAmber}15`, color: `${SG.finternetAmber}`, border: `1px solid ${SG.finternetAmber}30` }}>
+                <span key={tag} className="px-3 py-1.5 rounded-full text-[10px] font-medium" style={{ background: `${SG.finternetAmber}15`, color: `${SG.finternetAmber}`, border: `1px solid ${SG.finternetAmber}30` }}>
                   {tag}
                 </span>
               ))}
@@ -225,7 +225,7 @@ export default function SGWorkflowGoldTokenisation() {
                     <StepIcon className="w-7 h-7" style={{ color: step.color }} />
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
+                    <div className="flex items-center gap-4 mb-1">
                       <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: `${step.color}cc` }}>
                         Step {step.id} of {STEPS.length}
                       </span>

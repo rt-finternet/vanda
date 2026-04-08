@@ -32,7 +32,7 @@ function RevealSection({ children, id, delay = 0 }: { children: React.ReactNode;
 
 export default function SGDeepDiveStructuredNotes() {
   return (
-    <div className="min-h-screen text-white relative" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white relative" style={{ background: SG.dark }}>
       <CinematicBackground />
       <SGPortalNav />
 
@@ -76,7 +76,7 @@ export default function SGDeepDiveStructuredNotes() {
                 { pain: "Counterparty risk", desc: "The investor bears full credit risk of the issuer. No segregation of the underlying components. If the issuer defaults, recovery is uncertain.", icon: Shield, color: SG.finternetCyan },
                 { pain: "Tax complexity", desc: "Cross-border structured notes involve multiple WHT jurisdictions for the underlying basket. Manual tax reclaim across 10-50 jurisdictions.", icon: Calculator, color: SG.masTeal },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
                   <div className="flex items-center gap-2 mb-2">
                     <item.icon className="w-4 h-4" style={{ color: item.color }} />
                     <div className="text-sm font-semibold text-white/90">{item.pain}</div>
@@ -106,12 +106,12 @@ export default function SGDeepDiveStructuredNotes() {
                 { layer: "Underlying basket", desc: "The reference assets. Can be equity tokets (sponsored or unsponsored), commodity tokets (gold, oil), FX pairs, or indices. Each underlying is independently observable on-chain.", color: SG.nusOrange, icon: BarChart3 },
                 { layer: "Collateral pool", desc: "Segregated collateral backing the note. Unlike traditional structured notes where the investor bears full issuer credit risk, UNITS can require the issuer to post collateral in a segregated on-chain pool.", color: SG.red, icon: Shield },
               ].map((l, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${l.color}04`, border: `1px solid ${l.color}10` }}>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${l.color}04`, border: `1px solid ${l.color}10` }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${l.color}12` }}>
                     <l.icon className="w-5 h-5" style={{ color: l.color }} />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white/90 mb-1">{l.layer}</div>
+                    <div className="text-sm font-semibold text-white/90 mb-2">{l.layer}</div>
                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{l.desc}</p>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export default function SGDeepDiveStructuredNotes() {
               Singapore. Each benefits from tokenisation on UNITS in specific ways.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   type: "Equity-Linked Notes (ELN)",
@@ -222,15 +222,15 @@ export default function SGDeepDiveStructuredNotes() {
                   </div>
                   <div className="p-5 space-y-3" style={{ background: `${note.color}03` }}>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                      <div className="p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+                      <div className="p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
                         <div className="text-[10px] uppercase tracking-wider mb-1 text-white/30">Underlying</div>
                         <p className="text-[11px] leading-relaxed text-white/50">{note.underlying}</p>
                       </div>
-                      <div className="p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+                      <div className="p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
                         <div className="text-[10px] uppercase tracking-wider mb-1 text-white/30">Structure</div>
                         <p className="text-[11px] leading-relaxed text-white/50">{note.structure}</p>
                       </div>
-                      <div className="p-3 rounded-lg" style={{ background: `${note.color}06`, border: `1px solid ${note.color}10` }}>
+                      <div className="p-4 rounded-lg" style={{ background: `${note.color}06`, border: `1px solid ${note.color}10` }}>
                         <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: note.color }}>UNITS advantage</div>
                         <p className="text-[11px] leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>{note.unitsAdvantage}</p>
                       </div>
@@ -260,7 +260,7 @@ export default function SGDeepDiveStructuredNotes() {
                 { step: "4", label: "Distribution", desc: "The structured note toket is distributed to investors via the issuer's platform (e.g., DBS digibank, UOB TMRW). Investors receive the toket in their UNITS wallet. Compliance gates check accredited investor status.", color: SG.nusOrange, icon: Users },
                 { step: "5", label: "Lifecycle activation", desc: "From the moment of issuance, the Token Program begins executing: monitoring barriers, accruing coupons, checking autocall conditions, and processing corporate actions on the underlying. Fully automated.", color: "#8b5cf6", icon: Zap },
               ].map((s, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${s.color}04`, border: `1px solid ${s.color}10` }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${s.color}12` }}>
                     <s.icon className="w-5 h-5" style={{ color: s.color }} />
                   </div>
@@ -283,7 +283,7 @@ export default function SGDeepDiveStructuredNotes() {
             <h2 className="text-2xl font-light mb-4">Marketnode <span className="font-semibold">integration</span></h2>
             <div className="p-5 rounded-xl" style={{ background: `${SG.finternetAmber}06`, border: `1px solid ${SG.finternetAmber}12` }}>
               <div className="flex items-start gap-3">
-                <Building2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: SG.finternetAmber }} />
+                <Building2 className="w-5 h-5 shrink-0 mt-1" style={{ color: SG.finternetAmber }} />
                 <div>
                   <div className="text-sm font-medium text-white/80 mb-2">Marketnode as structuring platform</div>
                   <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -333,7 +333,7 @@ export default function SGDeepDiveStructuredNotes() {
                   { metric: "T+0", label: "Physical delivery" },
                   { metric: "Real-time", label: "Barrier monitoring" },
                 ].map((m, i) => (
-                  <div key={i} className="text-center p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div key={i} className="text-center p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
                     <div className="text-xl font-bold" style={{ color: SG.masTeal }}>{m.metric}</div>
                     <div className="text-[10px] text-white/40 mt-1">{m.label}</div>
                   </div>
@@ -346,7 +346,7 @@ export default function SGDeepDiveStructuredNotes() {
         {/* Knowledge Base */}
         <RevealSection id="knowledge-base" delay={100}>
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <img src={SG_LOGO} alt="UNITS|SG" className="h-6" />
               <h2 className="text-xl font-light">UNITS <span className="font-semibold">Knowledge Base</span></h2>
             </div>
@@ -361,11 +361,11 @@ export default function SGDeepDiveStructuredNotes() {
                 { label: "Collateral Highway", href: "/sg/deep-dive/collateral-highway", desc: "Cross-depository collateral mobilisation" },
                 { label: "Asset Classes", href: "/sg/assets", desc: "Nine asset classes on UNITS|SG" },
               ].map((link, i) => (
-                <Link key={i} href={link.href} className="flex items-start gap-3 p-3 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
-                  <BookOpen className="w-4 h-4 shrink-0 mt-0.5" style={{ color: `${SG.masTeal}60` }} />
+                <Link key={i} href={link.href} className="flex items-start gap-3 p-4 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
+                  <BookOpen className="w-4 h-4 shrink-0 mt-1" style={{ color: `${SG.masTeal}60` }} />
                   <div>
                     <div className="text-sm text-white/70 hover:text-white/90 transition-colors">{link.label}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
+                    <div className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
                   </div>
                 </Link>
               ))}
@@ -380,7 +380,7 @@ export default function SGDeepDiveStructuredNotes() {
               <img src={SG_LOGO} alt="UNITS|SG" className="h-8 opacity-40" />
               <div>
                 <div className="text-xs text-white/30">UNITS|SG</div>
-                <div className="flex items-center gap-1.5 mt-0.5">
+                <div className="flex items-center gap-1.5 mt-1">
                   <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.15)" }}>Powered by</span>
                   <img src={FINTERNET_LOGO} alt="Finternet Labs" className="h-3 opacity-20" />
                 </div>

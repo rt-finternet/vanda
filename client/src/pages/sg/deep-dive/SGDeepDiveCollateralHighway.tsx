@@ -30,7 +30,7 @@ function RevealSection({ id, children, delay = 0 }: { id: string; children: Reac
 
 export default function SGDeepDiveCollateralHighway() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -67,25 +67,25 @@ export default function SGDeepDiveCollateralHighway() {
 
             <div className="rounded-2xl p-5" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
               <div className="text-xs uppercase tracking-wider mb-4" style={{ color: SG.finternetAmber }}>Collateral Silos Today</div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="p-4 rounded-xl" style={{ background: `${SG.red}06` }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                <div className="p-5 rounded-xl" style={{ background: `${SG.red}06` }}>
                   <Building2 className="w-5 h-5 mb-2" style={{ color: SG.red }} />
-                  <div className="text-sm font-medium text-white/90 mb-1">CDP Silo</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">CDP Silo</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
                     SGX equities, corporate bonds, ETFs. Can only be used as collateral within CDP's
                     own margin framework. Cannot be mobilised for MEPS+ obligations.
                   </div>
                 </div>
-                <div className="p-4 rounded-xl" style={{ background: `${SG.masTeal}06` }}>
+                <div className="p-5 rounded-xl" style={{ background: `${SG.masTeal}06` }}>
                   <Landmark className="w-5 h-5 mb-2" style={{ color: SG.masTeal }} />
-                  <div className="text-sm font-medium text-white/90 mb-1">MEPS+ Silo</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">MEPS+ Silo</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
                     Singapore Government Securities, MAS Bills, T-Bills. High-quality liquid assets
                     trapped in a separate system, unavailable for equity margin or repo.
                   </div>
                 </div>
               </div>
-              <div className="p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
                 <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)" }}>
                   A Singapore bank holding SGD 5 billion in SGS bonds in MEPS+ and SGD 2 billion in
                   SGX equities in CDP must maintain separate collateral buffers for each system.
@@ -111,7 +111,7 @@ export default function SGDeepDiveCollateralHighway() {
               <div className="p-5">
                 {/* Network Topology */}
                 <div className="text-xs uppercase tracking-wider mb-4" style={{ color: SG.finternetAmber }}>Network Topology</div>
-                <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="grid grid-cols-3 gap-5 mb-8">
                   <div className="p-3 rounded-xl text-center" style={{ background: `${SG.red}08`, border: `1px solid ${SG.red}12` }}>
                     <Building2 className="w-5 h-5 mx-auto mb-1" style={{ color: SG.red }} />
                     <div className="text-[10px] font-medium text-white/70">SGX CDP Node</div>
@@ -209,7 +209,7 @@ export default function SGDeepDiveCollateralHighway() {
                   </div>
                   <div className="px-5 py-4" style={{ background: `${item.color}03` }}>
                     <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
-                    <div className="p-2 rounded-lg" style={{ background: `${item.color}06` }}>
+                    <div className="p-3 rounded-lg" style={{ background: `${item.color}06` }}>
                       <div className="text-[10px] uppercase tracking-wider mb-0.5" style={{ color: `${item.color}70` }}>Singapore Example</div>
                       <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.example}</div>
                     </div>
@@ -289,7 +289,7 @@ export default function SGDeepDiveCollateralHighway() {
                 { metric: "24/7", label: "Availability", desc: "Not limited to business hours" },
                 { metric: "100%", label: "Visibility", desc: "Unified inventory view" },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl text-center" style={{ background: `${SG.finternetAmber}06`, border: `1px solid ${SG.finternetAmber}10` }}>
+                <div key={i} className="p-5 rounded-xl text-center" style={{ background: `${SG.finternetAmber}06`, border: `1px solid ${SG.finternetAmber}10` }}>
                   <div className="text-xl font-bold mb-1" style={{ color: SG.finternetAmber }}>{item.metric}</div>
                   <div className="text-xs font-medium text-white/80 mb-0.5">{item.label}</div>
                   <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{item.desc}</div>
@@ -310,7 +310,7 @@ export default function SGDeepDiveCollateralHighway() {
 
             <div className="rounded-2xl p-5" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
               <div className="text-xs uppercase tracking-wider mb-4" style={{ color: SG.finternetCyan }}>DBS Intraday Repo</div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {[
                   { time: "09:15", event: "DBS needs SGD 500M intraday liquidity for a large equity settlement on SGX" },
                   { time: "09:16", event: "DBS offers SGS 10Y bonds (MEPS+ proxy tokets) as collateral to OCBC" },
@@ -319,7 +319,7 @@ export default function SGDeepDiveCollateralHighway() {
                   { time: "14:30", event: "DBS completes the equity settlement and returns 500M XSGD plus intraday interest" },
                   { time: "14:30", event: "Atomic unwind: XSGD returned, SGS bonds released, repo closed" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${SG.finternetCyan}04` }}>
+                  <div key={i} className="flex items-start gap-3 p-4 rounded-lg" style={{ background: `${SG.finternetCyan}04` }}>
                     <span className="text-[10px] font-mono shrink-0 px-2 py-0.5 rounded" style={{ background: `${SG.finternetCyan}12`, color: SG.finternetCyan }}>
                       {item.time}
                     </span>

@@ -176,7 +176,7 @@ function NetworkDiagram() {
 
 export default function SGDeepDiveUNITS() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -218,27 +218,27 @@ export default function SGDeepDiveUNITS() {
 
             {/* Legend */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-px" style={{ background: SG.finternetCyan }} />
                 <span>UNITS / UILP overlay</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-px" style={{ background: SG.nusOrange, borderTop: `1px dashed ${SG.nusOrange}` }} />
                 <span>CDP-MEPS+ bridge (new)</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded" style={{ background: `${SG.red}20`, border: `1px solid ${SG.red}40` }} />
                 <span>Regulator</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded" style={{ background: `${SG.finternetCyan}20`, border: `1px solid ${SG.finternetCyan}40` }} />
                 <span>Anchor Banks</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded" style={{ background: `${SG.nusOrange}20`, border: `1px solid ${SG.nusOrange}40` }} />
                 <span>GL1 Global Banks</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded" style={{ background: `${SG.finternetAmber}20`, border: `1px solid ${SG.finternetAmber}40` }} />
                 <span>Tokenisation RMOs</span>
               </div>
@@ -257,7 +257,7 @@ export default function SGDeepDiveUNITS() {
               them through the UNITS protocol is the structural innovation at the heart of UNITS|SG.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
               {[
                 {
                   icon: Landmark,
@@ -279,7 +279,7 @@ export default function SGDeepDiveUNITS() {
                 },
               ].map((node, i) => (
                 <div key={i} className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${node.color}15` }}>
-                  <div className="px-4 py-3 flex items-center gap-2" style={{ background: `${node.color}08`, borderBottom: `1px solid ${node.color}10` }}>
+                  <div className="px-4 py-3 flex items-center gap-3" style={{ background: `${node.color}08`, borderBottom: `1px solid ${node.color}10` }}>
                     <node.icon className="w-4 h-4" style={{ color: node.color }} />
                     <div className="text-sm font-semibold text-white/90">{node.title}</div>
                   </div>
@@ -328,7 +328,7 @@ export default function SGDeepDiveUNITS() {
                 },
               ].map((bank, i) => (
                 <div key={i} className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${bank.color}15` }}>
-                  <div className="px-4 py-3 flex items-center gap-2" style={{ background: `${bank.color}08`, borderBottom: `1px solid ${bank.color}10` }}>
+                  <div className="px-4 py-3 flex items-center gap-3" style={{ background: `${bank.color}08`, borderBottom: `1px solid ${bank.color}10` }}>
                     <bank.icon className="w-4 h-4" style={{ color: bank.color }} />
                     <div className="text-sm font-semibold text-white/90">{bank.title}</div>
                   </div>
@@ -383,7 +383,7 @@ export default function SGDeepDiveUNITS() {
                 },
               ].map((bank, i) => (
                 <div key={i} className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${bank.color}15` }}>
-                  <div className="px-4 py-3 flex items-center gap-2" style={{ background: `${bank.color}08`, borderBottom: `1px solid ${bank.color}10` }}>
+                  <div className="px-4 py-3 flex items-center gap-3" style={{ background: `${bank.color}08`, borderBottom: `1px solid ${bank.color}10` }}>
                     <bank.icon className="w-4 h-4" style={{ color: bank.color }} />
                     <div className="text-sm font-semibold text-white/90">{bank.title}</div>
                   </div>
@@ -412,7 +412,7 @@ export default function SGDeepDiveUNITS() {
               while gaining access to the entire network's liquidity and asset base.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
               {[
                 {
                   title: "DDEx (DBS Digital Exchange)",
@@ -504,8 +504,8 @@ export default function SGDeepDiveUNITS() {
                 { principle: "Programmable lifecycle", desc: "Token Programs automate corporate actions, coupon payments, rebalancing, and redemptions. The same execution model applies across all asset classes and platforms.", color: SG.finternetCyan },
                 { principle: "Incremental adoption", desc: "Participants can join incrementally. Phase 1 connects depositories. Phase 2 adds banks. Phase 3 integrates tokenisation platforms. No big-bang migration required.", color: SG.masTeal },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
-                  <div className="text-sm font-semibold text-white/90 mb-1">{item.principle}</div>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                  <div className="text-sm font-semibold text-white/90 mb-2">{item.principle}</div>
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</p>
                 </div>
               ))}
@@ -522,7 +522,7 @@ export default function SGDeepDiveUNITS() {
               Each capability is structurally impossible with the current fragmented architecture.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   icon: Zap,
@@ -567,12 +567,12 @@ export default function SGDeepDiveUNITS() {
                   color: SG.finternetCyan,
                 },
               ].map((cap, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${cap.color}04`, border: `1px solid ${cap.color}10` }}>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${cap.color}04`, border: `1px solid ${cap.color}10` }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${cap.color}12` }}>
                     <cap.icon className="w-5 h-5" style={{ color: cap.color }} />
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-white/90 mb-1">{cap.title}</div>
+                    <div className="text-sm font-medium text-white/90 mb-2">{cap.title}</div>
                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{cap.desc}</p>
                   </div>
                 </div>
@@ -590,7 +590,7 @@ export default function SGDeepDiveUNITS() {
               everywhere. The infrastructure adapts to each market's depositories, regulators, and participants.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   layer: "Layer 3: Participant Applications",
@@ -619,7 +619,7 @@ export default function SGDeepDiveUNITS() {
                     <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>{layer.desc}</p>
                     <div className="flex flex-wrap gap-2">
                       {layer.items.map((item, j) => (
-                        <span key={j} className="text-[10px] px-2.5 py-1 rounded-full" style={{ background: `${layer.color}10`, color: `${layer.color}90` }}>
+                        <span key={j} className="text-[10px] px-3 py-1.5 rounded-full" style={{ background: `${layer.color}10`, color: `${layer.color}90` }}>
                           {item}
                         </span>
                       ))}
@@ -634,7 +634,7 @@ export default function SGDeepDiveUNITS() {
         {/* UNITS Knowledge Base */}
         <RevealSection id="knowledge-base" delay={100}>
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <img src={SG_LOGO} alt="UNITS|SG" className="h-6" />
               <h2 className="text-xl font-light">UNITS <span className="font-semibold">Knowledge Base</span></h2>
             </div>
@@ -649,11 +649,11 @@ export default function SGDeepDiveUNITS() {
                 { label: "VCC Fund Interests", href: "/sg/deep-dive/vcc", desc: "Variable Capital Company tokenisation" },
                 { label: "Asset Classes", href: "/sg/assets", desc: "Nine asset classes on UNITS|SG" },
               ].map((link, i) => (
-                <Link key={i} href={link.href} className="flex items-start gap-3 p-3 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
-                  <BookOpen className="w-4 h-4 shrink-0 mt-0.5" style={{ color: `${SG.masTeal}60` }} />
+                <Link key={i} href={link.href} className="flex items-start gap-3 p-4 rounded-lg transition-all hover:bg-white/[0.03]" style={{ border: `1px solid ${SG.border}` }}>
+                  <BookOpen className="w-4 h-4 shrink-0 mt-1" style={{ color: `${SG.masTeal}60` }} />
                   <div>
                     <div className="text-sm text-white/70 hover:text-white/90 transition-colors">{link.label}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
+                    <div className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>{link.desc}</div>
                   </div>
                 </Link>
               ))}
@@ -668,7 +668,7 @@ export default function SGDeepDiveUNITS() {
               <img src={SG_LOGO} alt="UNITS|SG" className="h-8 opacity-40" />
               <div>
                 <div className="text-xs text-white/30">UNITS|SG</div>
-                <div className="flex items-center gap-1.5 mt-0.5">
+                <div className="flex items-center gap-1.5 mt-1">
                   <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.15)" }}>Powered by</span>
                   <img src={FINTERNET_LOGO} alt="Finternet Labs" className="h-3 opacity-20" />
                 </div>

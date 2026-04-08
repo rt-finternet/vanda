@@ -30,7 +30,7 @@ function RevealSection({ id, children, delay = 0 }: { id: string; children: Reac
 
 export default function SGDeepDiveRegulatory() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -199,7 +199,7 @@ export default function SGDeepDiveRegulatory() {
                     <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>{reg.desc}</p>
                     <div className="space-y-2">
                       {reg.mapping.map((m, j) => (
-                        <div key={j} className="flex items-start gap-3 p-2 rounded-lg" style={{ background: `${reg.color}06` }}>
+                        <div key={j} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${reg.color}06` }}>
                           <div className="text-[10px] font-mono shrink-0 px-2 py-0.5 rounded" style={{ background: `${reg.color}12`, color: reg.color }}>
                             UNITS
                           </div>
@@ -255,14 +255,14 @@ export default function SGDeepDiveRegulatory() {
                   color: SG.red,
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                <div key={i} className="flex gap-4 p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
                   <div className="shrink-0">
                     <div className="text-[9px] font-medium px-2 py-0.5 rounded-full" style={{ background: `${item.color}15`, color: item.color }}>
                       {item.status}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-white/90 mb-1">{item.title}</div>
+                    <div className="text-sm font-medium text-white/90 mb-2">{item.title}</div>
                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                   </div>
                 </div>
@@ -333,9 +333,9 @@ export default function SGDeepDiveRegulatory() {
                 { icon: Shield, label: "Compliance Verification", desc: "Real-time verification that transfer restrictions, investor eligibility, and position limits are being enforced" },
                 { icon: Network, label: "Systemic Risk Dashboard", desc: "Cross-network flows, collateral concentration, and settlement failure rates visible in real-time" },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
                   <item.icon className="w-5 h-5 mb-2" style={{ color: SG.masTeal }} />
-                  <div className="text-sm font-medium text-white/90 mb-1">{item.label}</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">{item.label}</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
                 </div>
               ))}

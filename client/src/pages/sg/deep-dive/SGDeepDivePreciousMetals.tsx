@@ -213,13 +213,13 @@ export default function SGDeepDivePreciousMetals() {
   return (
     <>
       <SGPortalNav />
-      <div className="min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
+      <div className="vanda-portal min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
         <CinematicBackground />
         {/* Hero */}
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0 opacity-20" style={{ background: `radial-gradient(ellipse at 30% 50%, ${SG.finternetAmber}30, transparent 60%), radial-gradient(ellipse at 70% 50%, ${SG.masTeal}20, transparent 60%)` }} />
           <div className="relative max-w-6xl mx-auto px-6">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <Gem className="w-8 h-8" style={{ color: SG.finternetAmber }} />
               <span className="text-sm font-mono tracking-wider" style={{ color: `${SG.finternetAmber}90` }}>UNITS|SG DEEP DIVE</span>
             </div>
@@ -240,10 +240,10 @@ export default function SGDeepDivePreciousMetals() {
         <section className="py-12" style={{ borderTop: `1px solid ${SG.border}`, borderBottom: `1px solid ${SG.border}` }}>
           <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {marketStats.map((s) => (
-              <div key={s.label} className="text-center p-3 rounded-lg" style={{ background: `${SG.card}`, border: `1px solid ${SG.border}` }}>
+              <div key={s.label} className="text-center p-4 rounded-lg" style={{ background: `${SG.card}`, border: `1px solid ${SG.border}` }}>
                 <div className="text-lg font-bold" style={{ color: SG.finternetAmber }}>{s.value}</div>
                 <div className="text-xs text-white/60 mt-1">{s.label}</div>
-                <div className="text-[10px] text-white/30 mt-0.5">{s.sub}</div>
+                <div className="text-[10px] text-white/30 mt-1">{s.sub}</div>
               </div>
             ))}
           </div>
@@ -259,8 +259,8 @@ export default function SGDeepDivePreciousMetals() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {painPoints.map((p) => (
                 <div key={p.title} className="rounded-xl p-5" style={{ background: `${SG.card}`, border: `1px solid ${SG.border}` }}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg" style={{ background: `${SG.red}20` }}>
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="p-3 rounded-lg" style={{ background: `${SG.red}20` }}>
                       <div style={{ color: SG.red }}>{p.icon}</div>
                     </div>
                     <h3 className="font-semibold text-white text-sm">{p.title}</h3>
@@ -353,7 +353,7 @@ export default function SGDeepDivePreciousMetals() {
                   </table>
                 </div>
               </div>
-              <div className="p-4 rounded-xl text-xs" style={{ background: `${SG.masTeal}10`, border: `1px solid ${SG.masTeal}30` }}>
+              <div className="p-5 rounded-xl text-xs" style={{ background: `${SG.masTeal}10`, border: `1px solid ${SG.masTeal}30` }}>
                 <p style={{ color: `${SG.masTeal}` }}>
                   <strong>Dual-Standard Support:</strong> UNITS|SG supports both LBMA Good Delivery bars (350-430 troy oz, 99.5%+ fineness) and SBMA Kilobar standard (1 kg, 99.99% fineness). This dual-standard approach enables Singapore to serve both the global institutional market (LBMA) and the Asian retail/wealth market (SBMA).
                 </p>
@@ -400,8 +400,8 @@ export default function SGDeepDivePreciousMetals() {
             <div className="grid md:grid-cols-2 gap-6">
               {serviceTiers.map((tier) => (
                 <div key={tier.name} className="rounded-xl p-6" style={{ background: `${SG.card}`, border: `1px solid ${SG.border}` }}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg" style={{ background: `${tier.hex}20` }}>
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="p-3 rounded-lg" style={{ background: `${tier.hex}20` }}>
                       <div style={{ color: tier.hex }}>{tier.icon}</div>
                     </div>
                     <h3 className="font-semibold text-white">{tier.name}</h3>

@@ -30,14 +30,14 @@ function RevealSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export default function SGDeepDiveVCC() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
       <div className="max-w-4xl mx-auto p-6 md:p-12" style={{ color: "rgba(255,255,255,0.85)" }}>
 
         {/* Hero */}
         <RevealSection>
           <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-5 mb-8">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${SG.masTeal}20` }}>
                 <Briefcase className="w-6 h-6" style={{ color: SG.masTeal }} />
               </div>
@@ -58,7 +58,7 @@ export default function SGDeepDiveVCC() {
         {/* What is a VCC */}
         <RevealSection delay={100}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <Landmark className="w-5 h-5" style={{ color: SG.nusOrange }} />
               What is a VCC?
             </h2>
@@ -95,7 +95,7 @@ export default function SGDeepDiveVCC() {
                       { name: "Sub-Fund E", type: "Infrastructure", color: SG.finternetCyan },
                       { name: "Sub-Fund F", type: "Digital Assets", color: SG.red },
                     ].map((sf) => (
-                      <div key={sf.name} className="p-3 rounded-lg text-center" style={{ background: `${sf.color}08`, border: `1px solid ${sf.color}20` }}>
+                      <div key={sf.name} className="p-4 rounded-lg text-center" style={{ background: `${sf.color}08`, border: `1px solid ${sf.color}20` }}>
                         <p className="text-xs font-medium" style={{ color: sf.color }}>{sf.name}</p>
                         <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>{sf.type}</p>
                       </div>
@@ -110,7 +110,7 @@ export default function SGDeepDiveVCC() {
         {/* Tokenisation of Fund Interests */}
         <RevealSection delay={150}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <Layers className="w-5 h-5" style={{ color: SG.masTeal }} />
               Tokenising VCC Fund Interests
             </h2>
@@ -165,7 +165,7 @@ export default function SGDeepDiveVCC() {
         {/* Sub-Fund Types */}
         <RevealSection delay={200}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <BarChart3 className="w-5 h-5" style={{ color: SG.nusOrange }} />
               VCC Sub-Fund Asset Classes on UNITS
             </h2>
@@ -223,14 +223,14 @@ export default function SGDeepDiveVCC() {
                 const Icon = sf.icon;
                 return (
                   <div key={sf.name} className="p-5 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center gap-4 mb-3">
                       <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: `${sf.color}15` }}>
                         <Icon className="w-4.5 h-4.5" style={{ color: sf.color }} />
                       </div>
                       <h3 className="text-base font-semibold text-white">{sf.name}</h3>
                     </div>
                     <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>{sf.description}</p>
-                    <div className="p-3 rounded-lg mb-3" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+                    <div className="p-4 rounded-lg mb-3" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
                       <p className="text-xs font-medium mb-1" style={{ color: sf.color }}>Example</p>
                       <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{sf.example}</p>
                     </div>
@@ -251,7 +251,7 @@ export default function SGDeepDiveVCC() {
         {/* Trading Tokenised VCC Interests */}
         <RevealSection delay={250}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <RefreshCw className="w-5 h-5" style={{ color: SG.finternetAmber }} />
               Trading Tokenised VCC Interests
             </h2>
@@ -271,7 +271,7 @@ export default function SGDeepDiveVCC() {
                   { step: "4", title: "Atomic DvP execution", desc: "100 PE tokets transfer to buyer, XSGD payment transfers to seller, simultaneously and irrevocably", color: SG.finternetAmber },
                   { step: "5", title: "Register update", desc: "VCC share register updated automatically. MAS reporting triggered. NAV recalculated.", color: SG.finternetCyan },
                 ].map((s) => (
-                  <div key={s.step} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={s.step} className="flex items-start gap-3 p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: `${s.color}15`, color: s.color }}>
                       {s.step}
                     </div>
@@ -298,7 +298,7 @@ export default function SGDeepDiveVCC() {
         {/* VCC as Collateral */}
         <RevealSection delay={300}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <Shield className="w-5 h-5" style={{ color: "#a78bfa" }} />
               VCC Interests as Collateral
             </h2>
@@ -311,7 +311,7 @@ export default function SGDeepDiveVCC() {
               </p>
 
               {/* Collateral Use Cases */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
                 {[
                   {
                     title: "Margin Collateral",
@@ -364,7 +364,7 @@ export default function SGDeepDiveVCC() {
                     { label: "Release", desc: "Remove encumbrance on repayment" },
                     { label: "Liquidation", desc: "Force-sell via atomic DvP if default" },
                   ].map((step, i) => (
-                    <div key={step.label} className="flex items-center gap-2">
+                    <div key={step.label} className="flex items-center gap-3">
                       <div className="px-3 py-1.5 rounded-lg" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
                         <p className="text-[10px] font-medium" style={{ color: SG.masTeal }}>{step.label}</p>
                         <p className="text-[9px]" style={{ color: "rgba(255,255,255,0.3)" }}>{step.desc}</p>
@@ -381,7 +381,7 @@ export default function SGDeepDiveVCC() {
         {/* Carbon Credits Example */}
         <RevealSection delay={350}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <Leaf className="w-5 h-5" style={{ color: SG.masTeal }} />
               Example: Carbon Credit VCC on UNITS
             </h2>
@@ -430,7 +430,7 @@ export default function SGDeepDiveVCC() {
         {/* Regulatory Framework */}
         <RevealSection delay={400}>
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <FileCheck className="w-5 h-5" style={{ color: SG.finternetCyan }} />
               Regulatory Alignment
             </h2>

@@ -176,6 +176,57 @@
     }
   }
 }
+/* ── VANDA Portal: Global Spacing Overrides ──
+ * These rules add breathing room to cards, table cells, pills, and
+ * section headers across all /sg/* pages (deep-dive, workflows, FAQ).
+ * Scoped to .vanda-portal to avoid affecting non-portal pages.
+ */
+
+/* Card interiors: p-3 rounded → p-4 equivalent */
+.vanda-portal .rounded-lg[class*="p-3"],
+.vanda-portal .rounded-xl[class*="p-3"] {
+  padding: 1rem; /* 16px, up from 12px */
+}
+
+/* Card interiors: p-4 rounded → p-5 equivalent */
+.vanda-portal .rounded-lg[class*="p-4"],
+.vanda-portal .rounded-xl[class*="p-4"] {
+  padding: 1.25rem; /* 20px, up from 16px */
+}
+
+/* Section headers: py-3 → py-4 */
+.vanda-portal [class*="py-3"][class*="flex"][class*="items-center"][class*="gap-3"] {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Table cells: tighter p-3/p-4 → more room */
+.vanda-portal table td[class*="p-3"],
+.vanda-portal table th[class*="p-3"] {
+  padding: 1rem;
+}
+.vanda-portal table td[class*="p-4"],
+.vanda-portal table th[class*="p-4"] {
+  padding: 1.25rem;
+}
+
+/* Pill/tag links: py-1.5 → py-2 */
+.vanda-portal .rounded-full[class*="py-1"] {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Small text descriptions: add line-height breathing */
+.vanda-portal .text-xs:not(button .text-xs):not(th .text-xs) {
+  line-height: 1.6;
+}
+
+/* Ensure mb-1 gap between name and role in participant tiles */
+.vanda-portal .text-\[10px\] {
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
 /* ── Cinematic Infrastructure Motion Keyframes ── */
 
 @keyframes breathe {

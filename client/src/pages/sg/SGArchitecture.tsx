@@ -85,7 +85,7 @@ export default function SGArchitecture() {
             <div className="space-y-3 mb-8">
               {/* Layer 3: Participant Apps */}
               <div className="rounded-xl overflow-hidden" style={{ border: `1px solid ${SG.finternetCyan}25` }}>
-                <div className="px-5 py-3 flex items-center gap-3" style={{ background: `${SG.finternetCyan}10` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.finternetCyan}10` }}>
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${SG.finternetCyan}20` }}>
                     <Users className="w-4 h-4" style={{ color: SG.finternetCyan }} />
                   </div>
@@ -94,14 +94,14 @@ export default function SGArchitecture() {
                     <div className="text-[10px] uppercase tracking-wider" style={{ color: `${SG.finternetCyan}80` }}>Governed by individual banks & FIs</div>
                   </div>
                 </div>
-                <div className="px-5 py-4" style={{ background: `${SG.finternetCyan}04` }}>
+                <div className="px-5 py-5" style={{ background: `${SG.finternetCyan}04` }}>
                   <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
                     Each participant builds their own client-facing applications on top of the UNITS Network APIs.
                     This is where differentiation happens: user experience, product packaging, advisory services.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Issuance Portals", "Distribution Interfaces", "Custody Dashboards", "BYOW Wallets", "Advisory Tools", "Compliance UIs"].map(t => (
-                      <span key={t} className="text-xs px-2 py-0.5 rounded-full" style={{ background: `${SG.finternetCyan}12`, color: `${SG.finternetCyan}cc` }}>{t}</span>
+                      <span key={t} className="text-xs px-2.5 py-1 rounded-full" style={{ background: `${SG.finternetCyan}12`, color: `${SG.finternetCyan}cc` }}>{t}</span>
                     ))}
                   </div>
                 </div>
@@ -114,7 +114,7 @@ export default function SGArchitecture() {
 
               {/* Layer 2: UNITS Network */}
               <div className="rounded-xl overflow-hidden" style={{ border: `2px solid ${SG.nusOrange}40` }}>
-                <div className="px-5 py-3 flex items-center gap-3" style={{ background: `${SG.nusOrange}12` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.nusOrange}12` }}>
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${SG.nusOrange}20` }}>
                     <Layers className="w-4 h-4" style={{ color: SG.nusOrange }} />
                   </div>
@@ -123,7 +123,7 @@ export default function SGArchitecture() {
                     <div className="text-[10px] uppercase tracking-wider" style={{ color: `${SG.nusOrange}80` }}>Network governance + MAS observer</div>
                   </div>
                 </div>
-                <div className="px-5 py-4" style={{ background: `${SG.nusOrange}06` }}>
+                <div className="px-5 py-5" style={{ background: `${SG.nusOrange}06` }}>
                   <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
                     The protocol layer that provides common standards, distribution rules, and compliance enforcement.
                     This is where the UNITS architecture lives: tokenClasses, tokenPools, UILP gates, and the wallet registry.
@@ -137,8 +137,8 @@ export default function SGArchitecture() {
                       { label: "Settlement Engine", desc: "Atomic DVP with SCS stablecoins" },
                       { label: "Observer Node", desc: "MAS real-time supervisory access" },
                     ].map((item, i) => (
-                      <div key={i} className="p-2 rounded-lg" style={{ background: `${SG.nusOrange}08` }}>
-                        <div className="text-xs font-medium" style={{ color: SG.nusOrange }}>{item.label}</div>
+                      <div key={i} className="p-4 rounded-lg" style={{ background: `${SG.nusOrange}08` }}>
+                        <div className="text-xs font-medium mb-1" style={{ color: SG.nusOrange }}>{item.label}</div>
                         <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>{item.desc}</div>
                       </div>
                     ))}
@@ -153,7 +153,7 @@ export default function SGArchitecture() {
 
               {/* Standards: GL1 Compliance */}
               <div className="rounded-xl overflow-hidden" style={{ border: `1px solid ${SG.masTeal}25` }}>
-                <div className="px-5 py-3 flex items-center gap-3" style={{ background: `${SG.masTeal}10` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.masTeal}10` }}>
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${SG.masTeal}20` }}>
                     <Globe className="w-4 h-4" style={{ color: SG.masTeal }} />
                   </div>
@@ -162,7 +162,7 @@ export default function SGArchitecture() {
                     <div className="text-[10px] uppercase tracking-wider" style={{ color: `${SG.masTeal}80` }}>MAS-initiated benchmark (15+ FI members)</div>
                   </div>
                 </div>
-                <div className="px-5 py-4" style={{ background: `${SG.masTeal}04` }}>
+                <div className="px-5 py-5" style={{ background: `${SG.masTeal}04` }}>
                   <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
                     GL1 is a standards and compliance benchmark initiated by MAS, defining interoperability standards,
                     governance principles, and compliance requirements for tokenised asset infrastructure.
@@ -170,7 +170,7 @@ export default function SGArchitecture() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Interoperability Standards", "Governance Principles", "Compliance Requirements", "Cross-Border Compatibility", "Multi-Network Support"].map(t => (
-                      <span key={t} className="text-xs px-2 py-0.5 rounded-full" style={{ background: `${SG.masTeal}12`, color: `${SG.masTeal}cc` }}>{t}</span>
+                      <span key={t} className="text-xs px-2.5 py-1 rounded-full" style={{ background: `${SG.masTeal}12`, color: `${SG.masTeal}cc` }}>{t}</span>
                     ))}
                   </div>
                 </div>
@@ -181,14 +181,14 @@ export default function SGArchitecture() {
             <div className="rounded-xl p-5" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
               <div className="text-xs uppercase tracking-wider mb-3" style={{ color: "rgba(255,255,255,0.3)" }}>Connected Infrastructure</div>
               <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center gap-3 p-3 rounded-lg" style={{ background: `${SG.red}06` }}>
+                <div className="flex items-center gap-3 p-5 rounded-lg" style={{ background: `${SG.red}06` }}>
                   <Building2 className="w-5 h-5" style={{ color: SG.red }} />
                   <div>
                     <div className="text-sm font-medium text-white/80">SGX CDP</div>
                     <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>Equities, corporate bonds</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
+                <div className="flex items-center gap-3 p-5 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
                   <Landmark className="w-5 h-5" style={{ color: SG.masTeal }} />
                   <div>
                     <div className="text-sm font-medium text-white/80">MAS MEPS+</div>
@@ -215,30 +215,30 @@ export default function SGArchitecture() {
             </p>
 
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: `${SG.masTeal}08`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5" style={{ background: `${SG.masTeal}08`, borderBottom: `1px solid ${SG.border}` }}>
                 <h3 className="text-lg font-medium text-white/90">GL1 Members</h3>
                 <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>Standards and compliance benchmark for tokenised assets</p>
               </div>
               <div className="p-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
                   {[
                     { name: "HSBC", role: "Banking / Custody", highlight: true },
                     { name: "J.P. Morgan", role: "Banking / Onyx", highlight: true },
                     { name: "MUFG", role: "Banking / Japan", highlight: true },
                     { name: "Standard Chartered", role: "Banking / Zodia Custody", highlight: true },
                   ].map((m, i) => (
-                    <div key={i} className="p-3 rounded-lg" style={{
+                    <div key={i} className="p-5 rounded-lg" style={{
                       background: m.highlight ? `${SG.nusOrange}10` : "rgba(255,255,255,0.02)",
                       border: m.highlight ? `1px solid ${SG.nusOrange}25` : `1px solid ${SG.border}`
                     }}>
                       <div className="text-sm font-medium text-white/85">{m.name}</div>
-                      <div className="text-[10px]" style={{ color: m.highlight ? `${SG.nusOrange}80` : "rgba(255,255,255,0.35)" }}>{m.role}</div>
+                      <div className="text-[10px] mt-1.5" style={{ color: m.highlight ? `${SG.nusOrange}80` : "rgba(255,255,255,0.35)" }}>{m.role}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="p-4 rounded-lg" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
-                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <div className="p-5 rounded-lg" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                     <strong className="text-white/80">Why this matters:</strong> GL1 membership by HSBC, J.P. Morgan, MUFG, and Standard Chartered
                     means these institutions are committed to the same interoperability standards. A tokenised SGS bond on the
                     GL1-compliant UNITS Network can be recognised across any GL1-compliant infrastructure globally, creating
@@ -263,7 +263,7 @@ export default function SGArchitecture() {
               for adoption, since no bank will abandon its existing custody infrastructure.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
               {[
                 {
                   bank: "DBS",
@@ -291,9 +291,9 @@ export default function SGArchitecture() {
                 },
               ].map((item, i) => (
                 <div key={i} className="p-5 rounded-xl" style={{ background: `${item.accent}06`, border: `1px solid ${item.accent}12` }}>
-                  <h4 className="text-sm font-semibold text-white/90 mb-1">{item.bank}</h4>
+                  <h4 className="text-sm font-semibold text-white/90 mb-2">{item.bank}</h4>
                   <div className="text-xs mb-2" style={{ color: item.accent }}>{item.wallet}</div>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -307,13 +307,13 @@ export default function SGArchitecture() {
                   { step: "3", label: "Connect", desc: "Wallet connects to UNITS Network APIs. Bank's clients can now access all asset classes, settlement, and collateral services" },
                   { step: "4", label: "Operate", desc: "Bank maintains full control of its wallet infrastructure. UNITS Network enforces common rules across all connected wallets" },
                 ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div key={i} className="flex items-start gap-3 p-5 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
                     <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: `${SG.nusOrange}15`, color: SG.nusOrange }}>
                       {s.step}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white/80">{s.label}</div>
-                      <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{s.desc}</div>
+                      <div className="text-sm font-medium text-white/80 mb-1">{s.label}</div>
+                      <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{s.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -335,13 +335,13 @@ export default function SGArchitecture() {
             </p>
 
             <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: `${SG.masTeal}08`, borderBottom: `1px solid ${SG.border}` }}>
-                <div className="flex items-center gap-2">
+              <div className="px-6 py-5" style={{ background: `${SG.masTeal}08`, borderBottom: `1px solid ${SG.border}` }}>
+                <div className="flex items-center gap-3">
                   <Eye className="w-5 h-5" style={{ color: SG.masTeal }} />
                   <h3 className="text-lg font-medium text-white/90">What MAS sees in real time</h3>
                 </div>
               </div>
-              <div className="p-6 space-y-3">
+              <div className="p-6 space-y-4">
                 {[
                   { label: "Compliance state", desc: "Every wallet's VC (Verifiable Credential) status (investor suitability, accreditation, AML/KYC verification)", icon: <Shield className="w-4 h-4" /> },
                   { label: "Concentration risk", desc: "Portfolio-level exposure across all participants. Sector, issuer, and asset class concentration visible in real time", icon: <ArrowRightLeft className="w-4 h-4" /> },
@@ -349,13 +349,13 @@ export default function SGArchitecture() {
                   { label: "Collateral positions", desc: "All pledged collateral, margin levels, and repo positions across the network. Early warning on systemic stress", icon: <Lock className="w-4 h-4" /> },
                   { label: "Cross-border flows", desc: "Unsponsored toket issuance and redemption. Visibility into foreign securities represented on the network", icon: <Globe className="w-4 h-4" /> },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
+                  <div key={i} className="flex items-start gap-3 p-5 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${SG.masTeal}15` }}>
                       <span style={{ color: SG.masTeal }}>{item.icon}</span>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white/80">{item.label}</div>
-                      <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
+                      <div className="text-sm font-medium text-white/80 mb-1">{item.label}</div>
+                      <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -385,9 +385,9 @@ export default function SGArchitecture() {
                   { label: "Cross-Chain DVP", desc: "Atomic settlement works across chains via the UNITS protocol layer, not chain-specific bridges", accent: SG.masTeal },
                   { label: "Unified Compliance", desc: "VC verification and regulatory reporting work identically regardless of which chain holds the toket", accent: SG.finternetCyan },
                 ].map((item, i) => (
-                  <div key={i} className="p-4 rounded-lg" style={{ background: `${item.accent}06` }}>
-                    <h4 className="text-sm font-semibold mb-2" style={{ color: item.accent }}>{item.label}</h4>
-                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+                  <div key={i} className="p-5 rounded-lg" style={{ background: `${item.accent}06` }}>
+                    <h4 className="text-sm font-semibold mb-3" style={{ color: item.accent }}>{item.label}</h4>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -411,7 +411,7 @@ export default function SGArchitecture() {
               { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity" },
               { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement" },
             ].map((link) => (
-              <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
+              <Link key={link.href} href={link.href} className="px-4 py-2 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
               </Link>
             ))}

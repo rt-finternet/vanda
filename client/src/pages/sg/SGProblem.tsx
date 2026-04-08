@@ -65,11 +65,11 @@ export default function SGProblem() {
 
             {/* CDP Deep Dive */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ background: `${SG.red}08`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5 flex items-center gap-3" style={{ background: `${SG.red}08`, borderBottom: `1px solid ${SG.border}` }}>
                 <Building2 className="w-6 h-6" style={{ color: SG.red }} />
                 <div>
                   <h3 className="text-lg font-semibold text-white/90">SGX Central Depository (CDP)</h3>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Operated by Singapore Exchange</p>
+                  <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>Operated by Singapore Exchange</p>
                 </div>
               </div>
               <div className="p-6">
@@ -77,20 +77,20 @@ export default function SGProblem() {
                   CDP is the central securities depository for Singapore's capital markets. It provides depository, clearing,
                   and settlement services for securities traded on SGX. All scripless securities in Singapore are held in CDP accounts.
                 </p>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mb-8">
                   {[
                     { label: "Asset Types", value: "Equities, Corporate Bonds, ETFs, REITs, Warrants, Structured Warrants" },
                     { label: "Settlement Cycle", value: "T+2 for equities, T+1 for bonds" },
                     { label: "Custody", value: "SGD 1.2T+ in securities under custody" },
                   ].map((item, i) => (
-                    <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.red}06` }}>
-                      <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.red}80` }}>{item.label}</div>
-                      <div className="text-xs text-white/70">{item.value}</div>
+                    <div key={i} className="p-5 rounded-lg" style={{ background: `${SG.red}06` }}>
+                      <div className="text-[10px] uppercase tracking-wider mb-2" style={{ color: `${SG.red}80` }}>{item.label}</div>
+                      <div className="text-xs text-white/70 leading-relaxed">{item.value}</div>
                     </div>
                   ))}
                 </div>
-                <div className="p-3 rounded-lg" style={{ background: `${SG.red}06`, border: `1px solid ${SG.red}10` }}>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+                <div className="p-5 rounded-lg" style={{ background: `${SG.red}06`, border: `1px solid ${SG.red}10` }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     <strong className="text-white/70">Key limitation:</strong> CDP only handles SGX-listed securities.
                     Government securities (SGS, T-bills) are held separately in MEPS+. There is no unified view of a
                     participant's full portfolio across both systems.
@@ -101,11 +101,11 @@ export default function SGProblem() {
 
             {/* MEPS+ Deep Dive */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ background: `${SG.masTeal}08`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5 flex items-center gap-3" style={{ background: `${SG.masTeal}08`, borderBottom: `1px solid ${SG.border}` }}>
                 <Landmark className="w-6 h-6" style={{ color: SG.masTeal }} />
                 <div>
                   <h3 className="text-lg font-semibold text-white/90">MAS Electronic Payment System (MEPS+)</h3>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Operated by Monetary Authority of Singapore</p>
+                  <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>Operated by Monetary Authority of Singapore</p>
                 </div>
               </div>
               <div className="p-6">
@@ -114,20 +114,20 @@ export default function SGProblem() {
                   and the depository for Singapore Government Securities. It is the backbone of Singapore's wholesale
                   financial infrastructure.
                 </p>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mb-8">
                   {[
                     { label: "Asset Types", value: "SGS Bonds, T-Bills, MAS Bills, SGD Interbank Payments" },
                     { label: "Settlement", value: "Real-time gross settlement (RTGS)" },
                     { label: "Participants", value: "Banks, primary dealers, MAS" },
                   ].map((item, i) => (
-                    <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
-                      <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.masTeal}80` }}>{item.label}</div>
-                      <div className="text-xs text-white/70">{item.value}</div>
+                    <div key={i} className="p-5 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
+                      <div className="text-[10px] uppercase tracking-wider mb-2" style={{ color: `${SG.masTeal}80` }}>{item.label}</div>
+                      <div className="text-xs text-white/70 leading-relaxed">{item.value}</div>
                     </div>
                   ))}
                 </div>
-                <div className="p-3 rounded-lg" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+                <div className="p-5 rounded-lg" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}10` }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     <strong className="text-white/70">Key limitation:</strong> MEPS+ is designed for wholesale interbank
                     operations. It does not handle equities, corporate bonds, or retail securities. Cross-collateralisation
                     between MEPS+ government securities and CDP equities requires manual processes.
@@ -146,7 +146,7 @@ export default function SGProblem() {
             <h2 className="text-2xl font-light mb-6">The <span className="font-semibold">fragmentation</span> problem</h2>
 
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
                 <h3 className="text-lg font-medium text-white/90">What a participant sees today</h3>
               </div>
               <div className="p-6 space-y-4">
@@ -182,13 +182,13 @@ export default function SGProblem() {
                     accent: SG.finternetAmber,
                   },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4 p-4 rounded-lg" style={{ background: `${item.accent}06` }}>
+                  <div key={i} className="flex items-start gap-4 p-5 rounded-lg" style={{ background: `${item.accent}06` }}>
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${item.accent}15` }}>
                       <span style={{ color: item.accent }}>{item.icon}</span>
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-white/90 mb-1">{item.title}</h4>
-                      <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+                      <h4 className="text-sm font-semibold text-white/90 mb-2">{item.title}</h4>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -229,11 +229,11 @@ export default function SGProblem() {
                     desc: "SGX has no incentive to cede equities settlement to a competitor. MAS has no incentive to move government securities out of MEPS+. A third depository would face institutional resistance from day one.",
                   },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${SG.red}06` }}>
+                  <div key={i} className="flex items-start gap-3 p-5 rounded-lg" style={{ background: `${SG.red}06` }}>
                     <X className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: SG.red }} />
                     <div>
-                      <h4 className="text-sm font-semibold text-white/90 mb-1">{item.problem}</h4>
-                      <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+                      <h4 className="text-sm font-semibold text-white/90 mb-2">{item.problem}</h4>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -242,7 +242,7 @@ export default function SGProblem() {
 
             {/* The answer */}
             <div className="rounded-2xl p-6" style={{ background: `${SG.nusOrange}08`, border: `1px solid ${SG.nusOrange}20` }}>
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-3 mb-4">
                 <Check className="w-5 h-5" style={{ color: SG.nusOrange }} />
                 <h3 className="text-lg font-semibold text-white/90">The answer: a network layer above both</h3>
               </div>
@@ -258,7 +258,7 @@ export default function SGProblem() {
                   { icon: <Check className="w-4 h-4" />, label: "Cross-collateralisation" },
                   { icon: <Check className="w-4 h-4" />, label: "Single compliance layer" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 p-2 rounded-lg" style={{ background: `${SG.nusOrange}10` }}>
+                  <div key={i} className="flex items-center gap-2 p-4 rounded-lg" style={{ background: `${SG.nusOrange}10` }}>
                     <span style={{ color: SG.nusOrange }}>{item.icon}</span>
                     <span className="text-xs text-white/70">{item.label}</span>
                   </div>
@@ -280,9 +280,9 @@ export default function SGProblem() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ borderBottom: `1px solid ${SG.border}` }}>
-                      <th className="text-left p-4 text-white/50 font-medium">Dimension</th>
-                      <th className="text-left p-4 font-medium" style={{ color: `${SG.red}cc` }}>Today</th>
-                      <th className="text-left p-4 font-medium" style={{ color: `${SG.nusOrange}cc` }}>UNITS Network</th>
+                      <th className="text-left p-5 text-white/50 font-medium">Dimension</th>
+                      <th className="text-left p-5 font-medium" style={{ color: `${SG.red}cc` }}>Today</th>
+                      <th className="text-left p-5 font-medium" style={{ color: `${SG.nusOrange}cc` }}>UNITS Network</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -297,9 +297,9 @@ export default function SGProblem() {
                       { dim: "Operating hours", today: "SGX: 9am-5pm, MEPS+: 9am-6:30pm", units: "24 hours, 7 days, 365 days" },
                     ].map((row, i) => (
                       <tr key={i} style={{ borderBottom: `1px solid ${SG.border}` }}>
-                        <td className="p-4 text-white/70 font-medium">{row.dim}</td>
-                        <td className="p-4" style={{ color: "rgba(255,255,255,0.4)" }}>{row.today}</td>
-                        <td className="p-4" style={{ color: "rgba(255,255,255,0.6)" }}>{row.units}</td>
+                        <td className="p-5 text-white/70 font-medium">{row.dim}</td>
+                        <td className="p-5" style={{ color: "rgba(255,255,255,0.4)" }}>{row.today}</td>
+                        <td className="p-5" style={{ color: "rgba(255,255,255,0.6)" }}>{row.units}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -324,7 +324,7 @@ export default function SGProblem() {
               { href: "/sg/deep-dive/tokenisation", label: "Tokenisation" },
               { href: "/sg/deep-dive/dvp-settlement", label: "DvP Settlement" },
             ].map((link) => (
-              <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
+              <Link key={link.href} href={link.href} className="px-4 py-2 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
               </Link>
             ))}

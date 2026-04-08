@@ -30,7 +30,7 @@ function RevealSection({ id, children, delay = 0 }: { id: string; children: Reac
 
 export default function SGDeepDiveDVP() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -79,9 +79,9 @@ export default function SGDeepDiveDVP() {
                     { icon: Zap, label: "Instant Finality", desc: "No T+2 waiting period. Settlement is final the moment both legs are confirmed." },
                     { icon: Shield, label: "Zero Principal Risk", desc: "No window where one party has delivered but the other has not." },
                   ].map((item, i) => (
-                    <div key={i} className="p-4 rounded-xl" style={{ background: `${SG.masTeal}08` }}>
+                    <div key={i} className="p-5 rounded-xl" style={{ background: `${SG.masTeal}08` }}>
                       <item.icon className="w-5 h-5 mb-2" style={{ color: SG.masTeal }} />
-                      <div className="text-sm font-medium text-white/90 mb-1">{item.label}</div>
+                      <div className="text-sm font-medium text-white/90 mb-2">{item.label}</div>
                       <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</div>
                     </div>
                   ))}
@@ -103,7 +103,7 @@ export default function SGDeepDiveDVP() {
             <div className="space-y-4 mb-8">
               {/* CDP */}
               <div className="rounded-xl p-5" style={{ background: `${SG.red}06`, border: `1px solid ${SG.red}15` }}>
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center gap-4 mb-3">
                   <Building2 className="w-5 h-5" style={{ color: SG.red }} />
                   <div className="text-sm font-semibold text-white/90">SGX CDP Settlement</div>
                 </div>
@@ -114,7 +114,7 @@ export default function SGDeepDiveDVP() {
                     { label: "Cash leg", value: "SGD via banking system" },
                     { label: "Finality", value: "End-of-day batch" },
                   ].map((item, i) => (
-                    <div key={i} className="p-2 rounded-lg" style={{ background: `${SG.red}08` }}>
+                    <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.red}08` }}>
                       <div className="text-[10px] uppercase tracking-wider" style={{ color: `${SG.red}80` }}>{item.label}</div>
                       <div className="text-xs text-white/70">{item.value}</div>
                     </div>
@@ -124,7 +124,7 @@ export default function SGDeepDiveDVP() {
 
               {/* MEPS+ */}
               <div className="rounded-xl p-5" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}15` }}>
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center gap-4 mb-3">
                   <Landmark className="w-5 h-5" style={{ color: SG.masTeal }} />
                   <div className="text-sm font-semibold text-white/90">MAS MEPS+ Settlement</div>
                 </div>
@@ -135,7 +135,7 @@ export default function SGDeepDiveDVP() {
                     { label: "Cash leg", value: "SGD via MAS accounts" },
                     { label: "Finality", value: "Real-time for SGD, batch for securities" },
                   ].map((item, i) => (
-                    <div key={i} className="p-2 rounded-lg" style={{ background: `${SG.masTeal}08` }}>
+                    <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.masTeal}08` }}>
                       <div className="text-[10px] uppercase tracking-wider" style={{ color: `${SG.masTeal}80` }}>{item.label}</div>
                       <div className="text-xs text-white/70">{item.value}</div>
                     </div>
@@ -145,7 +145,7 @@ export default function SGDeepDiveDVP() {
 
               {/* The gap */}
               <div className="rounded-xl p-5" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center gap-4 mb-3">
                   <AlertTriangle className="w-5 h-5" style={{ color: SG.finternetAmber }} />
                   <div className="text-sm font-semibold text-white/90">The Gap Between Them</div>
                 </div>
@@ -203,7 +203,7 @@ export default function SGDeepDiveDVP() {
                   </div>
                   <div className="px-5 py-4" style={{ background: `${item.color}04` }}>
                     <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>{item.desc}</p>
-                    <div className="p-3 rounded-lg mb-2" style={{ background: `${item.color}08` }}>
+                    <div className="p-4 rounded-lg mb-2" style={{ background: `${item.color}08` }}>
                       <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${item.color}80` }}>Singapore Example</div>
                       <div className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>{item.example}</div>
                     </div>
@@ -224,7 +224,7 @@ export default function SGDeepDiveDVP() {
               DBS sells 5,000 CapitaLand shares to OCBC for 18,750 XSGD.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   step: 1,
@@ -305,7 +305,7 @@ export default function SGDeepDiveDVP() {
             <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
               <div className="p-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-xl" style={{ background: `${SG.nusOrange}08` }}>
+                  <div className="p-5 rounded-xl" style={{ background: `${SG.nusOrange}08` }}>
                     <div className="text-xs uppercase tracking-wider mb-3" style={{ color: SG.nusOrange }}>XSGD (StraitsX)</div>
                     <div className="space-y-2">
                       {[
@@ -322,7 +322,7 @@ export default function SGDeepDiveDVP() {
                       ))}
                     </div>
                   </div>
-                  <div className="p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="p-5 rounded-xl" style={{ background: "rgba(255,255,255,0.03)" }}>
                     <div className="text-xs uppercase tracking-wider mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>Digital Euro (ECB)</div>
                     <div className="space-y-2">
                       {[
@@ -367,7 +367,7 @@ export default function SGDeepDiveDVP() {
                   { step: "3", text: "If the margin call is satisfied, the encumbrance releases automatically" },
                   { step: "4", text: "If the margin call fails, the collateral is liquidated atomically via DvP" },
                 ].map((item) => (
-                  <div key={item.step} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${SG.finternetCyan}06` }}>
+                  <div key={item.step} className="flex items-start gap-3 p-4 rounded-lg" style={{ background: `${SG.finternetCyan}06` }}>
                     <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0" style={{ background: `${SG.finternetCyan}15`, color: SG.finternetCyan }}>
                       {item.step}
                     </div>
@@ -439,9 +439,9 @@ export default function SGDeepDiveDVP() {
                 { icon: Shield, label: "No Operational Control", desc: "The observer node is read-only. MAS can monitor but cannot interfere with settlement execution" },
                 { icon: Globe, label: "Systemic Risk Monitoring", desc: "Aggregate settlement volumes, concentration risk, and cross-depository flows visible in real-time" },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}12` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${SG.masTeal}06`, border: `1px solid ${SG.masTeal}12` }}>
                   <item.icon className="w-5 h-5 mb-2" style={{ color: SG.masTeal }} />
-                  <div className="text-sm font-medium text-white/90 mb-1">{item.label}</div>
+                  <div className="text-sm font-medium text-white/90 mb-2">{item.label}</div>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
                 </div>
               ))}

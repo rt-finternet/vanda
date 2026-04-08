@@ -67,7 +67,7 @@ export default function SGFunding() {
 
             {/* FSTI 3.0 */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ background: `${SG.nusOrange}08`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5 flex items-center gap-3" style={{ background: `${SG.nusOrange}08`, borderBottom: `1px solid ${SG.border}` }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${SG.nusOrange}15` }}>
                   <DollarSign className="w-4 h-4" style={{ color: SG.nusOrange }} />
                 </div>
@@ -83,8 +83,8 @@ export default function SGFunding() {
                   qualifies as shared infrastructure that benefits the entire Singapore financial ecosystem.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div className="p-4 rounded-lg" style={{ background: `${SG.nusOrange}06` }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                  <div className="p-5 rounded-lg" style={{ background: `${SG.nusOrange}06` }}>
                     <h4 className="text-xs uppercase tracking-wider mb-2" style={{ color: `${SG.nusOrange}80` }}>Eligible Costs</h4>
                     <ul className="space-y-1.5">
                       {[
@@ -100,9 +100,9 @@ export default function SGFunding() {
                       ))}
                     </ul>
                   </div>
-                  <div className="p-4 rounded-lg" style={{ background: `${SG.nusOrange}06` }}>
+                  <div className="p-5 rounded-lg" style={{ background: `${SG.nusOrange}06` }}>
                     <h4 className="text-xs uppercase tracking-wider mb-2" style={{ color: `${SG.nusOrange}80` }}>Key Terms</h4>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {[
                         { label: "Co-funding", value: "Up to 50%" },
                         { label: "Duration", value: "24 months" },
@@ -118,7 +118,7 @@ export default function SGFunding() {
                   </div>
                 </div>
 
-                <div className="p-3 rounded-lg" style={{ background: `${SG.nusOrange}06`, border: `1px solid ${SG.nusOrange}10` }}>
+                <div className="p-5 rounded-lg" style={{ background: `${SG.nusOrange}06`, border: `1px solid ${SG.nusOrange}10` }}>
                   <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
                     <strong className="text-white/70">MAS Integration Grants:</strong> Separately, MAS provides
                     integration grants to help individual banks connect to shared infrastructure. This lowers the
@@ -130,7 +130,7 @@ export default function SGFunding() {
 
             {/* Institute of Programmable Finance */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ background: `${SG.nusBlue}15`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5 flex items-center gap-3" style={{ background: `${SG.nusBlue}15`, borderBottom: `1px solid ${SG.border}` }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${SG.nusBlue}25` }}>
                   <GraduationCap className="w-4 h-4" style={{ color: "#6B9FD4" }} />
                 </div>
@@ -146,15 +146,15 @@ export default function SGFunding() {
                   to bootstrap the network, combining academic rigour with practical implementation.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
                   {[
                     { title: "Protocol Design", desc: "Formal verification of UNITS protocol smart contracts and tokenClass specifications", accent: "#6B9FD4" },
                     { title: "Governance Framework", desc: "Research-backed governance model for multi-stakeholder network operation", accent: "#6B9FD4" },
                     { title: "Regulatory Sandbox", desc: "Academic partnership with MAS for sandbox testing and regulatory feedback", accent: "#6B9FD4" },
                   ].map((item, i) => (
-                    <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.nusBlue}10` }}>
-                      <div className="text-xs font-semibold text-white/80 mb-1">{item.title}</div>
-                      <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
+                    <div key={i} className="p-5 rounded-lg" style={{ background: `${SG.nusBlue}10` }}>
+                      <div className="text-xs font-semibold text-white/80 mb-2">{item.title}</div>
+                      <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{item.desc}</div>
                     </div>
                   ))}
                 </div>
@@ -163,16 +163,16 @@ export default function SGFunding() {
 
             {/* Funding comparison */}
             <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
                 <h3 className="text-lg font-medium text-white/90">Funding pathway comparison</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ borderBottom: `1px solid ${SG.border}` }}>
-                      <th className="text-left p-4 text-white/50 font-medium">Dimension</th>
-                      <th className="text-left p-4 font-medium" style={{ color: `${SG.nusOrange}cc` }}>FSTI 3.0 Track 2</th>
-                      <th className="text-left p-4 font-medium" style={{ color: "#6B9FD4" }}>Institute of Prog. Finance</th>
+                      <th className="text-left p-5 text-white/50 font-medium">Dimension</th>
+                      <th className="text-left p-5 font-medium" style={{ color: `${SG.nusOrange}cc` }}>FSTI 3.0 Track 2</th>
+                      <th className="text-left p-5 font-medium" style={{ color: "#6B9FD4" }}>Institute of Prog. Finance</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -185,9 +185,9 @@ export default function SGFunding() {
                       { dim: "Risk", fsti: "Lower (proven grant structure)", ipf: "Lower (academic partnership)" },
                     ].map((row, i) => (
                       <tr key={i} style={{ borderBottom: `1px solid ${SG.border}` }}>
-                        <td className="p-4 text-white/70 font-medium">{row.dim}</td>
-                        <td className="p-4" style={{ color: "rgba(255,255,255,0.5)" }}>{row.fsti}</td>
-                        <td className="p-4" style={{ color: "rgba(255,255,255,0.5)" }}>{row.ipf}</td>
+                        <td className="p-5 text-white/70 font-medium">{row.dim}</td>
+                        <td className="p-5" style={{ color: "rgba(255,255,255,0.5)" }}>{row.fsti}</td>
+                        <td className="p-5" style={{ color: "rgba(255,255,255,0.5)" }}>{row.ipf}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -212,22 +212,22 @@ export default function SGFunding() {
             <div className="space-y-4">
               {/* Local Banks */}
               <div className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="px-5 py-3 flex items-center gap-2" style={{ background: `${SG.red}06`, borderBottom: `1px solid ${SG.border}` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.red}06`, borderBottom: `1px solid ${SG.border}` }}>
                   <Building2 className="w-4 h-4" style={{ color: SG.red }} />
                   <span className="text-sm font-semibold text-white/90">Local Banks</span>
                 </div>
                 <div className="p-5">
-                  <div className="grid grid-cols-3 gap-3 mb-3">
+                  <div className="grid grid-cols-3 gap-4 mb-3">
                     {[
                       { name: "DBS", role: "Largest bank, operates DDEx", highlight: true },
                       { name: "OCBC", role: "Wealth management, custody services", highlight: false },
                       { name: "UOB", role: "Trade finance, institutional banking", highlight: false },
                     ].map((b, i) => (
-                      <div key={i} className="p-3 rounded-lg" style={{
+                      <div key={i} className="p-5 rounded-lg" style={{
                         background: b.highlight ? `${SG.red}08` : "rgba(255,255,255,0.02)",
                         border: b.highlight ? `1px solid ${SG.red}15` : `1px solid ${SG.border}`
                       }}>
-                        <div className="text-sm font-medium text-white/85">{b.name}</div>
+                        <div className="text-sm font-medium text-white/85 mb-1">{b.name}</div>
                         <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>{b.role}</div>
                       </div>
                     ))}
@@ -237,7 +237,7 @@ export default function SGFunding() {
 
               {/* Global Banks */}
               <div className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="px-5 py-3 flex items-center gap-2" style={{ background: `${SG.masTeal}06`, borderBottom: `1px solid ${SG.border}` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.masTeal}06`, borderBottom: `1px solid ${SG.border}` }}>
                   <Globe className="w-4 h-4" style={{ color: SG.masTeal }} />
                   <span className="text-sm font-semibold text-white/90">Global Banks (Singapore Operations)</span>
                 </div>
@@ -253,8 +253,8 @@ export default function SGFunding() {
                       { name: "Deutsche Bank", role: "Custody, securities" },
                       { name: "BNP Paribas", role: "Securities services" },
                     ].map((b, i) => (
-                      <div key={i} className="p-2 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
-                        <div className="text-xs font-medium text-white/80">{b.name}</div>
+                      <div key={i} className="p-4 rounded-lg" style={{ background: `${SG.masTeal}06` }}>
+                        <div className="text-xs font-medium text-white/80 mb-1">{b.name}</div>
                         <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{b.role}</div>
                       </div>
                     ))}
@@ -264,7 +264,7 @@ export default function SGFunding() {
 
               {/* Digital Asset Platforms */}
               <div className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="px-5 py-3 flex items-center gap-2" style={{ background: `${SG.finternetCyan}06`, borderBottom: `1px solid ${SG.border}` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.finternetCyan}06`, borderBottom: `1px solid ${SG.border}` }}>
                   <Zap className="w-4 h-4" style={{ color: SG.finternetCyan }} />
                   <span className="text-sm font-semibold text-white/90">Digital Asset Platforms</span>
                 </div>
@@ -279,8 +279,8 @@ export default function SGFunding() {
                       { name: "Fazz", role: "Stablecoin infrastructure" },
                       { name: "StraitsX", role: "SCS stablecoin issuer" },
                     ].map((p, i) => (
-                      <div key={i} className="p-2 rounded-lg" style={{ background: `${SG.finternetCyan}06` }}>
-                        <div className="text-xs font-medium text-white/80">{p.name}</div>
+                      <div key={i} className="p-4 rounded-lg" style={{ background: `${SG.finternetCyan}06` }}>
+                        <div className="text-xs font-medium text-white/80 mb-1">{p.name}</div>
                         <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{p.role}</div>
                       </div>
                     ))}
@@ -290,7 +290,7 @@ export default function SGFunding() {
 
               {/* Sovereign & Infrastructure */}
               <div className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="px-5 py-3 flex items-center gap-2" style={{ background: `${SG.finternetAmber}06`, borderBottom: `1px solid ${SG.border}` }}>
+                <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${SG.finternetAmber}06`, borderBottom: `1px solid ${SG.border}` }}>
                   <Landmark className="w-4 h-4" style={{ color: SG.finternetAmber }} />
                   <span className="text-sm font-semibold text-white/90">Sovereign & Infrastructure</span>
                 </div>
@@ -306,8 +306,8 @@ export default function SGFunding() {
                       { name: "Phillip Securities", role: "Brokerage, distribution" },
                       { name: "CGS-CIMB", role: "Brokerage, ASEAN link" },
                     ].map((p, i) => (
-                      <div key={i} className="p-2 rounded-lg" style={{ background: `${SG.finternetAmber}06` }}>
-                        <div className="text-xs font-medium text-white/80">{p.name}</div>
+                      <div key={i} className="p-4 rounded-lg" style={{ background: `${SG.finternetAmber}06` }}>
+                        <div className="text-xs font-medium text-white/80 mb-1">{p.name}</div>
                         <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{p.role}</div>
                       </div>
                     ))}
@@ -368,7 +368,7 @@ export default function SGFunding() {
                 },
               ].map((p, i) => (
                 <div key={i} className="rounded-xl overflow-hidden" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                  <div className="px-5 py-3 flex items-center justify-between" style={{ background: `${p.accent}08`, borderBottom: `1px solid ${SG.border}` }}>
+                  <div className="px-5 py-4 flex items-center justify-between" style={{ background: `${p.accent}08`, borderBottom: `1px solid ${SG.border}` }}>
                     <h3 className="text-sm font-semibold text-white/90">{p.phase}</h3>
                     <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: `${p.accent}15`, color: p.accent }}>{p.timeline}</span>
                   </div>
@@ -406,9 +406,9 @@ export default function SGFunding() {
                 { title: "Issuance Fees", desc: "One-time fee for tokenClass creation and tokenPool setup, covering compliance verification and network registration", accent: SG.finternetCyan },
                 { title: "Data & Analytics", desc: "Premium data feeds for participants and regulators, including real-time portfolio analytics and market intelligence", accent: SG.finternetAmber },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.accent}06`, border: `1px solid ${item.accent}12` }}>
+                <div key={i} className="p-5 rounded-xl" style={{ background: `${item.accent}06`, border: `1px solid ${item.accent}12` }}>
                   <h4 className="text-sm font-semibold text-white/90 mb-2">{item.title}</h4>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -431,7 +431,7 @@ export default function SGFunding() {
               { href: "/proof-of-value", label: "PoV Plan" },
               { href: "/tools/value-calculator", label: "Value Calculator" },
             ].map((link) => (
-              <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
+              <Link key={link.href} href={link.href} className="px-4 py-2 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
               </Link>
             ))}

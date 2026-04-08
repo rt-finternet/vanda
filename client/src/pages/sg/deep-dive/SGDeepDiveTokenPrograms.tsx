@@ -33,7 +33,7 @@ function RevealSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 export default function SGDeepDiveTokenPrograms() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -76,7 +76,7 @@ export default function SGDeepDiveTokenPrograms() {
                 </div>
 
                 {/* Visual flow */}
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {[
                     {
                       phase: "Pre-Hook",
@@ -109,7 +109,7 @@ export default function SGDeepDiveTokenPrograms() {
                         <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                         <div className="flex flex-wrap gap-2">
                           {item.examples.map((ex, j) => (
-                            <span key={j} className="text-[10px] px-2.5 py-1 rounded-full" style={{ background: `${item.color}10`, color: `${item.color}90` }}>
+                            <span key={j} className="text-[10px] px-3 py-1.5 rounded-full" style={{ background: `${item.color}10`, color: `${item.color}90` }}>
                               {ex}
                             </span>
                           ))}
@@ -187,7 +187,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>{item.desc}</p>
                     <div className="space-y-2">
                       {item.rules.map((rule, j) => (
-                        <div key={j} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                        <div key={j} className="flex items-start gap-3 p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
                           <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: `${item.color}70` }} />
                           <div>
                             <span className="text-xs font-medium text-white/80">{rule.label}: </span>
@@ -272,7 +272,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Equities, REITs, ETFs</span>
                   </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5 space-y-4">
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Manages the full lifecycle of proxy tokets representing SGX-listed equities held in CDP.
                     Every corporate action that CDP processes for the underlying shares is mirrored automatically
@@ -314,7 +314,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>SGS Bonds, T-Bills, MAS Bills</span>
                   </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5 space-y-4">
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Automates the lifecycle of government securities proxy tokets. Coupon calculations, maturity
                     processing, and T-bill rollovers execute on-ledger without manual intervention. MAS observer
@@ -356,7 +356,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>LBMA/SBMA Precious Metals</span>
                   </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5 space-y-4">
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Manages gold tokets from vault custody verification through fractional ownership to physical
                     redemption. Integrates with LBMA and SBMA price feeds for continuous valuation and
@@ -398,7 +398,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Variable Capital Companies</span>
                   </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5 space-y-4">
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Transforms VCC fund administration from monthly batch processing to continuous on-ledger
                     operations. NAV calculation, subscription, redemption, and distribution all execute through
@@ -440,7 +440,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Collateral and Margin Management</span>
                   </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5 space-y-4">
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Automates the collateral lifecycle for SGX Derivatives Clearing. Continuous mark-to-market
                     against live price feeds, automated margin calls, collateral substitution, and cross-asset
@@ -481,7 +481,7 @@ export default function SGDeepDiveTokenPrograms() {
                     <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Portfolio Tokets</span>
                   </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5 space-y-4">
                   <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     Manages the composition and rebalancing of P-Tokets, the portfolio tokets that combine
                     multiple asset classes into a single composable unit. Drift detection, threshold-based
@@ -552,7 +552,7 @@ export default function SGDeepDiveTokenPrograms() {
             </div>
 
             {/* SCS Glossary */}
-            <div className="mt-4 p-4 rounded-xl flex items-start gap-3" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+            <div className="mt-4 p-5 rounded-xl flex items-start gap-3" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
               <Coins className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: SG.finternetAmber }} />
               <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
                 <span className="font-semibold text-white/70">SCS</span> = Single-Currency Stablecoin, regulated by MAS when pegged to SGD or G10 currencies. Used as the settlement asset for all Token Program cash flows (dividends, coupons, subscriptions, redemptions). StraitsX XSGD is the reference SCS implementation for UNITS|SG.
@@ -585,8 +585,8 @@ export default function SGDeepDiveTokenPrograms() {
                   { label: "VCC fund flows", desc: "Subscription, redemption, and distribution activity across all tokenised VCCs with real-time AUM" },
                   { label: "Cross-border activity", desc: "All unsponsored toket creation, cross-ledger transfers, and foreign security access patterns" },
                 ].map((item, i) => (
-                  <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.masTeal}08` }}>
-                    <div className="text-xs font-semibold text-white/80 mb-1">{item.label}</div>
+                  <div key={i} className="p-4 rounded-lg" style={{ background: `${SG.masTeal}08` }}>
+                    <div className="text-xs font-semibold text-white/80 mb-2">{item.label}</div>
                     <div className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{item.desc}</div>
                   </div>
                 ))}
@@ -604,7 +604,7 @@ export default function SGDeepDiveTokenPrograms() {
               composable across the entire UNITS|SG network.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   principle: "UNITS enforces, Token Manager defines",
@@ -637,10 +637,10 @@ export default function SGDeepDiveTokenPrograms() {
                   color: SG.finternetAmber,
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
-                  <item.icon className="w-5 h-5 shrink-0 mt-0.5" style={{ color: item.color }} />
+                <div key={i} className="flex gap-4 p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                  <item.icon className="w-5 h-5 shrink-0 mt-1" style={{ color: item.color }} />
                   <div>
-                    <div className="text-sm font-medium text-white/90 mb-1">{item.principle}</div>
+                    <div className="text-sm font-medium text-white/90 mb-2">{item.principle}</div>
                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                   </div>
                 </div>

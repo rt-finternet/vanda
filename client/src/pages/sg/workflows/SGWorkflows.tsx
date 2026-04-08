@@ -99,12 +99,12 @@ const WORKFLOWS = [
 
 export default function SGWorkflows() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
       <div className="max-w-5xl mx-auto p-6 md:p-12" style={{ color: "rgba(255,255,255,0.85)" }}>
         {/* Hero */}
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-5 mb-8">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${SG.masTeal}20` }}>
               <Layers className="w-5 h-5" style={{ color: SG.masTeal }} />
             </div>
@@ -152,7 +152,7 @@ export default function SGWorkflows() {
 
                     {/* Content */}
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-1">
+                      <div className="flex items-center gap-4 mb-1">
                         <h2 className="text-lg font-semibold text-white">{wf.title}</h2>
                         <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: wf.accent, background: `${wf.accent}15` }}>
                           {wf.steps} steps
@@ -162,7 +162,7 @@ export default function SGWorkflows() {
                       <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.45)" }}>{wf.description}</p>
 
                       {/* Participants */}
-                      <div className="flex flex-wrap gap-2 mb-3">
+                      <div className="flex flex-wrap gap-3 mb-4">
                         {wf.participants.map((p) => (
                           <span key={p} className="text-[10px] px-2 py-0.5 rounded-full" style={{ color: "rgba(255,255,255,0.4)", border: `1px solid ${SG.border}` }}>
                             {p}

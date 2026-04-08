@@ -43,7 +43,7 @@ const exampleComposition = [
 
 export default function SGDeepDivePTokets() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -183,12 +183,12 @@ export default function SGDeepDivePTokets() {
                     desc: "References to credentials and conditions that must be satisfied for the P-Toket to be transferable. If the P-Toket contains accredited-investor-only securities, the P-Toket itself inherits that restriction. Compliance composes upward.",
                   },
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
+                  <div key={i} className="flex gap-4 p-5 rounded-xl" style={{ background: `${item.color}04`, border: `1px solid ${item.color}10` }}>
                     <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${item.color}12` }}>
                       <item.icon className="w-4 h-4" style={{ color: item.color }} />
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white/90 mb-1">{item.layer}</div>
+                      <div className="text-sm font-medium text-white/90 mb-2">{item.layer}</div>
                       <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                     </div>
                   </div>
@@ -227,7 +227,7 @@ export default function SGDeepDivePTokets() {
 
                 <div className="space-y-2">
                   {exampleComposition.map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                    <div key={i} className="flex items-center gap-3 p-4 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${item.accent}12` }}>
                         <item.icon className="w-4 h-4" style={{ color: item.accent }} />
                       </div>
@@ -263,7 +263,7 @@ export default function SGDeepDivePTokets() {
               coordinate with the underlying tokets' programs to create a seamless, automated experience.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 {
                   event: "Creation",
@@ -342,7 +342,7 @@ export default function SGDeepDivePTokets() {
 
               {/* Top level */}
               <div className="rounded-xl p-4 mb-3" style={{ background: `${SG.nusOrange}06`, border: `1px solid ${SG.nusOrange}15` }}>
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-3 mb-4">
                   <Network className="w-4 h-4" style={{ color: SG.nusOrange }} />
                   <span className="text-sm font-semibold text-white/90">Master P-Toket: Balanced Growth</span>
                 </div>
@@ -538,8 +538,8 @@ export default function SGDeepDivePTokets() {
                   { label: "CPFIS compliance", desc: "Real-time monitoring of CPFIS P-Tokets against investment scheme limits" },
                   { label: "Collateral transparency", desc: "Full look-through into P-Tokets pledged as collateral, with component-level valuations" },
                 ].map((item, i) => (
-                  <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.masTeal}08` }}>
-                    <div className="text-xs font-semibold text-white/80 mb-1">{item.label}</div>
+                  <div key={i} className="p-4 rounded-lg" style={{ background: `${SG.masTeal}08` }}>
+                    <div className="text-xs font-semibold text-white/80 mb-2">{item.label}</div>
                     <div className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{item.desc}</div>
                   </div>
                 ))}

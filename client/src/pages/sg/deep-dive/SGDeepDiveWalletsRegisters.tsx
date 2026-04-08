@@ -13,7 +13,7 @@ const FINTERNET_LOGO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663328851912
 
 export default function SGDeepDiveWalletsRegisters() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* ── Hero ── */}
@@ -199,7 +199,7 @@ export default function SGDeepDiveWalletsRegisters() {
               {/* Native Mode */}
               <LiquidGlassCard>
                 <div className="p-5">
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <Server className="w-4 h-4" style={{ color: SG.masTeal }} />
                     <h3 className="text-sm font-semibold text-white">Native Mode</h3>
                     <span className="ml-auto text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${SG.masTeal}20`, color: SG.masTeal }}>UNITS is Source of Truth</span>
@@ -234,7 +234,7 @@ export default function SGDeepDiveWalletsRegisters() {
               {/* Proxy Mode */}
               <LiquidGlassCard>
                 <div className="p-5">
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <GitBranch className="w-4 h-4" style={{ color: SG.finternetAmber }} />
                     <h3 className="text-sm font-semibold text-white">Proxy Mode</h3>
                     <span className="ml-auto text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${SG.finternetAmber}20`, color: SG.finternetAmber }}>External Ledger is Source of Truth</span>
@@ -311,14 +311,14 @@ export default function SGDeepDiveWalletsRegisters() {
             <div className="mt-8 p-5 rounded-xl" style={{ background: "rgba(15,29,53,0.6)", border: "1px solid rgba(245,158,11,0.1)" }}>
               <h4 className="text-sm font-semibold text-white mb-3">Dependency Pointers in Action</h4>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="p-3 rounded-lg" style={{ background: "rgba(0,163,161,0.06)", border: `1px solid ${SG.masTeal}15` }}>
+                <div className="p-4 rounded-lg" style={{ background: "rgba(0,163,161,0.06)", border: `1px solid ${SG.masTeal}15` }}>
                   <div className="text-xs font-semibold mb-1" style={{ color: SG.masTeal }}>KYC Token Dependency</div>
                   <p className="text-[11px] leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     A toket is only transferable if the holder's Finternet Account has a current, valid KYC credential
                     issued by an approved Trust Provider. The dependency pointer references the credential type and issuer.
                   </p>
                 </div>
-                <div className="p-3 rounded-lg" style={{ background: "rgba(245,158,11,0.06)", border: `1px solid ${SG.finternetAmber}15` }}>
+                <div className="p-4 rounded-lg" style={{ background: "rgba(245,158,11,0.06)", border: `1px solid ${SG.finternetAmber}15` }}>
                   <div className="text-xs font-semibold mb-1" style={{ color: SG.finternetAmber }}>Accreditation Dependency</div>
                   <p className="text-[11px] leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                     A structured note toket requires the holder to have an Accredited Investor credential under MAS guidelines.
@@ -379,7 +379,7 @@ export default function SGDeepDiveWalletsRegisters() {
               ].map((item, i) => (
                 <LiquidGlassCard key={i}>
                   <div className="p-5">
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center gap-4 mb-3">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold" style={{ background: `${item.color}15`, border: `1px solid ${item.color}25`, color: item.color }}>
                         {item.bank.charAt(0)}
                       </div>
@@ -403,7 +403,7 @@ export default function SGDeepDiveWalletsRegisters() {
                 { step: "3", label: "Connect", desc: "Wallet connects to UNITS Network APIs. Bank's clients can now access all asset classes, settlement, and collateral services", color: SG.red },
                 { step: "4", label: "Operate", desc: "Bank maintains full control of its wallet infrastructure. UNITS Network enforces common rules across all connected wallets", color: "#8B5CF6" },
               ].map((item, i) => (
-                <div key={i} className="relative p-4 rounded-xl" style={{ background: "rgba(15,29,53,0.6)", border: `1px solid ${item.color}20` }}>
+                <div key={i} className="relative p-5 rounded-xl" style={{ background: "rgba(15,29,53,0.6)", border: `1px solid ${item.color}20` }}>
                   <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mb-2" style={{ background: `${item.color}20`, color: item.color }}>
                     {item.step}
                   </div>
@@ -482,7 +482,7 @@ export default function SGDeepDiveWalletsRegisters() {
                 { title: "Collateral Management", desc: "Margin calls and collateral substitution by clearing houses", icon: <Building2 className="w-4 h-4" /> },
                 { title: "Agentic Execution", desc: "AI agents operating within strict policy-bound delegation credentials", icon: <Zap className="w-4 h-4" /> },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "rgba(15,29,53,0.5)", border: "1px solid rgba(245,158,11,0.08)" }}>
+                <div key={i} className="flex items-start gap-3 p-5 rounded-xl" style={{ background: "rgba(15,29,53,0.5)", border: "1px solid rgba(245,158,11,0.08)" }}>
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${SG.finternetAmber}12` }}>
                     <span style={{ color: SG.finternetAmber }}>{item.icon}</span>
                   </div>
@@ -494,7 +494,7 @@ export default function SGDeepDiveWalletsRegisters() {
               ))}
             </div>
 
-            <div className="mt-6 p-4 rounded-xl" style={{ background: "rgba(238,37,54,0.06)", border: `1px solid ${SG.red}15` }}>
+            <div className="mt-6 p-5 rounded-xl" style={{ background: "rgba(238,37,54,0.06)", border: `1px solid ${SG.red}15` }}>
               <div className="flex items-start gap-2">
                 <Shield className="w-4 h-4 mt-0.5 shrink-0" style={{ color: SG.red }} />
                 <div>
@@ -599,7 +599,7 @@ export default function SGDeepDiveWalletsRegisters() {
 
       {/* Footer */}
       <footer className="px-6 py-8 text-center" style={{ borderTop: "1px solid rgba(245,158,11,0.06)" }}>
-        <div className="flex items-center justify-center gap-3 mb-3">
+        <div className="flex items-center justify-center gap-4 mb-3">
           <img src={UNITS_LOGO} alt="UNITS|SG" className="h-6 opacity-60" />
           <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.15)" }}>|</span>
           <img src={FINTERNET_LOGO} alt="Finternet" className="h-4 opacity-40" />

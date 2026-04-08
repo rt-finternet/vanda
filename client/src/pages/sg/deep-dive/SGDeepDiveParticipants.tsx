@@ -122,7 +122,7 @@ export default function SGDeepDiveParticipants() {
   ];
 
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* Hero */}
@@ -163,12 +163,12 @@ export default function SGDeepDiveParticipants() {
               {tiers.map((t) => (
                 <div key={t.tier} className="p-3 rounded-xl text-center" style={{ background: `${t.color}06`, border: `1px solid ${t.color}12` }}>
                   <div className="text-lg font-bold" style={{ color: t.color }}>{t.participants.length}</div>
-                  <div className="text-[9px] font-medium text-white/60 mt-0.5">{t.label}</div>
+                  <div className="text-[9px] font-medium text-white/60 mt-1">{t.label}</div>
                 </div>
               ))}
             </div>
 
-            <div className="p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+            <div className="p-5 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
               <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
                 <span className="font-medium text-white/70">Total ecosystem:</span> {tiers.reduce((sum, t) => sum + t.participants.length, 0)} named
                 institutions across {tiers.length} tiers. This is not aspirational; every institution listed
@@ -183,8 +183,8 @@ export default function SGDeepDiveParticipants() {
         {tiers.map((tier, tierIdx) => (
           <RevealSection key={tier.tier} id={`tier-${tierIdx + 1}`} delay={100}>
             <section>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: `${tier.color}15`, color: tier.color }}>
+              <div className="flex items-center gap-5 mb-8">
+                <span className="text-xs font-bold px-3 py-1.5 rounded-full" style={{ background: `${tier.color}15`, color: tier.color }}>
                   {tier.tier}
                 </span>
                 <h2 className="text-2xl font-light"><span className="font-semibold">{tier.label}</span></h2>
@@ -193,10 +193,10 @@ export default function SGDeepDiveParticipants() {
                 {tier.desc}
               </p>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {tier.participants.map((p, i) => (
-                  <div key={i} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: `${tier.color}04`, border: `1px solid ${tier.color}10` }}>
-                    <p.icon className="w-5 h-5 shrink-0 mt-0.5" style={{ color: tier.color }} />
+                  <div key={i} className="flex items-start gap-4 p-5 rounded-xl" style={{ background: `${tier.color}04`, border: `1px solid ${tier.color}10` }}>
+                    <p.icon className="w-5 h-5 shrink-0 mt-1" style={{ color: tier.color }} />
                     <div>
                       <div className="text-sm font-medium text-white/90 mb-0.5">{p.name}</div>
                       <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{p.role}</p>

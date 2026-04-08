@@ -294,7 +294,7 @@ export default function SGWorkflowInstitutionalFX() {
   return (
     <>
       <SGPortalNav />
-      <div className="min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
+      <div className="vanda-portal min-h-screen" style={{ background: SG.dark, color: "rgba(255,255,255,0.85)" }}>
         <CinematicBackground />
         <div className="max-w-6xl mx-auto px-6 py-16">
           {/* Header */}
@@ -302,7 +302,7 @@ export default function SGWorkflowInstitutionalFX() {
             <Link href="/sg/workflows" className="inline-flex items-center gap-2 text-sm mb-6 transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}>
               <ArrowLeft className="w-4 h-4" /> Back to Workflows
             </Link>
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-4 mb-3">
               <Building2 className="w-7 h-7" style={{ color: "#3b82f6" }} />
               <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(59,130,246,0.6)" }}>UNITS|SG WORKFLOW</span>
             </div>
@@ -314,7 +314,7 @@ export default function SGWorkflowInstitutionalFX() {
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               {["GIC", "DBS GTS", "CLS", "Euroclear", "SGX-DC", "German Bund", "CLS PvP", "Collateral Highway"].map((tag) => (
-                <span key={tag} className="px-2.5 py-1 rounded-full text-[10px] font-medium" style={{ background: "rgba(59,130,246,0.1)", color: "#60a5fa", border: "1px solid rgba(59,130,246,0.2)" }}>
+                <span key={tag} className="px-3 py-1.5 rounded-full text-[10px] font-medium" style={{ background: "rgba(59,130,246,0.1)", color: "#60a5fa", border: "1px solid rgba(59,130,246,0.2)" }}>
                   {tag}
                 </span>
               ))}
@@ -366,7 +366,7 @@ export default function SGWorkflowInstitutionalFX() {
                     <StepIcon className="w-7 h-7" style={{ color: step.color }} />
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
+                    <div className="flex items-center gap-4 mb-1">
                       <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: `${step.color}cc` }}>Step {step.id} of {STEPS.length}</span>
                       <span className="text-xs px-2 py-0.5 rounded" style={{ background: `${step.color}15`, color: step.color }}>{step.actor}</span>
                     </div>
@@ -389,7 +389,7 @@ export default function SGWorkflowInstitutionalFX() {
                 </div>
                 {/* Time Comparison */}
                 <div className="rounded-xl p-5" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <Clock className="w-4 h-4" style={{ color: "rgba(255,255,255,0.35)" }} />
                     <h4 className="text-xs font-mono uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.35)" }}>Traditional vs UNITS|SG</h4>
                   </div>
@@ -474,7 +474,7 @@ export default function SGWorkflowInstitutionalFX() {
             <div className="grid md:grid-cols-3 gap-4">
               {fxModels.map((m) => (
                 <div key={m.layer} className="rounded-xl p-5" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                  <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                  <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-3">
                     <Coins className="w-4 h-4" style={{ color: m.color }} /> {m.layer}
                   </h4>
                   <p className="text-xs mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{m.description}</p>

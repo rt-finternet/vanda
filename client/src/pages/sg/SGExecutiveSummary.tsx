@@ -26,7 +26,7 @@ function SGBadge() {
 
 function SectionNumber({ num, accent = SG.nusOrange }: { num: number; accent?: string }) {
   return (
-    <div className="flex items-center gap-3 mb-6">
+    <div className="flex items-center gap-5 mb-8">
       <div
         className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold"
         style={{ background: `${accent}20`, border: `1px solid ${accent}30`, color: accent }}
@@ -145,9 +145,9 @@ export default function SGExecutiveSummary() {
               Building a third depository would only make this worse. The answer is a <span style={{ color: SG.nusOrange }}>network layer above both</span>.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div className="p-5 rounded-xl" style={{ background: `${SG.red}08`, border: `1px solid ${SG.red}15` }}>
-                <div className="flex items-center gap-2 mb-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+              <div className="p-6 rounded-xl" style={{ background: `${SG.red}08`, border: `1px solid ${SG.red}15` }}>
+                <div className="flex items-center gap-3 mb-4">
                   <Building2 className="w-5 h-5" style={{ color: SG.red }} />
                   <span className="text-sm font-semibold text-white/90">SGX CDP</span>
                 </div>
@@ -155,8 +155,8 @@ export default function SGExecutiveSummary() {
                   Equities, corporate bonds, ETFs, REITs, warrants. T+2 settlement. SGD 1.2T+ under custody.
                 </p>
               </div>
-              <div className="p-5 rounded-xl" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
-                <div className="flex items-center gap-2 mb-3">
+              <div className="p-6 rounded-xl" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
+                <div className="flex items-center gap-3 mb-4">
                   <Landmark className="w-5 h-5" style={{ color: SG.masTeal }} />
                   <span className="text-sm font-semibold text-white/90">MAS MEPS+</span>
                 </div>
@@ -166,21 +166,21 @@ export default function SGExecutiveSummary() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="text-center p-4 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="text-xl md:text-2xl font-bold mb-1" style={{ color: SG.nusOrange }}>
+            <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className="text-center p-6 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
+                <div className="text-xl md:text-2xl font-bold mb-2" style={{ color: SG.nusOrange }}>
                   <AnimatedCounter value={4.7} prefix="US$" suffix="T" decimals={1} />
                 </div>
                 <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>AUM in Singapore</div>
               </div>
-              <div className="text-center p-4 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="text-xl md:text-2xl font-bold mb-1" style={{ color: SG.red }}>
+              <div className="text-center p-6 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
+                <div className="text-xl md:text-2xl font-bold mb-2" style={{ color: SG.red }}>
                   <AnimatedCounter value={2} />
                 </div>
                 <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Separate Depositories</div>
               </div>
-              <div className="text-center p-4 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                <div className="text-xl md:text-2xl font-bold mb-1" style={{ color: SG.masTeal }}>
+              <div className="text-center p-6 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
+                <div className="text-xl md:text-2xl font-bold mb-2" style={{ color: SG.masTeal }}>
                   <AnimatedCounter value={5} suffix="+" />
                 </div>
                 <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Isolated Token Platforms</div>
@@ -211,11 +211,11 @@ export default function SGExecutiveSummary() {
 
             {/* Architecture preview */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-6" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
                 <div className="text-xs uppercase tracking-widest mb-1" style={{ color: `${SG.masTeal}80` }}>Architecture</div>
                 <h3 className="text-lg font-medium text-white/90">Three-Layer Stack</h3>
               </div>
-              <div className="p-6 space-y-3">
+              <div className="p-6 space-y-4">
                 {[
                   { layer: "GL1-Compliant Infrastructure", desc: "UNITS as GL1-compliant shared ledger, multi-network compatible, endorsed by MAS, BNY, Citi, J.P. Morgan, DBS, HSBC, MUFG", color: SG.masTeal },
                   { layer: "UNITS Network (Protocol)", desc: "tokenClasses, tokenPools, UILP gates, wallet registry, distribution rules", color: SG.nusOrange },
@@ -225,30 +225,30 @@ export default function SGExecutiveSummary() {
                     <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: l.color }} />
                     <div>
                       <div className="text-sm font-semibold text-white/85">{l.layer}</div>
-                      <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.45)" }}>{l.desc}</div>
+                      <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{l.desc}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
               {[
                 { icon: <Wallet className="w-5 h-5" />, label: "BYOW", desc: "Banks bring their own wallets" },
                 { icon: <Shield className="w-5 h-5" />, label: "Common Rules", desc: "UILP enforces compliance" },
                 { icon: <Eye className="w-5 h-5" />, label: "MAS Observer", desc: "Real-time supervisory view" },
                 { icon: <Globe className="w-5 h-5" />, label: "Multi-Chain", desc: "Works across blockchains" },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
-                  <div className="mb-3" style={{ color: SG.masTeal }}>{item.icon}</div>
-                  <div className="text-sm font-medium text-white/80 mb-1">{item.label}</div>
-                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{item.desc}</div>
+                <div key={i} className="p-6 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+                  <div className="mb-4" style={{ color: SG.masTeal }}>{item.icon}</div>
+                  <div className="text-sm font-medium text-white/80 mb-2">{item.label}</div>
+                  <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.35)" }}>{item.desc}</div>
                 </div>
               ))}
             </div>
 
-            <div className="p-5 rounded-xl mb-6" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
-              <h4 className="text-sm font-semibold mb-2" style={{ color: SG.masTeal }}>GL1 Standards Compliance</h4>
+            <div className="p-6 rounded-xl mb-6" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
+              <h4 className="text-sm font-semibold mb-4" style={{ color: SG.masTeal }}>GL1 Standards Compliance</h4>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                 GL1 defines the standards and compliance benchmark for tokenised asset infrastructure.
                 Its members include HSBC, J.P. Morgan, MUFG, and Standard Chartered among other major global institutions.
@@ -312,16 +312,16 @@ export default function SGExecutiveSummary() {
                   ],
                 },
               ].map((cap, i) => (
-                <div key={i} className="p-5 rounded-xl" style={{ background: `${cap.accent}06`, border: `1px solid ${cap.accent}15` }}>
-                  <div className="flex items-center gap-2 mb-3">
+                <div key={i} className="p-6 rounded-xl" style={{ background: `${cap.accent}06`, border: `1px solid ${cap.accent}15` }}>
+                  <div className="flex items-center gap-3 mb-5">
                     <div style={{ color: cap.accent }}>{cap.icon}</div>
                     <h3 className="text-base font-semibold text-white/90">{cap.title}</h3>
                   </div>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>{cap.desc}</p>
+                  <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.55)" }}>{cap.desc}</p>
                   <div className="grid grid-cols-3 gap-3">
                     {cap.stats.map((s, j) => (
-                      <div key={j} className="text-center p-2 rounded-lg" style={{ background: `${cap.accent}10` }}>
-                        <div className="text-sm font-bold" style={{ color: cap.accent }}>{s.value}</div>
+                      <div key={j} className="text-center p-4 py-3.5 rounded-lg" style={{ background: `${cap.accent}10` }}>
+                        <div className="text-sm font-bold mb-1" style={{ color: cap.accent }}>{s.value}</div>
                         <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{s.label}</div>
                       </div>
                     ))}
@@ -350,7 +350,7 @@ export default function SGExecutiveSummary() {
               Participants can compose any combination into P-tokets for holistic portfolio management.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {[
                 { icon: <ArrowRightLeft className="w-4 h-4" />, name: "Equities & REITs", accent: SG.red },
                 { icon: <Landmark className="w-4 h-4" />, name: "Government Securities", accent: SG.masTeal },
@@ -363,7 +363,7 @@ export default function SGExecutiveSummary() {
                 { icon: <Link2 className="w-4 h-4" />, name: "Unsponsored Tokets", accent: SG.finternetAmber },
               ].map((a: any, i: number) => {
                 const inner = (
-                  <div key={i} className={`flex items-center gap-3 p-3 rounded-lg transition-all ${a.href ? 'cursor-pointer hover:scale-[1.02]' : ''}`} style={{ background: `${a.accent}08`, border: `1px solid ${a.accent}12` }}>
+                  <div key={i} className={`flex items-center gap-3 p-5 rounded-lg transition-all ${a.href ? 'cursor-pointer hover:scale-[1.02]' : ''}`} style={{ background: `${a.accent}08`, border: `1px solid ${a.accent}12` }}>
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${a.accent}15` }}>
                       <span style={{ color: a.accent }}>{a.icon}</span>
                     </div>
@@ -377,8 +377,8 @@ export default function SGExecutiveSummary() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Link href="/sg/deep-dive/precious-metals">
-                <div className="p-5 rounded-xl cursor-pointer transition-all hover:scale-[1.01]" style={{ background: `${SG.finternetAmber}08`, border: `1px solid ${SG.finternetAmber}15` }}>
-                  <h4 className="text-sm font-semibold mb-2 flex items-center gap-2" style={{ color: SG.finternetAmber }}>
+                <div className="p-6 rounded-xl cursor-pointer transition-all hover:scale-[1.01]" style={{ background: `${SG.finternetAmber}08`, border: `1px solid ${SG.finternetAmber}15` }}>
+                  <h4 className="text-sm font-semibold mb-3 flex items-center gap-3" style={{ color: SG.finternetAmber }}>
                     <Gem className="w-4 h-4" /> Precious Metals Highlight
                   </h4>
                   <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
@@ -388,8 +388,8 @@ export default function SGExecutiveSummary() {
                 </div>
               </Link>
               <Link href="/sg/deep-dive/vcc">
-                <div className="p-5 rounded-xl cursor-pointer transition-all hover:scale-[1.01]" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
-                  <h4 className="text-sm font-semibold mb-2 flex items-center gap-2" style={{ color: SG.masTeal }}>
+                <div className="p-6 rounded-xl cursor-pointer transition-all hover:scale-[1.01]" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}15` }}>
+                  <h4 className="text-sm font-semibold mb-3 flex items-center gap-3" style={{ color: SG.masTeal }}>
                     <Globe className="w-4 h-4" /> VCC Tokenisation Highlight
                   </h4>
                   <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
@@ -421,10 +421,10 @@ export default function SGExecutiveSummary() {
               with FSTI 3.0 Track 2 providing up to 50% co-funding for industry-wide infrastructure.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div className="p-5 rounded-xl" style={{ background: `${SG.nusOrange}08`, border: `1px solid ${SG.nusOrange}15` }}>
-                <h3 className="text-base font-medium text-white/85 mb-3">FSTI 3.0 Track 2</h3>
-                <ul className="space-y-2 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+              <div className="p-6 rounded-xl" style={{ background: `${SG.nusOrange}08`, border: `1px solid ${SG.nusOrange}15` }}>
+                <h3 className="text-base font-medium text-white/85 mb-5">FSTI 3.0 Track 2</h3>
+                <ul className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: SG.nusOrange }} />
                     <span>Up to 50% co-funding on manpower, professional services, software</span>
@@ -440,9 +440,9 @@ export default function SGExecutiveSummary() {
                 </ul>
               </div>
 
-              <div className="p-5 rounded-xl" style={{ background: `${SG.nusBlue}20`, border: `1px solid ${SG.nusBlue}30` }}>
-                <h3 className="text-base font-medium text-white/85 mb-3">Institute of Programmable Finance</h3>
-                <ul className="space-y-2 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <div className="p-6 rounded-xl" style={{ background: `${SG.nusBlue}20`, border: `1px solid ${SG.nusBlue}30` }}>
+                <h3 className="text-base font-medium text-white/85 mb-5">Institute of Programmable Finance</h3>
+                <ul className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: "#6B9FD4" }} />
                     <span>Research grant for protocol design and governance framework</span>
@@ -460,13 +460,13 @@ export default function SGExecutiveSummary() {
             </div>
 
             {/* Key participants preview */}
-            <div className="p-5 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
-              <h4 className="text-sm font-semibold text-white/80 mb-3">Key Participants (40+ from Project Guardian)</h4>
+            <div className="p-6 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>
+              <h4 className="text-sm font-semibold text-white/80 mb-5">Key Participants (40+ from Project Guardian)</h4>
               <div className="flex flex-wrap gap-2">
                 {["DBS", "OCBC", "UOB", "Standard Chartered", "SGX", "MAS", "Temasek", "GIC",
                   "HSBC", "J.P. Morgan", "Citi", "InvestaX", "DigiFT", "Sygnum", "Matrixdock", "Phillip Securities"
                 ].map((p, i) => (
-                  <span key={i} className="text-xs px-2.5 py-1 rounded-full" style={{ background: `${SG.nusOrange}12`, color: `${SG.nusOrange}cc` }}>{p}</span>
+                  <span key={i} className="text-xs px-3 py-2 rounded-full" style={{ background: `${SG.nusOrange}12`, color: `${SG.nusOrange}cc` }}>{p}</span>
                 ))}
               </div>
             </div>
@@ -491,7 +491,7 @@ export default function SGExecutiveSummary() {
               and the political will to lead. The UNITS Network is the missing infrastructure layer.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-5">
               {[
                 { title: "No third depository needed", desc: "The network layer unifies existing CDP and MEPS+ infrastructure. No new depository, just a protocol that connects them.", accent: SG.red },
                 { title: "Portfolio integrity for the first time", desc: "A participant's full portfolio across CDP, MEPS+, gold, stablecoins, and private credit is visible and verifiable in one place.", accent: SG.nusOrange },
@@ -500,9 +500,9 @@ export default function SGExecutiveSummary() {
                 { title: "Regulatory clarity", desc: "Built within MAS's existing frameworks: SCS for stablecoins, VCC for funds, Securities & Futures Act for securities. No regulatory grey areas.", accent: SG.finternetAmber },
                 { title: "Minimal funding required", desc: "Bootstrapped through FSTI 3.0 and Institute of Programmable Finance grants. MAS integration grants lower the barrier for bank adoption.", accent: SG.red },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-xl" style={{ background: `${item.accent}06`, border: `1px solid ${item.accent}12` }}>
-                  <h3 className="text-sm font-semibold text-white/90 mb-1">{item.title}</h3>
-                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+                <div key={i} className="p-6 rounded-xl" style={{ background: `${item.accent}06`, border: `1px solid ${item.accent}12` }}>
+                  <h3 className="text-sm font-semibold text-white/90 mb-3">{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -565,7 +565,7 @@ export default function SGExecutiveSummary() {
             {/* Quick links - SG Pages */}
             <div className="mt-10 pt-8 text-center" style={{ borderTop: `1px solid ${SG.border}` }}>
               <p className="text-xs mb-4 uppercase tracking-widest" style={{ color: SG.nusOrange }}>Singapore Blueprint</p>
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
+              <div className="flex flex-wrap justify-center gap-5 mb-8">
                 {[
                   { href: "/sg/problem", label: "Fragmented Infrastructure" },
                   { href: "/sg/architecture", label: "Network Architecture" },

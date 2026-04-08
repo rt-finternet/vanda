@@ -242,7 +242,7 @@ export default function SGWorkflowVCCTokenisation() {
   const Icon = step.icon;
 
   return (
-    <div className="min-h-screen" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       <div className="max-w-5xl mx-auto px-4 md:px-6 py-8">
@@ -254,7 +254,7 @@ export default function SGWorkflowVCCTokenisation() {
 
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
+          <div className="flex items-center gap-4 mb-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${SG.masTeal}15`, border: `1px solid ${SG.masTeal}30` }}>
               <Briefcase className="w-5 h-5" style={{ color: SG.masTeal }} />
             </div>
@@ -326,7 +326,7 @@ export default function SGWorkflowVCCTokenisation() {
         {/* Main content card */}
         <div className="rounded-xl p-6 md:p-8 mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
           {/* Step header */}
-          <div className="flex items-start gap-4 mb-6">
+          <div className="flex items-start gap-5 mb-8">
             <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${step.color}15`, border: `1px solid ${step.color}30` }}>
               <Icon className="w-6 h-6" style={{ color: step.color }} />
             </div>
@@ -348,14 +348,14 @@ export default function SGWorkflowVCCTokenisation() {
 
           {/* Execution log */}
           <div className="rounded-lg p-4 mb-6" style={{ background: "rgba(0,0,0,0.3)", border: `1px solid ${SG.border}` }}>
-            <p className="text-[10px] uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: step.color }}>
+            <p className="text-[10px] uppercase tracking-widest mb-3 flex items-center gap-3" style={{ color: step.color }}>
               <FileCheck className="w-3.5 h-3.5" />
               Execution Log
             </p>
             <div className="space-y-1.5">
               {step.details.map((detail, i) => (
                 <div key={i} className="flex items-start gap-2">
-                  <span className="text-[10px] font-mono shrink-0 mt-0.5" style={{ color: "rgba(255,255,255,0.15)" }}>
+                  <span className="text-[10px] font-mono shrink-0 mt-1" style={{ color: "rgba(255,255,255,0.15)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className={`text-xs font-mono leading-relaxed ${detail.startsWith("  ") ? "pl-4" : ""}`} style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -368,7 +368,7 @@ export default function SGWorkflowVCCTokenisation() {
 
           {/* System state */}
           <div className="rounded-lg p-4" style={{ background: `${step.color}08`, border: `1px solid ${step.color}15` }}>
-            <p className="text-[10px] uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: step.color }}>
+            <p className="text-[10px] uppercase tracking-widest mb-3 flex items-center gap-3" style={{ color: step.color }}>
               <Eye className="w-3.5 h-3.5" />
               System State
             </p>
@@ -421,7 +421,7 @@ export default function SGWorkflowVCCTokenisation() {
 
         {/* VCC Framework Context */}
         <div className="rounded-xl p-6 mb-8" style={{ background: `${SG.masTeal}08`, border: `1px solid ${SG.masTeal}20` }}>
-          <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+          <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-3">
             <Scale className="w-4 h-4" style={{ color: SG.masTeal }} />
             About the VCC Framework
           </h3>
@@ -460,7 +460,7 @@ export default function SGWorkflowVCCTokenisation() {
               { name: "Infrastructure Funds", desc: "Long-dated infrastructure assets (ports, utilities, data centres) with tokenised interests and automated cash flow distributions", icon: Briefcase, color: "#a78bfa" },
               { name: "Digital Asset Funds", desc: "Regulated digital asset exposure through VCC wrapper, with MAS-compliant custody and on-chain portfolio rebalancing", icon: Coins, color: SG.red },
             ].map((fund) => (
-              <div key={fund.name} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${fund.color}05`, border: `1px solid ${fund.color}15` }}>
+              <div key={fund.name} className="flex items-start gap-3 p-4 rounded-lg" style={{ background: `${fund.color}05`, border: `1px solid ${fund.color}15` }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${fund.color}15` }}>
                   <fund.icon className="w-4 h-4" style={{ color: fund.color }} />
                 </div>
@@ -475,7 +475,7 @@ export default function SGWorkflowVCCTokenisation() {
 
         {/* Collateral Use Cases */}
         <div className="rounded-xl p-6 mb-8" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-          <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+          <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-3">
             <Shield className="w-4 h-4" style={{ color: "#a78bfa" }} />
             VCC Interests as Collateral
           </h3>
@@ -484,7 +484,7 @@ export default function SGWorkflowVCCTokenisation() {
             The Token Program's encumbrance model enables real-time pledging, automated margin calls, and instant release,
             all while the investor retains economic ownership.
           </p>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {[
               { type: "Margin Collateral", desc: "Pledge VCC units to satisfy initial margin requirements at SGX-DC. Automated mark-to-market with real-time NAV feeds. Auto-top-up if collateral value drops below maintenance threshold.", haircut: "15-25%", example: "DBS pledges PE fund units for derivatives margin" },
               { type: "Repo Collateral", desc: "Use VCC interests in repo transactions for short-term funding. Encumbrance created atomically, released on maturity. Cash counterparty sees real-time collateral value.", haircut: "10-20%", example: "OCBC repos carbon fund units for 30-day funding" },

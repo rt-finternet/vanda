@@ -88,7 +88,7 @@ const SETTLEMENT_MODELS = [
 
 export default function SGDeepDiveEquities() {
   return (
-    <div className="min-h-screen text-white" style={{ background: SG.dark }}>
+    <div className="vanda-portal min-h-screen text-white" style={{ background: SG.dark }}>
       <SGPortalNav />
 
       {/* ── Hero Section with Generated Visual ── */}
@@ -400,7 +400,7 @@ export default function SGDeepDiveEquities() {
               <LiquidGlassCard>
                 <div className="p-8">
                   <h3 className="text-lg font-semibold mb-6" style={{ color: SG.finternetAmber }}>Metadata Layer</h3>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {[
                       { field: "tokenClass", value: "TC-SG-EQUITY-SGX" },
                       { field: "isin", value: "SG1L01001701" },
@@ -523,7 +523,7 @@ export default function SGDeepDiveEquities() {
                       corporate action distribution, and collateral movement on the UNITS Network. This replaces
                       the current T+1 trade reporting regime with continuous, granular visibility.
                     </p>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {[
                         "Real-time settlement monitoring across CDP and MEPS+",
                         "Automated short-selling detection and position limit enforcement",
@@ -570,7 +570,7 @@ export default function SGDeepDiveEquities() {
       {/* ── Knowledge Base ── */}
       <section className="py-20 px-6" style={{ borderTop: `1px solid ${SG.border}` }}>
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-4 mb-8">
             <BookOpen className="w-5 h-5" style={{ color: SG.finternetAmber }} />
             <h2 className="text-xl font-light">Knowledge Base</h2>
           </div>

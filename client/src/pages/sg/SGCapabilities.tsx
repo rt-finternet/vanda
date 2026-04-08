@@ -59,7 +59,7 @@ export default function SGCapabilities() {
         <ZoneRenderer.Zone zoneId="settlement" naturalIndex={0}>
         <RevealSection id="settlement">
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${SG.finternetCyan}15` }}>
                 <Clock className="w-5 h-5" style={{ color: SG.finternetCyan }} />
               </div>
@@ -75,13 +75,13 @@ export default function SGCapabilities() {
 
             {/* Today vs UNITS */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5" style={{ background: "rgba(255,255,255,0.02)", borderBottom: `1px solid ${SG.border}` }}>
                 <h3 className="text-lg font-medium text-white/90">Settlement comparison</h3>
               </div>
               <div className="p-6 space-y-4">
                 {/* Today */}
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="w-2 h-2 rounded-full" style={{ background: `${SG.red}70` }} />
                     <span className="text-sm font-medium" style={{ color: `${SG.red}80` }}>Today</span>
                   </div>
@@ -92,8 +92,8 @@ export default function SGCapabilities() {
                       { label: "Cross-system", value: "Manual transfer, T+1 minimum" },
                       { label: "Tokenised assets", value: "Platform-specific, no interop" },
                     ].map((item, i) => (
-                      <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.red}05`, border: `1px solid ${SG.red}10` }}>
-                        <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.red}70` }}>{item.label}</div>
+                      <div key={i} className="p-5 rounded-lg" style={{ background: `${SG.red}05`, border: `1px solid ${SG.red}10` }}>
+                        <div className="text-[10px] uppercase tracking-wider mb-1.5" style={{ color: `${SG.red}70` }}>{item.label}</div>
                         <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.value}</div>
                       </div>
                     ))}
@@ -102,7 +102,7 @@ export default function SGCapabilities() {
 
                 {/* UNITS */}
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="w-2 h-2 rounded-full" style={{ background: `${SG.finternetCyan}70` }} />
                     <span className="text-sm font-medium" style={{ color: `${SG.finternetCyan}80` }}>UNITS Network</span>
                   </div>
@@ -113,8 +113,8 @@ export default function SGCapabilities() {
                       { label: "Cross-system", value: "Instant, protocol-level" },
                       { label: "Finality", value: "Atomic: both legs succeed or neither does" },
                     ].map((item, i) => (
-                      <div key={i} className="p-3 rounded-lg" style={{ background: `${SG.finternetCyan}05`, border: `1px solid ${SG.finternetCyan}10` }}>
-                        <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: `${SG.finternetCyan}70` }}>{item.label}</div>
+                      <div key={i} className="p-5 rounded-lg" style={{ background: `${SG.finternetCyan}05`, border: `1px solid ${SG.finternetCyan}10` }}>
+                        <div className="text-[10px] uppercase tracking-wider mb-1.5" style={{ color: `${SG.finternetCyan}70` }}>{item.label}</div>
                         <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.value}</div>
                       </div>
                     ))}
@@ -124,15 +124,15 @@ export default function SGCapabilities() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
               {[
                 { value: "T+0", label: "Settlement Cycle", accent: SG.finternetCyan },
                 { value: "24/7", label: "Operating Hours", accent: SG.nusOrange },
                 { value: "Atomic", label: "DVP Guarantee", accent: SG.masTeal },
                 { value: "SGD", label: "SCS Stablecoin", accent: SG.red },
               ].map((s, i) => (
-                <div key={i} className="text-center p-4 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-                  <div className="text-xl font-bold mb-1" style={{ color: s.accent }}>{s.value}</div>
+                <div key={i} className="text-center p-5 rounded-xl" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
+                  <div className="text-xl font-bold mb-2" style={{ color: s.accent }}>{s.value}</div>
                   <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{s.label}</div>
                 </div>
               ))}
@@ -140,8 +140,8 @@ export default function SGCapabilities() {
 
             {/* Scenario */}
             <div className="rounded-xl p-5" style={{ background: `${SG.finternetCyan}06`, border: `1px solid ${SG.finternetCyan}12` }}>
-              <h4 className="text-sm font-semibold mb-2" style={{ color: SG.finternetCyan }}>Real-world scenario</h4>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+              <h4 className="text-sm font-semibold mb-3" style={{ color: SG.finternetCyan }}>Real-world scenario</h4>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                 A wealth manager in Singapore receives an instruction from a European client at 2am SGT on a Saturday.
                 The client wants to buy SGD 5M in tokenised gold and pledge it as collateral for a structured note position.
                 On the UNITS Network, this entire sequence (gold toket purchase, DVP settlement, and collateral pledge)
@@ -157,7 +157,7 @@ export default function SGCapabilities() {
         <ZoneRenderer.Zone zoneId="repo" naturalIndex={1}>
         <RevealSection id="repo" delay={100}>
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${SG.nusOrange}15` }}>
                 <RefreshCw className="w-5 h-5" style={{ color: SG.nusOrange }} />
               </div>
@@ -172,10 +172,10 @@ export default function SGCapabilities() {
 
             {/* Lifecycle */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: `${SG.nusOrange}08`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5" style={{ background: `${SG.nusOrange}08`, borderBottom: `1px solid ${SG.border}` }}>
                 <h3 className="text-lg font-medium text-white/90">Smart contract repo lifecycle</h3>
               </div>
-              <div className="p-6 space-y-3">
+              <div className="p-6 space-y-4">
                 {[
                   { step: "1", label: "Collateral Pledge", desc: "Participant pledges tokenised assets (bonds, equities, gold tokets, structured notes) as collateral. Smart contract locks the tokets and records the pledge.", accent: SG.nusOrange },
                   { step: "2", label: "Real-time Valuation", desc: "Collateral valued 24/7 against live price feeds. Not end-of-day snapshots, but continuous mark-to-market with configurable frequency.", accent: SG.finternetAmber },
@@ -183,13 +183,13 @@ export default function SGCapabilities() {
                   { step: "4", label: "Substitution", desc: "Borrower can substitute collateral (e.g., replace gold tokets with SGS bonds) without unwinding the repo. Smart contract verifies the new collateral meets eligibility requirements.", accent: SG.masTeal },
                   { step: "5", label: "Automatic Release", desc: "On maturity or repayment, collateral is released programmatically. No manual processing, no settlement delays, no reconciliation.", accent: SG.finternetCyan },
                 ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${s.accent}06` }}>
+                  <div key={i} className="flex items-start gap-3 p-5 rounded-lg" style={{ background: `${s.accent}06` }}>
                     <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: `${s.accent}15`, color: s.accent }}>
                       {s.step}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white/80">{s.label}</div>
-                      <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{s.desc}</div>
+                      <div className="text-sm font-medium text-white/80 mb-1">{s.label}</div>
+                      <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{s.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -208,7 +208,7 @@ export default function SGCapabilities() {
                   { name: "Structured Notes", icon: <BarChart3 className="w-3.5 h-3.5" />, accent: SG.finternetCyan },
                   { name: "SCS Stablecoins", icon: <Wallet className="w-3.5 h-3.5" />, accent: SG.nusOrange },
                 ].map((c, i) => (
-                  <div key={i} className="flex items-center gap-2 p-2 rounded-lg" style={{ background: `${c.accent}08` }}>
+                  <div key={i} className="flex items-center gap-2 p-4 rounded-lg" style={{ background: `${c.accent}08` }}>
                     <span style={{ color: c.accent }}>{c.icon}</span>
                     <span className="text-xs text-white/70">{c.name}</span>
                   </div>
@@ -218,8 +218,8 @@ export default function SGCapabilities() {
 
             {/* Tri-party */}
             <div className="rounded-xl p-5" style={{ background: `${SG.nusOrange}06`, border: `1px solid ${SG.nusOrange}12` }}>
-              <h4 className="text-sm font-semibold mb-2" style={{ color: SG.nusOrange }}>Tri-party repo</h4>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+              <h4 className="text-sm font-semibold mb-3" style={{ color: SG.nusOrange }}>Tri-party repo</h4>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                 The UNITS Network acts as neutral infrastructure for tri-party repo, replacing bilateral agreements.
                 The protocol manages collateral selection, substitution, and margin calls, functions that currently
                 require a dedicated tri-party agent. This opens repo markets to a broader set of participants,
@@ -234,7 +234,7 @@ export default function SGCapabilities() {
         <ZoneRenderer.Zone zoneId="unsponsored" naturalIndex={2}>
         <RevealSection id="unsponsored" delay={100}>
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-5 mb-8">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${SG.red}15` }}>
                 <Link2 className="w-5 h-5" style={{ color: SG.red }} />
               </div>
@@ -251,7 +251,7 @@ export default function SGCapabilities() {
 
             {/* Flow */}
             <div className="rounded-2xl overflow-hidden mb-6" style={{ background: SG.card, border: `1px solid ${SG.border}` }}>
-              <div className="px-6 py-4" style={{ background: `${SG.red}08`, borderBottom: `1px solid ${SG.border}` }}>
+              <div className="px-6 py-5" style={{ background: `${SG.red}08`, borderBottom: `1px solid ${SG.border}` }}>
                 <h3 className="text-lg font-medium text-white/90">Issuance & redemption flow</h3>
               </div>
               <div className="p-6">
@@ -266,13 +266,13 @@ export default function SGCapabilities() {
                         { step: "3", label: "Mint", desc: "Unsponsored toket minted on the UNITS Network. Represents 1:1 claim on the locked underlying.", accent: SG.finternetCyan },
                         { step: "4", label: "Distribute", desc: "Toket available for 24/7 trading, DVP settlement, repo collateral, P-toket inclusion.", accent: SG.masTeal },
                       ].map((s, i) => (
-                        <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${s.accent}06` }}>
+                        <div key={i} className="flex items-start gap-3 p-5 rounded-lg" style={{ background: `${s.accent}06` }}>
                           <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" style={{ background: `${s.accent}15`, color: s.accent }}>
                             {s.step}
                           </div>
                           <div>
                             <span className="text-xs font-medium text-white/80">{s.label}: </span>
-                            <span className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{s.desc}</span>
+                            <span className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{s.desc}</span>
                           </div>
                         </div>
                       ))}
@@ -288,13 +288,13 @@ export default function SGCapabilities() {
                         { step: "2", label: "Release", desc: "Burning triggers release of the underlying from the foreign custody account", accent: SG.finternetCyan },
                         { step: "3", label: "Deliver", desc: "Traditional security delivered to the holder's foreign custody account", accent: SG.nusOrange },
                       ].map((s, i) => (
-                        <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: `${s.accent}06` }}>
+                        <div key={i} className="flex items-start gap-3 p-5 rounded-lg" style={{ background: `${s.accent}06` }}>
                           <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" style={{ background: `${s.accent}15`, color: s.accent }}>
                             {s.step}
                           </div>
                           <div>
                             <span className="text-xs font-medium text-white/80">{s.label}: </span>
-                            <span className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{s.desc}</span>
+                            <span className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{s.desc}</span>
                           </div>
                         </div>
                       ))}
@@ -318,8 +318,8 @@ export default function SGCapabilities() {
                   { name: "US Equities", region: "Americas" },
                   { name: "Emerging Market Bonds", region: "Global" },
                 ].map((a, i) => (
-                  <div key={i} className="p-2 rounded-lg text-center" style={{ background: `${SG.finternetAmber}06` }}>
-                    <div className="text-xs font-medium text-white/70">{a.name}</div>
+                  <div key={i} className="p-4 rounded-lg text-center" style={{ background: `${SG.finternetAmber}06` }}>
+                    <div className="text-xs font-medium text-white/70 mb-1">{a.name}</div>
                     <div className="text-[10px]" style={{ color: `${SG.finternetAmber}70` }}>{a.region}</div>
                   </div>
                 ))}
@@ -328,8 +328,8 @@ export default function SGCapabilities() {
 
             {/* Impact */}
             <div className="rounded-xl p-5" style={{ background: `${SG.red}06`, border: `1px solid ${SG.red}12` }}>
-              <h4 className="text-sm font-semibold mb-2" style={{ color: SG.red }}>Impact</h4>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+              <h4 className="text-sm font-semibold mb-3" style={{ color: SG.red }}>Impact</h4>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                 Any global security becomes accessible in Singapore 24/7 without the original issuer's involvement.
                 A DBS client can hold a toket representing US Treasury bonds, trade it at 3am SGT, use it as repo
                 collateral, and include it in a P-toket portfolio, all on the UNITS Network. Singapore becomes the
@@ -351,9 +351,9 @@ export default function SGCapabilities() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ borderBottom: `1px solid ${SG.border}` }}>
-                      <th className="text-left p-4 text-white/50 font-medium">Dimension</th>
-                      <th className="text-left p-4 font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>ADR/GDR</th>
-                      <th className="text-left p-4 font-medium" style={{ color: `${SG.nusOrange}cc` }}>Unsponsored Toket</th>
+                      <th className="text-left p-5 text-white/50 font-medium">Dimension</th>
+                      <th className="text-left p-5 font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>ADR/GDR</th>
+                      <th className="text-left p-5 font-medium" style={{ color: `${SG.nusOrange}cc` }}>Unsponsored Toket</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -368,9 +368,9 @@ export default function SGCapabilities() {
                       { dim: "Cost", adr: "Depositary bank fees, FX spreads", toket: "Network fees only" },
                     ].map((row, i) => (
                       <tr key={i} style={{ borderBottom: `1px solid ${SG.border}` }}>
-                        <td className="p-4 text-white/70 font-medium">{row.dim}</td>
-                        <td className="p-4" style={{ color: "rgba(255,255,255,0.4)" }}>{row.adr}</td>
-                        <td className="p-4" style={{ color: "rgba(255,255,255,0.6)" }}>{row.toket}</td>
+                        <td className="p-5 text-white/70 font-medium">{row.dim}</td>
+                        <td className="p-5" style={{ color: "rgba(255,255,255,0.4)" }}>{row.adr}</td>
+                        <td className="p-5" style={{ color: "rgba(255,255,255,0.6)" }}>{row.toket}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -396,7 +396,7 @@ export default function SGCapabilities() {
               { href: "/sg/deep-dive/cross-ledger", label: "Cross-Ledger Connectivity" },
               { href: "/sg/deep-dive/token-programs", label: "Token Programs" },
             ].map((link) => (
-              <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
+              <Link key={link.href} href={link.href} className="px-4 py-2 rounded-full text-xs transition-colors" style={{ color: "rgba(255,255,255,0.35)", border: `1px solid ${SG.border}` }}>
                 {link.label}
               </Link>
             ))}
