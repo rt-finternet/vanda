@@ -1548,6 +1548,116 @@ const NEXT_SECTION_RECOMMENDATIONS: NextSectionRecommendation[] = [
   },
 ];
 
+// ─── Page-Specific Zone Priorities (Round 3) ────────────────────────────────
+// Maps page path -> persona ID -> ordered array of zone IDs.
+// Used by ZoneRenderer to reorder intra-page sections based on persona.
+
+export const PAGE_ZONE_PRIORITIES: Record<string, Record<string, string[]>> = {
+  // ── SGProblem (/sg/problem) — 4 zones ──
+  "/sg/problem": {
+    // Executives: comparison first (bottom line)
+    "mas-board":       ["comparison", "fragmentation", "depositories", "not-third"],
+    "bank-csuite":     ["comparison", "fragmentation", "depositories", "not-third"],
+    "abs-ceos":        ["comparison", "fragmentation", "depositories", "not-third"],
+    "investors":       ["comparison", "fragmentation", "depositories", "not-third"],
+    // Regulators: legacy context first
+    "mas-policy":      ["depositories", "fragmentation", "not-third", "comparison"],
+    "mas-supervisory": ["depositories", "fragmentation", "not-third", "comparison"],
+    // Technical: architecture distinction first
+    "mas-fintech":     ["not-third", "depositories", "fragmentation", "comparison"],
+    "sfa-builders":    ["not-third", "depositories", "fragmentation", "comparison"],
+    // Market ops: pain first
+    "capital-markets": ["fragmentation", "comparison", "depositories", "not-third"],
+    "asset-managers":  ["fragmentation", "comparison", "depositories", "not-third"],
+    // Industry bodies
+    "ibf-workforce":   ["fragmentation", "not-third", "comparison", "depositories"],
+    "imas-asset-mgmt": ["fragmentation", "not-third", "comparison", "depositories"],
+  },
+
+  // ── SGArchitecture (/sg/architecture) — 5 zones (interactive-diagram is in separate wider container) ──
+  "/sg/architecture": {
+    // Executives: three-layer overview first
+    "mas-board":       ["three-layer", "gl1", "byow", "observer", "multi-chain"],
+    "abs-ceos":        ["three-layer", "gl1", "byow", "observer", "multi-chain"],
+    "bank-csuite":     ["three-layer", "gl1", "byow", "observer", "multi-chain"],
+    "investors":       ["three-layer", "gl1", "byow", "observer", "multi-chain"],
+    // Technical: depth first, multi-chain early
+    "mas-fintech":     ["three-layer", "gl1", "multi-chain", "byow", "observer"],
+    "sfa-builders":    ["three-layer", "gl1", "multi-chain", "byow", "observer"],
+    // Supervisory: observer tools first
+    "mas-supervisory": ["observer", "three-layer", "gl1", "byow", "multi-chain"],
+    // Policy: settlement infra first
+    "mas-policy":      ["gl1", "three-layer", "multi-chain", "observer", "byow"],
+    // Capital markets: settlement layer
+    "capital-markets": ["gl1", "three-layer", "byow", "observer", "multi-chain"],
+    // Asset managers: wallet integration
+    "asset-managers":  ["byow", "three-layer", "gl1", "observer", "multi-chain"],
+    "imas-asset-mgmt": ["byow", "three-layer", "gl1", "observer", "multi-chain"],
+    // IBF: skills perspective
+    "ibf-workforce":   ["three-layer", "byow", "gl1", "observer", "multi-chain"],
+  },
+
+  // ── SGCapabilities (/sg/capabilities) — 4 zones ──
+  "/sg/capabilities": {
+    // Executives: before/after comparison first
+    "mas-board":       ["comparison", "settlement", "repo", "unsponsored"],
+    "abs-ceos":        ["comparison", "settlement", "repo", "unsponsored"],
+    "bank-csuite":     ["comparison", "settlement", "repo", "unsponsored"],
+    "investors":       ["comparison", "settlement", "repo", "unsponsored"],
+    // Technical: settlement mechanics first
+    "mas-fintech":     ["settlement", "unsponsored", "repo", "comparison"],
+    "sfa-builders":    ["settlement", "unsponsored", "repo", "comparison"],
+    // Supervisory: risk management first
+    "mas-supervisory": ["repo", "settlement", "unsponsored", "comparison"],
+    // Capital markets: settlement first
+    "capital-markets": ["settlement", "repo", "comparison", "unsponsored"],
+    // Asset managers: cross-border access first
+    "asset-managers":  ["unsponsored", "repo", "settlement", "comparison"],
+    "imas-asset-mgmt": ["unsponsored", "repo", "settlement", "comparison"],
+    // Policy: settlement then comparison
+    "mas-policy":      ["settlement", "comparison", "repo", "unsponsored"],
+    // IBF: settlement then comparison
+    "ibf-workforce":   ["settlement", "comparison", "repo", "unsponsored"],
+  },
+
+  // ── SGAssets (/sg/assets) — 10 zones ──
+  "/sg/assets": {
+    "mas-board":       ["equities", "govt-securities", "gold", "stablecoins", "vcc", "structured", "private-credit", "p-tokets", "unsponsored", "composability"],
+    "bank-csuite":     ["structured", "equities", "govt-securities", "gold", "private-credit", "stablecoins", "vcc", "p-tokets", "unsponsored", "composability"],
+    "capital-markets": ["equities", "structured", "govt-securities", "gold", "private-credit", "stablecoins", "vcc", "p-tokets", "unsponsored", "composability"],
+    "asset-managers":  ["vcc", "private-credit", "equities", "gold", "structured", "govt-securities", "stablecoins", "p-tokets", "unsponsored", "composability"],
+    "imas-asset-mgmt": ["vcc", "private-credit", "equities", "gold", "structured", "govt-securities", "stablecoins", "p-tokets", "unsponsored", "composability"],
+    "investors":       ["gold", "equities", "vcc", "structured", "govt-securities", "stablecoins", "private-credit", "p-tokets", "unsponsored", "composability"],
+    "mas-fintech":     ["p-tokets", "unsponsored", "composability", "stablecoins", "equities", "gold", "structured", "vcc", "govt-securities", "private-credit"],
+    "sfa-builders":    ["p-tokets", "unsponsored", "composability", "stablecoins", "equities", "gold", "structured", "vcc", "govt-securities", "private-credit"],
+    "mas-supervisory": ["govt-securities", "equities", "stablecoins", "gold", "structured", "private-credit", "vcc", "p-tokets", "unsponsored", "composability"],
+    "mas-policy":      ["stablecoins", "gold", "equities", "govt-securities", "vcc", "structured", "private-credit", "p-tokets", "unsponsored", "composability"],
+    "abs-ceos":        ["equities", "govt-securities", "structured", "gold", "stablecoins", "private-credit", "vcc", "p-tokets", "unsponsored", "composability"],
+    "ibf-workforce":   ["composability", "p-tokets", "unsponsored", "stablecoins", "equities", "gold", "structured", "vcc", "govt-securities", "private-credit"],
+  },
+
+  // ── SGFunding (/sg/funding) — 4 zones ──
+  "/sg/funding": {
+    // Regulators: funding pathways first
+    "mas-board":       ["funding-pathways", "rollout", "participants", "revenue"],
+    "mas-policy":      ["funding-pathways", "rollout", "participants", "revenue"],
+    // Business: revenue first
+    "bank-csuite":     ["revenue", "funding-pathways", "participants", "rollout"],
+    "abs-ceos":        ["revenue", "funding-pathways", "participants", "rollout"],
+    "capital-markets": ["revenue", "participants", "funding-pathways", "rollout"],
+    "asset-managers":  ["revenue", "participants", "funding-pathways", "rollout"],
+    "investors":       ["revenue", "rollout", "funding-pathways", "participants"],
+    // Technical: rollout first (when can we build)
+    "mas-fintech":     ["rollout", "participants", "funding-pathways", "revenue"],
+    "sfa-builders":    ["rollout", "participants", "funding-pathways", "revenue"],
+    // Supervisory: governance first
+    "mas-supervisory": ["participants", "funding-pathways", "rollout", "revenue"],
+    // Industry bodies
+    "ibf-workforce":   ["participants", "rollout", "funding-pathways", "revenue"],
+    "imas-asset-mgmt": ["participants", "rollout", "funding-pathways", "revenue"],
+  },
+};
+
 // ─── Assembled Manifest ──────────────────────────────────────────────────────
 
 export const IPE_MANIFEST: IPEManifest = {
@@ -1614,4 +1724,33 @@ export function getNarrativeArc(personaId: string) {
 /** Get the group metadata for a persona group */
 export function getPersonaGroupMeta(groupId: PersonaGroup) {
   return PERSONA_GROUPS.find((g) => g.id === groupId);
+}
+
+/**
+ * Get the CSS order for a zone within a specific page, based on persona priority.
+ * Used by ZoneRenderer when pageId is provided.
+ * Returns naturalIndex if no priority mapping exists.
+ */
+export function getPageZoneOrder(
+  pageId: string,
+  personaId: string | null,
+  zoneId: string,
+  naturalIndex: number
+): number {
+  if (!personaId) return naturalIndex;
+  const pagePriorities = PAGE_ZONE_PRIORITIES[pageId];
+  if (!pagePriorities) return naturalIndex;
+  const personaOrder = pagePriorities[personaId];
+  if (!personaOrder) return naturalIndex;
+  const idx = personaOrder.indexOf(zoneId);
+  return idx >= 0 ? idx : 99;
+}
+
+/** Get all zone IDs for a page from the priority map */
+export function getPageZoneIds(pageId: string): string[] {
+  const pagePriorities = PAGE_ZONE_PRIORITIES[pageId];
+  if (!pagePriorities) return [];
+  // Return from the first persona's order (all personas list the same zones)
+  const firstPersona = Object.keys(pagePriorities)[0];
+  return firstPersona ? pagePriorities[firstPersona] : [];
 }

@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CrossPersonaCallout } from "@/components/IPEComponents";
+import ZoneRenderer from "@/components/ZoneRenderer";
 import { CinematicBackground } from "@/components/motion";
 import {
   ArrowRight, Clock, RefreshCw, Link2, Zap, Shield,
@@ -52,7 +53,10 @@ export default function SGCapabilities() {
 
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-20">
 
+        <ZoneRenderer pageId="/sg/capabilities" className="space-y-20">
+
         {/* 24/7 Atomic Settlement */}
+        <ZoneRenderer.Zone zoneId="settlement" naturalIndex={0}>
         <RevealSection id="settlement">
           <section>
             <div className="flex items-center gap-3 mb-6">
@@ -147,8 +151,10 @@ export default function SGCapabilities() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Repo & Financing */}
+        {/* Repo & Securities Lending */}
+        <ZoneRenderer.Zone zoneId="repo" naturalIndex={1}>
         <RevealSection id="repo" delay={100}>
           <section>
             <div className="flex items-center gap-3 mb-6">
@@ -222,8 +228,10 @@ export default function SGCapabilities() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Unsponsored Tokets */}
+        {/* Unsponsored Access */}
+        <ZoneRenderer.Zone zoneId="unsponsored" naturalIndex={2}>
         <RevealSection id="unsponsored" delay={100}>
           <section>
             <div className="flex items-center gap-3 mb-6">
@@ -330,8 +338,10 @@ export default function SGCapabilities() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* ADR/GDR Comparison */}
+        {/* Before/After Comparison */}
+        <ZoneRenderer.Zone zoneId="comparison" naturalIndex={3}>
         <RevealSection id="comparison" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Unsponsored tokets vs. <span className="font-semibold">ADRs/GDRs</span></h2>
@@ -369,6 +379,9 @@ export default function SGCapabilities() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
+
+        </ZoneRenderer>
 
         {/* IPE Cross-Persona Callout */}
         <CrossPersonaCallout />

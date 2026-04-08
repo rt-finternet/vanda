@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CrossPersonaCallout } from "@/components/IPEComponents";
+import ZoneRenderer from "@/components/ZoneRenderer";
 import { CinematicBackground } from "@/components/motion";
 import {
   ArrowRight, ArrowRightLeft, Landmark, Gem, Scale,
@@ -101,7 +102,10 @@ export default function SGAssets() {
 
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-8">
 
+        <ZoneRenderer pageId="/sg/assets" className="space-y-8">
+
         {/* Asset Class Grid */}
+        <ZoneRenderer.Zone zoneId="equities" naturalIndex={0}>
         <RevealSection id="equities">
           <AssetClassCard
             icon={<ArrowRightLeft className="w-4 h-4" />}
@@ -122,7 +126,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="govt-securities" naturalIndex={1}>
         <RevealSection id="govt-securities" delay={50}>
           <AssetClassCard
             icon={<Landmark className="w-4 h-4" />}
@@ -143,7 +149,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="gold" naturalIndex={2}>
         <RevealSection id="gold" delay={50}>
           <AssetClassCard
             icon={<Gem className="w-4 h-4" />}
@@ -165,7 +173,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="stablecoins" naturalIndex={3}>
         <RevealSection id="stablecoins" delay={50}>
           <AssetClassCard
             icon={<Scale className="w-4 h-4" />}
@@ -186,7 +196,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="structured" naturalIndex={4}>
         <RevealSection id="structured" delay={50}>
           <AssetClassCard
             icon={<Layers className="w-4 h-4" />}
@@ -207,7 +219,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="private-credit" naturalIndex={5}>
         <RevealSection id="private-credit" delay={50}>
           <AssetClassCard
             icon={<Shield className="w-4 h-4" />}
@@ -228,7 +242,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="vcc" naturalIndex={6}>
         <RevealSection id="vcc" delay={50}>
           <div className="rounded-2xl overflow-hidden" style={{ background: SG.card, border: `2px solid ${SG.masTeal}30` }}>
             <div className="px-6 py-4 flex items-center gap-3" style={{ background: `${SG.masTeal}10`, borderBottom: `1px solid ${SG.border}` }}>
@@ -279,7 +295,9 @@ export default function SGAssets() {
             </div>
           </div>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="p-tokets" naturalIndex={7}>
         <RevealSection id="p-tokets" delay={50}>
           <AssetClassCard
             icon={<Network className="w-4 h-4" />}
@@ -300,7 +318,9 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
+        <ZoneRenderer.Zone zoneId="unsponsored" naturalIndex={8}>
         <RevealSection id="unsponsored" delay={50}>
           <AssetClassCard
             icon={<Link2 className="w-4 h-4" />}
@@ -321,8 +341,10 @@ export default function SGAssets() {
             ]}
           />
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Composability Summary */}
+        {/* Composability Section */}
+        <ZoneRenderer.Zone zoneId="composability" naturalIndex={9}>
         <RevealSection id="composability" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">The power of <span className="font-semibold">composability</span></h2>
@@ -357,6 +379,9 @@ export default function SGAssets() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
+
+        </ZoneRenderer>
 
         {/* IPE Cross-Persona Callout */}
         <CrossPersonaCallout />

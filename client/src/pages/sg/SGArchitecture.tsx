@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CrossPersonaCallout } from "@/components/IPEComponents";
+import ZoneRenderer from "@/components/ZoneRenderer";
 import { CinematicBackground } from "@/components/motion";
 import {
   ArrowRight, Network, Layers, Shield, Globe, Wallet, Eye,
@@ -68,7 +69,10 @@ export default function SGArchitecture() {
 
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-20">
 
+        <ZoneRenderer pageId="/sg/architecture" className="space-y-20">
+
         {/* Three-Layer Architecture */}
+        <ZoneRenderer.Zone zoneId="three-layer" naturalIndex={0}>
         <RevealSection id="three-layer">
           <section>
             <h2 className="text-2xl font-light mb-6">The <span className="font-semibold">three-layer</span> stack</h2>
@@ -195,8 +199,10 @@ export default function SGArchitecture() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* GL1 Alignment */}
+        {/* GL1 Settlement Layer */}
+        <ZoneRenderer.Zone zoneId="gl1" naturalIndex={1}>
         <RevealSection id="gl1" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6"><span className="font-semibold">GL1</span> compliance</h2>
@@ -243,8 +249,10 @@ export default function SGArchitecture() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* BYOW */}
+        {/* Bring Your Own Wallet */}
+        <ZoneRenderer.Zone zoneId="byow" naturalIndex={2}>
         <RevealSection id="byow" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Bring Your Own <span className="font-semibold">Wallet</span> (BYOW)</h2>
@@ -313,8 +321,10 @@ export default function SGArchitecture() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* MAS Observer Node */}
+        {/* Observer Nodes */}
+        <ZoneRenderer.Zone zoneId="observer" naturalIndex={3}>
         <RevealSection id="observer" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">MAS <span className="font-semibold">Observer</span> Node</h2>
@@ -353,8 +363,10 @@ export default function SGArchitecture() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Multi-Chain Enforcement */}
+        {/* Multi-Chain Connectivity */}
+        <ZoneRenderer.Zone zoneId="multi-chain" naturalIndex={4}>
         <RevealSection id="multi-chain" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6"><span className="font-semibold">Multi-chain</span> enforcement</h2>
@@ -382,6 +394,9 @@ export default function SGArchitecture() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
+
+        </ZoneRenderer>
 
         {/* IPE Cross-Persona Callout */}
         <CrossPersonaCallout />

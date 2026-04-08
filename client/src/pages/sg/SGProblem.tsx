@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CrossPersonaCallout } from "@/components/IPEComponents";
+import ZoneRenderer from "@/components/ZoneRenderer";
 import { CinematicBackground } from "@/components/motion";
 import {
   ArrowRight, Building2, Landmark, AlertTriangle, X, Check,
@@ -54,7 +55,10 @@ export default function SGProblem() {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-20">
 
+        <ZoneRenderer pageId="/sg/problem" className="space-y-20">
+
         {/* The Two Depositories */}
+        <ZoneRenderer.Zone zoneId="depositories" naturalIndex={0}>
         <RevealSection id="depositories">
           <section>
             <h2 className="text-2xl font-light mb-6">The <span className="font-semibold">two depositories</span></h2>
@@ -133,8 +137,10 @@ export default function SGProblem() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
         {/* The Fragmentation Problem */}
+        <ZoneRenderer.Zone zoneId="fragmentation" naturalIndex={1}>
         <RevealSection id="fragmentation" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">The <span className="font-semibold">fragmentation</span> problem</h2>
@@ -190,8 +196,10 @@ export default function SGProblem() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Why Not a Third Depository */}
+        {/* Not a Third Depository */}
+        <ZoneRenderer.Zone zoneId="not-third" naturalIndex={2}>
         <RevealSection id="not-third" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Why <span className="font-semibold">not</span> a third depository?</h2>
@@ -259,8 +267,10 @@ export default function SGProblem() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Comparison Table */}
+        {/* Side-by-Side Comparison */}
+        <ZoneRenderer.Zone zoneId="comparison" naturalIndex={3}>
         <RevealSection id="comparison" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Today vs. <span className="font-semibold">UNITS Network</span></h2>
@@ -298,6 +308,9 @@ export default function SGProblem() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
+
+        </ZoneRenderer>
 
         {/* IPE Cross-Persona Callout */}
         <CrossPersonaCallout />

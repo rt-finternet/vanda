@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
 import { CrossPersonaCallout } from "@/components/IPEComponents";
+import ZoneRenderer from "@/components/ZoneRenderer";
 import { CinematicBackground } from "@/components/motion";
 import {
   ArrowRight, Users, Building2, Landmark, GraduationCap,
@@ -52,7 +53,10 @@ export default function SGFunding() {
 
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-20">
 
+        <ZoneRenderer pageId="/sg/funding" className="space-y-20">
+
         {/* Funding Pathways */}
+        <ZoneRenderer.Zone zoneId="funding-pathways" naturalIndex={0}>
         <RevealSection id="funding-pathways">
           <section>
             <h2 className="text-2xl font-light mb-6">Funding <span className="font-semibold">pathways</span></h2>
@@ -192,8 +196,10 @@ export default function SGFunding() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Participant Map */}
+        {/* Participants & Governance */}
+        <ZoneRenderer.Zone zoneId="participants" naturalIndex={1}>
         <RevealSection id="participants" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Participant <span className="font-semibold">ecosystem</span></h2>
@@ -311,8 +317,10 @@ export default function SGFunding() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
-        {/* Phased Rollout */}
+        {/* Rollout Timeline */}
+        <ZoneRenderer.Zone zoneId="rollout" naturalIndex={2}>
         <RevealSection id="rollout" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Phased <span className="font-semibold">rollout</span></h2>
@@ -379,8 +387,10 @@ export default function SGFunding() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
 
         {/* Revenue Model */}
+        <ZoneRenderer.Zone zoneId="revenue" naturalIndex={3}>
         <RevealSection id="revenue" delay={100}>
           <section>
             <h2 className="text-2xl font-light mb-6">Sustainable <span className="font-semibold">revenue</span> model</h2>
@@ -404,6 +414,9 @@ export default function SGFunding() {
             </div>
           </section>
         </RevealSection>
+        </ZoneRenderer.Zone>
+
+        </ZoneRenderer>
 
         {/* IPE Cross-Persona Callout */}
         <CrossPersonaCallout />

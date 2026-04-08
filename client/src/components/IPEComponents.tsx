@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import type { Persona } from "@/lib/ipe-manifest";
 import React from "react";
+import ReadingProgressTracker from "@/components/ReadingProgressTracker";
 
 /* -- Icon resolver (shared with PersonaSelector) -- */
 const ICON_MAP: Record<string, React.ReactNode> = {
@@ -344,6 +345,11 @@ export function IPEFloatingBar() {
           />
         )}
       </button>
+
+      {/* Reading Progress Tracker */}
+      {activePersona && (
+        <ReadingProgressTracker />
+      )}
 
       {/* AI Guide Button */}
       <button
