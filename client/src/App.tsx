@@ -5,9 +5,16 @@ import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AccessProvider, useAccess } from "./contexts/AccessContext";
+import { IPEProvider } from "./contexts/IPEContext";
 import { lazy, Suspense } from "react";
 import PinGate from "./pages/PinGate";
 import VandaLanding from "./pages/VandaLanding";
+
+// IPE overlay components (always present in portal)
+import PersonaSelector from "./components/PersonaSelector";
+import { IPEFloatingBar, NextSectionBar, PersonaContextBanner } from "./components/IPEComponents";
+import IPEPageTracker from "./components/IPEPageTracker";
+const AIGuidePanel = lazy(() => import("./components/AIGuidePanel"));
 
 // SG Blueprint pages (eagerly loaded, core navigation)
 import SGExecutiveSummary from "./pages/sg/SGExecutiveSummary";
@@ -66,50 +73,66 @@ function PageLoader() {
 /* -- Portal Routes (shown only after PIN auth) -- */
 function PortalRoutes() {
   return (
-    <Switch>
-      {/* SG Blueprint (eagerly loaded) */}
-      <Route path="/sg" component={SGExecutiveSummary} />
-      <Route path="/sg/problem" component={SGProblem} />
-      <Route path="/sg/architecture" component={SGArchitecture} />
-      <Route path="/sg/capabilities" component={SGCapabilities} />
-      <Route path="/sg/assets" component={SGAssets} />
-      <Route path="/sg/funding" component={SGFunding} />
+    <>
+      {/* IPE auto-sync with routing */}
+      <IPEPageTracker />
 
-      {/* SG Deep Dives (lazy loaded) */}
-      <Route path="/sg/deep-dive/units">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUNITS /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/dvp-settlement">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveDVP /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/tokenisation">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveTokenisation /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/regulatory">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveRegulatory /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/collateral-highway">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCollateralHighway /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/participants">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveParticipants /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/vcc">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveVCC /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/precious-metals">{() => <Suspense fallback={<PageLoader />}><SGDeepDivePreciousMetals /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/token-programs">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveTokenPrograms /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/p-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDivePTokets /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/cross-ledger">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCrossLedger /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/unsponsored-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUnsponsoredTokets /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/structured-notes">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveStructuredNotes /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/equities">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveEquities /></Suspense>}</Route>
-      <Route path="/sg/deep-dive/wallets-registers">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveWalletsRegisters /></Suspense>}</Route>
+      {/* IPE Context Banner (below nav, above content) */}
+      <PersonaContextBanner />
 
-      {/* SG Workflows (lazy loaded) */}
-      <Route path="/sg/workflows">{() => <Suspense fallback={<PageLoader />}><SGWorkflows /></Suspense>}</Route>
-      <Route path="/sg/workflows/cdp-bridge">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCDPBridge /></Suspense>}</Route>
-      <Route path="/sg/workflows/atomic-dvp">{() => <Suspense fallback={<PageLoader />}><SGWorkflowAtomicDvP /></Suspense>}</Route>
-      <Route path="/sg/workflows/collateral-mobilisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCollateralMobilisation /></Suspense>}</Route>
-      <Route path="/sg/workflows/vcc-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowVCCTokenisation /></Suspense>}</Route>
-      <Route path="/sg/workflows/gold-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowGoldTokenisation /></Suspense>}</Route>
-      <Route path="/sg/workflows/commodities-collateral">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCommoditiesCollateral /></Suspense>}</Route>
-      <Route path="/sg/workflows/cross-border">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCrossBorder /></Suspense>}</Route>
-      <Route path="/sg/workflows/institutional-fx">{() => <Suspense fallback={<PageLoader />}><SGWorkflowInstitutionalFX /></Suspense>}</Route>
+      <Switch>
+        {/* SG Blueprint (eagerly loaded) */}
+        <Route path="/sg" component={SGExecutiveSummary} />
+        <Route path="/sg/problem" component={SGProblem} />
+        <Route path="/sg/architecture" component={SGArchitecture} />
+        <Route path="/sg/capabilities" component={SGCapabilities} />
+        <Route path="/sg/assets" component={SGAssets} />
+        <Route path="/sg/funding" component={SGFunding} />
 
-      {/* FAQ / Technical Appendix */}
-      <Route path="/sg/faq">{() => <Suspense fallback={<PageLoader />}><SGFaq /></Suspense>}</Route>
+        {/* SG Deep Dives (lazy loaded) */}
+        <Route path="/sg/deep-dive/units">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUNITS /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/dvp-settlement">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveDVP /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/tokenisation">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveTokenisation /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/regulatory">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveRegulatory /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/collateral-highway">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCollateralHighway /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/participants">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveParticipants /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/vcc">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveVCC /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/precious-metals">{() => <Suspense fallback={<PageLoader />}><SGDeepDivePreciousMetals /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/token-programs">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveTokenPrograms /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/p-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDivePTokets /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/cross-ledger">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveCrossLedger /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/unsponsored-tokets">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveUnsponsoredTokets /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/structured-notes">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveStructuredNotes /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/equities">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveEquities /></Suspense>}</Route>
+        <Route path="/sg/deep-dive/wallets-registers">{() => <Suspense fallback={<PageLoader />}><SGDeepDiveWalletsRegisters /></Suspense>}</Route>
 
-      {/* 404 */}
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+        {/* SG Workflows (lazy loaded) */}
+        <Route path="/sg/workflows">{() => <Suspense fallback={<PageLoader />}><SGWorkflows /></Suspense>}</Route>
+        <Route path="/sg/workflows/cdp-bridge">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCDPBridge /></Suspense>}</Route>
+        <Route path="/sg/workflows/atomic-dvp">{() => <Suspense fallback={<PageLoader />}><SGWorkflowAtomicDvP /></Suspense>}</Route>
+        <Route path="/sg/workflows/collateral-mobilisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCollateralMobilisation /></Suspense>}</Route>
+        <Route path="/sg/workflows/vcc-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowVCCTokenisation /></Suspense>}</Route>
+        <Route path="/sg/workflows/gold-tokenisation">{() => <Suspense fallback={<PageLoader />}><SGWorkflowGoldTokenisation /></Suspense>}</Route>
+        <Route path="/sg/workflows/commodities-collateral">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCommoditiesCollateral /></Suspense>}</Route>
+        <Route path="/sg/workflows/cross-border">{() => <Suspense fallback={<PageLoader />}><SGWorkflowCrossBorder /></Suspense>}</Route>
+        <Route path="/sg/workflows/institutional-fx">{() => <Suspense fallback={<PageLoader />}><SGWorkflowInstitutionalFX /></Suspense>}</Route>
+
+        {/* FAQ / Technical Appendix */}
+        <Route path="/sg/faq">{() => <Suspense fallback={<PageLoader />}><SGFaq /></Suspense>}</Route>
+
+        {/* 404 */}
+        <Route path="/404" component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+
+      {/* IPE Overlay Components */}
+      <PersonaSelector />
+      <Suspense fallback={null}>
+        <AIGuidePanel />
+      </Suspense>
+      <NextSectionBar />
+      <IPEFloatingBar />
+    </>
   );
 }
 
@@ -146,10 +169,12 @@ function Router() {
     );
   }
 
-  // Everything under /sg/* goes through the portal access gate
+  // Everything under /sg/* goes through the portal access gate + IPE
   return (
     <AccessProvider>
-      <AccessGate />
+      <IPEProvider>
+        <AccessGate />
+      </IPEProvider>
     </AccessProvider>
   );
 }

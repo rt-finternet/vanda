@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
+import { CrossPersonaCallout } from "@/components/IPEComponents";
 import { GlowingOrb, AnimatedCounter } from "@/components/motion";
 import {
   ChevronDown, ArrowRight, Zap, Layers, Shield, Network,
@@ -493,6 +494,9 @@ export default function SGExecutiveSummary() {
             </div>
           </section>
         </RevealSection>
+
+        {/* ── IPE Cross-Persona Callout ── */}
+        <CrossPersonaCallout />
 
         {/* ── Ready to Explore? ── */}
         <RevealSection id="explore" delay={100}>

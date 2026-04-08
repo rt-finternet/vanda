@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SGPortalNav, { SG } from "@/components/SGPortalNav";
+import { CrossPersonaCallout } from "@/components/IPEComponents";
 import { CinematicBackground } from "@/components/motion";
 import {
   ArrowRight, Clock, RefreshCw, Link2, Zap, Shield,
@@ -368,6 +369,9 @@ export default function SGCapabilities() {
             </div>
           </section>
         </RevealSection>
+
+        {/* IPE Cross-Persona Callout */}
+        <CrossPersonaCallout />
 
         {/* UNITS Knowledge Base Links */}
         <div className="mt-16 p-6 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${SG.border}` }}>

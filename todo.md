@@ -94,7 +94,7 @@
 - [x] Fix "Repo & Securities Lending" KB links going to 404 (2 files: Collateral Highway, Capabilities)
 - [x] Add missing RMOs to Participants page (DDEx, BondBloX, InvestaX added to Market Specialists tier)
 - [x] Add SCS glossary box below Token Programs comparison table (SCS = Single-Currency Stablecoin)
-- [ ] Backlog: "Ask AI" feature (LLM-powered Q&A about the blueprint)
+- [x] "Ask AI" feature (LLM-powered Q&A about the blueprint) — implemented as AI Guide in IPE
 
 ## Stakeholder Feedback (Round 2)
 - [x] CDP Bridge: Add price divergence mechanism (AP arbitrage, DMMs, reference pricing, circuit breakers)
@@ -112,7 +112,7 @@
 - [x] Build dedicated Institutional FX & Foreign Securities workflow page
 - [x] Build FAQ/Technical Appendix page consolidating all stakeholder Q&A
 - [x] Register routes and navigation for both new pages
-- [ ] Draft comprehensive stakeholder email with links to all portal updates
+- [x] Draft comprehensive stakeholder email with links to all portal updates (535 words)
 
 ## Full Portal Audit (Round 3)
 - [x] Audit all pages for consistency (naming, data, participants, terminology)
@@ -124,3 +124,11 @@
 - [x] Fix: 'Cross-depository' to 'Cross-network' in Regulatory
 - [x] Fix: 'token' to 'toket' in PreciousMetals, UNITS, CrossLedger deep-dives
 - [x] Fix: self-referencing link in CollateralHighway
+
+## IPE (Intent Protocol Engine) Integration
+- [x] Research MAS individuals (Eugene Long, Alan Lim) and bucket all stakeholder archetypes
+- [x] Build IPE manifest with 12 personas, 5 narrative arcs, 60 cross-persona suggestions, 61 next-section recommendations (1,300+ lines)
+- [x] Build IPE context engine (IPEContext + IPEProvider + useIPE hook + IPEPageTracker) and zone rendering framework (CrossPersonaCallout, NextSectionBar, IPEFloatingBar, PersonaContextBanner, KeywordHighlight)
+- [x] Build AI Guide component with LLM integration (tRPC aiGuide router + AIGuidePanel with persona-aware system prompt, 36 suggested questions)
+- [x] Apply IPE zones to 6 anchor pages (Executive Summary, Problem, Architecture, Capabilities, Assets, Funding) with CrossPersonaCallout integration
+- [x] Test all personas and context switching (92 tests pass, visual confirmation of PersonaSelector, CrossPersonaCallout, AIGuidePanel)
