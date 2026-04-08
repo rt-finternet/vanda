@@ -10,9 +10,17 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useIPE } from "@/contexts/IPEContext";
 import { SG } from "@/components/SGPortalNav";
-import { trpc } from "@/lib/trpc";
-import { IS_VERCEL } from "@/lib/useApi";
+import { isTRPCAvailable, useNoOpMutation, type SafeMutation } from "@/lib/trpc-safe";
 import { useIPEAnalytics } from "@/hooks/useIPEAnalytics";
+
+// Conditionally import trpc for AI Guide mutation
+let useAskMutation: () => SafeMutation;
+if (isTRPCAvailable) {
+  const { trpc } = require("@/lib/trpc") as typeof import("@/lib/trpc");
+  useAskMutation = () => trpc.aiGuide.ask.useMutation() as unknown as SafeMutation;
+} else {
+  useAskMutation = useNoOpMutation;
+}
 import {
   X, Send, Sparkles, User, Loader2, MessageCircle,
   ChevronDown, Bot,
@@ -111,7 +119,7 @@ export default function AIGuidePanel() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const askMutation = trpc.aiGuide.ask.useMutation();
+  const askMutation = useAskMutation();
   const { trackAiGuideQuery } = useIPEAnalytics();
 
   // Auto-scroll to bottom
@@ -145,17 +153,25 @@ export default function AIGuidePanel() {
       );
 
       try {
-        const result = await askMutation.mutateAsync({
-          question: text.trim(),
-          personaId: activePersona?.id ?? null,
-          personaName: activePersona?.name ?? null,
-          currentPage,
-          conversationHistory: messages.slice(-10),
-        });
+        let answer: string;
+        if (askMutation.mutateAsync) {
+          // tRPC mode (Manus deployment)
+          const result = await askMutation.mutateAsync({
+            question: text.trim(),
+            personaId: activePersona?.id ?? null,
+            personaName: activePersona?.name ?? null,
+            currentPage,
+            conversationHistory: messages.slice(-10),
+          });
+          answer = result?.answer ?? "I'm sorry, I couldn't generate a response.";
+        } else {
+          // Vercel mode: AI Guide not available via tRPC
+          answer = "AI Guide is currently available on the Manus deployment. Please visit the Manus-hosted version for AI-powered Q&A about the blueprint.";
+        }
 
         const assistantMessage: ChatMessage = {
           role: "assistant",
-          content: result.answer,
+          content: answer,
         };
         setMessages((prev) => [...prev, assistantMessage]);
       } catch (error) {

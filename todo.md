@@ -154,3 +154,31 @@
 - [x] Build analytics tRPC router and database table — trackEvent mutation, getSummary/getRecent queries
 - [x] Build persona-driven content reordering (zone weight system) — CSS order-based reordering on Executive Summary
 - [x] Implement ZoneRenderer component that reorders content sections based on persona weights — animated transitions, reorder indicator banner
+
+## IPE Enhancements (Round 3)
+- [ ] Requirements & Design doc for ZoneRenderer extension + Progress Tracker
+- [ ] Extend ZoneRenderer to SGProblem page (identify sections, add zone IDs, map to manifest)
+- [ ] Extend ZoneRenderer to SGArchitecture page
+- [ ] Extend ZoneRenderer to SGCapabilities page
+- [ ] Extend ZoneRenderer to SGAssets page
+- [ ] Extend ZoneRenderer to SGFunding page
+- [ ] Build persona-specific reading progress tracker component
+- [ ] Integrate progress tracker into IPEContext (track visited sections per persona)
+- [ ] Persist progress state to localStorage
+- [ ] Add progress tracker to the IPE floating rail / context banner
+- [ ] Write vitest tests for ZoneRenderer deep dive integration
+- [ ] Write vitest tests for progress tracker logic
+- [ ] Visual test ZoneRenderer reordering on all 5 deep dive pages
+- [ ] Visual test progress tracker across persona switches
+- [ ] Full audit and checkpoint
+- [ ] Push to GitHub
+
+## Bug Fix
+- [ ] Fix crash on /sg route (reported on vanda.neurail.io/sg)
+
+## Vercel Crash Fix
+- [ ] Fix tRPC crash: IPEContext.tsx calls trpc.ipeAnalytics.trackEvent.useMutation() outside tRPC Provider in Vercel mode
+- [ ] Fix tRPC crash: useIPEAnalytics.ts calls trpc.ipeAnalytics.trackEvent.useMutation() outside tRPC Provider in Vercel mode
+- [ ] Fix tRPC crash: AIGuidePanel.tsx calls trpc.aiGuide.ask.useMutation() outside tRPC Provider in Vercel mode
+- [ ] Test Vercel deployment after fix
+- [ ] Verify Manus deployment still works after fix

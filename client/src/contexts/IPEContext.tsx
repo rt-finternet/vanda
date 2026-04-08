@@ -3,7 +3,7 @@
  *
  * Tracks active persona, current page, and provides all IPE data
  * to the component tree. Persists persona selection in localStorage.
- * Fires analytics events on persona selection.
+ * Fires analytics events on persona selection (when tRPC is available).
  *
  * NO AMBITION DECAY.
  */
@@ -30,7 +30,17 @@ import {
   type NarrativeArc,
   type PersonaGroup,
 } from "@/lib/ipe-manifest";
-import { trpc } from "@/lib/trpc";
+import { isTRPCAvailable, useNoOpMutation, type SafeMutation } from "@/lib/trpc-safe";
+
+// Conditionally import trpc only when available
+let useTRPCMutation: () => SafeMutation;
+if (isTRPCAvailable) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { trpc } = require("@/lib/trpc") as typeof import("@/lib/trpc");
+  useTRPCMutation = () => trpc.ipeAnalytics.trackEvent.useMutation();
+} else {
+  useTRPCMutation = useNoOpMutation;
+}
 
 // ---- Types ----
 
@@ -95,8 +105,8 @@ export function IPEProvider({ children }: { children: ReactNode }) {
   const [selectorOpen, setSelectorOpen] = useState(false);
   const [aiGuideOpen, setAiGuideOpen] = useState(false);
 
-  // Analytics: fire-and-forget persona_select events
-  const trackMutation = trpc.ipeAnalytics.trackEvent.useMutation();
+  // Analytics: fire-and-forget persona_select events (safe for Vercel mode)
+  const trackMutation = useTRPCMutation();
   const currentPageRef = useRef(currentPage);
   useEffect(() => {
     currentPageRef.current = currentPage;
@@ -136,7 +146,7 @@ export function IPEProvider({ children }: { children: ReactNode }) {
     setPersonaId(id);
     if (id) {
       localStorage.setItem(STORAGE_KEY, id);
-      // Fire analytics event
+      // Fire analytics event (no-op in Vercel mode)
       try {
         const sessionToken = localStorage.getItem(SESSION_KEY) ?? undefined;
         trackMutation.mutate({

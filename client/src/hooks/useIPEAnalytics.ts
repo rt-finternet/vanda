@@ -3,14 +3,25 @@
  * 
  * Fire-and-forget: all tracking calls are non-blocking and silently fail.
  * This hook reads the session token from localStorage to link events to sessions.
+ * 
+ * Safe for Vercel mode: returns no-op functions when tRPC is unavailable.
  */
 import { useCallback, useRef } from "react";
-import { trpc } from "@/lib/trpc";
+import { isTRPCAvailable, useNoOpMutation, type SafeMutation } from "@/lib/trpc-safe";
 
 const SESSION_KEY = "units_sg_session";
 
+// Conditionally import trpc
+let useTRPCMutation: () => SafeMutation;
+if (isTRPCAvailable) {
+  const { trpc } = require("@/lib/trpc") as typeof import("@/lib/trpc");
+  useTRPCMutation = () => trpc.ipeAnalytics.trackEvent.useMutation();
+} else {
+  useTRPCMutation = useNoOpMutation;
+}
+
 export function useIPEAnalytics() {
-  const trackMutation = trpc.ipeAnalytics.trackEvent.useMutation();
+  const trackMutation = useTRPCMutation();
   
   // Debounce page views to avoid flooding on rapid navigation
   const lastPageView = useRef<string>("");
@@ -26,51 +37,67 @@ export function useIPEAnalytics() {
 
   const trackPersonaSelect = useCallback(
     (personaId: string, sectionPath: string) => {
-      trackMutation.mutate({
-        eventType: "persona_select",
-        personaId,
-        sectionPath,
-        sessionToken: getSessionToken(),
-      });
+      try {
+        trackMutation.mutate({
+          eventType: "persona_select",
+          personaId,
+          sectionPath,
+          sessionToken: getSessionToken(),
+        });
+      } catch {
+        // Fire-and-forget
+      }
     },
     [trackMutation, getSessionToken]
   );
 
   const trackCrossPersonaClick = useCallback(
     (fromPersona: string, toPersona: string, sectionPath: string) => {
-      trackMutation.mutate({
-        eventType: "cross_persona_click",
-        personaId: fromPersona,
-        sectionPath,
-        targetPersonaId: toPersona,
-        sessionToken: getSessionToken(),
-      });
+      try {
+        trackMutation.mutate({
+          eventType: "cross_persona_click",
+          personaId: fromPersona,
+          sectionPath,
+          targetPersonaId: toPersona,
+          sessionToken: getSessionToken(),
+        });
+      } catch {
+        // Fire-and-forget
+      }
     },
     [trackMutation, getSessionToken]
   );
 
   const trackAiGuideQuery = useCallback(
     (personaId: string, sectionPath: string, queryText: string) => {
-      trackMutation.mutate({
-        eventType: "ai_guide_query",
-        personaId,
-        sectionPath,
-        queryText: queryText.slice(0, 500),
-        sessionToken: getSessionToken(),
-      });
+      try {
+        trackMutation.mutate({
+          eventType: "ai_guide_query",
+          personaId,
+          sectionPath,
+          queryText: queryText.slice(0, 500),
+          sessionToken: getSessionToken(),
+        });
+      } catch {
+        // Fire-and-forget
+      }
     },
     [trackMutation, getSessionToken]
   );
 
   const trackNextSectionClick = useCallback(
     (personaId: string, sectionPath: string, targetSection: string) => {
-      trackMutation.mutate({
-        eventType: "next_section_click",
-        personaId,
-        sectionPath,
-        targetSection,
-        sessionToken: getSessionToken(),
-      });
+      try {
+        trackMutation.mutate({
+          eventType: "next_section_click",
+          personaId,
+          sectionPath,
+          targetSection,
+          sessionToken: getSessionToken(),
+        });
+      } catch {
+        // Fire-and-forget
+      }
     },
     [trackMutation, getSessionToken]
   );
@@ -88,12 +115,16 @@ export function useIPEAnalytics() {
       lastPageView.current = sectionPath;
       lastPageViewTime.current = now;
 
-      trackMutation.mutate({
-        eventType: "page_view",
-        personaId,
-        sectionPath,
-        sessionToken: getSessionToken(),
-      });
+      try {
+        trackMutation.mutate({
+          eventType: "page_view",
+          personaId,
+          sectionPath,
+          sessionToken: getSessionToken(),
+        });
+      } catch {
+        // Fire-and-forget
+      }
     },
     [trackMutation, getSessionToken]
   );
